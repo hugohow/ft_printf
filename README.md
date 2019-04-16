@@ -1,6 +1,3 @@
-
-
-
 [![Build Status](https://travis-ci.org/hugohow/ft_printf.svg?branch=master)](https://travis-ci.org/hugohow/ft_printf)
 
 all my work : https://github.com/hugohow/42-work
