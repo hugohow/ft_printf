@@ -223,10 +223,18 @@ TEST : %O, 0
 [OK]
 -------------------------------------
 TEST : %O, 1470
-[OK]
+ft_printf  --> 1470
+ret = 4
+printf     --> 2676
+ret = 4
+[KO]
 -------------------------------------
 TEST : %O, -1470
-[OK]
+ft_printf  --> 4294965826
+ret = 10
+printf     --> 37777775102
+ret = 11
+[KO]
 -------------------------------------
 TEST : %#o, 0
 [OK]
@@ -295,7 +303,11 @@ TEST : %-6o, 0155224
 [OK]
 -------------------------------------
 TEST : coco et %-#-#--24O titi%#012o, 12, -874
-[OK]
+ft_printf  --> coco et 12                       titi037777776226
+ret = 49
+printf     --> coco et 014                      titi037777776226
+ret = 49
+[KO]
 -------------------------------------
 TEST : t%04.2o%#2oet %#-8.3o titi, 0, 0, 0
 ft_printf  --> t  00 0et 000        titi
@@ -305,13 +317,23 @@ ret = 23
 [KO]
 -------------------------------------
 TEST : \n%024hho et%#1.2o %0012.O, (unsigned char)12, 0, 123654789
-[OK]
+ft_printf  --> 
+000000000000000000000014 et00    123654789
+ret = 43
+printf     --> 
+000000000000000000000014 et00    727551205
+ret = 43
+[KO]
 -------------------------------------
 TEST : test%#.4o et %02o %0#14.0o!!, 012, 036, 12587499
 [OK]
 -------------------------------------
 TEST : toto %###.0o%#.O et %#.1o !, 0, 0, 0
-[OK]
+ft_printf  --> toto 0 et 0 !
+ret = 13
+printf     --> toto 00 et 0 !
+ret = 14
+[KO]
 -------------------------------------
 TEST : m%#.9od\nee, 123456789
 [OK]
@@ -473,21 +495,21 @@ TEST : %C, 0x6f
 [OK]
 -------------------------------------
 TEST : %lc, 0x4e6
-ft_printf  --> �
+ft_printf  --> �
 ret = 1
 printf     --> Ӧ
 ret = 2
 [KO]
 -------------------------------------
 TEST : %lc, 0x1e40
-ft_printf  --> @
+ft_printf  --> @
 ret = 1
 printf     --> Ṁ
 ret = 3
 [KO]
 -------------------------------------
 TEST : %lc, 0x40501
-ft_printf  --> 
+ft_printf  --> 
 ret = 1
 printf     --> 񀔁
 ret = 4
@@ -563,7 +585,7 @@ ret = 3
 [KO]
 -------------------------------------
 TEST : %5lc, 350
-ft_printf  -->     ^
+ft_printf  -->  
 ret = 5
 printf     -->    Ş
 ret = 5
@@ -605,7 +627,7 @@ ret = -1
 [KO]
 -------------------------------------
 TEST : yo%2C%-12lc et %C titi %C tyty, 'u', 254, 256, 'a'
-ft_printf  --> yo �            et  titi a tyty
+ft_printf  --> yo �  t i ay
 ret = 33
 printf     --> yo u�           
 ret = -1
@@ -691,38 +713,50 @@ TEST : %S, s
 [OK]
 -------------------------------------
 TEST : %.9ls, s
-ft_printf  --> S
-ret = 1
+ft_printf  --> S
+ret = 3
 printf     --> S㪼򁀀
 ret = 8
 [KO]
 -------------------------------------
 TEST : %.5ls, s
-ft_printf  --> S
-ret = 1
+ft_printf  --> S
+ret = 3
 printf     --> S㪼
 ret = 4
 [KO]
 -------------------------------------
 TEST : %.3ls, s
-[OK]
+ft_printf  --> S
+ret = 3
+printf     --> S
+ret = 1
+[KO]
 -------------------------------------
 TEST : %.ls, s
-[OK]
+ft_printf  --> S
+ret = 3
+printf     --> 
+ret = 0
+[KO]
 -------------------------------------
 TEST : %.0ls, s
-[OK]
+ft_printf  --> S
+ret = 3
+printf     --> 
+ret = 0
+[KO]
 -------------------------------------
 TEST : %.5ls, s
-ft_printf  --> S
-ret = 1
+ft_printf  --> S
+ret = 3
 printf     --> 
 ret = -1
 [KO]
 -------------------------------------
 TEST : %.2ls, s
 ft_printf  --> S
-ret = 1
+ret = 2
 printf     --> S�
 ret = 2
 [KO]
@@ -731,14 +765,14 @@ TEST : %.1ls, s
 [OK]
 -------------------------------------
 TEST : %.4ls, s
-ft_printf  --> S
-ret = 1
+ft_printf  --> S
+ret = 3
 printf     --> S㪼
 ret = 4
 [KO]
 -------------------------------------
 TEST : %10ls, s
-ft_printf  -->          S
+ft_printf  -->   
 ret = 10
 printf     -->   S㪼򁀀
 ret = 10
@@ -766,79 +800,79 @@ ret = 4
 [KO]
 -------------------------------------
 TEST : %9ls, s
-ft_printf  -->         a
+ft_printf  -->   
 ret = 9
 printf     --> 
 ret = -1
 [KO]
 -------------------------------------
 TEST : %---10.5ls, s
-ft_printf  --> S         
+ft_printf  --> S 
 ret = 10
 printf     --> S㪼      
 ret = 10
 [KO]
 -------------------------------------
 TEST : %9.6ls %S, s, L"a"
-ft_printf  -->         S a
+ft_printf  -->   
 ret = 11
 printf     --> 
 ret = -1
 [KO]
 -------------------------------------
 TEST : cc %10.0ls et %.ls et %-2S%-12S, s, s, s, s
-ft_printf  --> cc            et  et S
-ret = 36
+ft_printf  --> cc  et S:
+ret = 39
 printf     --> cc            et  et S㪼򁀀S㪼򁀀    
 ret = 41
 [KO]
 -------------------------------------
 TEST : %p, NULL
-ft_printf  --> 007fff54fe660
+ft_printf  --> 007fff52e9c690
 ret = 0
 printf     --> 0x0
 ret = 3
 [KO]
 -------------------------------------
 TEST : %p, &data
-ft_printf  --> 007fff54fe660
+ft_printf  --> 007fff52e9c690
 ret = 0
-printf     --> 0x7fff540fe6b8
+printf     --> 0x7fff52e9c6e8
 ret = 14
 [KO]
 -------------------------------------
 TEST : %p, &p_basic_02
-ft_printf  --> 007fff54fe660
+ft_printf  --> 007fff52e9c690
 ret = 0
-printf     --> 0x10bb05a60
+printf     --> 0x10cd676b0
 ret = 11
 [KO]
 -------------------------------------
 TEST : %20p, &data
-ft_printf  --> 007fff54fe660
+ft_printf  --> 007fff52e9c690
 ret = 0
-printf     -->       0x7fff540fe6b8
+printf     -->       0x7fff52e9c6e8
 ret = 20
 [KO]
 -------------------------------------
 TEST : %-25p, &data
-ft_printf  --> 007fff54fe660
+ft_printf  --> 007fff52e9c690
 ret = 0
-printf     --> 0x7fff540fe6b8           
+printf     --> 0x7fff52e9c6e8           
 ret = 25
 [KO]
 -------------------------------------
 TEST : %2p, &data
-ft_printf  --> 007fff54fe660
+ft_printf  --> 007fff52e9c690
 ret = 0
-printf     --> 0x7fff540fe6b8
+printf     --> 0x7fff52e9c6e8
 ret = 14
 [KO]
 -------------------------------------
 TEST : %----24p et hello %2p %12p, &ret, &p_all_01, NULL
-ft_printf  -->  et hello  007fff54fe660007fff54fe660007fff54fe660
+ft_printf  -->  et hello  007fff52e9c690007fff52e9c690007fff52e9c690
 ret = 11
-printf     --> 0x7fff540fe6b4           et hello 0x10bb06060          0x0
+printf     --> 0x7fff52e9c6e4           et hello 0x10cd67cb0          0x0
 ret = 58
 [KO]
 -------------------------------------
@@ -882,24 +916,29 @@ TEST : test %-12i et %--2.4s %24s !\n, 0, NULL, "coco"
 [SEGV]
 -------------------------------------
 TEST : %--.4u et %#O%#012O%1lc\n, -12, 0, 0, 95
-[OK]
+ft_printf  --> 4294967284 et 0000000000000_
+ret = 29
+printf     --> 4294967284 et 0000000000000_
+
+ret = 29
+[KO]
 -------------------------------------
 TEST : %-+-12.7Dt%0 4i %04.2% et %lc titi, 125, 124, 256
-ft_printf  --> +0000125        t0124 000% et  titi
+ft_printf  --> +0000125        t0124 000% et 
 ret = 36
 printf     --> +0000125    t 124 000%
 ret = -1
 [KO]
 -------------------------------------
 TEST : test%-8p %---32p %#5.3x%#024X, &ret, &tret, 0x25, 0
-ft_printf  --> test  0x025000000000000000000000000007fff54fe660007fff54fe660
+ft_printf  --> test  0x025000000000000000000000000007fff52e9c690007fff52e9c690
 ret = 35
-printf     --> test0x7fff540fe6b4 0x7fff540fe6b4                   0x025000000000000000000000000
+printf     --> test0x7fff52e9c6e4 0x7fff52e9c6e4                   0x025000000000000000000000000
 ret = 81
 [KO]
 -------------------------------------
 TEST : test %-7C %007d%-10.2ls!!, 0xd777, 0x45, L"〻
-ft_printf  --> test w�9;0        !!
+ft_printf  --> test w�9;0
 ret = 32
 printf     --> test 흷     0000069          !!
 ret = 32
