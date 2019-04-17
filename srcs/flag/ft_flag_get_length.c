@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:27:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 15:28:50 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/17 20:34:19 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,11 @@ static int is_valid_length(char c)
 
 int ft_flag_get_length(char *flag)
 {
-    // invalid -> -1
-    // no -> 0
-    // hh -> 1
-    // h -> 2
-    // l -> 3
-    // ll -> 4
-    // j -> 5
-    // z -> 6
     size_t i;
 
     i = 0;
+    if (flag[ft_strlen(flag) - 1] >= 'A' && flag[ft_strlen(flag) - 1] <= 'Z')
+        return (3);
     while (flag[i] && is_valid_conversion(flag[i]) == 0)
         i++;
     i--;
