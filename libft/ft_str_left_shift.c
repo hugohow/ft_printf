@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_delete_element.c                                :+:      :+:    :+:   */
+/*   ft_str_left_shift.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 17:16:11 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 20:41:57 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/23 20:29:25 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/04/23 20:35:01 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char *ft_delete_element(char *str, t_flag *flag, int i)
+/*
+** "abc" << = "bc "
+*/
+
+char	*ft_str_left_shift(char *str, int len)
 {
-    if (flag->minus == 1)
-    {
-        ft_str_left_shift(str + i, (int)ft_strlen(str + i) - 1);
-    }
-    else
-    {
-        str = ft_str_right_shift(str, i);
-    }
-    return (str);
+	int j;
+
+	j = 0;
+	while (j < len - 1)
+	{
+		str[j] = str[j + 1];
+		j++;
+	}
+	str[j] = ' ';
+	return (str);
 }

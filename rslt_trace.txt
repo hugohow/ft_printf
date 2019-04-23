@@ -111,7 +111,7 @@ TEST : %04d, 0
 [OK]
 -------------------------------------
 TEST : %+12.5d, 140
-ft_printf  --> +++++++++00040
+ft_printf  --> +        00040
 ret = 14
 printf     -->       +00140
 ret = 12
@@ -446,8 +446,8 @@ ret = 23
 [KO]
 -------------------------------------
 TEST : t %#7.5X%0006.2x et %lX!, 0xab, 0x876, 0xff11ff11ff1
-ft_printf  --> t 0XX000B   876 et FF11FF11FF1!
-ret = 31
+ft_printf  --> t 0X00000 000B   876 et FF11FF11FF1!
+ret = 36
 printf     --> t 0X000AB   876 et FF11FF11FF1!
 ret = 31
 [KO]
@@ -840,51 +840,51 @@ ret = 41
 [KO]
 -------------------------------------
 TEST : %p, NULL
-ft_printf  --> 007fff58fdc6b0
+ft_printf  --> 007fff5a96a6b0
 ret = 0
 printf     --> 0x0
 ret = 3
 [KO]
 -------------------------------------
 TEST : %p, &data
-ft_printf  --> 007fff58fdc6b0
+ft_printf  --> 007fff5a96a6b0
 ret = 0
-printf     --> 0x7fff58fdc708
+printf     --> 0x7fff5a96a708
 ret = 14
 [KO]
 -------------------------------------
 TEST : %p, &p_basic_02
-ft_printf  --> 007fff58fdc6b0
+ft_printf  --> 007fff5a96a6b0
 ret = 0
-printf     --> 0x106c27660
+printf     --> 0x10529a5d0
 ret = 11
 [KO]
 -------------------------------------
 TEST : %20p, &data
-ft_printf  --> 007fff58fdc6b0
+ft_printf  --> 007fff5a96a6b0
 ret = 0
-printf     -->       0x7fff58fdc708
+printf     -->       0x7fff5a96a708
 ret = 20
 [KO]
 -------------------------------------
 TEST : %-25p, &data
-ft_printf  --> 007fff58fdc6b0
+ft_printf  --> 007fff5a96a6b0
 ret = 0
-printf     --> 0x7fff58fdc708           
+printf     --> 0x7fff5a96a708           
 ret = 25
 [KO]
 -------------------------------------
 TEST : %2p, &data
-ft_printf  --> 007fff58fdc6b0
+ft_printf  --> 007fff5a96a6b0
 ret = 0
-printf     --> 0x7fff58fdc708
+printf     --> 0x7fff5a96a708
 ret = 14
 [KO]
 -------------------------------------
 TEST : %----24p et hello %2p %12p, &ret, &p_all_01, NULL
-ft_printf  -->  et hello  007fff58fdc6b0007fff58fdc6b0007fff58fdc6b0
+ft_printf  -->  et hello  007fff5a96a6b0007fff5a96a6b0007fff5a96a6b0
 ret = 11
-printf     --> 0x7fff58fdc704           et hello 0x106c27c60          0x0
+printf     --> 0x7fff5a96a704           et hello 0x10529abd0          0x0
 ret = 58
 [KO]
 -------------------------------------
@@ -939,9 +939,9 @@ TEST : %-+-12.7Dt%0 4i %04.2% et %lc titi, 125, 124, 256
 [BUSE]
 -------------------------------------
 TEST : test%-8p %---32p %#5.3x%#024X, &ret, &tret, 0x25, 0
-ft_printf  --> test  0xx0500000000007fff58fdc6b0007fff58fdc6b0
-ret = 19
-printf     --> test0x7fff58fdc704 0x7fff58fdc704                   0x025000000000000000000000000
+ft_printf  --> test  0x000 0500000000007fff5a96a6b0007fff5a96a6b0
+ret = 22
+printf     --> test0x7fff5a96a704 0x7fff5a96a704                   0x025000000000000000000000000
 ret = 81
 [KO]
 -------------------------------------
