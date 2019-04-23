@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_apply_padding.c                                 :+:      :+:    :+:   */
+/*   ft_apply_padding_s.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 18:44:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 18:46:48 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/23 17:38:09 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/04/23 17:38:11 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
+
 #include "ft_printf.h"
 
-char *ft_apply_padding(char *str, t_flag *flag)
+char *ft_apply_padding_s(char *str, t_flag *flag)
 {
     char *to_add;
     unsigned int str_len;

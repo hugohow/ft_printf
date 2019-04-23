@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:13:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 19:32:07 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:47:06 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,6 @@ static char *delete_one_zero(char *str, t_flag *flag, int sign)
     {
         while (str[i])
         {
-            if (str[i] == '0')
-            {
-                i++;
-                if (flag->conv == 'o')
-                {
-                    return (ft_delete_element(str, flag, i));
-                }
-                else if (flag->conv == 'x')
-                {
-                    i++;
-                    return (ft_delete_element(str, flag, i));
-                }
-                else if (flag->conv == 'X')
-                {
-                    i++;
-                    return (ft_delete_element(str, flag, i));
-                }
-            }
             i++;
         }
     }

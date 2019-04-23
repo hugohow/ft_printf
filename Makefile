@@ -5,7 +5,7 @@ CFLAGS=-Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) -Iincludes -g -c srcs/*.c libft/*.c srcs/*/*.c
+	$(CC) $(CFLAGS) -Iincludes -g -c srcs/*.c libft/*.c srcs/*/*.c srcs/*/*/*.c
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
 	rm -rf *.o

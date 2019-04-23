@@ -6,24 +6,26 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:17:28 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 21:41:31 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:30:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *ft_add_element(char *str, t_flag *flag, int i)
+char *ft_add_element(char *str, t_flag *flag, int index)
 {
+    char *output;
+
     if (flag->minus == 0 && str[0] == ' ')
     {
         int j;
         j = 0;
-        while (j < i - 1)
+        while (j < index - 1)
         {
             str[j] = str[j + 1];
             j++;
         }
-        str[j] = '0';
+        str[index] = '0';
         return (str); 
     }
     else
@@ -31,8 +33,8 @@ char *ft_add_element(char *str, t_flag *flag, int i)
         char *tmp;
         int j;
         j = 0;
-        tmp = malloc((i + 2) * sizeof(char));
-        while (j < i)
+        tmp = malloc((index + 2) * sizeof(char));
+        while (j < index)
         {
             tmp[j] = str[j];
             j++;
@@ -40,6 +42,11 @@ char *ft_add_element(char *str, t_flag *flag, int i)
         tmp[j] = '0';
         j++;
         tmp[j] = '\0';
-        return (ft_strjoin(tmp, str + i));
+        output = ft_strjoin(tmp, str + index);
+        free(tmp);
+        tmp = NULL;
+        free(str);
+        str = NULL;
+        return (output);
     }
 }

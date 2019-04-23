@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 16:11:35 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 19:30:10 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/23 16:27:16 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ size_t			ft_wcslen(const wchar_t *str);
 void			ft_wputchar(wchar_t c);
 void			ft_wputstr(wchar_t const *str);
 wchar_t			*ft_wstrsub(wchar_t const *str, unsigned int start, size_t len);
+char			*ft_strcat_r(const char *src, char *dst);
 
 #endif

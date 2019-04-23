@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_current_precision.c                       :+:      :+:    :+:   */
+/*   ft_count_zeros_possible_to_delete_oxXu.c           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 17:12:18 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 17:12:42 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/23 18:09:04 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/04/23 18:09:18 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_count_current_precision(char *str, t_flag *flag, int sign)
+int ft_count_zeros_possible_to_delete_oxXu(char *str, t_flag *flag, int sign)
 {
     int count;
     int i;
@@ -28,8 +28,7 @@ int	ft_count_current_precision(char *str, t_flag *flag, int sign)
                 i++;
                 if (flag->conv == 'o')
                 {
-                    count++;
-                    while (str[i] && str[i] != ' ')
+                    while (str[i] && str[i] == '0')
                     {
                         count++;
                         i++;
@@ -39,7 +38,7 @@ int	ft_count_current_precision(char *str, t_flag *flag, int sign)
                 else if (flag->conv == 'x')
                 {
                     i++;
-                    while (str[i] && str[i] != ' ')
+                    while (str[i] && str[i] == '0')
                     {
                         count++;
                         i++;
@@ -49,7 +48,7 @@ int	ft_count_current_precision(char *str, t_flag *flag, int sign)
                 else if (flag->conv == 'X')
                 {
                     i++;
-                    while (str[i] && str[i] != ' ')
+                    while (str[i] && str[i] == '0')
                     {
                         count++;
                         i++;
@@ -67,12 +66,9 @@ int	ft_count_current_precision(char *str, t_flag *flag, int sign)
         {
             if (ft_isdigit(str[i]) || ft_isalpha(str[i]))
             {
-                while (str[i] && (ft_isdigit(str[i]) || ft_isalpha(str[i])))
-                {
+                if (str[i] == '0')
                     count++;
-                    i++;
-                }
-                if (str[i] == '\0')
+                else
                     break;
             }
             i++;

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/17 20:29:15 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:46:53 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,16 @@ char    *ft_itoa_ll(long long nb);
 
 size_t ft_count_variable(const char *format);
 size_t ft_flaglen(const char *str);
-char *ft_apply_padding(char *str, t_flag *flag);
+char *ft_apply_padding_c(char *str, t_flag *flag);
+char *ft_apply_padding_s(char *str, t_flag *flag);
 char *ft_apply_padding_p(char *str, t_flag *flag, int sign);
-
-char *ft_apply_precision(char *str, t_flag *flag, int sign);
-char *ft_apply_precision_p(char *str, int precision);
+char *ft_apply_padding_oxXu(char *str, t_flag *flag, int sign);
 char *ft_apply_padding_d(char *str, t_flag *flag, int sign);
 wchar_t *ft_apply_padding_w(wchar_t *str, t_flag *flag);
+
+char *ft_apply_precision_oxXu(char *str, t_flag *flag, int sign);
+char *ft_apply_precision(char *str, t_flag *flag, int sign);
+char *ft_apply_precision_p(char *str, int precision);
 
 size_t  ft_wcslen(const wchar_t *str);
 
@@ -92,10 +95,14 @@ int ft_printf(const char* format, ...);
 int	ft_count_current_precision(char *str, t_flag *flag, int sign);
 
 int ft_count_zeros_possible_to_delete(char *str, t_flag *flag, int sign);
+int ft_count_zeros_possible_to_delete_oxXu(char *str, t_flag *flag, int sign);
 char *ft_add_element(char *str, t_flag *flag, int i);
 char *ft_add_zeros(char *str, t_flag *flag, int sign);
+char *ft_add_zeros_oxXu(char *str, t_flag *flag, int sign);
 int	ft_count_current_precision(char *str, t_flag *flag, int sign);
+int ft_count_current_precision_oxXu(char *str, t_flag *flag, int sign);
 char *ft_delete_element(char *str, t_flag *flag, int i);
 char *ft_delete_zeros(char *str, t_flag *flag, int sign);
+char *ft_delete_zeros_oxXu(char *str, t_flag *flag, int sign);
 char			*ft_strcat(char *s1, const char *s2);
 #endif
