@@ -5,52 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 17:14:06 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 18:07:53 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/23 18:06:37 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/04/25 16:49:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
 
-static char *add_one_zero(char *str, t_flag *flag, int sign)
+static char *ft_add_element(char *str, t_flag *flag, int index)
 {
-    // char *output;
-    int i;
-
-    i = 0;
-    if (flag->hash == 1 && sign != 0)
+    if (flag->minus == 1 || str[0] != ' ')
     {
-        while (str[i])
-        {
-            i++;
-        }
+        return (ft_str_insert(str, '0', index));
     }
     else
     {
-        while (str[i])
-        {
-            if (ft_isdigit(str[i]) || ft_isalpha(str[i]))
-            {
-                return (ft_add_element(str, flag, i));
-            }
-            i++;
-        }
-        // tu recherches le premier 0
+        ft_str_left_shift(str, index);
+        str[index] = '0';
+        return (str); 
+    }
+}
 
+static char *add_one_zero(char *str, t_flag *flag, int sign)
+{
+    int i;
+
+    i = 0;
+
+    while (str[i])
+    {
+        if (ft_isdigit(str[i]) || ft_isalpha(str[i]))
+        {
+            i += ft_prefix_len(flag, sign);
+            return (ft_add_element(str, flag, i));
+        }
+        i++;
     }
     return (str);
 }
 
 char *ft_add_zeros(char *str, t_flag *flag, int sign)
 {
-    // printf("\npour : %s, la preicision est de  : %d\n", str, ft_count_current_precision(str, flag, sign));
-    // printf("\npour : %s, la precision voulue est de  : %d\n", str, flag->precision);
+    int offset;
 
-    // la precision voulue est bien
-    if (ft_count_current_precision(str, flag, sign) == flag->precision)
+    offset = ft_prefix_len(flag, sign);
+    if (ft_str_precision_count(str, offset) == flag->precision)
         return (str);
-    
-    // il faut ajouter du gras
     str = add_one_zero(str, flag, sign);
     return (ft_add_zeros(str, flag, sign));
 }

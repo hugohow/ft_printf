@@ -5,59 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 17:13:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 19:47:06 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/23 18:12:41 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/04/25 16:48:12 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-static char *delete_one_zero(char *str, t_flag *flag, int sign)
+static char *ft_delete_element(char *str, t_flag *flag, int i)
 {
-    // char *output;
-    int i;
-
-    i = 0;
-    if (flag->hash == 1 && sign != 0)
+    if (str == NULL)
+        return (NULL);
+    if ((int)ft_strlen(str) >= i)
+        return (NULL);
+    if (flag->minus == 1)
     {
-        while (str[i])
-        {
-            i++;
-        }
+        ft_str_left_shift(str + i, (int)ft_strlen(str + i) - 1);
     }
     else
     {
-        while (str[i])
-        {
-            if (ft_isdigit(str[i]) || ft_isalpha(str[i]))
-            {
-                return (ft_delete_element(str, flag, i));
-            }
-            i++;
-        }
-        // tu recherches le premier 0
-
+        str = ft_str_right_shift(str, i);
     }
     return (str);
 }
 
+static int ft_str_find_extra_zero(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+    {
+        if (ft_isdigit(str[i]) || ft_isalpha(str[i]))
+        {
+            if (str[i] == '0')
+                return (i);
+        }
+        i++;
+    }
+    return (-1);
+}
+
+
+static int delete_one_zero(char **p_str, t_flag *flag, int sign)
+{
+    int i;
+
+    i = ft_str_find_extra_zero(*p_str);
+    if (i == -1)
+        return (0);
+    i += ft_prefix_len(flag, sign);;
+    if (ft_delete_element((*p_str), flag, i) == NULL)
+        return (0);
+    return (1);
+}
+
 char *ft_delete_zeros(char *str, t_flag *flag, int sign)
 {
+    int offset;
 
-    // printf("\npour : %s, on peut supprimer : %d\n", str, ft_count_zeros_possible_to_delete(str, flag, sign));
-    // printf("\npour : %s, la preicision est de  : %d\n", str, ft_count_current_precision(str, flag, sign));
-    // printf("\npour : %s, la precision voulue est de  : %d\n", str, flag->precision);
-
-    // plus de 0 à delete
-    if (ft_count_zeros_possible_to_delete(str, flag, sign) == 0)
+    offset = ft_prefix_len(flag, sign);
+    if (ft_str_precision_count(str, offset) == flag->precision)
         return (str);
-    // la precision voulue est bien
-    if (ft_count_current_precision(str, flag, sign) == flag->precision)
+    if (delete_one_zero(&str, flag, sign) == 0)
         return (str);
-    
-    // il faut enlever du gras
-    
-    str = delete_one_zero(str, flag, sign);
     return (ft_delete_zeros(str, flag, sign));
 }

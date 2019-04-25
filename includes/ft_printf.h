@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 19:46:53 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 16:26:34 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include "libft.h"
 #include "ht.h"
 
-# define PREFIX_0X "0X"
-# define PREFIX_0x "0x"
+# define PREFIX_0X_MAJ "0X"
+# define PREFIX_0X "0x"
 # define PREFIX_0 "0"
 # define GOT_PLUS(flag, sign) (flag->plus == 1 && sign >= 0)
 # define GOT_SPACE(flag, sign) (flag->plus == 0 && flag->space == 1 && sign >= 0)
@@ -62,7 +62,6 @@ char *ft_apply_padding_oxXu(char *str, t_flag *flag, int sign);
 char *ft_apply_padding_d(char *str, t_flag *flag, int sign);
 wchar_t *ft_apply_padding_w(wchar_t *str, t_flag *flag);
 
-char *ft_apply_precision_oxXu(char *str, t_flag *flag, int sign);
 char *ft_apply_precision(char *str, t_flag *flag, int sign);
 char *ft_apply_precision_p(char *str, int precision);
 
@@ -94,15 +93,8 @@ void ft_print_flag(t_flag *flag);
 int ft_printf(const char* format, ...);
 int	ft_count_current_precision(char *str, t_flag *flag, int sign);
 
-int ft_count_zeros_possible_to_delete(char *str, t_flag *flag, int sign);
-int ft_count_zeros_possible_to_delete_oxXu(char *str, t_flag *flag, int sign);
-char *ft_add_element(char *str, t_flag *flag, int i);
 char *ft_add_zeros(char *str, t_flag *flag, int sign);
-char *ft_add_zeros_oxXu(char *str, t_flag *flag, int sign);
-int	ft_count_current_precision(char *str, t_flag *flag, int sign);
-int ft_count_current_precision_oxXu(char *str, t_flag *flag, int sign);
-char *ft_delete_element(char *str, t_flag *flag, int i);
 char *ft_delete_zeros(char *str, t_flag *flag, int sign);
-char *ft_delete_zeros_oxXu(char *str, t_flag *flag, int sign);
 char			*ft_strcat(char *s1, const char *s2);
+int ft_prefix_len(t_flag *flag, int sign);
 #endif

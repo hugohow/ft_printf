@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 14:59:25 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 16:32:37 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int ft_printf(const char* format, ...)
     size_t  format_len;
     size_t  len;
     char    *flag;
-
     t_ht *hash_table;
 
     hash_table = ft_create_table();

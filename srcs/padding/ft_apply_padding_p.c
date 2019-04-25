@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 23:26:34 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 15:39:49 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char *ft_apply_precision_p(char *str, int precision)
         return (str);
     if (str_len >= (unsigned int)precision)
     {
-        return (ft_strjoin(PREFIX_0x, str));
+        return (ft_strjoin(PREFIX_0X, str));
     }
     output = malloc((precision + 4) * sizeof(char));
     i = 0;

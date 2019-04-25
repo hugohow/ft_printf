@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_delete_element.c                                :+:      :+:    :+:   */
+/*   ft_str_precision_count.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 17:16:11 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 20:41:57 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/25 12:13:21 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/04/25 14:27:28 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-char *ft_delete_element(char *str, t_flag *flag, int i)
+int	ft_str_precision_count(char *str, int offset)
 {
-    if (flag->minus == 1)
-    {
-        ft_str_left_shift(str + i, (int)ft_strlen(str + i) - 1);
-    }
-    else
-    {
-        str = ft_str_right_shift(str, i);
-    }
-    return (str);
+	int count;
+	int i;
+
+	i = offset;
+	count = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) || ft_isalpha(str[i]))
+		{
+			while (str[i] && (ft_isdigit(str[i]) || ft_isalpha(str[i])))
+			{
+				count++;
+				i++;
+			}
+			if (str[i] == '\0')
+				break ;
+		}
+		i++;
+	}
+	return (count);
 }

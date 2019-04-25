@@ -6,60 +6,41 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:11:14 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 18:47:42 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 16:47:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static char *ft_apply_precision_null(char **p_str, t_flag *flag)
+{
+    // very special case
+    if (flag->conv == 'o')
+        return (ft_strcpy(*p_str, "0"));;
+    if (flag->plus)
+        return (ft_strcpy(*p_str, "+"));
+    if (flag->space)
+        return (ft_strcpy(*p_str, " "));
+    return (ft_strcpy(*p_str, ""));
+}
+
 char *ft_apply_precision(char *str, t_flag *flag, int sign)
 {
+    int offset;
     unsigned int str_len;
     str_len = ft_strlen(str);
 
 
-    if (sign == 0)
-    {
-        if (flag->width == 0 && flag->precision == 0)
-        {
-            // very special case
-            if (flag->conv == 'o')
-                return ("0");
-            if (flag->plus)
-                return ("+");
-            if (flag->space)
-                return (" ");
-            return ("");
-        }
-        // on enleve un 0 (et il ne doit y avoir qu'un seul)
-    }
+    if (sign == 0 && flag->width == 0 && flag->precision == 0)
+        return (ft_apply_precision_null(&str, flag));
     if (flag->precision < 0)
         return (str);
-
-    // si flag->precision == 0
-
-    // voir si l'element est 0 ou pas
-    // si oui -> il faut 
-
-
-    // si str_len == flag->precision
     if (str_len == (unsigned int)flag->precision)
         return (str);
-
-    
-    if (ft_count_current_precision(str, flag, sign) > flag->precision)
-    {
-        // alors on doit enlever du gras (du 0)
+    offset = ft_prefix_len(flag, sign);
+    if (ft_str_precision_count(str, offset) > flag->precision)
         return (ft_delete_zeros(str, flag, sign));
-    }
-
-    
-    if (ft_count_current_precision(str, flag, sign) < flag->precision)
-    {
-        // alors on doit rajouter du gras
+    if (ft_str_precision_count(str, offset) < flag->precision)
         return (ft_add_zeros(str, flag, sign));
-        // return (str);
-    }   
-
     return (str);
 }
