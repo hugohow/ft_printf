@@ -6,11 +6,12 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:27:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/17 20:34:19 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 21:02:43 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 
 static int is_valid_conversion(char c)
 {
@@ -51,20 +52,20 @@ int ft_flag_get_length(char *flag)
             i--;
         }
         if (flag[i] == 'j')
-            return (5);
+            return (LENGTH_J);
         if (flag[i] == 'z')
-            return (6);
+            return (LENGTH_Z);
         if (flag[i] == 'h')
         {
             if (i > 1 && flag[i - 1] == 'h')
-                return (1);
-            return (2);
+                return (LENGTH_HH);
+            return (LENGTH_H);
         }
         if (flag[i] == 'l')
         {
             if (i > 1 && flag[i - 1] == 'l')
-                return (4);
-            return (3);
+                return (LENGTH_LL);
+            return (LENGTH_L);
         }
     }
     return (0);

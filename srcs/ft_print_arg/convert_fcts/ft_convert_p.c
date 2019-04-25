@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_arg_p.c                                  :+:      :+:    :+:   */
+/*   ft_convert_p.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 18:32:44 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/17 18:43:57 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/04/25 20:40:54 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf_arg_p(va_list *ap, char *str, size_t *len, t_flag *flag)
+
+char *ft_convert_p(va_list *ap, t_flag *flag)
 {
 	char *output;
 
-	if (str && flag)
+	if (ap && flag)
 	{
 
-	}  
+	}
 	va_arg(*ap, void *);
 	unsigned char t[(sizeof ap) + 1];
 	// char *tmp_str;
@@ -29,7 +30,7 @@ void	ft_printf_arg_p(va_list *ap, char *str, size_t *len, t_flag *flag)
 	output = malloc(16 * sizeof(char));
 	while (1)
 	{
-		printf("%x", t[i]);
+		// printf("%x", t[i]);
 		// tmp_str = ft_itoa_u(t[i]);
 		// tmp_str = ft_convert_base(tmp_str, "0123456789abcdef");
 		// output = ft_strjoin(output, tmp_str);
@@ -37,10 +38,5 @@ void	ft_printf_arg_p(va_list *ap, char *str, size_t *len, t_flag *flag)
 			break;
 		i--;
 	}
-	// output = offset_p(output, str, 1);
-	// if (flag->precision > 0)
-	// if (flag->precision <= 0)
-	//     output = ft_strjoin("0x", output);
-	// ft_putstr(output);
-	*len += ft_strlen(output);
+	return (output);
 }

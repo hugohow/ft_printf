@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/25 17:15:31 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 21:29:24 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"
 # define PREFIX_0 "0"
-# define NUMERICAL_VALUE(flag) (ft_strcmp(flag->key, "oxXu") == 0 || ft_strcmp(flag->key, "d") == 0)
 # define GOT_PLUS(flag, sign) (flag->plus == 1 && sign >= 0)
 # define GOT_SPACE(flag, sign) (flag->plus == 0 && flag->space == 1 && sign >= 0)
 # define GOT_PREFIX(flag, sign) (flag->hash && sign != 0)
@@ -35,9 +34,25 @@
 # define BASE_X_MAJ "0123456789ABCDEF"
 # define PERCENTAGE "%"
 
+
+#define LENGTH_H (1 << 1)
+#define LENGTH_HH (1 << 2)
+#define LENGTH_L (1 << 3)
+#define LENGTH_LL (1 << 4)
+#define LENGTH_J (1 << 5)
+#define LENGTH_Z (1 << 6)
+
+#define KEY_PERCENTAGE (1 << 1)
+#define KEY_C (1 << 2)
+#define KEY_D (1 << 3)
+#define KEY_NB (1 << 4)
+#define KEY_P (1 << 5)
+#define KEY_S (1 << 6)
+# define NUMERICAL_VALUE(flag) (!(flag->key & KEY_NB) || !(flag->key & KEY_D))
+
 typedef struct	s_flag
 {
-	char key[5];
+	int key;
 	int length;
 	char conv;
 	int precision;
@@ -49,7 +64,16 @@ typedef struct	s_flag
 	int hash;
 }				t_flag;
 
-typedef void (*t_ft)(va_list *, char *, size_t *, t_flag *);
+
+typedef char *(t_ft)(va_list *, t_flag *);
+
+
+typedef struct	s_ft_convert
+{
+	int key;
+	int length;
+	t_ft *fct;
+}				t_ft_convert;
 
 char *ft_convert_base(char *decimal, char *base);
 char    *ft_itoa_ll(long long nb);
@@ -69,13 +93,7 @@ void ft_wputstr(wchar_t const *str);
 wchar_t *ft_wstrjoin(wchar_t const *str1, wchar_t const *str2);
 wchar_t *ft_wstrsub(wchar_t const *str, unsigned int start, size_t len);
 int     get_length(char *flag);
-void	ft_printf_arg(va_list *ap, char *str, size_t *len, t_ht *hash_table);
-void	ft_printf_arg_s(va_list *ap, char *str, size_t *len, t_flag *flag);
-void	ft_printf_arg_c(va_list *ap, char *str, size_t *len, t_flag *flag);
-void	ft_printf_arg_d(va_list *ap, char *str, size_t *len, t_flag *flag);
-void	ft_printf_arg_oxXu(va_list *ap, char *str, size_t *len, t_flag *flag);
-void	ft_printf_arg_p(va_list *ap, char *str, size_t *len, t_flag *flag);
-void	ft_printf_arg_percentage(va_list *ap, char *str, size_t *len, t_flag *flag);
+void	ft_printf_arg(va_list *ap, char *str, size_t *len);
 t_flag *ft_create_flag(char *str);
 
 int ft_flag_get_space(char *flag);
@@ -86,7 +104,7 @@ int ft_flag_get_plus(char *flag);
 int ft_flag_get_precision(char *flag);
 int ft_flag_get_width(char *flag);
 int ft_flag_get_zero(char *flag);
-char *ft_flag_get_key(char *flag);
+int	ft_flag_get_key(char *flag);
 void ft_print_flag(t_flag *flag);
 int ft_printf(const char* format, ...);
 int	ft_count_current_precision(char *str, t_flag *flag, int sign);
@@ -95,4 +113,25 @@ char *ft_add_zeros(char *str, t_flag *flag, int sign);
 char *ft_delete_zeros(char *str, t_flag *flag, int sign);
 char			*ft_strcat(char *s1, const char *s2);
 int ft_prefix_len(t_flag *flag, int sign);
+int ft_get_size_to_allocate(size_t original_nblen, t_flag *flag);
+
+char *ft_convert_d(va_list *ap, t_flag *flag);
+char *ft_convert_d_l(va_list *ap, t_flag *flag);
+char *ft_convert_d_ll(va_list *ap, t_flag *flag);
+char *ft_convert_d_j(va_list *ap, t_flag *flag);
+char *ft_convert_d_z(va_list *ap, t_flag *flag);
+char *ft_convert_percent(va_list *ap, t_flag *flag);
+char *ft_convert_nb(va_list *ap, t_flag *flag);
+char *ft_convert_nb_l(va_list *ap, t_flag *flag);
+char *ft_convert_nb_ll(va_list *ap, t_flag *flag);
+char *ft_convert_nb_j(va_list *ap, t_flag *flag);
+char *ft_convert_nb_z(va_list *ap, t_flag *flag);
+char *ft_convert_s(va_list *ap, t_flag *flag);
+char *ft_convert_c(va_list *ap, t_flag *flag);
+char *ft_convert_p(va_list *ap, t_flag *flag);
+
+char			*ft_convert_output(char *str, t_flag *flag);
+
+size_t	ft_nblen_ull(unsigned long long nb);
+char *ft_ulltoa_offset(unsigned long long nb, size_t size_allocation);
 #endif
