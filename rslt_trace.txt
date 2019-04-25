@@ -442,7 +442,11 @@ TEST : %-2x, 0xadd66
 [OK]
 -------------------------------------
 TEST : %20x, 0x123456bc
-[SEGV]
+ft_printf  --> 56bc
+ret = 4
+printf     -->             123456bc
+ret = 20
+[KO]
 -------------------------------------
 TEST : test%---10.6x et %01hhX !!\n, 0xaabb, (unsigned char)0
 ft_printf  --> test00aabb       et 0 !!
@@ -467,8 +471,8 @@ TEST : cc%#.4X et %#0012x %#04hX !!, 0xaef, 0xe, (unsigned short)0
 [OK]
 -------------------------------------
 TEST : %#.22zX et %020.14jx, 0xff1144ff1144, 0xffaabbccee
-ft_printf  --> 0X0000000000FF1144FF1144 et 0000000000ffaabbccee
-ret = 48
+ft_printf  --> 0X0000000000FF1144FF1144 et 0000000000ccee
+ret = 42
 printf     --> 0X0000000000FF1144FF1144 et       0000ffaabbccee
 ret = 48
 [KO]
@@ -666,49 +670,49 @@ ret = -1
 [KO]
 -------------------------------------
 TEST : %s, NULL
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %s, "coco"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %s, ""
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %.15s, "coco"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %.5s, "coco et titi"
 [OK]
 -------------------------------------
 TEST : %.0s, "coco et ti"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %.s, "coco"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %.2s, NULL
 [SEGV]
 -------------------------------------
 TEST : %10s, NULL
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %-8s, "coco"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %1s, "hi"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %-2s, ""
-[OK]
+[BUSE]
 -------------------------------------
 TEST : Coucou %.0s\n%s%---12s, "hi", "coco", NULL
-[OK]
+[BUSE]
 -------------------------------------
 TEST : u%4.2ss %-1.s\n %---5.3s , "coco", NULL, "yooo"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %1.4s et %-6.8s et %4.2s, "tuuu", "12345", "hu"
-[OK]
+[BUSE]
 -------------------------------------
 TEST : %S, s
 ft_printf  --> S
@@ -860,51 +864,51 @@ ret = 41
 [KO]
 -------------------------------------
 TEST : %p, NULL
-ft_printf  --> 007fff5e216a0
+ft_printf  --> 007fff5be46a0
 ret = 0
 printf     --> 0x0
 ret = 3
 [KO]
 -------------------------------------
 TEST : %p, &data
-ft_printf  --> 007fff5e216a0
+ft_printf  --> 007fff5be46a0
 ret = 0
-printf     --> 0x7fff5e0216f8
+printf     --> 0x7fff5b0e46f8
 ret = 14
 [KO]
 -------------------------------------
 TEST : %p, &p_basic_02
-ft_printf  --> 007fff5e216a0
+ft_printf  --> 007fff5be46a0
 ret = 0
-printf     --> 0x101be3110
+printf     --> 0x104b20630
 ret = 11
 [KO]
 -------------------------------------
 TEST : %20p, &data
-ft_printf  --> 007fff5e216a0
+ft_printf  --> 007fff5be46a0
 ret = 0
-printf     -->       0x7fff5e0216f8
+printf     -->       0x7fff5b0e46f8
 ret = 20
 [KO]
 -------------------------------------
 TEST : %-25p, &data
-ft_printf  --> 007fff5e216a0
+ft_printf  --> 007fff5be46a0
 ret = 0
-printf     --> 0x7fff5e0216f8           
+printf     --> 0x7fff5b0e46f8           
 ret = 25
 [KO]
 -------------------------------------
 TEST : %2p, &data
-ft_printf  --> 007fff5e216a0
+ft_printf  --> 007fff5be46a0
 ret = 0
-printf     --> 0x7fff5e0216f8
+printf     --> 0x7fff5b0e46f8
 ret = 14
 [KO]
 -------------------------------------
 TEST : %----24p et hello %2p %12p, &ret, &p_all_01, NULL
-ft_printf  -->  et hello  007fff5e216a0007fff5e216a0007fff5e216a0
+ft_printf  -->  et hello  007fff5be46a0007fff5be46a0007fff5be46a0
 ret = 11
-printf     --> 0x7fff5e0216f4           et hello 0x101be3710          0x0
+printf     --> 0x7fff5b0e46f4           et hello 0x104b20c30          0x0
 ret = 58
 [KO]
 -------------------------------------
@@ -959,9 +963,9 @@ TEST : %-+-12.7Dt%0 4i %04.2% et %lc titi, 125, 124, 256
 [BUSE]
 -------------------------------------
 TEST : test%-8p %---32p %#5.3x%#024X, &ret, &tret, 0x25, 0
-ft_printf  --> test   0x2500000000007fff5e216a0007fff5e216a0
+ft_printf  --> test   0x2500000000007fff5be46a0007fff5be46a0
 ret = 19
-printf     --> test0x7fff5e0216f4 0x7fff5e0216f4                   0x025000000000000000000000000
+printf     --> test0x7fff5b0e46f4 0x7fff5b0e46f4                   0x025000000000000000000000000
 ret = 81
 [KO]
 -------------------------------------

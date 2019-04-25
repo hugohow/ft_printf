@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 18:25:17 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 17:45:14 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 17:15:59 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_printf_arg_c(va_list *ap, char *str, size_t *len, t_flag *flag)
 		output[1] = '\0';
 		if (output[0] == '\0' || output[0] == 0)
 			*len += 1;
-		output = ft_apply_padding_c(output, flag);
+		output = ft_apply_padding(output, flag, 1);
 		ft_putstr(output);
 		*len += ft_strlen(output);
 	}

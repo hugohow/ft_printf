@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/25 16:26:34 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/25 17:15:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"
 # define PREFIX_0 "0"
+# define NUMERICAL_VALUE(flag) (ft_strcmp(flag->key, "oxXu") == 0 || ft_strcmp(flag->key, "d") == 0)
 # define GOT_PLUS(flag, sign) (flag->plus == 1 && sign >= 0)
 # define GOT_SPACE(flag, sign) (flag->plus == 0 && flag->space == 1 && sign >= 0)
 # define GOT_PREFIX(flag, sign) (flag->hash && sign != 0)
@@ -55,11 +56,8 @@ char    *ft_itoa_ll(long long nb);
 
 size_t ft_count_variable(const char *format);
 size_t ft_flaglen(const char *str);
-char *ft_apply_padding_c(char *str, t_flag *flag);
-char *ft_apply_padding_s(char *str, t_flag *flag);
 char *ft_apply_padding_p(char *str, t_flag *flag, int sign);
-char *ft_apply_padding_oxXu(char *str, t_flag *flag, int sign);
-char *ft_apply_padding_d(char *str, t_flag *flag, int sign);
+char *ft_apply_padding(char *str, t_flag *flag, int sign);
 wchar_t *ft_apply_padding_w(wchar_t *str, t_flag *flag);
 
 char *ft_apply_precision(char *str, t_flag *flag, int sign);
