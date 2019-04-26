@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/26 18:30:10 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/27 00:41:59 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 typedef union {
     float f;
-    uint8_t a[sizeof(float)];
+    unsigned char a[sizeof(float)];
 } U;
 
 
-void print_in_bin(uint8_t a, int i)
+void print_in_bin(unsigned char a, int i)
 {
 	char base[2] = "01";
 
@@ -29,25 +29,77 @@ void print_in_bin(uint8_t a, int i)
 	printf("%c", base[a % 2]);
 }
 
-char *ft_convert_f(va_list *ap, t_flag *flag)
+void print_bin_floating_point(float nb)
 {
-	double tmp;
-	char *output;
-	// size_t size_allocation;
-	// int sign;
-
-	tmp = va_arg(*ap, double);
-	output = NULL;
-	U u = { (float)tmp };
-
-	// print_in_bin(5, 0);
+	U u = { (float)nb };
 	for (int i = (int)sizeof(float) - 1; i >= 0; --i)
 	{
 		print_in_bin(u.a[i], 0);
 		printf(" ");
 	}
+}
 
+char *get_binary(unsigned char c)
+{
+	char *output;
+	char base[2] = "01";
+	int k;
 
+	output = (char *)malloc(sizeof(char) * (8 + 1));
+	k = 0;
+	while (c != 0)
+	{
+		output[k] = base[c % 2];
+		c /= 2;
+		k++;
+	}
+	while (k != 8)
+	{
+		output[k] = base[0];
+		k++;
+	}
+	output[k] = '\0';
+	
+	k = 0;
+	char tmp;
+	while (k != 4)
+	{
+		tmp = output[k];
+		output[k] = output[7 - k];
+		output[7 - k] = tmp;
+		k++;
+	}
+
+	return (output);
+}
+
+char *get_bin_floating_point(float nb)
+{
+	char *output;
+	int i;
+
+	output = malloc(33 * sizeof(char));
+	output[0] = '\0';
+	i = (int)sizeof(float) - 1;
+	U u = { (float)nb };
+	while (i >= 0)
+	{
+		output = ft_strcat(output, get_binary(u.a[i]));
+		i--;
+	}
+	return (output);
+}
+
+char *ft_convert_f(va_list *ap, t_flag *flag)
+{
+	double tmp;
+	char *output;
+
+	tmp = va_arg(*ap, double);
+	output = NULL;
+	print_bin_floating_point((float)tmp);
+	printf("\n\n");
+	printf("%s ", get_bin_floating_point((float)tmp));
 
 	if (flag)
 	{
