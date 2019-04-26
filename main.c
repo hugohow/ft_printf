@@ -7,8 +7,8 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
-    printf("%d", -2147483647);
-    ft_printf("%d", -2147483647);
+    printf("%f\n", -5.0);
+    ft_printf("%f", -5.0);
     ft_printf("\n\n");
     return 0;
 }
