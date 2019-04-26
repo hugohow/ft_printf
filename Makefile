@@ -13,9 +13,7 @@ $(NAME):
 	./main
 
 test: re
-	cp -f $(NAME) ./tests
-	cd tests && $(MAKE)
-	./tests/ft_printf_tests
+	cd tests/tests && $(MAKE) test
 
 clean:
 	rm -rf *.o

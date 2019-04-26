@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/25 21:29:24 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/26 14:55:46 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 #define LENGTH_LL (1 << 4)
 #define LENGTH_J (1 << 5)
 #define LENGTH_Z (1 << 6)
+#define LENGTH_L_MAJ (1 << 7)
 
 #define KEY_PERCENTAGE (1 << 1)
 #define KEY_C (1 << 2)
@@ -48,6 +49,7 @@
 #define KEY_NB (1 << 4)
 #define KEY_P (1 << 5)
 #define KEY_S (1 << 6)
+#define KEY_F (1 << 7)
 # define NUMERICAL_VALUE(flag) (!(flag->key & KEY_NB) || !(flag->key & KEY_D))
 
 typedef struct	s_flag
@@ -118,14 +120,19 @@ int ft_get_size_to_allocate(size_t original_nblen, t_flag *flag);
 char *ft_convert_d(va_list *ap, t_flag *flag);
 char *ft_convert_d_l(va_list *ap, t_flag *flag);
 char *ft_convert_d_ll(va_list *ap, t_flag *flag);
-char *ft_convert_d_j(va_list *ap, t_flag *flag);
-char *ft_convert_d_z(va_list *ap, t_flag *flag);
+char *ft_convert_d_h(va_list *ap, t_flag *flag);
+char *ft_convert_d_hh(va_list *ap, t_flag *flag);
 char *ft_convert_percent(va_list *ap, t_flag *flag);
 char *ft_convert_nb(va_list *ap, t_flag *flag);
 char *ft_convert_nb_l(va_list *ap, t_flag *flag);
 char *ft_convert_nb_ll(va_list *ap, t_flag *flag);
-char *ft_convert_nb_j(va_list *ap, t_flag *flag);
-char *ft_convert_nb_z(va_list *ap, t_flag *flag);
+char *ft_convert_nb_hh(va_list *ap, t_flag *flag);
+char *ft_convert_nb_h(va_list *ap, t_flag *flag);
+
+char *ft_convert_f(va_list *ap, t_flag *flag);
+char *ft_convert_f_l_maj(va_list *ap, t_flag *flag);
+
+
 char *ft_convert_s(va_list *ap, t_flag *flag);
 char *ft_convert_c(va_list *ap, t_flag *flag);
 char *ft_convert_p(va_list *ap, t_flag *flag);

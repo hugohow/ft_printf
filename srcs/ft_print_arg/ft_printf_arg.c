@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/25 21:29:53 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/26 14:54:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,22 @@ char    *ft_flag_replace(char *str, char *to_replace)
 static const t_ft_convert fts_convert[] = 
 {
     {KEY_PERCENTAGE, 0, &ft_convert_percent},
-	{KEY_C, 0, &ft_convert_percent},
+	{KEY_C, 0, &ft_convert_c},
+	{KEY_S, 0, &ft_convert_s},
+	{KEY_P, 0, &ft_convert_p},
 	{KEY_D, 0, &ft_convert_d},
-	{KEY_D, LENGTH_J, &ft_convert_d_j},
+	{KEY_D, LENGTH_H, &ft_convert_d_h},
+	{KEY_D, LENGTH_HH, &ft_convert_d_hh},
 	{KEY_D, LENGTH_L, &ft_convert_d_l},
 	{KEY_D, LENGTH_LL, &ft_convert_d_ll},
-	{KEY_D, LENGTH_Z, &ft_convert_d_z},
 	{KEY_NB, 0, &ft_convert_nb},
-	{KEY_NB, LENGTH_J, &ft_convert_nb_j},
+	{KEY_NB, LENGTH_H, &ft_convert_nb_h},
+	{KEY_NB, LENGTH_HH, &ft_convert_nb_hh},
 	{KEY_NB, LENGTH_L, &ft_convert_nb_l},
 	{KEY_NB, LENGTH_LL, &ft_convert_nb_ll},
-	{KEY_NB, LENGTH_Z, &ft_convert_nb_z},
-	{KEY_P, 0, &ft_convert_p},
-	{KEY_S, 0, &ft_convert_s},
+	{KEY_F, 0, &ft_convert_f},
+	{KEY_F, LENGTH_L, &ft_convert_f},
+	{KEY_F, LENGTH_L_MAJ, &ft_convert_f_l_maj},
 	{0, 0, NULL},
 };
 
