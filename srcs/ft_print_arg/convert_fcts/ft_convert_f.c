@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/27 00:41:59 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/27 15:39:35 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,79 @@ char *get_bin_floating_point(float nb)
 	return (output);
 }
 
+char *get_mantissa(char *bin_floating_point)
+{
+	return (bin_floating_point + 9);
+}
+
+int get_exponent(char *bin_floating_point)
+{
+	int exponent;
+	int i;
+	int in;
+
+	i = 1;
+	exponent = 0;
+	in = 128;
+	while (i < 9)
+	{
+		if (bin_floating_point[i] == '1')
+			exponent += in * 1;
+		in /= 2;
+		i++;
+	}
+
+	return (exponent - 127);
+}
+
+float power_half(int i)
+{
+	float result;
+
+	result = 1;
+	if (i == 0)
+		return (1);
+	while (i != 0)
+	{
+		result *= 0.5;
+		i--;
+	}
+	return (result);
+}
+
+float get_dec_mantissa(char *str)
+{
+	int i;
+	float result;
+
+	i = 0;
+	result = 0;
+	while (str[i])
+	{
+		if (str[i] == '1')
+		{
+			result += power_half(i + 1);
+		}
+		i++;
+	}
+	return (result);
+}
+
+int power_two(int i)
+{
+	int result;
+
+	result = 1;
+	if (i == 0)
+		return (1);
+	while (i != 0)
+	{
+		result *= 2;
+		i--;
+	}
+	return (result);
+}
+
 char *ft_convert_f(va_list *ap, t_flag *flag)
 {
 	double tmp;
@@ -97,9 +170,18 @@ char *ft_convert_f(va_list *ap, t_flag *flag)
 
 	tmp = va_arg(*ap, double);
 	output = NULL;
-	print_bin_floating_point((float)tmp);
-	printf("\n\n");
-	printf("%s ", get_bin_floating_point((float)tmp));
+	// print_bin_floating_point((float)tmp);
+	// printf("\n\n");
+	// printf("%s \n", get_bin_floating_point((float)tmp));
+	// printf("mantissa : %s ", get_mantissa(get_bin_floating_point((float)tmp)));
+	// printf("sign : %d \n", get_bin_floating_point((float)tmp)[0] == '0' ? 0 : 1);
+	// printf("exponent : %d \n", get_exponent(get_bin_floating_point((float)tmp)));
+	// printf("convert mantissa : %f \n", get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp))));
+	printf("%f", 
+			(get_bin_floating_point((float)tmp)[0] == '0' ? 1 : -1)
+			* (1 + get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp))))
+			* power_two(get_exponent(get_bin_floating_point((float)tmp)))
+	);
 
 	if (flag)
 	{
