@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 17:21:25 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/29 18:58:02 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static char *ft_add_prefix(char *str, char conv)
 {
     if (conv == 'o')
-        str = ft_strcat_r(PREFIX_0, str);
+        if (str[0] != '0')
+            str = ft_strcat_r(PREFIX_0, str);
     if (conv == 'x')
         str = ft_strcat_r(PREFIX_0X, str);
     if (conv == 'X')
