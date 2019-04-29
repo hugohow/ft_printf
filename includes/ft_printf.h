@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/26 14:55:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/29 15:14:02 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # define GOT_SPACE(flag, sign) (flag->plus == 0 && flag->space == 1 && sign >= 0)
 # define GOT_PREFIX(flag, sign) (flag->hash && sign != 0)
 # define GOT_MINUS(flag, sign) (sign < 0)
-# define FILL_WITH_ZEROS(flag, sign) (flag->zero == 1 && flag->minus == 0)
+# define FILL_TO_THE_LEFT(flag, sign) (flag->zero == 1 && flag->minus == 0)
+# define FILL_TO_THE_RIGHT(flag, sign) (!(FILL_TO_THE_LEFT(flag, sign)))
+# define FILL_WITH_ZEROS(flag, sign) (FILL_TO_THE_LEFT(flag, sign) && flag->precision == -1)
 # define BASE_O "01234567"
 # define BASE_X "0123456789abcdef"
 # define BASE_X_MAJ "0123456789ABCDEF"
