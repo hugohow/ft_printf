@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 18:58:02 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/29 19:07:37 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,14 @@ char *ft_apply_padding(char *str, t_flag *flag, int sign)
 	
     to_add = str_to_fill(str, flag, sign);
 
-    // if (NUMERICAL_VALUE(flag) == 0)
-    // {
-	// 	if (flag->minus == 1)
-	// 		str = ft_strcat(str, to_add);
-	// 	else
-	// 		str = ft_strcat_r(to_add, str);
-    //     return (str);
-    // }
+    if (NUMERICAL_VALUE(flag) == 0)
+    {
+		if (flag->minus == 1)
+			str = ft_strcat(str, to_add);
+		else
+			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
+        return (str);
+    }
     if (FILL_WITH_ZEROS(flag, sign))
     {
         str = ft_strcat_r(to_add, str);

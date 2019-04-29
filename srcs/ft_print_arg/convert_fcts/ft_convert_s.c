@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:24:51 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 15:16:40 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/29 19:09:55 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ char *ft_convert_s(va_list *ap, t_flag *flag)
 		output = "";
 	if (output == NULL)
 		output = "(null)";
-	output = ft_apply_padding(output, flag, 1);
+	// output = ft_apply_padding(output, flag, 1);
 	return (output);
 }

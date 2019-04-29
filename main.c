@@ -7,10 +7,10 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
-    printf("   printf :%-#23.o|%-023.o|%#023.o|%-#023.o|", UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX);
+    printf("   printf :This is a %s", "random string");
 
 
-    ft_printf("ft_printf :%-#23.o|%-023.o|%#023.o|%-#023.o|", UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX);
+    ft_printf("ft_printf :This is a %s", "random string");
     ft_printf("\n\n");
     return 0;
 }
