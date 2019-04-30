@@ -7,10 +7,14 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
-    printf("   printf :%c|%-c|%12c|%-12c/", 0, 0, 0, 0);
+	int *a;
+
+	a = malloc(sizeof(int));
+    // printf("   printf :%p", "Random string");
+	// printf("   printf :%p", "Random string");
 
 
-    ft_printf("ft_printf :%c|%-c|%12c|%-12c/", 0, 0, 0, 0);
+    ft_printf("test %-7C %007d%-10.2ls!!\n", 0xd777, 0x45, "L〻");
     ft_printf("\n\n");
     return 0;
 }

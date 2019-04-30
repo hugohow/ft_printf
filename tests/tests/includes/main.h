@@ -1,8 +1,7 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-int	conv_c_launcher(void);
-int	conv_s_launcher(void);
+int	conv_p_launcher(void);
 /*PROTOTYPES_HERE*/
 
 typedef struct		s_launcher
@@ -13,8 +12,7 @@ typedef struct		s_launcher
 
 t_launcher			g_launchtab[] =
 {
-	{"conv_c", conv_c_launcher},
-	{"conv_s", conv_s_launcher},
+	{"conv_p", conv_p_launcher},
 	/*FCTS_HERE*/
 	{"", NULL}
 };

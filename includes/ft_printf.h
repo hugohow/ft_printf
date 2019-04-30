@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/30 16:21:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/30 17:14:14 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ size_t ft_count_variable(const char *format);
 size_t ft_flaglen(const char *str);
 char *ft_apply_padding_p(char *str, t_flag *flag, int sign);
 char *ft_apply_padding(char *str, t_flag *flag, int sign);
-wchar_t *ft_apply_padding_w(wchar_t *str, t_flag *flag);
 
 char *ft_apply_precision(char *str, t_flag *flag, int sign);
 char *ft_apply_precision_s(char *str, t_flag *flag, int sign);

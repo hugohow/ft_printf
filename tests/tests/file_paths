@@ -1,17 +1,7 @@
-SRC_NAME += conv_c/000_launcher \
-conv_c/001_char_null \
-conv_c/002_ascii_chars \
-conv_c/003_ascii_chars_8_width \
-conv_c/004_ascii_chars_8_width_flag \
-conv_c/005_short_max \
-conv_s/000_launcher \
-conv_s/001_null_pointer_various_flags \
-conv_s/002_random_string_various_flags \
-conv_s/003_emoticone_various_flags \
-conv_s/004_emoticone_utf8_encoded_various_flags \
-conv_s/005_string_format_and_random_string \
-conv_s/006_string_format_and_random_string_and_width \
-conv_s/007_string_format_and_random_string_and_precision \
-conv_s/008_multiple_random_strings \
-conv_s/009_only_string_conv \
-conv_s/010_very_long_string
+SRC_NAME += conv_p/000_launcher \
+conv_p/001_null_pointer \
+conv_p/002_random_string \
+conv_p/003_random_string_and_5_width \
+conv_p/004_random_string_and_30_width \
+conv_p/005_random_string_and_minus_flag_and_30_width \
+conv_p/006_function_pointer
