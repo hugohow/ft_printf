@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:36:56 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/25 20:41:45 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:54:38 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 char *ft_convert_c(va_list *ap, t_flag *flag)
 {
 	char *output;
+	size_t size_allocation;
 
-	output = malloc(2 * sizeof(char));
+	size_allocation = ft_get_size_to_allocate(2, flag);
+	output = malloc(size_allocation * sizeof(char));
 	output[0] = (char)va_arg(*ap, int);
 	output[1] = '\0';
 	if (output[0] == '\0' || output[0] == 0)
-		return (ft_strcpy(output, " "));
+		output = ft_strcpy(output, "\0");
+	output = ft_apply_precision_s(output, flag, 1);
 	output = ft_apply_padding(output, flag, 1);
 	return (output);
 }

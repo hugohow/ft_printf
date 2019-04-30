@@ -7,10 +7,10 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
-    printf("   printf :This is a %s", "random string");
+    printf("   printf :%c|%-c|%12c|%-12c/", 0, 0, 0, 0);
 
 
-    ft_printf("ft_printf :This is a %s", "random string");
+    ft_printf("ft_printf :%c|%-c|%12c|%-12c/", 0, 0, 0, 0);
     ft_printf("\n\n");
     return 0;
 }

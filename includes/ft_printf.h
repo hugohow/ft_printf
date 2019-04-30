@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 19:09:26 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:21:46 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char *ft_apply_padding(char *str, t_flag *flag, int sign);
 wchar_t *ft_apply_padding_w(wchar_t *str, t_flag *flag);
 
 char *ft_apply_precision(char *str, t_flag *flag, int sign);
+char *ft_apply_precision_s(char *str, t_flag *flag, int sign);
 char *ft_apply_precision_p(char *str, int precision);
 
 size_t  ft_wcslen(const wchar_t *str);
@@ -113,7 +114,7 @@ void ft_print_flag(t_flag *flag);
 int ft_printf(const char* format, ...);
 int	ft_count_current_precision(char *str, t_flag *flag, int sign);
 
-char *ft_add_zeros(char *str, t_flag *flag, int sign);
+char *ft_add_char(char *str, t_flag *flag, int sign, char c);
 char *ft_delete_zeros(char *str, t_flag *flag, int sign);
 char			*ft_strcat(char *s1, const char *s2);
 int ft_prefix_len(t_flag *flag, int sign);
