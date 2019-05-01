@@ -7,8 +7,10 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
-    ft_printf(" ft_printf :%-#23.5ho|%-023.5ho|%#023.5ho|%-#023.5ho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
-	printf("    printf :%-#23.5ho|%-023.5ho|%#023.5ho|%-#023.5ho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	int *a;
+
+	a = malloc(sizeof(int));
+    ft_printf(" ft_printf :{yellow}%.5X{eoc}|%-.5X|%#.5X|%0.5X", 0U, 0U, 0U, 0U);
     ft_printf("\n\n");
     return 0;
 }

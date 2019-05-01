@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 13:51:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/01 21:01:49 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@
 # define BASE_X_MAJ "0123456789ABCDEF"
 # define PERCENTAGE "%"
 
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 #define LENGTH_H (1 << 1)
 #define LENGTH_HH (1 << 2)
@@ -78,6 +85,12 @@ typedef struct	s_ft_convert
 	int length;
 	t_ft *fct;
 }				t_ft_convert;
+
+typedef struct	s_color
+{
+	char key[10];
+	char str[10];
+}				t_color;
 
 char *ft_convert_base(char *decimal, char *base);
 char    *ft_itoa_ll(long long nb);

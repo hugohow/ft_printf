@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 15:06:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:21:25 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void    ft_printf_arg(va_list *ap, char *str, size_t *len)
 		output = fct(ap, flag);
 		if (output)
 		{
-			ft_putstr(output);
+			ft_putstr_fd(output, 1);
 			*len += ft_strlen(output);
 		}
 	}
