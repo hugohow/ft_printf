@@ -6,108 +6,105 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/25 15:39:49 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/01 13:54:01 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ft_printf.h"
 
-char *ft_apply_padding_p(char *str, t_flag *flag, int sign)
+static char *ft_add_prefix(char *str)
 {
-    char *to_add;
-    unsigned int str_len;
-    unsigned int i;
-
-    str_len = ft_strlen(str);
-    if (flag->plus == 1 && sign >= 0)
-        str_len++;
-    if (sign < 0)
-        str_len++;
-    if (flag->plus == 0 && flag->space == 1 && sign >= 0)
-        str_len++;
-    // printf("flag->width : %d\n", flag->width);
-    // printf("str_len : %d\n", str_len);
-    to_add = malloc((flag->width + 2) * sizeof(char));
-    i = 0;
-    if (flag->width > str_len)
-    {
-        while (i < flag->width - str_len)
-        {
-            if (flag->zero == 1 && flag->minus == 0)
-                to_add[i++] = '0';
-            else
-                to_add[i++] = ' ';
-        }
-        if (flag->zero == 1 && flag->minus == 0)
-        {
-            to_add[i++] = '0';
-            to_add[i++] = '0';
-            to_add[1] = 'x';
-        }
-    }
-    to_add[i] = '\0';
-    // printf("to_add : %s\n", to_add);
-
-    // si l'espace doit être collé -> if (flag->zero == 1 && flag->minus == 0)
-    if (flag->zero == 1 && flag->minus == 0)
-    {
-        if (flag->width > str_len)
-        {
-            str = ft_strjoin(to_add, str + 2);
-        }
-        if (flag->plus == 1 && sign >= 0)
-            str = ft_strjoin("+", str);
-        if (sign < 0)
-            str = ft_strjoin("-", str);
-        if (flag->plus == 0 && flag->space == 1 && sign >= 0)
-            str = ft_strjoin(" ", str);
-        return (str);
-    }
-
-    // les autres cas l'espace ne doit pas être collé, du coup on join le sign pouis le add
-    if (flag->plus == 1 && sign >= 0)
-        str = ft_strjoin("+", str);
-    if (sign < 0)
-        str = ft_strjoin("-", str);
-    if (flag->plus == 0 && flag->space == 1 && sign >= 0)
-        str = ft_strjoin(" ", str);
-    if (flag->minus == 1)
-        str = ft_strjoin(str, to_add);
-    else
-        str = ft_strjoin(to_add, str);
+    str = ft_strcat_r(PREFIX_0X, str);
     return (str);
 }
 
-char *ft_apply_precision_p(char *str, int precision)
+static char *ft_add_sign(char *str, t_flag *flag, int sign)
 {
-    unsigned int i;
-    unsigned int k;
-    unsigned int str_len;
-    char *output;
+	if (GOT_PLUS(flag, sign))
+		str = ft_strcat_r("+", str);
+	if (GOT_MINUS(flag, sign))
+		str = ft_strcat_r("-", str);
+	if (GOT_SPACE(flag, sign))
+		str = ft_strcat_r(" ", str);
+	return (str);
+}
 
-    str_len = ft_strlen(str);
-    if (precision < 0)
-        return (str);
-    if (str_len >= (unsigned int)precision)
+static size_t get_size_to_add(char *str, t_flag *flag, int sign)
+{
+    unsigned int str_len;
+
+    str_len = 0;
+    if (str)
     {
-        return (ft_strjoin(PREFIX_0X, str));
+
     }
-    output = malloc((precision + 4) * sizeof(char));
-    i = 0;
-    while (i < precision - str_len + 2)
+    // if (NUMERICAL_VALUE(flag) == 0)
+    //     return (str_len);
+    if (GOT_PLUS(flag, sign))
+        str_len++;
+    if (GOT_MINUS(flag, sign))
+        str_len++;
+	if (GOT_SPACE(flag, sign))
+		str_len++;
+    str_len += 2;
+    return (str_len);
+}
+
+static char *str_to_fill(char *str, t_flag *flag, int sign)
+{
+	char *to_add;
+    unsigned int to_add_len;
+    unsigned int i;
+
+    to_add_len = get_size_to_add(str, flag, sign);
+    if (to_add_len + ft_strlen(str) >= flag->width)
+        return (ft_strdup(""));
+    to_add = (char *)malloc((flag->width + 2) * sizeof(char));
+    if (to_add == NULL)
+        return (NULL);
+        i = 0;
+    while (to_add_len + ft_strlen(str) + i < flag->width)
     {
-        output[i] = (i == 1) ? 'x' : '0';
+        to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
         i++;
     }
-    k = 0;
-    while (k < str_len)
+    to_add[i] = '\0';
+    return (to_add);
+}
+
+static char	*ft_strcat_r_char(char c, char *dst, size_t len)
+{
+	size_t	len_dst;
+
+	len_dst = ft_strlen(dst);
+	ft_memmove(dst + len, dst, len_dst);
+	ft_memset(dst, c, len);
+	dst[len_dst + len] = '\0';
+	return (dst);
+}
+
+
+char *ft_apply_padding_p(char *str, t_flag *flag, int sign)
+{
+    char *to_add;
+	
+    to_add = str_to_fill(str, flag, sign);
+
+    if (FILL_WITH_ZEROS(flag, sign))
     {
-        output[i] = str[k];
-        i++;
-        k++;
+        str = ft_strcat_r(to_add, str);
+        str = ft_add_prefix(str);
     }
-    output[i] = '\0';
-    // printf("apply precision : %s\n", output);
-    return (output);
+	else
+	{
+		str = ft_add_sign(str, flag, sign);
+		str = ft_add_prefix(str);
+		if (flag->minus == 1)
+			str = ft_strcat(str, to_add);
+		else
+			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
+	}
+
+    return (str);
 }

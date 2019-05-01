@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/30 17:50:14 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/01 14:16:35 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,44 @@ char *ft_convert_p(va_list *ap, t_flag *flag)
 	char *output;
 	void *addr;
 	unsigned char t[sizeof(void *) + 1];
-	if (ap && flag)
-	{
+	char *tmp_str;
+	int i;
 
-	}
 	addr = va_arg(*ap, void *);
-	// char *tmp_str;
-	size_t i;
-	ft_memcpy(t, &addr, sizeof(void *) + 1);
-	i = (sizeof(void *)) + 1;
-	output = malloc(16 * sizeof(char));
-	output[0] = 0;
-	while (i + 1 != 0)
+	ft_memcpy(t, &addr, sizeof(void *));
+	i = (sizeof(void *));
+	output = ft_memalloc((sizeof(void *) * 2 + 1) * sizeof(char));
+	while (i != -1)
 	{
-		printf("%x", t[i]);
-		// tmp_str = ft_itoa((int)t[i]);
-		// tmp_str = ft_convert_base(tmp_str, "0123456789abcdef");
-		// output = ft_strjoin(output, tmp_str);
+		tmp_str = ft_itoa((int)t[i]);
+		tmp_str = ft_convert_base(tmp_str, "0123456789abcdef");
+		if (ft_strlen(tmp_str) == 1)
+		{
+			tmp_str[1] = tmp_str[0];
+			tmp_str[0] = '0';
+			tmp_str[2] = 0;
+		}
+		output = ft_strcat(output, tmp_str);
 		i--;
 	}
-	// output[0] = '0';
-	// output[1] = 'x';
+	i = 0;
+	while (output[i])
+	{
+		if (output[i] != '0')
+			break;
+		i++;
+	}
+	int len;
+
+	len =  ft_strlen(output) - i;
+	output = ft_memmove(output, output + i, len);
+	output[len] = 0;
+
+	if (len == 0)
+		output = ft_strcpy(output, "0");
+
+
 	output = ft_apply_precision(output, flag, 1);
-	output = ft_apply_padding(output, flag, 1);
+	output = ft_apply_padding_p(output, flag, 1);
 	return (output);
 }
