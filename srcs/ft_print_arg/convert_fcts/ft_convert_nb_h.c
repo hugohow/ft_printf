@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:19:21 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 18:43:43 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:27:11 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 char *ft_convert_nb_h(va_list *ap, t_flag *flag)
 {
-	unsigned int tmp;
+	unsigned short tmp;
 	char *output;
-	unsigned short int tmp_val;
+	unsigned long long tmp_val;
 	size_t size_allocation;
 	int sign;
 
-	tmp = va_arg(*ap, unsigned int);
+	tmp = (unsigned short)va_arg(*ap, unsigned int);
 	if (tmp == 0)
 		sign = 0;
 	else
 		sign = 1;
-	tmp_val = (unsigned short int)tmp;
+	tmp_val = (unsigned long long)tmp;
 	size_allocation = ft_nblen_ull(tmp_val);
 	size_allocation = ft_get_size_to_allocate(size_allocation, flag);
 	output = ft_ulltoa_offset(tmp_val, size_allocation);

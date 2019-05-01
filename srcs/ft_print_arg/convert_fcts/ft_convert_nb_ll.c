@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:00:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 18:43:27 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:28:40 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char *ft_convert_nb_ll(va_list *ap, t_flag *flag)
 {
-	unsigned long tmp;
+	unsigned long long tmp;
 	char *output;
 	unsigned long long tmp_val;
 	size_t size_allocation;
 	int sign;
 
-	tmp = va_arg(*ap, unsigned long);
+	tmp = (unsigned long long)va_arg(*ap, unsigned long long int);
 	if (tmp == 0)
 		sign = 0;
 	else

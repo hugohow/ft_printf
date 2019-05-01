@@ -7,11 +7,8 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
-	int *a;
-
-	a = malloc(sizeof(int));
-    ft_printf(" ft_printf :%p", NULL);
-	printf("    printf :%p", NULL);
+    ft_printf(" ft_printf :%-#23.5ho|%-023.5ho|%#023.5ho|%-#023.5ho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%-#23.5ho|%-023.5ho|%#023.5ho|%-#023.5ho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
     ft_printf("\n\n");
     return 0;
 }

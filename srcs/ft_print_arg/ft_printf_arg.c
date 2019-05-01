@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/26 16:15:00 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/01 15:06:46 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_ft *ft_find_convert(t_flag *flag)
 					return (fts_convert[j].fct);
 				j++;
 			}
-			return (fts_convert[j].fct);
+			return (fts_convert[i].fct);
 		}
 		i++;
 	}
