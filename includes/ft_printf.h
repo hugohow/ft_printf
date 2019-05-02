@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 13:51:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:01:20 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define PREFIX_0 "0"
 # define GOT_PLUS(flag, sign) (flag->plus == 1 && sign >= 0)
 # define GOT_SPACE(flag, sign) (flag->plus == 0 && flag->space == 1 && sign >= 0)
-# define GOT_PREFIX(flag, sign) ((flag->hash && sign != 0) || (flag->key & KEY_P))
+# define GOT_PREFIX(flag, sign) ((flag->hash && sign != 0) || (sign == 0 && flag->precision == 0 && flag->conv == 'o' && (flag->hash)) || (flag->key & KEY_P))
 # define GOT_MINUS(flag, sign) (sign < 0)
 # define FILL_TO_THE_LEFT(flag, sign) (flag->zero == 1 && flag->minus == 0)
 # define FILL_TO_THE_RIGHT(flag, sign) (!(FILL_TO_THE_LEFT(flag, sign)))
