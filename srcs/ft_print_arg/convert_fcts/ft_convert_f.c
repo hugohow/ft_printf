@@ -6,11 +6,65 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/27 15:39:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/03 18:35:22 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+#define HALF_POWER_0 "1"
+#define HALF_POWER_1 "0.5"
+#define HALF_POWER_2 "0.25"
+#define HALF_POWER_3 "0.125"
+#define HALF_POWER_4 "0.0625"
+#define HALF_POWER_5 "0.03125"
+#define HALF_POWER_6 "0.015625"
+#define HALF_POWER_7 "0.0078125"
+#define HALF_POWER_8 "0.00390625"
+#define HALF_POWER_9 "0.001953125"
+#define HALF_POWER_10 "0.0009765625"
+#define HALF_POWER_11 "0.00048828125"
+#define HALF_POWER_12 "0.000244140625"
+#define HALF_POWER_13 "0.0001220703125"
+#define HALF_POWER_14 "0.00006103515625"
+#define HALF_POWER_15 "0.00003051757812"
+#define HALF_POWER_16 "0.00001525878906"
+#define HALF_POWER_17 "0.000007629394531"
+#define HALF_POWER_18 "0.000003814697266"
+#define HALF_POWER_19 "0.000001907348633"
+#define HALF_POWER_20 "0.000000953674316"
+#define HALF_POWER_21 "0.000000476837158"
+#define HALF_POWER_22 "0.000000238418579"
+#define HALF_POWER_23 "0.00000011920929"
+
+static const	char *half_powers[] =
+{
+	HALF_POWER_0,
+	HALF_POWER_1,
+	HALF_POWER_2,
+	HALF_POWER_3,
+	HALF_POWER_4,
+	HALF_POWER_5,
+	HALF_POWER_6,
+	HALF_POWER_7,
+	HALF_POWER_8,
+	HALF_POWER_9,
+	HALF_POWER_10,
+	HALF_POWER_11,
+	HALF_POWER_12,
+	HALF_POWER_13,
+	HALF_POWER_14,
+	HALF_POWER_15,
+	HALF_POWER_16,
+	HALF_POWER_17,
+	HALF_POWER_18,
+	HALF_POWER_19,
+	HALF_POWER_20,
+	HALF_POWER_21,
+	HALF_POWER_22,
+	HALF_POWER_23,
+	0,
+};
 
 
 typedef union {
@@ -18,26 +72,6 @@ typedef union {
     unsigned char a[sizeof(float)];
 } U;
 
-
-void print_in_bin(unsigned char a, int i)
-{
-	char base[2] = "01";
-
-	if (i == 8)
-		return ;
-	print_in_bin(a / 2, i + 1);
-	printf("%c", base[a % 2]);
-}
-
-void print_bin_floating_point(float nb)
-{
-	U u = { (float)nb };
-	for (int i = (int)sizeof(float) - 1; i >= 0; --i)
-	{
-		print_in_bin(u.a[i], 0);
-		printf(" ");
-	}
-}
 
 char *get_binary(unsigned char c)
 {
@@ -115,73 +149,54 @@ int get_exponent(char *bin_floating_point)
 	return (exponent - 127);
 }
 
-float power_half(int i)
+char *get_dec_mantissa(char *str)
 {
-	float result;
-
-	result = 1;
-	if (i == 0)
-		return (1);
-	while (i != 0)
-	{
-		result *= 0.5;
-		i--;
-	}
-	return (result);
-}
-
-float get_dec_mantissa(char *str)
-{
-	int i;
-	float result;
+	int 	i;
+	char 	*result;
 
 	i = 0;
-	result = 0;
+	result = malloc(99999999999* sizeof(char));
+	result = ft_strcpy(result, "1");
 	while (str[i])
 	{
+		if (i == 22)
+			break;
 		if (str[i] == '1')
 		{
-			result += power_half(i + 1);
+			result = ft_bigint_add(result, half_powers[i + 1]);
 		}
 		i++;
 	}
 	return (result);
 }
 
-int power_two(int i)
-{
-	int result;
 
-	result = 1;
-	if (i == 0)
-		return (1);
-	while (i != 0)
-	{
-		result *= 2;
-		i--;
-	}
-	return (result);
-}
 
 char *ft_convert_f(va_list *ap, t_flag *flag)
 {
 	double tmp;
 	char *output;
+	int expo;
+	int sign;
 
+	
 	tmp = va_arg(*ap, double);
-	output = NULL;
-	// print_bin_floating_point((float)tmp);
-	// printf("\n\n");
-	// printf("%s \n", get_bin_floating_point((float)tmp));
-	// printf("mantissa : %s ", get_mantissa(get_bin_floating_point((float)tmp)));
-	// printf("sign : %d \n", get_bin_floating_point((float)tmp)[0] == '0' ? 0 : 1);
-	// printf("exponent : %d \n", get_exponent(get_bin_floating_point((float)tmp)));
-	// printf("convert mantissa : %f \n", get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp))));
-	printf("%f", 
-			(get_bin_floating_point((float)tmp)[0] == '0' ? 1 : -1)
-			* (1 + get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp))))
-			* power_two(get_exponent(get_bin_floating_point((float)tmp)))
-	);
+	sign = get_bin_floating_point((float)tmp)[0] == '1' ? -1 : 1;
+	expo = get_exponent(get_bin_floating_point((float)tmp));
+	output = get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp)));
+	while (expo != 0)
+	{
+		if (expo < 0)
+		{
+			output = ft_bigint_divide_by_two(output);	
+			expo++;
+		}
+		else
+		{
+			output = ft_bigint_multiply_by_two(output);
+			expo--;
+		}
+	}
 
 	if (flag)
 	{
@@ -190,7 +205,7 @@ char *ft_convert_f(va_list *ap, t_flag *flag)
 	// sign = tmp;
 	// size_allocation = ft_nblen_ull((unsigned long long)(tmp < 0 ? -tmp : tmp));
 	// output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), ft_get_size_to_allocate(size_allocation, flag));
-	// output = ft_apply_padding(output, flag, sign);
-	// output = ft_apply_precision(output, flag, sign);
+	output = ft_apply_precision(output, flag, sign);
+	output = ft_apply_padding(output, flag, sign);
 	return (output);
 }
