@@ -6,21 +6,43 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 19:07:37 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:01:28 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char *ft_add_prefix(char *str, char conv)
+static char *ft_add_prefix(char *str, t_flag *flag, int sign)
 {
-    if (conv == 'o')
+    // size_t len;
+    // char prefix[5];
+
+    // len = flag->precision == -1 ? ft_strlen(str) : ft_strlen(str) + flag->precision;
+
+    // if (flag->conv == 'o')
+    //     ft_strncpy(prefix, PREFIX_0, len > ft_strlen(PREFIX_0) ? ft_strlen(PREFIX_0) : len);
+    // if (flag->conv == 'x')
+    //     ft_strncpy(prefix, PREFIX_0X, len > ft_strlen(PREFIX_0X) ? ft_strlen(PREFIX_0X) : len);
+    // if (flag->conv == 'X')
+    //     ft_strncpy(prefix, PREFIX_0X_MAJ, len > ft_strlen(PREFIX_0X_MAJ) ? ft_strlen(PREFIX_0X_MAJ) : len);
+
+    // str = ft_strcat_r(prefix, str);
+    if (flag->conv == 'o')
+    {
+        if (flag->precision == 0 && sign == 0 && (flag->hash))
+        {
+            str = ft_strcat_r(PREFIX_0, str);
+            return (str);
+        }
         if (str[0] != '0')
             str = ft_strcat_r(PREFIX_0, str);
-    if (conv == 'x')
-        str = ft_strcat_r(PREFIX_0X, str);
-    if (conv == 'X')
-        str = ft_strcat_r(PREFIX_0X_MAJ, str);
+    }
+    if (flag->conv == 'x')
+        if (str[0] != '0')
+            str = ft_strcat_r(PREFIX_0X, str);
+    if (flag->conv == 'X')
+        if (str[0] != '0')
+            str = ft_strcat_r(PREFIX_0X_MAJ, str);
     return (str);
 }
 
@@ -109,19 +131,20 @@ char *ft_apply_padding(char *str, t_flag *flag, int sign)
     {
         str = ft_strcat_r(to_add, str);
         if (GOT_PREFIX(flag, sign))
-            str = ft_add_prefix(str, flag->conv);
+            str = ft_add_prefix(str, flag, sign);
 		str = ft_add_sign(str, flag, sign);
     }
 	else
 	{
 		str = ft_add_sign(str, flag, sign);
 		if (GOT_PREFIX(flag, sign))
-			str = ft_add_prefix(str, flag->conv);
+			str = ft_add_prefix(str, flag, sign);
 		if (flag->minus == 1)
 			str = ft_strcat(str, to_add);
 		else
 			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
 	}
 
+    ft_memdel((void **)&to_add);
     return (str);
 }
