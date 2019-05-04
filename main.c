@@ -168,6 +168,10 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
+	int *a;
+
+	a = malloc(sizeof(int));
+    ft_printf(" ft_printf :{yellow}%.5X{eoc}|%-.5X|%#.5X|%0.5X", 0U, 0U, 0U, 0U);
     ft_printf(" ft_printf :%23.5o|%-23.5o|%#23.5o|%023.5o\n", 0U, 0U, 0U, 0U);
 	printf("    printf :%23.5o|%-23.5o|%#23.5o|%023.5o\n", 0U, 0U, 0U, 0U);
     printf("\n\n\n");
