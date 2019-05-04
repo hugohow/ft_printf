@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 20:07:33 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 16:20:20 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define PREFIX_0 "0"
 # define GOT_PLUS(flag, sign) (flag->plus == 1 && sign >= 0)
 # define GOT_SPACE(flag, sign) (flag->plus == 0 && flag->space == 1 && sign >= 0)
-# define GOT_PREFIX(flag, sign) ((flag->hash && sign != 0) || (flag->key & KEY_P))
+# define GOT_PREFIX(flag, sign) ((flag->hash && sign != 0) || (sign == 0 && flag->precision == 0 && flag->conv == 'o' && (flag->hash)) || (flag->key & KEY_P))
 # define GOT_MINUS(flag, sign) (sign < 0)
 # define FILL_TO_THE_LEFT(flag, sign) (flag->zero == 1 && flag->minus == 0)
 # define FILL_TO_THE_RIGHT(flag, sign) (!(FILL_TO_THE_LEFT(flag, sign)))
@@ -37,6 +37,13 @@
 # define BASE_B "01"
 # define PERCENTAGE "%"
 
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 #define LENGTH_H (1 << 1)
 #define LENGTH_HH (1 << 2)
@@ -53,7 +60,7 @@
 #define KEY_P (1 << 5)
 #define KEY_S (1 << 6)
 #define KEY_F (1 << 7)
-# define NUMERICAL_VALUE(flag) ((flag->key & KEY_NB) || (flag->key & KEY_D) || (flag->key & KEY_P))
+# define NUMERICAL_VALUE(flag) ((flag->key & KEY_NB) || (flag->key & KEY_D) || (flag->key & KEY_P) || (flag->key & KEY_F))
 
 typedef struct	s_flag
 {
@@ -79,6 +86,12 @@ typedef struct	s_ft_convert
 	int length;
 	t_ft *fct;
 }				t_ft_convert;
+
+typedef struct	s_color
+{
+	char key[10];
+	char str[10];
+}				t_color;
 
 char *ft_convert_base(char *decimal, char *base);
 char    *ft_itoa_ll(long long nb);

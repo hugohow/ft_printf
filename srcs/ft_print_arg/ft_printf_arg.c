@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 15:06:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 16:17:13 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char    *ft_flag_replace(char *str, char *to_replace)
     return (ft_strcat(str, to_replace));
 }
 
-static const t_ft_convert fts_convert[] = 
+static const	t_ft_convert fts_convert[] =
 {
-    {KEY_PERCENTAGE, 0, &ft_convert_percent},
+	{KEY_PERCENTAGE, 0, &ft_convert_percent},
 	{KEY_C, 0, &ft_convert_c},
 	{KEY_S, 0, &ft_convert_s},
 	{KEY_P, 0, &ft_convert_p},
@@ -72,16 +72,19 @@ void    ft_printf_arg(va_list *ap, char *str, size_t *len)
 	char *output;
 
 	flag = ft_create_flag(str);
-	output = NULL;
+	if (flag == NULL)
+		return ;
 	fct = ft_find_convert(flag);
 	if (fct != NULL)
 	{
+		output = NULL;
 		output = fct(ap, flag);
 		if (output)
 		{
-			ft_putstr(output);
+			ft_putstr_fd(output, 1);
 			*len += ft_strlen(output);
 		}
+		ft_memdel((void **)&output);
 	}
     ft_memdel((void **)&flag);
 }

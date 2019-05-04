@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prefix_len.c                                    :+:      :+:    :+:   */
+/*   ft_bigint_shift_right.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 15:37:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/02 13:32:39 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/04 12:53:34 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/04 12:54:21 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int ft_prefix_len(t_flag *flag, int sign)
+char *ft_bigint_shift_right(char *str, size_t nb, size_t limit)
 {
-	int len;
+	size_t len;
 
-	len = 0;
-	if (GOT_PREFIX(flag, sign))
+	len = ft_strlen(str);
+	if (len == 0 || nb <= 0)
+		return (str);
+	len = len + nb;
+	if (len + 1 > limit)
+		return (NULL);
+	str[len + 1] = 0;
+	while (len >= nb)
 	{
-		if (flag->conv == 'o')
-			return (len + ft_strlen(PREFIX_0));
-		if (flag->conv == 'x')
-			return (len + ft_strlen(PREFIX_0X));
-		if (flag->conv == 'X')
-			return (len + ft_strlen(PREFIX_0X_MAJ));
+		str[len] = str[len - nb];
+		len--;
 	}
-	return (len);
+	while (nb != 0)
+	{
+		str[nb - 1] = '0';
+		nb--;
+	}
+	return (str);
 }
