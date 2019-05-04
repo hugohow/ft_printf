@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/03 18:35:22 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 15:33:04 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,25 +149,23 @@ int get_exponent(char *bin_floating_point)
 	return (exponent - 127);
 }
 
-char *get_dec_mantissa(char *str)
+char *get_dec_mantissa(char *str, char **p_output, size_t size_allocation)
 {
 	int 	i;
-	char 	*result;
 
 	i = 0;
-	result = malloc(99999999999* sizeof(char));
-	result = ft_strcpy(result, "1");
+	*p_output = ft_strcpy(*p_output, "1");
 	while (str[i])
 	{
 		if (i == 22)
 			break;
 		if (str[i] == '1')
 		{
-			result = ft_bigint_add(result, half_powers[i + 1]);
+			*p_output = ft_bigint_add(*p_output, half_powers[i + 1], size_allocation);
 		}
 		i++;
 	}
-	return (result);
+	return (*p_output);
 }
 
 
@@ -179,16 +177,20 @@ char *ft_convert_f(va_list *ap, t_flag *flag)
 	int expo;
 	int sign;
 
-	
+	size_t size_allocation;
+
+
+	size_allocation = 4096;
 	tmp = va_arg(*ap, double);
 	sign = get_bin_floating_point((float)tmp)[0] == '1' ? -1 : 1;
 	expo = get_exponent(get_bin_floating_point((float)tmp));
-	output = get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp)));
+	output = (char *)malloc(size_allocation * sizeof(char));
+	output = get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp)), &output, size_allocation);
 	while (expo != 0)
 	{
 		if (expo < 0)
 		{
-			output = ft_bigint_divide_by_two(output);	
+			output = ft_bigint_divide_by_two(output, size_allocation);	
 			expo++;
 		}
 		else
@@ -197,7 +199,10 @@ char *ft_convert_f(va_list *ap, t_flag *flag)
 			expo--;
 		}
 	}
-
+	if (flag->precision == -1)
+		output = ft_bigint_round(output, 6, size_allocation);
+	else
+		output = ft_bigint_round(output, flag->precision, size_allocation);
 	if (flag)
 	{
 
@@ -205,7 +210,7 @@ char *ft_convert_f(va_list *ap, t_flag *flag)
 	// sign = tmp;
 	// size_allocation = ft_nblen_ull((unsigned long long)(tmp < 0 ? -tmp : tmp));
 	// output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), ft_get_size_to_allocate(size_allocation, flag));
-	output = ft_apply_precision(output, flag, sign);
+	// output = ft_apply_precision(output, flag, sign);
 	output = ft_apply_padding(output, flag, sign);
 	return (output);
 }

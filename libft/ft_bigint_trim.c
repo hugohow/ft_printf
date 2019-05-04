@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:02:01 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/03 17:36:20 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 15:34:52 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static char *ft_bigint_trim_left(char *str)
 	len = ft_strlen(str);
 	while (str[nb] && str[nb] == '0')
 		nb++;
+	if (str[nb] == '.')
+		nb--;
 	if (nb == 0)
 		return (str);
 	i = 0;

@@ -190,5 +190,7 @@ int main(void)
 	ft_printf("ft_printf :\t%f\n\n", -0.000004);
 	printf("printf :\t%f\n", 9999999.123456789);
 	ft_printf("ft_printf :\t%f\n\n", 9999999.123456789);
+	printf("printf :\t%.3f\n", 9999999.123456789);
+	ft_printf("ft_printf :\t%.3f\n\n", 9999999.123456789);
     return 0;
 }
