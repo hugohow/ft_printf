@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:12:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/02 12:31:57 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 16:20:14 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,12 @@ char *ft_convert_output(char *str, t_flag *flag)
     if (flag->conv == 'X')
     {
         output = ft_convert_base_offset(str, BASE_X_MAJ, flag);
+        // ft_memdel((void **)&str);
+        return (output);
+    }
+    if (flag->conv == 'b')
+    {
+        output = ft_convert_base(str, BASE_B);
         // ft_memdel((void **)&str);
         return (output);
     }

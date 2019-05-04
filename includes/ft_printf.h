@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/04 16:19:16 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 16:20:20 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define BASE_O "01234567"
 # define BASE_X "0123456789abcdef"
 # define BASE_X_MAJ "0123456789ABCDEF"
+# define BASE_B "01"
 # define PERCENTAGE "%"
 
 #define ANSI_COLOR_CYAN    "\x1b[36m"
