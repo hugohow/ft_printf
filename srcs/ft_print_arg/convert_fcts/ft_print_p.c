@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_p.c                                     :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 14:16:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 20:13:37 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 
-char *ft_convert_p(va_list *ap, t_flag *flag)
+int	ft_print_p(va_list *ap, t_flag *flag, int fd)
 {
 	char *output;
 	void *addr;
 	unsigned char t[sizeof(void *) + 1];
 	char *tmp_str;
 	int i;
+	size_t res;
 
 	addr = va_arg(*ap, void *);
 	ft_memcpy(t, &addr, sizeof(void *));
@@ -57,5 +58,8 @@ char *ft_convert_p(va_list *ap, t_flag *flag)
 
 	output = ft_apply_precision(output, flag, 1);
 	output = ft_apply_padding_p(output, flag, 1);
-	return (output);
+	ft_putstr_fd(output, fd);
+	res = (ft_strlen(output));
+	ft_memdel((void **)&output);
+	return ((int)res);
 }
