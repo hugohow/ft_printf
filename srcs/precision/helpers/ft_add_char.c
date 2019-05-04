@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_zeros.c                                     :+:      :+:    :+:   */
+/*   ft_add_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 18:06:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/30 16:14:41 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:13:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static char *ft_add_element(char *str, t_flag *flag, int index, char c)
     }
     else
     {
-
         ft_str_left_shift(str, index - 1);
         str[index] = c;
         return (str); 

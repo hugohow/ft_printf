@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/02 12:30:49 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/03 18:40:50 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char    *ft_flag_replace(char *str, char *to_replace)
     return (ft_strcat(str, to_replace));
 }
 
-static const t_ft_convert fts_convert[] = 
+static const	t_ft_convert fts_convert[] =
 {
-    {KEY_PERCENTAGE, 0, &ft_convert_percent},
+	{KEY_PERCENTAGE, 0, &ft_convert_percent},
 	{KEY_C, 0, &ft_convert_c},
 	{KEY_S, 0, &ft_convert_s},
 	{KEY_P, 0, &ft_convert_p},
