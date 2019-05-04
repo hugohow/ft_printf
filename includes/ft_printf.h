@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 13:51:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/03 18:31:56 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 #define KEY_P (1 << 5)
 #define KEY_S (1 << 6)
 #define KEY_F (1 << 7)
-# define NUMERICAL_VALUE(flag) ((flag->key & KEY_NB) || (flag->key & KEY_D) || (flag->key & KEY_P))
+# define NUMERICAL_VALUE(flag) ((flag->key & KEY_NB) || (flag->key & KEY_D) || (flag->key & KEY_P) || (flag->key & KEY_F))
 
 typedef struct	s_flag
 {
