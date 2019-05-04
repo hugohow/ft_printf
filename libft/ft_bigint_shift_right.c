@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_size_to_allocate.c                              :+:      :+:    :+:   */
+/*   ft_bigint_shift_right.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 18:55:17 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/02 12:42:03 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/04 12:53:34 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/04 12:54:21 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-
-static int max(int a, int b, int c)
+char *ft_bigint_shift_right(char *str, size_t nb, size_t limit)
 {
-	int result;
+	size_t len;
 
-	result = a;
-	if (b > result)
-		result = b;
-	if (c > result)
-		result = c;
-	return (result);
-}
-
-int ft_get_size_to_allocate(size_t original_nblen, t_flag *flag)
-{
-	return (max((int)(original_nblen + 5), (int)(flag->width + 5), (int)(flag->precision + 5)));
+	len = ft_strlen(str);
+	if (len == 0 || nb <= 0)
+		return (str);
+	len = len + nb;
+	if (len + 1 > limit)
+		return (NULL);
+	str[len + 1] = 0;
+	while (len >= nb)
+	{
+		str[len] = str[len - nb];
+		len--;
+	}
+	while (nb != 0)
+	{
+		str[nb - 1] = '0';
+		nb--;
+	}
+	return (str);
 }
