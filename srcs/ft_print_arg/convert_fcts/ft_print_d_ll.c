@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_f_l_maj.c                               :+:      :+:    :+:   */
+/*   ft_print_d_ll.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 15:16:08 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/25 19:00:40 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/04 20:12:10 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *ft_convert_f_l_maj(va_list *ap, t_flag *flag)
+int	ft_print_d_ll(va_list *ap, t_flag *flag, int fd)
 {
-	long double tmp;
+	long long tmp;
 	char *output;
+	unsigned long long tmp_val;
 	size_t size_allocation;
+	size_t res;
 	int sign;
 
-	tmp = va_arg(*ap, long double);
-	sign = tmp;
-	size_allocation = ft_nblen_ull((unsigned long long)(tmp < 0 ? -tmp : tmp));
-	output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), ft_get_size_to_allocate(size_allocation, flag));
+	tmp = va_arg(*ap, long long);
+	if (tmp == 0)
+		sign = 0;
+	else
+		sign = tmp < 0 ? -1 : 1;
+	tmp_val = tmp < 0 ? -1 * (unsigned long long)tmp : (unsigned long long)tmp;
+	size_allocation = ft_nblen_ull(tmp_val);
+	size_allocation = ft_get_size_to_allocate(size_allocation, flag);
+	output = ft_ulltoa_offset(tmp_val, size_allocation);
 	output = ft_apply_precision(output, flag, sign);
 	output = ft_apply_padding(output, flag, sign);
-	return (output);
+	ft_putstr_fd(output, fd);
+	res = (ft_strlen(output));
+	ft_memdel((void **)&output);
+	return ((int)res);
 }

@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_d_ll.c                                  :+:      :+:    :+:   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 19:00:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 18:11:58 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/25 20:24:51 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/04 20:13:56 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *ft_convert_d_ll(va_list *ap, t_flag *flag)
+int	ft_print_s(va_list *ap, t_flag *flag, int fd)
 {
-	long long tmp;
 	char *output;
-	unsigned long long tmp_val;
+	char *arg;
 	size_t size_allocation;
-	int sign;
+	size_t res;
 
-	tmp = va_arg(*ap, long long);
-	if (tmp == 0)
-		sign = 0;
-	else
-		sign = tmp < 0 ? -1 : 1;
-	tmp_val = tmp < 0 ? -1 * (unsigned long long)tmp : (unsigned long long)tmp;
-	size_allocation = ft_nblen_ull(tmp_val);
+	arg = va_arg(*ap, char*);
+	size_allocation = arg == NULL ? ft_strlen("(null)") : ft_strlen(arg);
 	size_allocation = ft_get_size_to_allocate(size_allocation, flag);
-	output = ft_ulltoa_offset(tmp_val, size_allocation);
-	output = ft_apply_precision(output, flag, sign);
-	output = ft_apply_padding(output, flag, sign);
-	return (output);
+
+	output = (char *)malloc((size_allocation) * sizeof(char));
+	if (output == NULL)
+		return (-1);
+	
+	output = ft_strcpy(output, arg == NULL ? "(null)" : arg);
+	output = ft_apply_precision_s(output, flag, 1);
+	output = ft_apply_padding(output, flag, 1);
+	ft_putstr_fd(output, fd);
+	res = (ft_strlen(output));
+	ft_memdel((void **)&output);
+	return ((int)res);
 }

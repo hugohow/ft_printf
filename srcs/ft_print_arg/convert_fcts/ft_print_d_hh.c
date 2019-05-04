@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_d.c                                     :+:      :+:    :+:   */
+/*   ft_print_d_hh.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 18:53:57 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 18:11:54 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/04/25 19:19:24 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/04 20:11:47 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-char *ft_convert_d(va_list *ap, t_flag *flag)
+int	ft_print_d_hh(va_list *ap, t_flag *flag, int fd)
 {
 	int tmp;
 	char *output;
 	unsigned long long tmp_val;
 	size_t size_allocation;
+	size_t res;
 	int sign;
 
 	tmp = va_arg(*ap, int);
@@ -32,5 +32,8 @@ char *ft_convert_d(va_list *ap, t_flag *flag)
 	output = ft_ulltoa_offset(tmp_val, size_allocation);
 	output = ft_apply_precision(output, flag, sign);
 	output = ft_apply_padding(output, flag, sign);
-	return (output);
+	ft_putstr_fd(output, fd);
+	res = (ft_strlen(output));
+	ft_memdel((void **)&output);
+	return ((int)res);
 }

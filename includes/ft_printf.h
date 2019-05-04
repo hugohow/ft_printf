@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/04 16:20:20 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/04 20:09:04 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ typedef struct	s_flag
 }				t_flag;
 
 
-typedef char *(t_ft)(va_list *, t_flag *);
+typedef int	(t_ft)(va_list *, t_flag *, int);
 
 
-typedef struct	s_ft_convert
+typedef struct	s_ft_print
 {
 	int key;
 	int length;
 	t_ft *fct;
-}				t_ft_convert;
+}				t_ft_print;
 
 typedef struct	s_color
 {
@@ -133,25 +133,25 @@ char			*ft_strcat(char *s1, const char *s2);
 int ft_prefix_len(t_flag *flag, int sign);
 int ft_get_size_to_allocate(size_t original_nblen, t_flag *flag);
 
-char *ft_convert_d(va_list *ap, t_flag *flag);
-char *ft_convert_d_l(va_list *ap, t_flag *flag);
-char *ft_convert_d_ll(va_list *ap, t_flag *flag);
-char *ft_convert_d_h(va_list *ap, t_flag *flag);
-char *ft_convert_d_hh(va_list *ap, t_flag *flag);
-char *ft_convert_percent(va_list *ap, t_flag *flag);
-char *ft_convert_nb(va_list *ap, t_flag *flag);
-char *ft_convert_nb_l(va_list *ap, t_flag *flag);
-char *ft_convert_nb_ll(va_list *ap, t_flag *flag);
-char *ft_convert_nb_hh(va_list *ap, t_flag *flag);
-char *ft_convert_nb_h(va_list *ap, t_flag *flag);
+int	ft_print_d(va_list *ap, t_flag *flag, int fd);
+int	ft_print_d_l(va_list *ap, t_flag *flag, int fd);
+int	ft_print_d_ll(va_list *ap, t_flag *flag, int fd);
+int	ft_print_d_h(va_list *ap, t_flag *flag, int fd);
+int	ft_print_d_hh(va_list *ap, t_flag *flag, int fd);
+int	ft_print_percent(va_list *ap, t_flag *flag, int fd);
+int	ft_print_nb(va_list *ap, t_flag *flag, int fd);
+int	ft_print_nb_l(va_list *ap, t_flag *flag, int fd);
+int	ft_print_nb_ll(va_list *ap, t_flag *flag, int fd);
+int	ft_print_nb_hh(va_list *ap, t_flag *flag, int fd);
+int	ft_print_nb_h(va_list *ap, t_flag *flag, int fd);
 
-char *ft_convert_f(va_list *ap, t_flag *flag);
-char *ft_convert_f_l_maj(va_list *ap, t_flag *flag);
+int	ft_print_f(va_list *ap, t_flag *flag, int fd);
+int	ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd);
 
 
-char *ft_convert_s(va_list *ap, t_flag *flag);
-char *ft_convert_c(va_list *ap, t_flag *flag);
-char *ft_convert_p(va_list *ap, t_flag *flag);
+int	ft_print_s(va_list *ap, t_flag *flag, int fd);
+int	ft_print_c(va_list *ap, t_flag *flag, int fd);
+int	ft_print_p(va_list *ap, t_flag *flag, int fd);
 
 char			*ft_convert_output(char *str, t_flag *flag);
 
