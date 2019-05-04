@@ -6,11 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/05/01 21:00:55 by hhow-cho         ###   ########.fr       */
-=======
-/*   Updated: 2019/05/02 11:49:17 by hhow-cho         ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2019/05/04 16:22:57 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +55,8 @@ int ft_printf(const char* format, ...)
     size_t  i;
     size_t  format_len;
     size_t  len;
-<<<<<<< HEAD
-    char    *flag;
 	int ret;
-=======
     char    *flag_line;
->>>>>>> master
 
     format_len = ft_strlen(format);
     flag_line = (char *)ft_memalloc((format_len + 1) * sizeof(char));
