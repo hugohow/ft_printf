@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/02 14:01:28 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/05 12:57:51 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,18 @@ static char *str_to_fill(char *str, t_flag *flag, int sign)
     return (to_add);
 }
 
-static char	*ft_strcat_r_char(char c, char *dst, size_t len)
+static char	*ft_strcat_r(char *src, char *dst)
 {
-	size_t	len_dst;
+    char *tmp;
 
-	len_dst = ft_strlen(dst);
-	ft_memmove(dst + len, dst, len_dst);
-	ft_memset(dst, c, len);
-	dst[len_dst + len] = '\0';
+    tmp = ft_strdup(dst);
+    if (tmp == NULL)
+        return (NULL);
+    ft_strcpy(dst, src);
+    ft_strcat(dst, tmp);
+    ft_memdel((void **)&tmp);
 	return (dst);
 }
-
 
 char *ft_apply_padding(char *str, t_flag *flag, int sign)
 {
@@ -124,7 +125,7 @@ char *ft_apply_padding(char *str, t_flag *flag, int sign)
 		if (flag->minus == 1)
 			str = ft_strcat(str, to_add);
 		else
-			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
+			str = ft_strcat_r(to_add, str);
         return (str);
     }
     if (FILL_WITH_ZEROS(flag, sign))
@@ -142,7 +143,7 @@ char *ft_apply_padding(char *str, t_flag *flag, int sign)
 		if (flag->minus == 1)
 			str = ft_strcat(str, to_add);
 		else
-			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
+			str = ft_strcat_r(to_add, str);
 	}
 
     ft_memdel((void **)&to_add);
