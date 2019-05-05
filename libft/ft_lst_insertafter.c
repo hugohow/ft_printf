@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_size_to_allocate.c                              :+:      :+:    :+:   */
+/*   ft_lst_insertafter.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 18:55:17 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/05 13:42:53 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/05 13:29:19 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/05 13:31:56 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-
-static int max(int a, int b, int c)
+t_list	*ft_lst_insertafter(t_list **head, void const *content, size_t content_size)
 {
-	int result;
+	t_list	*node;
+	t_list	*node_tmp;
 
-	result = a;
-	if (b > result)
-		result = b;
-	if (c > result)
-		result = c;
-	return (result);
-}
-
-int ft_get_size_to_allocate(size_t original_nblen, t_flag *flag)
-{
-	return (max((int)(original_nblen + 10), (int)(flag->width + 10), (int)(flag->precision + 10)));
+	node = ft_lstnew(content, content_size);
+	if (*head == NULL)
+		*head = node;
+	else
+	{
+		node_tmp = *head;
+		while (node_tmp->next)
+			node_tmp = node_tmp->next;
+		node_tmp->next = node;
+	}
+	return (node);
 }

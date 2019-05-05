@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:11:14 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/02 12:53:36 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/05 15:47:38 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ char *ft_apply_precision(char *str, t_flag *flag, int sign)
 
 
     if (sign == 0 && flag->precision == 0)
-        return (ft_strcpy(str, ""));
+    {
+        str = ft_strcpy(str, "");
+        return (str);
+    }
     if (flag->precision < 0)
         return (str);
     if (str_len == (unsigned int)flag->precision)

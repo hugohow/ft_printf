@@ -1,6 +1,7 @@
 NAME=libftprintf.a
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
+TEST = tests/tests/tests
 
 all: $(NAME)
 
@@ -12,8 +13,16 @@ $(NAME):
 	gcc -g $(NAME) main.c -o main
 	./main
 
-test: re
-	cd tests/tests && $(MAKE) test
+compile_test:
+	cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
+
+# cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
+test:
+ifeq ($(wildcard tests/tests/conv_d/.*),)
+		cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
+else
+		cd tests/tests && ./tests
+endif
 
 clean:
 	rm -rf *.o

@@ -5,223 +5,120 @@
 #include <limits.h>
 int ft_printf(const char* format, ...);
 
-// void test_bigint()
-// {
-//     char *output;
-// 	char *to_add;
-
-//     output = malloc(99999*sizeof(char));
-// 	to_add = malloc(99999*sizeof(char));
-//     output = ft_strcpy(output, "2001.1003");
-// 	to_add = ft_strcpy(to_add, "999999");
-//     printf("multiply : %s by two\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("result :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-// 	output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-// 	output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-// 	output = ft_bigint_add(output, to_add);
-// 	printf("add  999999:\t%s\n", output);
-// 	to_add = ft_strcpy(to_add, ".1111111");
-// 	output = ft_bigint_add(output, to_add);
-// 	printf("add  0.1111111:\t%s\n", output);
-// 	to_add = ft_strcpy(to_add, "11000030");
-// 	output = ft_bigint_add(output, to_add);
-// 	printf("add  11000030:\t%s\n", output);
-// 	to_add = ft_strcpy(to_add, "10000000000000000000.0");
-// 	output = ft_bigint_add(output, to_add);
-// 	printf("add  10000000000000000000.0:\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_divide_by_two(output);
-//     printf("divide by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-//     output = ft_bigint_multiply_by_two(output);
-//     printf("multiply by 2 :\t%s\n", output);
-// 	free(output);
-// 	free(to_add);
-// }
-
 int main(void)
 {
-	int *a;
+	// int *a;
 
-	a = malloc(sizeof(int));
-    ft_printf(" ft_printf :{yellow}%.5X{eoc}|%-.5X|%#.5X|%0.5X", 0U, 0U, 0U, 0U);
-    ft_printf(" ft_printf :%23.5o|%-23.5o|%#23.5o|%023.5o\n", 0U, 0U, 0U, 0U);
-	printf("    printf :%23.5o|%-23.5o|%#23.5o|%023.5o\n", 0U, 0U, 0U, 0U);
+	// a = malloc(sizeof(int));
+
+
+    int ret;
+    ret = ft_printf("%1c|%2c|%12c|%-12c|\n", 0, 0, 0, 0);
+    printf("%d\n", ret);
+
+    ret = printf("%1c|%2c|%12c|%-12c|\n", 0, 0, 0, 0);
+    printf("%d\n", ret);
     printf("\n\n\n");
-    ft_printf(" ft_printf :%-#.x|%-0.x|%#0.x|%-#0.x\n", 0U, 0U, 0U, 0U);
-	printf("    printf :%-#.x|%-0.x|%#0.x|%-#0.x", 0U, 0U, 0U, 0U);
+
+
+
+    ft_printf(" ft_printf :|%-c|%12c|%-12c\n", 1345, 1345, 1345, 1345);
+	printf("    printf :|%-c|%12c|%-12c", 1345, 1345, 1345, 1345);
     printf("\n\n\n");
-    ft_printf(" ft_printf :%23.o|%-23.o|%#23.o|%023.o\n", 0U, 0U, 0U, 0U);
-	printf("    printf :%23.o|%-23.o|%#23.o|%023.o", 0U, 0U, 0U, 0U);
+
+
+
+    ft_printf(" ft_printf :%#023o|%-#023o\n", UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX);
+	printf("    printf :%#023o|%-#023o", UINT_MAX, UINT_MAX, UINT_MAX, UINT_MAX);
     printf("\n\n\n");
-    ft_printf(" ft_printf :%23.x|%-23.x|%#23.x|%023.x\n", 0U, 0U, 0U, 0U);
-	printf("    printf :%23.x|%-23.x|%#23.x|%023.x", 0U, 0U, 0U, 0U);
-
+    ft_printf(" ft_printf :%#023o|%-#023o\n", ULONG_MAX, ULONG_MAX, ULONG_MAX, ULONG_MAX);
+	printf("    printf :%#023o|%-#023o", ULONG_MAX, ULONG_MAX, ULONG_MAX, ULONG_MAX);
     printf("\n\n\n");
-    ft_printf(" ft_printf :%23.3X|%-23.3X|%#23.3X|%023.3X\n", 0U, 0U, 0U, 0U);
-	printf("    printf :%23.3X|%-23.3X|%#23.3X|%023.3X", 0U, 0U, 0U, 0U);
 
-
+    ft_printf(" ft_printf :%#023o|%-#023o\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%#023o|%-#023o", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
     printf("\n\n\n");
-    ft_printf(" ft_printf :%23.5u|%-23.5u|%023.5u\n", 0U, 0U, 0U);
-	printf("    printf :%23.5u|%-23.5u|%023.5u", 0U, 0U, 0U);
 
 
+
+    ft_printf(" ft_printf :%.5hho|%-.5hho|%#.5hho|%0.5hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%.5hho|%-.5hho|%#.5hho|%0.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
     printf("\n\n\n");
-    ft_printf(" ft_printf :%-#23.o|%-023.o|%#023.o|%-#023.o\n", 0U, 0U, 0U, 0U);
-	printf("    printf :%-#23.o|%-023.o|%#023.o|%-#023.o", 0U, 0U, 0U, 0U);
 
-    ft_printf("\n\n");
-	printf("printf :\t%f\n", 10.51111);
-	ft_printf("ft_printf :\t%f\n\n", 10.51111);
-	printf("printf :\t%f\n", 99.0555);
-	ft_printf("ft_printf :\t%f\n\n", 99.0555);
-	printf("printf :\t%f\n", 1111.1111111111);
-	ft_printf("ft_printf :\t%f\n\n", 1111.1111111111);
-	printf("printf :\t%f\n", 1111.777777777777777777);
-	ft_printf("ft_printf :\t%f\n\n", 1111.777777777777777777);
-	printf("printf :\t%.1f\n", 1111.777777777777777777);
-	ft_printf("ft_printf :\t%.1f\n\n", 1111.777777777777777777);
-	printf("printf :\t%f\n", 0.0000000005);
-	ft_printf("ft_printf :\t%f\n\n", 0.0000000005);
-	printf("printf :\t%f\n", 0.02);
-	ft_printf("ft_printf :\t%f\n\n", 0.02);
-	printf("printf :\t%f\n", 0.0002);
-	ft_printf("ft_printf :\t%f\n\n", 0.0002);
-	printf("printf :\t%f\n", 0.000004);
-	ft_printf("ft_printf :\t%f\n\n", 0.000004);
-	printf("printf :\t%f\n", -0.000004);
-	ft_printf("ft_printf :\t%f\n\n", -0.000004);
-	printf("printf :\t%f\n", 9999999.123456789);
-	ft_printf("ft_printf :\t%f\n\n", 9999999.123456789);
-	printf("printf :\t%.3f\n", 9999999.123456789);
-	ft_printf("ft_printf :\t%.3f\n\n", 9999999.123456789);
+
+    ft_printf(" ft_printf :%1.5hho|%-1.5hho|%#1.5hho|%01.5hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%1.5hho|%-1.5hho|%#1.5hho|%01.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+
+    ft_printf(" ft_printf :%23.5hho|%-23.5hho|%#23.5hho|%023.5hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%23.5hho|%-23.5hho|%#23.5hho|%023.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+
+    ft_printf(" ft_printf :%-#.5hho|%-0.5hho|%#0.5hho|%-#0.5hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%-#.5hho|%-0.5hho|%#0.5hho|%-#0.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%-#1.5hho|%-01.5hho|%#01.5hho|%-#01.5hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%-#1.5hho|%-01.5hho|%#01.5hho|%-#01.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%-#23.5hho|%-023.5hho|%#023.5hho|%-#023.5hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%-#23.5hho|%-023.5hho|%#023.5hho|%-#023.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+
+
+    ft_printf(" ft_printf :%#23.5hho|%023.5hho\n", ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%#23.5hho|%023.5hho", ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%#23.5hho|%023.5hho\n", 0, 0);
+	printf("    printf :%#23.5hho|%023.5hho", 0, 0);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%#23.5hho|%023.5hho\n", 0, 0);
+	printf("    printf :%#23.5hho|%023.5hho", 0, 0);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%-#23hho|%-023hho|%#023hho|%-#023hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%-#23hho|%-023hho|%#023hho|%-#023hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%-#23X|%-023X|%#023X|%-#023X\n", ULONG_MAX, ULONG_MAX, ULONG_MAX, ULONG_MAX);
+	printf("    printf :%-#23X|%-023X|%#023X|%-#023X", ULONG_MAX, ULONG_MAX, ULONG_MAX, ULONG_MAX);
+    printf("\n\n\n");
+
+
+
+    ft_printf(" ft_printf :%23X|%-23X|%#X|%023X\n", 0U, 0U, 0U, 0U);
+	printf("    printf :%23X|%-23X|%#X|%023X", 0U, 0U, 0U, 0U);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%#1.o|\n", 0U);
+	printf("    printf :%#1.o|", 0U);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%#23.5lX|%023.5lX\n", ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%#23.5lX|%023.5lX", ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+
+    ft_printf(" ft_printf :%-+hi|%- hi|%-0hi|%+ hi|%+0hi|% 0hi|%-+ 0hi\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
+	printf("    printf :%-+hi|%- hi|%-0hi|%+ hi|%+0hi|% 0hi|%-+ 0hi", LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN, LLONG_MIN);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%.5hhx|%-.5hhx|%#.5hhx|%0.5hhx\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%.5hhx|%-.5hhx|%#.5hhx|%0.5hhx", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+
+    ft_printf(" ft_printf :%.5hho|%-.5hho|%#.5hho|%0.5hho\n", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+	printf("    printf :%.5hho|%-.5hho|%#.5hho|%0.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
+    printf("\n\n\n");
+
+
+	// %-#23llX|%-023llX|%#023llX|%-#023llX", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX
     return 0;
 }
