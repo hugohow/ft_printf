@@ -12,14 +12,13 @@
 
 #include "ft_printf.h"
 
-char *ft_ulltoa_offset(unsigned long long nb, size_t size_allocation)
+char		*ft_ulltoa_offset(unsigned long long nb, size_t size_allocation)
 {
-	char				*output;
-	size_t				nb_len;
+	char	*output;
+	size_t	nb_len;
 
 	nb_len = ft_nblen_ull(nb);
-	output = (char *)malloc((size_allocation) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)malloc(sizeof(*output) * size_allocation)))
 		return (NULL);
 	output[0] = '0';
 	output[nb_len] = '\0';

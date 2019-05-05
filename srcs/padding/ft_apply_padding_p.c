@@ -13,13 +13,13 @@
 
 #include "ft_printf.h"
 
-static char *ft_add_prefix(char *str)
+static char         *ft_add_prefix(char *str)
 {
     str = ft_strcat_r(PREFIX_0X, str);
     return (str);
 }
 
-static char *ft_add_sign(char *str, t_flag *flag, int sign)
+static char         *ft_add_sign(char *str, t_flag *flag, int sign)
 {
 	if (GOT_PLUS(flag, sign))
 		str = ft_strcat_r("+", str);
@@ -30,9 +30,9 @@ static char *ft_add_sign(char *str, t_flag *flag, int sign)
 	return (str);
 }
 
-static size_t get_size_to_add(char *str, t_flag *flag, int sign)
+static              size_t get_size_to_add(char *str, t_flag *flag, int sign)
 {
-    unsigned int str_len;
+    unsigned int    str_len;
 
     str_len = 0;
     if (str)
@@ -51,19 +51,18 @@ static size_t get_size_to_add(char *str, t_flag *flag, int sign)
     return (str_len);
 }
 
-static char *str_to_fill(char *str, t_flag *flag, int sign)
+static char         *str_to_fill(char *str, t_flag *flag, int sign)
 {
-	char *to_add;
-    unsigned int to_add_len;
-    unsigned int i;
+	char            *to_add;
+    unsigned int    to_add_len;
+    unsigned int    i;
 
     to_add_len = get_size_to_add(str, flag, sign);
     if (to_add_len + ft_strlen(str) >= flag->width)
         return (ft_strdup(""));
-    to_add = (char *)malloc((flag->width + 2) * sizeof(char));
-    if (to_add == NULL)
+    if (!(to_add = (char *)malloc(sizeof(*to_add) * (flag->width + 2))))
         return (NULL);
-        i = 0;
+    i = 0;
     while (to_add_len + ft_strlen(str) + i < flag->width)
     {
         to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
@@ -73,9 +72,9 @@ static char *str_to_fill(char *str, t_flag *flag, int sign)
     return (to_add);
 }
 
-static char	*ft_strcat_r_char(char c, char *dst, size_t len)
+static char         *ft_strcat_r_char(char c, char *dst, size_t len)
 {
-	size_t	len_dst;
+	size_t          len_dst;
 
 	len_dst = ft_strlen(dst);
 	ft_memmove(dst + len, dst, len_dst);
@@ -85,12 +84,11 @@ static char	*ft_strcat_r_char(char c, char *dst, size_t len)
 }
 
 
-char *ft_apply_padding_p(char *str, t_flag *flag, int sign)
+char                *ft_apply_padding_p(char *str, t_flag *flag, int sign)
 {
-    char *to_add;
+    char            *to_add;
 	
     to_add = str_to_fill(str, flag, sign);
-
     if (FILL_WITH_ZEROS(flag, sign))
     {
         str = ft_strcat_r(to_add, str);
@@ -105,6 +103,5 @@ char *ft_apply_padding_p(char *str, t_flag *flag, int sign)
 		else
 			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
 	}
-
     return (str);
 }

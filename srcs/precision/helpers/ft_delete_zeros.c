@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static char *ft_delete_element(char *str, t_flag *flag, int i)
+static char     *ft_delete_element(char *str, t_flag *flag, int i)
 {
     if (str == NULL)
         return (NULL);
@@ -25,9 +25,9 @@ static char *ft_delete_element(char *str, t_flag *flag, int i)
     return (str);
 }
 
-static int ft_str_find_extra_zero(char *str)
+static int      ft_str_find_extra_zero(char *str)
 {
-    int i;
+    int         i;
 
     i = 0;
     while (str[i])
@@ -44,9 +44,9 @@ static int ft_str_find_extra_zero(char *str)
 }
 
 
-static int delete_one_zero(char **p_str, t_flag *flag, int sign)
+static int      delete_one_zero(char **p_str, t_flag *flag, int sign)
 {
-    int i;
+    int         i;
 
     i = ft_str_find_extra_zero(*p_str);
     if (sign)
@@ -61,9 +61,9 @@ static int delete_one_zero(char **p_str, t_flag *flag, int sign)
     return (1);
 }
 
-char *ft_delete_zeros(char *str, t_flag *flag, int sign)
+char            *ft_delete_zeros(char *str, t_flag *flag, int sign)
 {
-    int offset;
+    int         offset;
 
     offset = 0;
     if (ft_str_precision_count(str, offset) == flag->precision)

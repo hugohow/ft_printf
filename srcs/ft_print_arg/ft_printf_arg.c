@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 
 
-char    *ft_flag_replace(char *str, char *to_replace)
+char			*ft_flag_replace(char *str, char *to_replace)
 {
     str[ft_strlen(str) - 1] = '\0';
     return (ft_strcat(str, to_replace));
@@ -41,10 +41,10 @@ static const	t_ft_print fts_print[] =
 	{0, 0, NULL},
 };
 
-t_ft *ft_find_print(t_flag *flag)
+t_ft			*ft_find_print(t_flag *flag)
 {
-	int i;
-	int j;
+	int			i;
+	int			j;
 
 	i = 0;
 	while (fts_print[i].key)
@@ -65,11 +65,11 @@ t_ft *ft_find_print(t_flag *flag)
 	return (NULL);
 }
 
-void    ft_printf_arg(va_list *ap, char *str, size_t *len)
+void			ft_printf_arg(va_list *ap, char *str, size_t *len)
 {
-	t_flag *flag;
-    t_ft *fct;
-	int ret;
+	t_flag		*flag;
+    t_ft		*fct;
+	int			ret;
 
 	flag = ft_create_flag(str);
 	if (flag == NULL)

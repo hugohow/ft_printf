@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int	ft_print_percent(va_list *ap, t_flag *flag, int fd)
+int			ft_print_percent(va_list *ap, t_flag *flag, int fd)
 {
-	char *output;
-	size_t res;
+	char	*output;
+	size_t	res;
 
 	if (ap && flag)
 	{
-
+		
 	}
 	output = ft_strdup(PERCENTAGE);
 	// output = ft_apply_padding(output, flag, 1);

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int ft_flag_get_width(char *str)
+int     ft_flag_get_width(char *str)
 {
     int width;
     int i;

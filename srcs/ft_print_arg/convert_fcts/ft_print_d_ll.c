@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int	ft_print_d_ll(va_list *ap, t_flag *flag, int fd)
+int						ft_print_d_ll(va_list *ap, t_flag *flag, int fd)
 {
-	long long tmp;
-	char *output;
-	unsigned long long tmp_val;
-	size_t size_allocation;
-	size_t res;
-	int sign;
+	long long			tmp;
+	char				*output;
+	unsigned long long	tmp_val;
+	size_t				size_allocation;
+	size_t				res;
+	int					sign;
 
 	tmp = va_arg(*ap, long long);
 	if (tmp == 0)

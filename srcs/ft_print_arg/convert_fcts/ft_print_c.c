@@ -13,13 +13,13 @@
 
 #include "ft_printf.h"
 
-int	ft_print_c(va_list *ap, t_flag *flag, int fd)
+int			ft_print_c(va_list *ap, t_flag *flag, int fd)
 {
-	char *output;
-	size_t res;
-	size_t size_allocation;
-	int width;
-	int ret;
+	char	*output;
+	size_t	res;
+	size_t	size_allocation;
+	int		width;
+	int		ret;
 
 	size_allocation = ft_get_size_to_allocate(2, flag);
 	output = ft_memalloc(size_allocation * sizeof(char));

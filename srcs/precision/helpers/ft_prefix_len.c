@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int ft_prefix_len(t_flag *flag, int sign)
+int		ft_prefix_len(t_flag *flag, int sign)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (GOT_PREFIX(flag, sign))

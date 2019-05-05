@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int	ft_flag_get_key(char *flag)
+int			ft_flag_get_key(char *flag)
 {
-	char c;
+	char	c;
 	// 0000 0000 0000 0000
 	// 
 

@@ -13,13 +13,12 @@
 #include "ft_printf.h"
 
 
-char *ft_apply_precision(char *str, t_flag *flag, int sign)
+char                *ft_apply_precision(char *str, t_flag *flag, int sign)
 {
-    int offset;
-    unsigned int str_len;
+    int             offset;
+    unsigned int    str_len;
+
     str_len = ft_strlen(str);
-
-
     if (sign == 0 && flag->precision == 0)
     {
         str = ft_strcpy(str, "");

@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-static size_t get_len(long long nb, size_t base_len)
+static			size_t get_len(long long nb, size_t base_len)
 {
-	size_t size;
-	long long nb_tmp;
+	size_t		size;
+	long long	nb_tmp;
 
 	size = 0;
 	nb_tmp = nb;
@@ -27,7 +27,7 @@ static size_t get_len(long long nb, size_t base_len)
 	return (size);
 }
 
-static char *ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
+static char		*ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 {
 	char		*output;
 	long long	result;
@@ -43,8 +43,7 @@ static char *ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 		result = result * 10 + (decimal[i] - '0');
 	len = get_len(result, base_len);
     mem = ft_get_size_to_allocate(len, flag);
-	output = (char *)ft_memalloc((mem +  + 1) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)ft_memalloc(sizeof(*output) * (mem +  + 1))))
 		return (NULL);
 	output[len--] = '\0';
 	if (result == 0)
@@ -57,9 +56,9 @@ static char *ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 	return (output);
 }
 
-char *ft_convert_output(char *str, t_flag *flag)
+char			*ft_convert_output(char *str, t_flag *flag)
 {
-    char *output;
+    char		*output;
 
     if (flag->conv == 'o')
     {

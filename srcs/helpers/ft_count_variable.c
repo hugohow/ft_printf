@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-size_t ft_count_variable(const char *format)
+size_t      ft_count_variable(const char *format)
 {
-    size_t count;
-    size_t i;
+    size_t  count;
+    size_t  i;
 
     count = 0;
     i = 0;

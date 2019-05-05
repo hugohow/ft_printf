@@ -12,13 +12,13 @@
 
 #include "ft_printf.h"
 
-int	ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd)
+int				ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd)
 {
-	long double tmp;
-	char *output;
-	size_t size_allocation;
-	size_t res;
-	int sign;
+	long double	tmp;
+	char		*output;
+	size_t		size_allocation;
+	size_t		res;
+	int			sign;
 
 	tmp = va_arg(*ap, long double);
 	sign = tmp;

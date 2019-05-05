@@ -37,7 +37,7 @@
 #define HALF_POWER_22 "0.000000238418579"
 #define HALF_POWER_23 "0.00000011920929"
 
-static const	char *half_powers[] =
+static const char	*half_powers[] =
 {
 	HALF_POWER_0,
 	HALF_POWER_1,
@@ -73,11 +73,12 @@ typedef union {
 } U;
 
 
-char *get_binary(unsigned char c)
+char				*get_binary(unsigned char c)
 {
-	char *output;
-	char base[2] = "01";
-	int k;
+	char			*output;
+	char			base[2] = "01";
+	char			tmp;
+	int				k;
 
 	output = (char *)malloc(sizeof(char) * (8 + 1));
 	k = 0;
@@ -93,9 +94,7 @@ char *get_binary(unsigned char c)
 		k++;
 	}
 	output[k] = '\0';
-	
 	k = 0;
-	char tmp;
 	while (k != 4)
 	{
 		tmp = output[k];
@@ -103,16 +102,15 @@ char *get_binary(unsigned char c)
 		output[7 - k] = tmp;
 		k++;
 	}
-
 	return (output);
 }
 
-char *get_bin_floating_point(float nb)
+char				*get_bin_floating_point(float nb)
 {
-	char *output;
-	int i;
+	char			*output;
+	int				i;
 
-	output = malloc(33 * sizeof(char));
+	output = (char *)malloc(sizeof(*output) * 33);
 	output[0] = '\0';
 	i = (int)sizeof(float) - 1;
 	U u = { (float)nb };
@@ -124,16 +122,16 @@ char *get_bin_floating_point(float nb)
 	return (output);
 }
 
-char *get_mantissa(char *bin_floating_point)
+char				*get_mantissa(char *bin_floating_point)
 {
 	return (bin_floating_point + 9);
 }
 
-int get_exponent(char *bin_floating_point)
+int					get_exponent(char *bin_floating_point)
 {
-	int exponent;
-	int i;
-	int in;
+	int				exponent;
+	int				i;
+	int				in;
 
 	i = 1;
 	exponent = 0;
@@ -149,9 +147,9 @@ int get_exponent(char *bin_floating_point)
 	return (exponent - 127);
 }
 
-char *get_dec_mantissa(char *str, char **p_output, size_t size_allocation)
+char				*get_dec_mantissa(char *str, char **p_output, size_t size_allocation)
 {
-	int 	i;
+	int				i;
 
 	i = 0;
 	*p_output = ft_strcpy(*p_output, "1");
@@ -170,21 +168,21 @@ char *get_dec_mantissa(char *str, char **p_output, size_t size_allocation)
 
 
 
-int	ft_print_f(va_list *ap, t_flag *flag,  int fd)
+int					ft_print_f(va_list *ap, t_flag *flag,  int fd)
 {
-	double tmp;
-	char *output;
-	int expo;
-	int sign;
-	size_t res;
-	size_t size_allocation;
+	char			*output;
+	double			tmp;
+	size_t			res;
+	size_t			size_allocation;
+	int				expo;
+	int				sign;
 
 
 	size_allocation = 4096;
 	tmp = va_arg(*ap, double);
 	sign = get_bin_floating_point((float)tmp)[0] == '1' ? -1 : 1;
 	expo = get_exponent(get_bin_floating_point((float)tmp));
-	output = (char *)malloc(size_allocation * sizeof(char));
+	output = (char *)malloc(sizeof(*output) * size_allocation);
 	output = get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp)), &output, size_allocation);
 	while (expo != 0)
 	{

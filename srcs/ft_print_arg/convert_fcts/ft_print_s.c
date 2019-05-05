@@ -12,21 +12,18 @@
 
 #include "ft_printf.h"
 
-int	ft_print_s(va_list *ap, t_flag *flag, int fd)
+int			ft_print_s(va_list *ap, t_flag *flag, int fd)
 {
-	char *output;
-	char *arg;
-	size_t size_allocation;
-	size_t res;
+	char	*output;
+	char	*arg;
+	size_t	size_allocation;
+	size_t	res;
 
 	arg = va_arg(*ap, char*);
 	size_allocation = arg == NULL ? ft_strlen("(null)") : ft_strlen(arg);
 	size_allocation = ft_get_size_to_allocate(size_allocation, flag);
-
-	output = (char *)malloc((size_allocation) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)malloc(sizeof(*output) * size_allocation)))
 		return (-1);
-	
 	output = ft_strcpy(output, arg == NULL ? "(null)" : arg);
 	output = ft_apply_precision_s(output, flag, 1);
 	output = ft_apply_padding(output, flag, 1);

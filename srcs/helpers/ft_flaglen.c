@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int is_valid_par(char c)
+static int  is_valid_par(char c)
 {
     if (c == ' ' || c == '#' || c == '0' || c == '-' || c == '+' || c == '*' || c == '$' || c == '.')
         return (1);
@@ -23,7 +23,7 @@ static int is_valid_par(char c)
     return (0);
 }
 
-size_t ft_flaglen(const char *str)
+size_t      ft_flaglen(const char *str)
 {
     size_t  i;
     i = 1;
