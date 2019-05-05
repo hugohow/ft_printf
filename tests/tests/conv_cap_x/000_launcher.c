@@ -333,6 +333,129 @@ int					conv_cap_x_launcher(void)
 	if ((err = load_test(&test_list, "\"%-#.hX|%-0.hX|%#0.hX|%-#0.hX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
 			&conv_cap_x_ullong_max_and_various_flags_combined_and_dot_precision_h_modifier, SUCCESS)))
 		return (err);
+	if ((err = load_test(&test_list, "\"%-#.5hX|%-0.5hX|%#0.5hX|%-#0.5hX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_5_precision_h_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1.hX|%-01.hX|%#01.hX|%-#01.hX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_and_dot_precision_h_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1.5hX|%-01.5hX|%#01.5hX|%-#01.5hX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_and_5_precision_h_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23.hX|%-023.hX|%#023.hX|%-#023.hX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_and_dot_precision_h_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23.5hX|%-023.5hX|%#023.5hX|%-#023.5hX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_and_5_precision_h_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%lX|%-lX|%#lX|%0lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%1lX|%-1lX|%#lX|%01lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_1_width_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%23lX|%-23lX|%#lX|%023lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_23_width_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%.lX|%-.lX|%#.lX|%0.lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_dot_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%.5lX|%-.5lX|%#.5lX|%0.5lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_5_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%1.lX|%-1.lX|%#1.lX|%01.lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_1_width_and_dot_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%23.lX|%-23.lX|%#23.lX|%023.lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_23_width_and_dot_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%1.5lX|%-1.5lX|%#1.5lX|%01.5lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_1_width_and_5_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%23.5lX|%-23.5lX|%#23.5lX|%023.5lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_23_width_and_5_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#lX|%-0lX|%#0lX|%-#0lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1lX|%-01lX|%#01lX|%-#01lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23lX|%-023lX|%#023lX|%-#023lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#.lX|%-0.lX|%#0.lX|%-#0.lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_dot_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#.5lX|%-0.5lX|%#0.5lX|%-#0.5lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_5_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1.lX|%-01.lX|%#01.lX|%-#01.lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_and_dot_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1.5lX|%-01.5lX|%#01.5lX|%-#01.5lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_and_5_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23.lX|%-023.lX|%#023.lX|%-#023.lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_and_dot_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23.5lX|%-023.5lX|%#023.5lX|%-#023.5lX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_and_5_precision_l_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%llX|%-llX|%#llX|%0llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%1llX|%-1llX|%#llX|%01llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_1_width_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%23llX|%-23llX|%#llX|%023llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_23_width_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%.llX|%-.llX|%#.llX|%0.llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_dot_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%.5llX|%-.5llX|%#.5llX|%0.5llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_5_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%1.llX|%-1.llX|%#1.llX|%01.llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_1_width_and_dot_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%23.llX|%-23.llX|%#23.llX|%023.llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_23_width_and_dot_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%1.5llX|%-1.5llX|%#1.5llX|%01.5llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_1_width_and_5_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%23.5llX|%-23.5llX|%#23.5llX|%023.5llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_and_23_width_and_5_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#llX|%-0llX|%#0llX|%-#0llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1llX|%-01llX|%#01llX|%-#01llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23llX|%-023llX|%#023llX|%-#023llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#.llX|%-0.llX|%#0.llX|%-#0.llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_dot_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#.5llX|%-0.5llX|%#0.5llX|%-#0.5llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_5_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1.llX|%-01.llX|%#01.llX|%-#01.llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_and_dot_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#1.5llX|%-01.5llX|%#01.5llX|%-#01.5llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_1_width_and_5_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23.llX|%-023.llX|%#023.llX|%-#023.llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_and_dot_precision_ll_modifier, SUCCESS)))
+		return (err);
+	if ((err = load_test(&test_list, "\"%-#23.5llX|%-023.5llX|%#023.5llX|%-#023.5llX\", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX",
+			&conv_cap_x_ullong_max_and_various_flags_combined_and_23_width_and_5_precision_ll_modifier, SUCCESS)))
+		return (err);
 	/*LOAD_TEST_HERE*/
 	return (launch_tests(&test_list, fd));
 }
