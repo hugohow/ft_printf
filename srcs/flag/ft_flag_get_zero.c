@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int ft_flag_get_zero(char *str)
+int                 ft_flag_get_zero(char *str)
 {
-    unsigned int i;
+    unsigned int    i;
 
     i = 0;
     while (str[i])

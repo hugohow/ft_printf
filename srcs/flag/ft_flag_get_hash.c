@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int ft_flag_get_hash(char *flag)
+int                 ft_flag_get_hash(char *flag)
 {
-    unsigned int i;
+    unsigned int    i;
 
     i = 0;
     if (flag[ft_strlen(flag) - 1] == '%')
         return (0);
-    while (flag[i] && (ft_isdigit(flag[i]) == 0 || flag[i] == '0'))
+    while ((flag[i] && ft_isdigit(flag[i]) == 0) || flag[i] == '0')
     {
         if (flag[i] == '#')
             return (1);

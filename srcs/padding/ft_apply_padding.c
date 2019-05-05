@@ -12,16 +12,15 @@
 
 #include "ft_printf.h"
 
-static char *ft_str_join(const char *to_add, char *str1, t_flag *flag)
+static char         *ft_str_join(const char *to_add, char *str1, t_flag *flag)
 {
-    size_t size_allocation;
-    char *output;
-    int k;
-    int i;
+    char            *output;
+    size_t          size_allocation;
+    int             k;
+    int             i;
 
     size_allocation = ft_get_size_to_allocate(ft_strlen(str1) + ft_strlen(to_add), flag);
-    output = (char *)malloc((size_allocation + 1) * sizeof(char));
-    if (output == NULL)
+    if (!(output = (char *)malloc(sizeof(*output) * (size_allocation + 1))))
         return (NULL);
     k = 0;
     i = 0;
@@ -43,16 +42,15 @@ static char *ft_str_join(const char *to_add, char *str1, t_flag *flag)
     return (output);
 }
 
-static char *ft_str_join_r(char *str1, const char *to_add, t_flag *flag)
+static char         *ft_str_join_r(char *str1, const char *to_add, t_flag *flag)
 {
-    size_t size_allocation;
-    char *output;
-    int k;
-    int i;
+    char            *output;
+    size_t          size_allocation;
+    int             k;
+    int             i;
 
     size_allocation = ft_get_size_to_allocate(ft_strlen(str1) + ft_strlen(to_add), flag);
-    output = (char *)malloc((size_allocation + 1) * sizeof(char));
-    if (output == NULL)
+    if (!(output = (char *)malloc(sizeof(*output) * (size_allocation + 1))))
         return (NULL);
     k = 0;
     i = 0;
@@ -74,7 +72,7 @@ static char *ft_str_join_r(char *str1, const char *to_add, t_flag *flag)
     return (output);
 }
 
-static char *get_prefix(char *str, t_flag *flag)
+static char         *get_prefix(char *str, t_flag *flag)
 {
     if (str)
     {
@@ -110,15 +108,14 @@ static char *get_prefix(char *str, t_flag *flag)
     return ("");
 }
 
-static char *ft_add_prefix(char *str, t_flag *flag, int sign)
+static char         *ft_add_prefix(char *str, t_flag *flag, int sign)
 {
     (void)(sign);
-
     str = ft_str_join(get_prefix(str, flag), str, flag);
     return (str);
 }
 
-static char *ft_add_sign(char *str, t_flag *flag, int sign)
+static char         *ft_add_sign(char *str, t_flag *flag, int sign)
 {
 	if (GOT_PLUS(flag, sign))
 		str = ft_str_join("+", str, flag);
@@ -129,9 +126,9 @@ static char *ft_add_sign(char *str, t_flag *flag, int sign)
 	return (str);
 }
 
-static size_t get_size_to_add(char *str,t_flag *flag, int sign)
+static size_t       get_size_to_add(char *str,t_flag *flag, int sign)
 {
-    unsigned int str_len;
+    unsigned int    str_len;
 
     str_len = 0;
     if (NUMERICAL_VALUE(flag) == 0)
@@ -147,19 +144,18 @@ static size_t get_size_to_add(char *str,t_flag *flag, int sign)
     return (str_len);
 }
 
-static char *str_to_fill(char *str, t_flag *flag, int sign)
+static char         *str_to_fill(char *str, t_flag *flag, int sign)
 {
-	char *to_add;
-    unsigned int to_add_len;
-    unsigned int i;
+	char            *to_add;
+    unsigned int    to_add_len;
+    unsigned int    i;
 
     to_add_len = get_size_to_add(str,flag, sign);
     if (to_add_len + ft_strlen(str) >= flag->width)
         return (ft_strdup(""));
-    to_add = (char *)malloc((flag->width + 2) * sizeof(char));
-    if (to_add == NULL)
+    if (!(to_add = (char *)malloc(sizeof(*to_add) * (flag->width + 2))))
         return (NULL);
-        i = 0;
+    i = 0;
     while (to_add_len + ft_strlen(str) + i < flag->width)
     {
         to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
@@ -231,17 +227,13 @@ static char *str_to_fill(char *str, t_flag *flag, int sign)
 //     return (-1);
 // }
 
-char *ft_apply_padding(char *str, t_flag *flag, int sign)
+char                *ft_apply_padding(char *str, t_flag *flag, int sign)
 {
-    char *to_add;
-	
+    char            *to_add;
 
     if (str[0] && str[0] == '0' && flag->conv == 'o')
-    {
         flag->hash = 0;
-    }
     to_add = str_to_fill(str, flag, sign);
-
     if (NUMERICAL_VALUE(flag) == 0)
     {
 		if (flag->minus == 1)

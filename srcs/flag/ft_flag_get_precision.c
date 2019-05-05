@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-int ft_flag_get_precision(char *flag)
+int                 ft_flag_get_precision(char *flag)
 {
-    unsigned int i;
-    int precision;
+    unsigned int    i;
+    int             precision;
 
     i = 0;
     precision = 0;
@@ -32,9 +32,7 @@ int ft_flag_get_precision(char *flag)
             return (precision);
         }
         else if (flag[i] == '.')
-        {
             return (0);
-        }
         i++;
     }
     return (-1);

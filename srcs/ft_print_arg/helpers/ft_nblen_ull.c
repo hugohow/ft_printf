@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-size_t	ft_nblen_ull(unsigned long long nb)
+size_t		ft_nblen_ull(unsigned long long nb)
 {
 	size_t	nblen;
 

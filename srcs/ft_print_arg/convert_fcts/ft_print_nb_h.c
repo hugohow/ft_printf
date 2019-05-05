@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int	ft_print_nb_h(va_list *ap, t_flag *flag, int fd)
+int						ft_print_nb_h(va_list *ap, t_flag *flag, int fd)
 {
-	unsigned short tmp;
-	char *output;
-	unsigned long long tmp_val;
-	size_t size_allocation;
-	size_t res;
-	int sign;
+	char				*output;
+	unsigned short		tmp;
+	unsigned long long	tmp_val;
+	size_t				size_allocation;
+	size_t				res;
+	int					sign;
 
 	tmp = (unsigned short)va_arg(*ap, unsigned int);
 	if (tmp == 0)

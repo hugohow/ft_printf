@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void ft_print_flag(t_flag *flag)
+void	ft_print_flag(t_flag *flag)
 {
 	ft_printf("\n------------------\n");
 	ft_putchar(flag->conv);

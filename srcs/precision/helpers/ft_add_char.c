@@ -16,7 +16,7 @@
 // By default we push to the left, to optimize the space, but in a certains situations,
 // you have to push to the right
 
-static char *ft_add_element(char *str, t_flag *flag, int index, char c)
+static char     *ft_add_element(char *str, t_flag *flag, int index, char c)
 {
     if (flag->minus == 1 || (str[0] != ' '))
     {
@@ -30,9 +30,9 @@ static char *ft_add_element(char *str, t_flag *flag, int index, char c)
     }
 }
 
-static char *add_one_char(char *str, t_flag *flag, int sign, char c)
+static char     *add_one_char(char *str, t_flag *flag, int sign, char c)
 {
-    int i;
+    int         i;
 
     i = 0;
     if (sign)
@@ -51,9 +51,9 @@ static char *add_one_char(char *str, t_flag *flag, int sign, char c)
     return (str);
 }
 
-char *ft_add_char(char *str, t_flag *flag, int sign, char c)
+char            *ft_add_char(char *str, t_flag *flag, int sign, char c)
 {
-    int offset;
+    int         offset;
 
     offset = 0;
     if (ft_str_precision_count(str, offset) == flag->precision)

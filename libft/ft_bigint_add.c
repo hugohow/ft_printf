@@ -50,7 +50,7 @@ char *ft_bigint_add(char *dst, const char *to_add, size_t limit)
 	int dec;
 	
 	len = ft_strlen(dst) < ft_strlen(to_add) ? ft_strlen(to_add) : ft_strlen(dst);
-	to_add_cpy = (char *)malloc((len*2) * sizeof(char));
+	to_add_cpy = (char *)malloc(sizeof(*to_add_cpy) * (len*2));
 	to_add_cpy = ft_strcpy(to_add_cpy, to_add);
 	dst_index = get_index(dst, '.');
 	to_add_index = get_index(to_add_cpy, '.');

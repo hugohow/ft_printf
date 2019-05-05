@@ -13,19 +13,19 @@
 #include "ft_printf.h"
 
 
-static int is_valid_conversion(char c)
+static int  is_valid_conversion(char c)
 {
     // if (c == '\0')
     //     return (0);
     // sSpdDioOuUxXcC
-    if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i'
-        || c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X'
+    if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i' \
+        || c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X'\
         || c == 'c' || c == 'C' || c == 'f')
         return (1);
     return (0);
 }
 
-static int is_valid_length(char c)
+static int  is_valid_length(char c)
 {
     // if (c == '\0')
     //     return (0);
@@ -35,9 +35,9 @@ static int is_valid_length(char c)
     return (0);
 }
 
-int ft_flag_get_length(char *flag)
+int         ft_flag_get_length(char *flag)
 {
-    size_t i;
+    size_t  i;
 
     i = 0;
     while (flag[i] && is_valid_conversion(flag[i]) == 0)
@@ -55,13 +55,13 @@ int ft_flag_get_length(char *flag)
             return (LENGTH_Z);
         if (flag[i] == 'h')
         {
-            if (i > 1 && flag[i - 1] == 'h')
+            if (i > 1 && (flag[i - 1] == 'h'))
                 return (LENGTH_HH);
             return (LENGTH_H);
         }
         if (flag[i] == 'l')
         {
-            if (i > 1 && flag[i - 1] == 'l')
+            if (i > 1 && (flag[i - 1] == 'l'))
                 return (LENGTH_LL);
             return (LENGTH_L);
         }

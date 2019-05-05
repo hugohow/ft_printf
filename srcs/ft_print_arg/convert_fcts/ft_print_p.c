@@ -15,12 +15,13 @@
 
 int	ft_print_p(va_list *ap, t_flag *flag, int fd)
 {
-	char *output;
-	void *addr;
-	unsigned char t[sizeof(void *) + 1];
-	char *tmp_str;
-	int i;
-	size_t res;
+	char			*output;
+	char			*tmp_str;
+	unsigned char	t[sizeof(void *) + 1];
+	void			*addr;
+	size_t			res;
+	int				i;
+	int				len;
 
 	addr = va_arg(*ap, void *);
 	ft_memcpy(t, &addr, sizeof(void *));
@@ -46,16 +47,11 @@ int	ft_print_p(va_list *ap, t_flag *flag, int fd)
 			break;
 		i++;
 	}
-	int len;
-
 	len =  ft_strlen(output) - i;
 	output = ft_memmove(output, output + i, len);
 	output[len] = 0;
-
 	if (len == 0)
 		output = ft_strcpy(output, "0");
-
-
 	output = ft_apply_precision(output, flag, 1);
 	output = ft_apply_padding_p(output, flag, 1);
 	ft_putstr_fd(output, fd);
