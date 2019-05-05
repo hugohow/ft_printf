@@ -18,11 +18,7 @@ compile_test:
 
 # cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
 test:
-ifeq ($(wildcard tests/tests/conv_d/.*),)
-		cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x conv_c
-else
-		cd tests/tests && ./tests
-endif
+		cd tests/tests && $(MAKE) test
 
 clean:
 	rm -rf *.o
