@@ -13,7 +13,8 @@ $(NAME):
 	./main
 
 test: re
-	cd tests/tests && $(MAKE) test
+	# cd tests/tests && $(MAKE) test
+	cd tests/tests && ./tests
 
 clean:
 	rm -rf *.o
