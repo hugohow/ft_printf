@@ -31,7 +31,7 @@ t_flag		*ft_create_flag(char *str)
 {
 	t_flag	*flag;
 
-	if (!(flag = (t_flag *)ft_memalloc(sizeof(t_flag))))
+	if (!(flag = (t_flag *)ft_memalloc(sizeof(*flag))))
 		return (NULL);
 	flag->key = ft_flag_get_key(str);
 	flag->conv = str[ft_strlen(str) - 1];
