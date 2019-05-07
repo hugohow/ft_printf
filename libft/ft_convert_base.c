@@ -13,10 +13,10 @@
 
 #include "libft.h"
 
-static size_t size_to_malloc(long long nb, size_t base_len)
+static size_t	size_to_malloc(long long nb, size_t base_len)
 {
-	size_t size;
-	long long nb_tmp;
+	size_t		size;
+	long long	nb_tmp;
 
 	size = 0;
 	nb_tmp = nb;
@@ -28,7 +28,7 @@ static size_t size_to_malloc(long long nb, size_t base_len)
 	return (size);
 }
 
-char *ft_convert_base(char *decimal, char *base)
+char			*ft_convert_base(char *decimal, char *base)
 {
 	char		*output;
 	long long	result;
@@ -42,8 +42,7 @@ char *ft_convert_base(char *decimal, char *base)
 	while (decimal[++i])
 		result = result * 10 + (decimal[i] - '0');
 	len = size_to_malloc(result, base_len);
-	output = (char *)malloc((len + 1) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)malloc((len + 1) * sizeof(*output))))
 		return (NULL);
 	output[len--] = '\0';
 	if (result == 0)

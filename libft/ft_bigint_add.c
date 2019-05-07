@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static int get_index(char *str, char c)
+static int	get_index(char *str, char c)
 {
-    int i;
+    int		i;
 
     i = 0;
     while (str[i] && str[i] != c)
@@ -22,10 +22,9 @@ static int get_index(char *str, char c)
 	return (i);
 }
 
-
-static char *fill_right(char *str, size_t len)
+static char	*fill_right(char *str, size_t len)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
@@ -39,18 +38,19 @@ static char *fill_right(char *str, size_t len)
 	return (str);
 }
 
-char *ft_bigint_add(char *dst, const char *to_add, size_t limit)
+char		*ft_bigint_add(char *dst, const char *to_add, size_t limit)
 {
-	int dot_index;
-	int dst_index;
-	int to_add_index;
-	int len;
-	char *to_add_cpy;
-	int ret;
-	int dec;
+	char	*to_add_cpy;
+	int		dot_index;
+	int		dst_index;
+	int		to_add_index;
+	int		len;
+	int		ret;
+	int		dec;
 	
 	len = ft_strlen(dst) < ft_strlen(to_add) ? ft_strlen(to_add) : ft_strlen(dst);
-	to_add_cpy = (char *)malloc(sizeof(*to_add_cpy) * (len*2));
+	if(!(to_add_cpy = (char *)malloc(sizeof(*to_add_cpy) * (len*2))))
+		retrn (NULL);
 	to_add_cpy = ft_strcpy(to_add_cpy, to_add);
 	dst_index = get_index(dst, '.');
 	to_add_index = get_index(to_add_cpy, '.');

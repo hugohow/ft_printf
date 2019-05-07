@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #define MAX_ADDED 1
 
-static const t_color tab_colors[] = 
+static const	t_color tab_colors[] = 
 {
     {"cyan", ANSI_COLOR_CYAN},
 	{"red", ANSI_COLOR_RED},
@@ -25,10 +25,10 @@ static const t_color tab_colors[] =
 	{"", ""},
 };
 
-int get_and_apply_color(const char *str)
+int				get_and_apply_color(const char *str)
 {
-	int len;
-	int i;
+	int			len;
+	int			i;
 
 	len = 0;
 	i = 0;
@@ -48,19 +48,18 @@ int get_and_apply_color(const char *str)
 	return (0);
 }
 
-int ft_printf(const char* format, ...)
+int				ft_printf(const char* format, ...)
 {
-    va_list ap;
-    size_t  n;
-    size_t  i;
-    size_t  format_len;
-    size_t  len;
-	int ret;
-    char    *flag_line;
+    va_list		ap;
+	char		*flag_line;
+    size_t		n;
+    size_t		i;
+    size_t		format_len;
+    size_t		len;
+	int			ret;
 
     format_len = ft_strlen(format);
-    flag_line = (char *)ft_memalloc((format_len + 1) * sizeof(char));
-	if (flag_line == NULL)
+	if (!(flag_line = (char *)ft_memalloc((format_len + 1) * sizeof(*flag_line))))
 		return (-1);
     n = ft_count_variable(format);
     va_start(ap, format);
@@ -77,9 +76,7 @@ int ft_printf(const char* format, ...)
             i += (int)ft_flaglen(format + i);
         }
 		else if (format[i] == '{' && (ret = get_and_apply_color(format + i + 1)) != 0)
-        {
 			i += ret + 1;
-		}
         else
         {
             ft_putchar_fd(format[i], 1);

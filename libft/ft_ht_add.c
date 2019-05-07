@@ -14,10 +14,9 @@
 
 static t_node_ht	*ft_create_node(const char *key, void *datum)
 {
-	t_node_ht *node;
+	t_node_ht		*node;
 
-	node = (t_node_ht *)malloc(sizeof(t_node_ht));
-	if (node == NULL)
+	if (!(node = (t_node_ht *)malloc(sizeof(*node))))
 		return (NULL);
 	node->key = key;
 	node->datum = datum;
@@ -27,8 +26,8 @@ static t_node_ht	*ft_create_node(const char *key, void *datum)
 
 t_node_ht			*ft_ht_add(t_ht *hash_table, const char *key, void *datum)
 {
-	size_t		index;
-	t_node_ht	*node;
+	t_node_ht		*node;
+	size_t			index;
 
 	if (hash_table == NULL)
 		return (NULL);
