@@ -150,7 +150,7 @@ static char         *str_to_fill(char *str, t_flag *flag, int sign)
     unsigned int    to_add_len;
     unsigned int    i;
 
-    to_add_len = get_size_to_add(str,flag, sign);
+    to_add_len = get_size_to_add(str, flag, sign);
     if (to_add_len + ft_strlen(str) >= flag->width)
         return (ft_strdup(""));
     if (!(to_add = (char *)malloc(sizeof(*to_add) * (flag->width + 2))))
