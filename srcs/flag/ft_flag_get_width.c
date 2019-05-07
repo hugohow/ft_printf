@@ -22,7 +22,7 @@ int     ft_flag_get_width(char *str)
     while (str[i])
     {
         if (str[i] == '.')
-            break;
+            break ;
         if (ft_isdigit(str[i]) == 1 && str[i] != '0')
         {
             while (str[i] && ft_isdigit(str[i]) == 1)

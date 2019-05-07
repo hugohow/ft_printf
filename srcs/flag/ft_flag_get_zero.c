@@ -23,7 +23,7 @@ int                 ft_flag_get_zero(char *str)
         {
             if (str[i] == '0')
                 return (1);
-            break;
+            break ;
         }
         i++;        
     }
