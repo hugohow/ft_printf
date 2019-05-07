@@ -82,5 +82,5 @@ void			ft_printf_arg(va_list *ap, char *str, size_t *len)
 		if (ret != -1)
 			*len += ret;
 	}
-    // ft_memdel((void **)&flag);
+    ft_memdel((void **)&flag);
 }
