@@ -19,7 +19,7 @@ t_ht		*ft_ht_create(size_t size)
 	if (!(hash_table = (t_ht *)malloc(sizeof(*hash_table))))
 		return (NULL);
 	hash_table->size = size;
-	hash_table->table = (t_node_ht **)malloc(size * sizeof(**table));
+	hash_table->table = (t_node_ht **)malloc(size * sizeof(t_node_ht *));
 	if (hash_table == NULL)
 		return (NULL);
 	hash_table->table[0] = 0;

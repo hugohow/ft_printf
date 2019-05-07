@@ -26,8 +26,7 @@ int					ft_print_p(va_list *ap, t_flag *flag, int fd)
 	addr = va_arg(*ap, void *);
 	ft_memcpy(t, &addr, sizeof(void *));
 	i = (sizeof(void *));
-	if (!(output = ft_memalloc((sizeof(void *) * 2 + 1) * sizeof(*output))))
-		return (NULL);
+	output = ft_memalloc((sizeof(void *) * 2 + 1) * sizeof(*output));
 	while (i != -1)
 	{
 		tmp_str = ft_itoa((int)t[i]);

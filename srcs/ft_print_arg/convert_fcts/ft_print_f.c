@@ -182,8 +182,7 @@ int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 	tmp = va_arg(*ap, double);
 	sign = get_bin_floating_point((float)tmp)[0] == '1' ? -1 : 1;
 	expo = get_exponent(get_bin_floating_point((float)tmp));
-	if (!(output = (char *)malloc(sizeof(*output) * size_allocation)))
-		return (NULL);
+	output = (char *)malloc(sizeof(*output) * size_allocation);
 	output = get_dec_mantissa(get_mantissa(get_bin_floating_point((float)tmp)), &output, size_allocation);
 	while (expo != 0)
 	{
