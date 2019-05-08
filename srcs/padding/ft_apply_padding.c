@@ -240,6 +240,7 @@ char                *ft_apply_padding(char *str, t_flag *flag, int sign)
 			str = ft_str_join_r(str, to_add, flag);
 		else
 			str = ft_str_join(to_add, str, flag);
+        ft_memdel((void **)&to_add);
         return (str);
     }
     if (FILL_WITH_ZEROS(flag, sign))
