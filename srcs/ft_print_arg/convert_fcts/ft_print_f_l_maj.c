@@ -23,7 +23,8 @@ int				ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd)
 	tmp = va_arg(*ap, long double);
 	sign = tmp;
 	size_allocation = ft_nblen_ull((unsigned long long)(tmp < 0 ? -tmp : tmp));
-	output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), ft_get_size_to_allocate(size_allocation, flag));
+	output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), \
+		ft_get_size_to_allocate(size_allocation, flag));
 	output = ft_apply_precision(output, flag, sign);
 	output = ft_apply_padding(output, flag, sign);
 	ft_putstr_fd(output, fd);

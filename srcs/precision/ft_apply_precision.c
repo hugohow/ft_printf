@@ -12,26 +12,25 @@
 
 #include "ft_printf.h"
 
-
-char                *ft_apply_precision(char *str, t_flag *flag, int sign)
+char				*ft_apply_precision(char *str, t_flag *flag, int sign)
 {
-    int             offset;
-    unsigned int    str_len;
+	int				offset;
+	unsigned int	str_len;
 
-    str_len = ft_strlen(str);
-    if (sign == 0 && flag->precision == 0)
-    {
-        str = ft_strcpy(str, "");
-        return (str);
-    }
-    if (flag->precision < 0)
-        return (str);
-    if (str_len == (unsigned int)flag->precision)
-        return (str);
-    offset = 0;
-    if (ft_str_precision_count(str, offset) > flag->precision)
-        return (str);
-    if (ft_str_precision_count(str, offset) < flag->precision)
+	str_len = ft_strlen(str);
+	if (sign == 0 && flag->precision == 0)
+	{
+		str = ft_strcpy(str, "");
+		return (str);
+	}
+	if (flag->precision < 0)
+		return (str);
+	if (str_len == (unsigned int)flag->precision)
+		return (str);
+	offset = 0;
+	if (ft_str_precision_count(str, offset) > flag->precision)
+		return (str);
+	if (ft_str_precision_count(str, offset) < flag->precision)
 		return (ft_add_char(str, flag, sign, '0'));
-    return (str);
+	return (str);
 }
