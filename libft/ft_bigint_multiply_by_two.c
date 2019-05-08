@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bigint_multiply_by_two.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:01:30 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/03 17:35:51 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/08 17:53:32 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int is_valid_digit(char c)
+static int	is_valid_digit(char c)
 {
 	if (ft_isdigit(c) || c == '.')
-        return (1);
-    return (0);
+		return (1);
+	return (0);
 }
 
-char *ft_bigint_multiply_by_two(char *output)
+char		*ft_bigint_multiply_by_two(char *output)
 {
-	int len;
-	int ret;
-	int dec;
+	int		len;
+	int		ret;
+	int		dec;
 
 	len = 0;
 	while (output[len])

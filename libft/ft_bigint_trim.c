@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bigint_trim.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:02:01 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/04 15:34:52 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/08 17:55:01 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char *ft_bigint_trim_right(char *str)
+static char	*ft_bigint_trim_right(char *str)
 {
-	size_t i;
-	size_t len;
+	size_t	i;
+	size_t	len;
 
 	len = ft_strlen(str);
 	i = len - 1;
@@ -27,11 +27,11 @@ static char *ft_bigint_trim_right(char *str)
 	return (str);
 }
 
-static char *ft_bigint_trim_left(char *str)
+static char	*ft_bigint_trim_left(char *str)
 {
-	size_t nb;
-	size_t i;
-	size_t len;
+	size_t	nb;
+	size_t	i;
+	size_t	len;
 
 	nb = 0;
 	len = ft_strlen(str);
@@ -55,7 +55,7 @@ static char *ft_bigint_trim_left(char *str)
 	return (str);
 }
 
-char *ft_bigint_trim(char *str)
+char		*ft_bigint_trim(char *str)
 {
 	str = ft_bigint_trim_left(str);
 	str = ft_bigint_trim_right(str);
