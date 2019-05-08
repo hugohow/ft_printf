@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 
-
 static int	max(int a, int b, int c)
 {
 	int		result;
@@ -27,5 +26,6 @@ static int	max(int a, int b, int c)
 
 int			ft_get_size_to_allocate(size_t original_nblen, t_flag *flag)
 {
-	return (max((int)(original_nblen + 10), (int)(flag->width + 10), (int)(flag->precision + 10)));
+	return (max((int)(original_nblen + 10), (int)(flag->width + 10), \
+		(int)(flag->precision + 10)));
 }

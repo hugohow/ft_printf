@@ -26,7 +26,6 @@
 // 	int hash;
 // }				t_flag;
 
-
 t_flag		*ft_create_flag(char *str)
 {
 	t_flag	*flag;
@@ -43,5 +42,5 @@ t_flag		*ft_create_flag(char *str)
 	flag->minus = ft_flag_get_minus(str);
 	flag->space = ft_flag_get_space(str);
 	flag->hash = ft_flag_get_hash(str);
-	return (flag);		
+	return (flag);
 }

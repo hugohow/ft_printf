@@ -12,16 +12,16 @@
 
 #include "ft_printf.h"
 
-int                 ft_flag_get_minus(char *flag)
+int					ft_flag_get_minus(char *flag)
 {
-    unsigned int    i;
+	unsigned int	i;
 
-    i = 0;
-    while (flag[i] && ft_isdigit(flag[i]) == 0)
-    {
-        if (flag[i] == '-')
-            return (1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (flag[i] && ft_isdigit(flag[i]) == 0)
+	{
+		if (flag[i] == '-')
+			return (1);
+		i++;
+	}
+	return (0);
 }
