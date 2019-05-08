@@ -71,8 +71,7 @@ void			ft_printf_arg(va_list *ap, char *str, size_t *len)
     t_ft		*fct;
 	int			ret;
 
-	flag = ft_create_flag(str);
-	if (flag == NULL)
+	if (!(flag = ft_create_flag(str)))
 		return ;
 	fct = ft_find_print(flag);
 	ret = 0;

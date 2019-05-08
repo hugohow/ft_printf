@@ -221,7 +221,7 @@ static char         *str_to_fill(char *str, t_flag *flag, int sign)
 //             return (i);
 //         }
 //         if (ft_isdigit(str[i]))
-//             break;
+//             break ;
 //         i++;
 //     }
 //     return (-1);
@@ -254,7 +254,7 @@ char                *ft_apply_padding(char *str, t_flag *flag, int sign)
         // while (ft_strlen(str) > flag->width)
         // {
         //     if (ft_str_find_extra_zero(str) == -1)
-        //         break;
+        //         break ;
         // }
 
 
@@ -273,7 +273,7 @@ char                *ft_apply_padding(char *str, t_flag *flag, int sign)
         // while (ft_strlen(str) > flag->width)
         // {
         //     if (delete_useless_space(&str, flag) == 0)
-        //         break;
+        //         break ;
         // }
 	}
     ft_memdel((void **)&to_add);

@@ -44,7 +44,7 @@ int					ft_print_p(va_list *ap, t_flag *flag, int fd)
 	while (output[i])
 	{
 		if (output[i] != '0')
-			break;
+			break ;
 		i++;
 	}
 	len =  ft_strlen(output) - i;
