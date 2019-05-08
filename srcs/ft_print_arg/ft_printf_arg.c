@@ -82,4 +82,3 @@ void			ft_printf_arg(va_list *ap, char *str, size_t *len)
 	}
 	ft_memdel((void **)&flag);
 }
-

@@ -17,7 +17,6 @@ int			ft_flag_get_width(char *str)
 	int		width;
 	int		i;
 
-
 	i = 0;
 	width = 0;
 	while (str[i])
