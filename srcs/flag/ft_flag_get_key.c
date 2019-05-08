@@ -15,25 +15,24 @@
 int			ft_flag_get_key(char *flag)
 {
 	char	c;
+
 	// 0000 0000 0000 0000
-	// 
-
-
 	c = flag[ft_strlen(flag) - 1];
 	if (c == '%')
 		return (KEY_PERCENTAGE);
 	else if (c == 'c' || c == 'C')
-			return (KEY_C);
+		return (KEY_C);
 	else if (c == 'd' || c == 'i' || c == 'D')
-			return (KEY_D);
-	else if (c == 'o' || c == 'x' || c == 'X' || c == 'u' || c == 'O' || c == 'U' || c == 'b')
-			return (KEY_NB);
+		return (KEY_D);
+	else if (c == 'o' || c == 'x' || c == 'X' || c == 'u' \
+		|| c == 'O' || c == 'U' || c == 'b')
+		return (KEY_NB);
 	else if (c == 'p')
-			return (KEY_P);
+		return (KEY_P);
 	else if (c == 's' || c == 'S')
-			return (KEY_S);
+		return (KEY_S);
 	else if (c == 'f')
-			return (KEY_F);
+		return (KEY_F);
 	else
 		return (0);
 }

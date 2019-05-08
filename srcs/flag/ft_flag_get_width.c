@@ -12,27 +12,28 @@
 
 #include "ft_printf.h"
 
-int     ft_flag_get_width(char *str)
+int			ft_flag_get_width(char *str)
 {
-    int width;
-    int i;
+	int		width;
+	int		i;
 
-    i = 0;
-    width = 0;
-    while (str[i])
-    {
-        if (str[i] == '.')
-            break ;
-        if (ft_isdigit(str[i]) == 1 && str[i] != '0')
-        {
-            while (str[i] && ft_isdigit(str[i]) == 1)
-            {
-                width = width * 10 + (str[i] - '0');
-                i++;
-            }
-            return (width);
-        }
-        i++;
-    }
-    return (width);
+
+	i = 0;
+	width = 0;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			break ;
+		if (ft_isdigit(str[i]) == 1 && str[i] != '0')
+		{
+			while (str[i] && ft_isdigit(str[i]) == 1)
+			{
+				width = width * 10 + (str[i] - '0');
+				i++;
+			}
+			return (width);
+		}
+		i++;
+	}
+	return (width);
 }

@@ -15,13 +15,15 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <wchar.h>
+# include <wchar.h>
+
 typedef struct	s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
 int				ft_str_precision_count(char *str, int offset);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -87,7 +89,8 @@ t_list			*ft_lstpeek(t_list *head, int (*cmp)(t_list *n1, t_list *n2));
 size_t			ft_lstlen(t_list *head);
 t_list			*ft_lstnew(void const *content, size_t content_size);
 t_list			*ft_lstpush(t_list **head, void const *data, size_t data_size);
-t_list			*ft_lst_insertafter(t_list **head, void const *content, size_t content_size);
+t_list			*ft_lst_insertafter(t_list **head, void const *content, \
+	size_t content_size);
 char			*ft_convert_base(char *decimal, char *base);
 wchar_t			*ft_wstrjoin(wchar_t const *str1, wchar_t const *str2);
 size_t			ft_wcslen(const wchar_t *str);

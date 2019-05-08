@@ -12,28 +12,28 @@
 
 #include "ft_printf.h"
 
-int                 ft_flag_get_precision(char *flag)
+int					ft_flag_get_precision(char *flag)
 {
-    unsigned int    i;
-    int             precision;
+	unsigned int	i;
+	int				precision;
 
-    i = 0;
-    precision = 0;
-    while (flag[i])
-    {
-        if (flag[i] == '.' && flag[i+1] && ft_isdigit(flag[i+1]))
-        {
-            i++;
-            while (flag[i] && ft_isdigit(flag[i]))
-            {
-                precision = precision * 10 + (flag[i] - '0');
-                i++;
-            }
-            return (precision);
-        }
-        else if (flag[i] == '.')
-            return (0);
-        i++;
-    }
-    return (-1);
+	i = 0;
+	precision = 0;
+	while (flag[i])
+	{
+		if (flag[i] == '.' && flag[i + 1] && ft_isdigit(flag[i + 1]))
+		{
+			i++;
+			while (flag[i] && ft_isdigit(flag[i]))
+			{
+				precision = precision * 10 + (flag[i] - '0');
+				i++;
+			}
+			return (precision);
+		}
+		else if (flag[i] == '.')
+			return (0);
+		i++;
+	}
+	return (-1);
 }
