@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bigint_round.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 12:55:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/04 15:24:45 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/08 17:52:34 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -31,19 +30,18 @@ static char	*get_to_add(int n)
 	to_add[i] = '1';
 	i++;
 	to_add[i] = 0;
-    return (to_add);
+	return (to_add);
 }
 
 static int	get_index(char *str, char c)
 {
-    int		i;
+	int		i;
 
-    i = 0;
-    while (str[i] && str[i] != c)
-        i++;
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
 	return (i);
 }
-
 
 char		*ft_bigint_round(char *dst, int precision, size_t limit)
 {

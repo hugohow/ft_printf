@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bigint_divide_by_two.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:01:01 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/04 15:08:45 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/08 17:49:08 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_bigint_divide_by_two(char *output, size_t limit)
+char		*ft_bigint_divide_by_two(char *output, size_t limit)
 {
-	size_t i;
-	size_t j;
-	int finished;
-	int even;
+	size_t	i;
+	size_t	j;
+	int		finished;
+	int		even;
 
 	output = ft_bigint_shift_right(output, 1, limit);
 	output[0] = '0';
