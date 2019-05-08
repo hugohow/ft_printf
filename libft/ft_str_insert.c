@@ -16,14 +16,14 @@
 ** ft_str_insert("abc", ' ', 0) = " abc"
 */
 
-char	*ft_str_insert(char *str, char c, int index)
+char		*ft_str_insert(char *str, char c, int index)
 {
 	char	*tmp;
 	char	*output;
 	int		j;
 
 	j = 0;
-	tmp = malloc((index + 2) * sizeof(char));
+	tmp = malloc((index + 2) * sizeof(*tmp));
 	if (tmp == NULL || str == NULL)
 		return (NULL);
 	ft_strncpy(tmp, str, index);

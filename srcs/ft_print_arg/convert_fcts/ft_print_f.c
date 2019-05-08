@@ -80,7 +80,8 @@ char				*get_binary(unsigned char c)
 	char			tmp;
 	int				k;
 
-	output = (char *)malloc(sizeof(char) * (8 + 1));
+	if (!(output = (char *)malloc(sizeof(*output) * (8 + 1))))
+		return (NULL);
 	k = 0;
 	while (c != 0)
 	{
@@ -110,7 +111,8 @@ char				*get_bin_floating_point(float nb)
 	char			*output;
 	int				i;
 
-	output = (char *)malloc(sizeof(*output) * 33);
+	if (!(output = (char *)malloc(sizeof(*output) * 33)))
+		return (NULL);
 	output[0] = '\0';
 	i = (int)sizeof(float) - 1;
 	U u = { (float)nb };
@@ -156,11 +158,9 @@ char				*get_dec_mantissa(char *str, char **p_output, size_t size_allocation)
 	while (str[i])
 	{
 		if (i == 22)
-			break;
+			break ;
 		if (str[i] == '1')
-		{
 			*p_output = ft_bigint_add(*p_output, half_powers[i + 1], size_allocation);
-		}
 		i++;
 	}
 	return (*p_output);
@@ -168,7 +168,7 @@ char				*get_dec_mantissa(char *str, char **p_output, size_t size_allocation)
 
 
 
-int					ft_print_f(va_list *ap, t_flag *flag,  int fd)
+int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 {
 	char			*output;
 	double			tmp;

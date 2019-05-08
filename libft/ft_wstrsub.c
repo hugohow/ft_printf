@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-wchar_t	*ft_wstrsub(wchar_t const *str, unsigned int start, size_t len)
+wchar_t		*ft_wstrsub(wchar_t const *str, unsigned int start, size_t len)
 {
 	wchar_t	*new_str;
 	size_t	i;
@@ -21,8 +21,7 @@ wchar_t	*ft_wstrsub(wchar_t const *str, unsigned int start, size_t len)
 		return (NULL);
 	if (len + start > ft_wcslen(str))
 		return (NULL);
-	new_str = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
-	if (new_str == NULL)
+	if (!(new_str = (wchar_t *)malloc((len + 1) * sizeof(*new_str))))
 		return (NULL);
 	i = start;
 	while (i - start != len)

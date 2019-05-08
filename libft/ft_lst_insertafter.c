@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_list	*ft_lst_insertafter(t_list **head, void const *content, size_t content_size)
+t_list		*ft_lst_insertafter(t_list **head, void const *content, size_t content_size)
 {
 	t_list	*node;
 	t_list	*node_tmp;

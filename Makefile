@@ -53,7 +53,7 @@ valgrind: re
 	@echo "$(RED)leaks.txt has been deleted.$(EOC)"
 	@echo "$(WHITE)Checking leaks with Valgrind...$(EOC)"
 	@echo "\n\n---------------------- main ----------------------\n\n" >> leaks.txt
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./main >> leaks.txt 2>&1
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./main >> leaks.txt 2>&1
 	@echo "$(GREEN)Valgrind results stored in leaks.txt$(EOC)"
 	@make clean
 

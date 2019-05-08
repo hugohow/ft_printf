@@ -13,12 +13,13 @@
 
 #include "libft.h"
 
-static char *get_to_add(int n)
+static char	*get_to_add(int n)
 {
-	int i;
-	char *to_add;
+	char	*to_add;
+	int		i;
 
-	to_add = (char *)malloc((n + 3) * sizeof(char));
+	if (!(to_add = (char *)malloc((n + 3) * sizeof(*to_add))))
+		return (NULL);
 	to_add = ft_strcpy(to_add, "0.1");
 	i = 2;
 	while (n != 0)
@@ -33,9 +34,9 @@ static char *get_to_add(int n)
     return (to_add);
 }
 
-static int get_index(char *str, char c)
+static int	get_index(char *str, char c)
 {
-    int i;
+    int		i;
 
     i = 0;
     while (str[i] && str[i] != c)
@@ -44,12 +45,11 @@ static int get_index(char *str, char c)
 }
 
 
-char *ft_bigint_round(char *dst, int precision, size_t limit)
+char		*ft_bigint_round(char *dst, int precision, size_t limit)
 {
-	int i;
-	char *to_add;
-	int precision_cpy;
-
+	char	*to_add;
+	int		i;
+	int		precision_cpy;
 
 	if (precision < 0)
 		return (dst);

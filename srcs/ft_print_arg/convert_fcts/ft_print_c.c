@@ -22,7 +22,7 @@ int			ft_print_c(va_list *ap, t_flag *flag, int fd)
 	int		ret;
 
 	size_allocation = ft_get_size_to_allocate(2, flag);
-	output = ft_memalloc(size_allocation * sizeof(char));
+	output = ft_memalloc(size_allocation * sizeof(*output));
 	output[0] = (char)va_arg(*ap, int);
 	output[1] = '\0';
 	if (output[0] == '\0' || output[0] == 0)

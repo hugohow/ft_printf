@@ -14,7 +14,7 @@
 
 static size_t	ft_nblen(long nb)
 {
-	size_t	nblen;
+	size_t		nblen;
 
 	nblen = 0;
 	if (nb == 0)
@@ -34,14 +34,13 @@ static size_t	ft_nblen(long nb)
 
 char			*ft_itoa(int nb)
 {
-	char	*output;
-	size_t	nb_len;
-	long	n;
+	char		*output;
+	size_t		nb_len;
+	long		n;
 
 	n = nb;
 	nb_len = ft_nblen(n);
-	output = (char *)malloc((nb_len + 1) * sizeof(char));
-	if (output == NULL)
+	if (!(output = (char *)malloc((nb_len + 1) * sizeof(*output))))
 		return (NULL);
 	output[0] = n < 0 ? '-' : '0';
 	n = n < 0 ? -n : n;

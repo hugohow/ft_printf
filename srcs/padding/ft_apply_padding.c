@@ -150,7 +150,7 @@ static char         *str_to_fill(char *str, t_flag *flag, int sign)
     unsigned int    to_add_len;
     unsigned int    i;
 
-    to_add_len = get_size_to_add(str,flag, sign);
+    to_add_len = get_size_to_add(str, flag, sign);
     if (to_add_len + ft_strlen(str) >= flag->width)
         return (ft_strdup(""));
     if (!(to_add = (char *)malloc(sizeof(*to_add) * (flag->width + 2))))
@@ -221,7 +221,7 @@ static char         *str_to_fill(char *str, t_flag *flag, int sign)
 //             return (i);
 //         }
 //         if (ft_isdigit(str[i]))
-//             break;
+//             break ;
 //         i++;
 //     }
 //     return (-1);
@@ -254,7 +254,7 @@ char                *ft_apply_padding(char *str, t_flag *flag, int sign)
         // while (ft_strlen(str) > flag->width)
         // {
         //     if (ft_str_find_extra_zero(str) == -1)
-        //         break;
+        //         break ;
         // }
 
 
@@ -273,7 +273,7 @@ char                *ft_apply_padding(char *str, t_flag *flag, int sign)
         // while (ft_strlen(str) > flag->width)
         // {
         //     if (delete_useless_space(&str, flag) == 0)
-        //         break;
+        //         break ;
         // }
 	}
     ft_memdel((void **)&to_add);

@@ -12,12 +12,11 @@
 
 #include "ht.h"
 
-t_ht			*ft_ht_create(size_t size)
+t_ht		*ft_ht_create(size_t size)
 {
-	t_ht *hash_table;
+	t_ht	*hash_table;
 
-	hash_table = (t_ht *)malloc(sizeof(t_ht));
-	if (hash_table == NULL)
+	if (!(hash_table = (t_ht *)malloc(sizeof(*hash_table))))
 		return (NULL);
 	hash_table->size = size;
 	hash_table->table = (t_node_ht **)malloc(size * sizeof(t_node_ht *));

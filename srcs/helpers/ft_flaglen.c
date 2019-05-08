@@ -31,7 +31,7 @@ size_t      ft_flaglen(const char *str)
     while (str[i] && is_valid_par(str[i]) == 1)
     {
         if (str[i] == '%')
-            break;
+            break ;
         i++;
     }
     return (i);
