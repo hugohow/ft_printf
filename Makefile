@@ -6,11 +6,11 @@
 #    By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/12 12:21:31 by mboivin           #+#    #+#              #
-#    Updated: 2019/05/12 16:34:30 by mboivin          ###   ########.fr        #
+#    Updated: 2019/05/12 17:05:48 by mboivin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ******************************** Variables ********************************* #
+# ________________________________ Variables _________________________________ #
 
 NAME 		:=		libftprintf.a
 SHELL 		:=		/bin/sh
@@ -35,26 +35,28 @@ INCLUDES 	:=		$(addprefix -I, $(INCDIR))
 .SUFFIXES:
 .SUFFIXES: .c .o .h
 
-# ********************************* Colors *********************************** #
+# __________________________________ Colors __________________________________ #
 
 ifdef TERM
 EOC 		:=		\033[0m
-RED 		:=		\033[31m
-GREEN 		:=		\033[32m
-YELLOW 		:=		\033[33m
-WHITE 		:=		\033[37m
+RED 		:=		\033[38;5;88m
+GREEN 		:=		\x1b[32;01m
+PURPLE 		:=		\033[38;5;98m
+BLUE		:=		\x1b[34;01m
+GREY		:=		\033[38;5;242m
 endif
 
-# ********************************** Rules *********************************** #
+# __________________________________ Rules ___________________________________ #
 
 .PHONY: all
 all: $(NAME)
 
 $(NAME):
 	$(QUIET) $(CC) $(CFLAGS) $(INCLUDES) -g -c srcs/*.c libft/*.c srcs/*/*.c srcs/*/*/*.c
+	$(ECHO) "Building archive file $(BLUE)$(NAME)$(NC)..."
 	$(QUIET) $(AR) $(ARFLAGS) $@ *.o
 	make clean
-	$(ECHO) "$(WHITE)Building main executable...$(EOC)"
+	$(ECHO) "Building $(GREEN)main$(EOC) executable..."
 	$(QUIET) $(CC) -g $(NAME) main.c -o main
 	./main
 
@@ -70,24 +72,24 @@ test:
 .PHONY: valgrind
 valgrind: re
 	$(QUIET) $(RM) leaks.txt
-	$(ECHO) "$(RED)leaks.txt has been deleted.$(EOC)"
+	$(ECHO) "$(GREEN)⟹  leaks.txt has been succesfully deleted.$(EOC)"
 	$(ECHO) "Checking leaks with Valgrind..."
 	$(ECHO) "\n\n---------------------- main ----------------------\n\n" >> leaks.txt
 	$(QUIET) valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./main >> leaks.txt 2>&1
-	$(ECHO) "$(GREEN)Valgrind results stored in leaks.txt$(EOC)"
+	$(ECHO) "⟹  Valgrind results succesfully stored in $(PURPLE)leaks.txt$(EOC)"
 	$(QUIET) $(RM) *.o
 
 .PHONY: clean
 clean:
 	$(ECHO) "Cleaning object files..."
 	$(QUIET) $(RM) *.o
-	$(ECHO) "$(YELLOW)All object files were removed.$(EOC)"
+	$(ECHO) "$(GREEN)⟹  All object files succesfully cleaned.$(EOC)"
 
 .PHONY: fclean
 fclean: clean
-	$(ECHO) "Removing $(NAME)..."
+	$(ECHO) "Cleaning  $(BLUE)$(NAME)$(EOC)..."
 	$(QUIET) $(RM) $(NAME)
-	$(ECHO) "$(RED)$(NAME) has been deleted.$(EOC)"
+	$(ECHO) "$(GREEN)⟹  $(NAME) has been succesfully deleted.$(EOC)"
 
 .PHONY: re
 re: fclean all
