@@ -1,32 +1,47 @@
-NAME = libftprintf.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/05/12 12:21:31 by mboivin           #+#    #+#              #
+#    Updated: 2019/05/12 13:39:14 by mboivin          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC = gcc
+# ******************************** Variables ********************************* #
 
-RM = rm -rf
+NAME =			libftprintf.a
+CC =			gcc
+RM =			rm -rf
+AR =			ar
+ARFLAGS =		-rcs
+CFLAGS =		-Wall -Wextra -Werror
+CPPFLAGS =		-I $(INCDIR)
 
-AR = ar rcs
+QUIET :=		@
+ECHO :=			@echo
+ifneq ($(QUIET),@)
+ECHO :=			@true
+endif
 
-CFLAGS = -Wall -Wextra -Werror
+TEST =			tests/tests/tests
+INCDIR =		includes
 
-CPPFLAGS = -I $(INCDIR)
+INCLUDES =		$(addprefix -I, $(INCDIR))
 
-# ******************************* Directories ******************************** #
-
-TEST =		tests/tests/tests
-
-INCDIR =	includes
-
-INCLUDES =	$(addprefix -I, $(INCDIR))
+.SUFFIXES:
+.SUFFIXES: .c .o .h
 
 # ********************************* Colors *********************************** #
 
 ifdef TERM
-
-EOC =		\033[0m
-RED =		\033[31m
-GREEN =		\033[32m
-YELLOW =	\033[33m
-WHITE =		\033[37m
+EOC =			\033[0m
+RED =			\033[31m
+GREEN =			\033[32m
+YELLOW =		\033[33m
+WHITE =			\033[37m
 endif
 
 # ********************************** Rules *********************************** #
@@ -34,39 +49,38 @@ endif
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(INCLUDES) -g -c srcs/*.c libft/*.c srcs/*/*.c srcs/*/*/*.c
-	$(AR) $(NAME) *.o
+	$(QUIET) $(CC) $(CFLAGS) $(INCLUDES) -g -c srcs/*.c libft/*.c srcs/*/*.c srcs/*/*/*.c
+	$(QUIET) $(AR) $(ARFLAGS) $@ *.o
 	make clean
-	@echo "$(WHITE)Building main executable...$(EOC)"
-	@$(CC) -g $(NAME) main.c -o main
+	$(ECHO) "$(WHITE)Building main executable...$(EOC)"
+	$(QUIET) $(CC) -g $(NAME) main.c -o main
 	./main
 
 compile_test:
 	cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
 
-# cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
 test:
 	cd tests/tests && $(MAKE) test
 
 valgrind: re
-	@$(RM) leaks.txt
-	@echo "$(RED)leaks.txt has been deleted.$(EOC)"
-	@echo "$(WHITE)Checking leaks with Valgrind...$(EOC)"
-	@echo "\n\n---------------------- main ----------------------\n\n" >> leaks.txt
-	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./main >> leaks.txt 2>&1
-	@echo "$(GREEN)Valgrind results stored in leaks.txt$(EOC)"
-	@make clean
+	$(QUIET) $(RM) leaks.txt
+	$(ECHO) "$(RED)leaks.txt has been deleted.$(EOC)"
+	$(ECHO) "Checking leaks with Valgrind..."
+	$(ECHO) "\n\n---------------------- main ----------------------\n\n" >> leaks.txt
+	$(QUIET) valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./main >> leaks.txt 2>&1
+	$(ECHO) "$(GREEN)Valgrind results stored in leaks.txt$(EOC)"
+	$(QUIET) $(RM) *.o
 
 clean:
-	@echo "$(WHITE)Cleaning object files...$(EOC)"
-	@$(RM) *.o
-	@echo "$(YELLOW)All object files were removed.$(EOC)"
+	$(ECHO) "Cleaning object files..."
+	$(QUIET) $(RM) *.o
+	$(ECHO) "$(YELLOW)All object files were removed.$(EOC)"
 
 fclean: clean
-	@echo "$(WHITE)Removing $(NAME)...$(EOC)"
-	@$(RM) $(NAME)
-	@echo "$(RED)$(NAME) has been deleted.$(EOC)"
+	$(ECHO) "Removing $(NAME)..."
+	$(QUIET) $(RM) $(NAME)
+	$(ECHO) "$(RED)$(NAME) has been deleted.$(EOC)"
 
 re: fclean all
 
-.PHONY: all clean fclean re valgrind test
+.PHONY: all clean fclean re valgrind test compile_test
