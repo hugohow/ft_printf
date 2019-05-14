@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_output.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:12:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/05 16:04:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/14 16:05:23 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,26 @@ static char		*ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 	return (output);
 }
 
+static int		is_convertible(t_flag *flag)
+{
+	return (flag->conv == 'o' || flag->conv == 'x' || flag->conv == 'X' \
+		|| flag->conv == 'b');
+}
+
 char			*ft_convert_output(char *str, t_flag *flag)
 {
 	char		*output;
 
-	if (flag->conv == 'o')
+	if (is_convertible(flag))
 	{
-		output = ft_convert_base_offset(str, BASE_O, flag);
-		ft_memdel((void **)&str);
-		return (output);
-	}
-	if (flag->conv == 'x')
-	{
-		output = ft_convert_base_offset(str, BASE_X, flag);
-		ft_memdel((void **)&str);
-		return (output);
-	}
-	if (flag->conv == 'X')
-	{
-		output = ft_convert_base_offset(str, BASE_X_MAJ, flag);
-		ft_memdel((void **)&str);
-		return (output);
-	}
-	if (flag->conv == 'b')
-	{
-		output = ft_convert_base(str, BASE_B);
+		if (flag->conv == 'o')
+			output = ft_convert_base_offset(str, BASE_O, flag);
+		if (flag->conv == 'x')
+			output = ft_convert_base_offset(str, BASE_X, flag);
+		if (flag->conv == 'X')
+			output = ft_convert_base_offset(str, BASE_X_MAJ, flag);
+		if (flag->conv == 'b')
+			output = ft_convert_base(str, BASE_B);
 		ft_memdel((void **)&str);
 		return (output);
 	}
