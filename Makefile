@@ -6,7 +6,7 @@
 #    By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/12 12:21:31 by mboivin           #+#    #+#              #
-#    Updated: 2019/05/12 20:12:57 by mboivin          ###   ########.fr        #
+#    Updated: 2019/05/14 10:23:56 by mboivin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM 			=		rm -rf
 AR 			=		ar
 ARFLAGS 	=		-rcs
 CFLAGS 		=		-Wall -Wextra -Werror
-CPPFLAGS 	=		-I $(INCDIR)
+CPPFLAGS 	=		-I$(INCDIR)
 
 QUIET 		=		@
 ECHO 		=		@echo
@@ -53,9 +53,9 @@ endif
 all: $(NAME)
 
 $(NAME):
-	$(ECHO) "$(GREY)Compiling...$(EOC)"
+	$(ECHO) "$(GREY)Compiling ...$(EOC)"
 	$(QUIET) $(CC) $(CFLAGS) $(INCLUDES) -g -c srcs/*.c libft/*.c srcs/*/*.c srcs/*/*/*.c
-	$(ECHO) "$(GREY)Archiving $(EOC)$(PURPLE)object files$(EOC)$(GREY)...$(EOC)"
+	$(ECHO) "$(GREY)Archiving $(EOC)$(PURPLE)object files$(EOC) $(GREY)...$(EOC)"
 	$(QUIET) $(AR) $(ARFLAGS) $@ *.o
 	$(QUIET)make clean
 	$(ECHO) "$(GREEN)⟹  $(NAME) is ready.$(EOC)"
@@ -76,21 +76,21 @@ test:
 valgrind: re
 	$(QUIET) $(RM) leaks.txt
 	$(ECHO) "$(GREY)⟹  leaks.txt has been succesfully deleted.$(EOC)"
-	$(ECHO) "Checking leaks with Valgrind..."
+	$(ECHO) "$(GREY)Checking leaks with Valgrind ...$(EOC)"
 	$(ECHO) "\n\n---------------------- main ----------------------\n\n" >> leaks.txt
 	$(QUIET) valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./main >> leaks.txt 2>&1
-	$(ECHO) "$(GREEN)⟹  Valgrind results succesfully stored in $(EOC)$(PURPLE)leaks.txt$(EOC)"
+	$(ECHO) "$(GREEN)⟹  Valgrind results succesfully stored in leaks.txt.$(EOC)"
 	$(QUIET) $(RM) *.o
 
 .PHONY: clean
 clean:
-	$(ECHO) "$(GREY)Cleaning $(EOC)$(PURPLE)object files$(EOC)$(GREY)...$(EOC)"
+	$(ECHO) "$(GREY)Cleaning $(EOC)$(PURPLE)object files$(EOC) $(GREY)...$(EOC)"
 	$(QUIET) $(RM) *.o
 	$(ECHO) "$(GREEN)⟹  All object files succesfully cleaned.$(EOC)"
 
 .PHONY: fclean
 fclean: clean
-	$(ECHO) "$(GREY)Cleaning $(EOC)$(YELLOW)$(NAME)$(EOC)$(GREY)...$(EOC)"
+	$(ECHO) "$(GREY)Cleaning $(EOC)$(YELLOW)$(NAME)$(EOC) $(GREY)...$(EOC)"
 	$(QUIET) $(RM) $(NAME)
 	$(ECHO) "$(GREEN)⟹  $(NAME) has been succesfully deleted.$(EOC)"
 
