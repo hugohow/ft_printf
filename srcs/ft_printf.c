@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/05 16:54:22 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/14 11:30:13 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #define MAX_ADDED 1
 
-static const t_color	tab_colors[] =
+static const t_color	g_tab_colors[] =
 {
 	{"cyan", ANSI_COLOR_CYAN},
 	{"red", ANSI_COLOR_RED},
@@ -36,11 +36,11 @@ int						get_and_apply_color(const char *str)
 		len++;
 	if (len == 0)
 		return (0);
-	while ((tab_colors[i].key)[0])
+	while ((g_tab_colors[i].key)[0])
 	{
-		if (ft_strncmp(tab_colors[i].key, str, len) == 0)
+		if (ft_strncmp(g_tab_colors[i].key, str, len) == 0)
 		{
-			ft_putstr_fd(tab_colors[i].str, 1);
+			ft_putstr_fd(g_tab_colors[i].str, 1);
 			return (len);
 		}
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_f.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/04 20:12:39 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/14 11:58:11 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 #define HALF_POWER_22 "0.000000238418579"
 #define HALF_POWER_23 "0.00000011920929"
 
-static const char	*half_powers[] =
+static const char	*g_half_powers[] =
 {
 	HALF_POWER_0,
 	HALF_POWER_1,
@@ -66,11 +66,11 @@ static const char	*half_powers[] =
 	0,
 };
 
-typedef				union
+typedef union
 {
-    float			f;
-    unsigned char	a[sizeof(float)];
-}					U;
+	float			f;
+	unsigned char	a[sizeof(float)];
+}					t_union;
 
 char				*get_binary(unsigned char c)
 {
@@ -78,7 +78,7 @@ char				*get_binary(unsigned char c)
 	char			base[2] = "01";
 	char			tmp;
 	int				k;
-
+	
 	if (!(output = (char *)malloc(sizeof(*output) * (8 + 1))))
 		return (NULL);
 	k = 0;
@@ -114,7 +114,7 @@ char				*get_bin_floating_point(float nb)
 		return (NULL);
 	output[0] = '\0';
 	i = (int)sizeof(float) - 1;
-	U u = { (float)nb };
+	t_union	u = { (float)nb };
 	while (i >= 0)
 	{
 		output = ft_strcat(output, get_binary(u.a[i]));
@@ -161,7 +161,7 @@ char				*get_dec_mantissa(\
 			break ;
 		if (str[i] == '1')
 			*p_output = ft_bigint_add(\
-				*p_output, half_powers[i + 1], size_allocation);
+				*p_output, g_half_powers[i + 1], size_allocation);
 		i++;
 	}
 	return (*p_output);

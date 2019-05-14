@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/05 15:54:02 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/14 11:31:35 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char			*ft_flag_replace(char *str, char *to_replace)
 	return (ft_strcat(str, to_replace));
 }
 
-static const	t_ft_print fts_print[] =
+static const	t_ft_print g_fts_print[] =
 {
 	{KEY_PERCENTAGE, 0, &ft_print_percent},
 	{KEY_C, 0, &ft_print_c},
@@ -46,18 +46,18 @@ t_ft			*ft_find_print(t_flag *flag)
 	int			j;
 
 	i = 0;
-	while (fts_print[i].key)
+	while (g_fts_print[i].key)
 	{
-		if (fts_print[i].key == flag->key)
+		if (g_fts_print[i].key == flag->key)
 		{
 			j = i;
-			while (fts_print[j].key)
+			while (g_fts_print[j].key)
 			{
-				if (fts_print[j].length == flag->length)
-					return (fts_print[j].fct);
+				if (g_fts_print[j].length == flag->length)
+					return (g_fts_print[j].fct);
 				j++;
 			}
-			return (fts_print[i].fct);
+			return (g_fts_print[i].fct);
 		}
 		i++;
 	}
