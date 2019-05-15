@@ -119,6 +119,35 @@ int main(void)
     printf("\n\n\n");
 
 
+    ft_printf(" ft_printf :%c|\n", 0);
+	printf("    printf :%c|", 0);
+    printf("    ret :%d|", ft_printf("%c", 0));
+    printf("    ret :%d|", printf("%c", 0));
+    printf("\n\n\n");
+
+
+    ft_printf(" ft_printf :%-c|\n", 0);
+	printf("    printf :%-c|", 0);
+    printf("    ret :%d|", ft_printf("%-c", 0));
+    printf("    ret :%d|", printf("%-c", 0));
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%12c|\n", 0);
+	printf("    printf :%12c|", 0);
+    printf("    ret :%d|", ft_printf("%12c", 0));
+    printf("    ret :%d|", printf("%12c", 0));
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :%-12c|\n", 0);
+	printf("    printf :%-12c|", 0);
+    printf("    ret :%d|", ft_printf("%-12c", 0));
+    printf("    ret :%d|", printf("%-12c", 0));
+    printf("\n\n\n");
+
+
+    printf("avant le c %c apress le c\n", 0);
+    ft_printf("avant le c %c apress le c\n", 0);
+
 	// %-#23llX|%-023llX|%#023llX|%-#023llX", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX
     return 0;
 }

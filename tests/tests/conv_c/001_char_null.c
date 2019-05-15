@@ -10,6 +10,29 @@
 
 # define ARGS "%c|%-c|%12c|%-12c", 0, 0, 0, 0
 
+
+
+
+static int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (*(char *)(s1 + i) != *(char *)(s2 + i))
+		{
+			printf("s1[i]: |%d|, s2[i]: |%d|", *(char *)(s1 + i), *(char *)(s2 + i));
+			break ;
+		}
+		i++;
+	}
+	if (i == n)
+		return (0);
+	return ((int)(*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i)));
+}
+
+
 int		conv_c_char_null(void)
 {
 	t_test_rslt	test_rslt;
@@ -33,8 +56,12 @@ int		conv_c_char_null(void)
 	if ((err = read_pipe(&test_rslt.user_str, &nbytes_read, pfd, &save_out)))
 		return (free_result(&test_rslt, err));
 	if ((test_rslt.user_ret != test_rslt.ref_ret)
-			|| memcmp(test_rslt.user_str, test_rslt.ref_str, test_rslt.ref_ret))
+			|| ft_memcmp(test_rslt.user_str, test_rslt.ref_str, test_rslt.ref_ret))
 	{
+		printf("test_rslt.user_str\t:%s|\n", test_rslt.user_str);
+		printf("test_rslt.ref_str\t:%s|\n", test_rslt.ref_str);
+		printf("test_rslt.ref_ret\t:%d|\n", test_rslt.ref_ret);
+		printf("ft_memcmp\t:%d|\n", ft_memcmp(test_rslt.user_str, test_rslt.ref_str, test_rslt.ref_ret));
 		print_test_result_values_trace(&test_rslt, fd_trace);
 		ret_value = -1;
 	}

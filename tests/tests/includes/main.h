@@ -9,6 +9,7 @@ int	conv_p_launcher(void);
 int	conv_s_launcher(void);
 int	conv_u_launcher(void);
 int	conv_x_launcher(void);
+int	conv_c_launcher(void);
 /*PROTOTYPES_HERE*/
 
 typedef struct		s_launcher
@@ -27,6 +28,7 @@ t_launcher			g_launchtab[] =
 	{"conv_s", conv_s_launcher},
 	{"conv_u", conv_u_launcher},
 	{"conv_x", conv_x_launcher},
+	{"conv_c", conv_c_launcher},
 	/*FCTS_HERE*/
 	{"", NULL}
 };
