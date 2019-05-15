@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/08 17:38:58 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/15 12:31:49 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,10 @@ static char			*ft_str_join(const char *to_add, char *str1, t_flag *flag)
 	k = 0;
 	i = 0;
 	while (to_add[i])
-	{
-		output[k] = to_add[i];
-		k++;
-		i++;
-	}
+		output[k++] = to_add[i++];
 	i = 0;
 	while (str1[i])
-	{
-		output[k] = str1[i];
-		k++;
-		i++;
-	}
+		output[k++] = str1[i++];
 	output[k] = 0;
 	ft_memdel((void **)&str1);
 	return (output);
@@ -57,18 +49,10 @@ static char			*ft_str_join_r(char *str1, const char *to_add, t_flag *flag)
 	k = 0;
 	i = 0;
 	while (str1[i])
-	{
-		output[k] = str1[i];
-		k++;
-		i++;
-	}
+		output[k++] = str1[i++];
 	i = 0;
 	while (to_add[i])
-	{
-		output[k] = to_add[i];
-		k++;
-		i++;
-	}
+		output[k++] = to_add[i++];
 	output[k] = 0;
 	ft_memdel((void **)&str1);
 	return (output);
@@ -242,8 +226,6 @@ char				*ft_apply_padding(char *str, t_flag *flag, int sign)
 			str = ft_str_join_r(str, to_add, flag);
 		else
 			str = ft_str_join(to_add, str, flag);
-		ft_memdel((void **)&to_add);
-		return (str);
 	}
 	if (FILL_WITH_ZEROS(flag, sign))
 	{
