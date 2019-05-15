@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 16:32:39 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/15 10:35:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/15 10:41:53 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			ft_atoi(const char *str)
 		sign = str[i] == '-' ? -1 : 1;
 		i++;
 	}
-	while (str[i] && is_digit(str[i]))
+	while (str[i] && ft_isdigit(str[i]))
 	{
 		result = result * 10 + (str[i] - '0');
 		i++;
