@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:36:56 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/15 13:34:50 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/15 13:54:01 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ int			ft_print_c(va_list *ap, t_flag *flag, int fd)
 	{
 		if (flag->width <= 0)
 		{
-			write(fd, &c, 1);
+			char c;
+			c = 0;
+			// ft_putchar(0);
+			write(fd, "\0", 1);
+			write(fd, "\0", 1);
+			write(fd, "\0", 1);
 			return (1);
 		}
 		flag->width = flag->width - 1;
