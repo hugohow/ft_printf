@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/14 11:58:11 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/15 13:08:07 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,17 @@ char				*get_binary(unsigned char c)
 	char			base[2] = "01";
 	char			tmp;
 	int				k;
-	
+
 	if (!(output = (char *)malloc(sizeof(*output) * (8 + 1))))
 		return (NULL);
 	k = 0;
 	while (c != 0)
 	{
-		output[k] = base[c % 2];
+		output[k++] = base[c % 2];
 		c /= 2;
-		k++;
 	}
 	while (k != 8)
-	{
-		output[k] = base[0];
-		k++;
-	}
+		output[k++] = base[0];
 	output[k] = '\0';
 	k = 0;
 	while (k != 4)
