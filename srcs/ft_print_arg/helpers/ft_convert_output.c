@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:12:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/14 16:05:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/15 12:43:44 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char		*ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 static int		is_convertible(t_flag *flag)
 {
 	return (flag->conv == 'o' || flag->conv == 'x' || flag->conv == 'X' \
-		|| flag->conv == 'b');
+		|| flag->conv == 'b' || flag->conv == 'r');
 }
 
 char			*ft_convert_output(char *str, t_flag *flag)
@@ -76,6 +76,8 @@ char			*ft_convert_output(char *str, t_flag *flag)
 			output = ft_convert_base_offset(str, BASE_X_MAJ, flag);
 		if (flag->conv == 'b')
 			output = ft_convert_base(str, BASE_B);
+		if (flag->conv == 'r')
+			output = ft_convert_base_offset(str, BASE_X, flag);
 		ft_memdel((void **)&str);
 		return (output);
 	}

@@ -6,7 +6,7 @@
 /*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/15 12:28:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/15 12:44:12 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ int					ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd);
 int					ft_print_s(va_list *ap, t_flag *flag, int fd);
 int					ft_print_c(va_list *ap, t_flag *flag, int fd);
 int					ft_print_p(va_list *ap, t_flag *flag, int fd);
+int					ft_print_r(va_list *ap, t_flag *flag, int fd);
 
 char				*ft_convert_output(char *str, t_flag *flag);
 

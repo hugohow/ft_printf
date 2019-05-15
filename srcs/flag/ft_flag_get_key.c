@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_get_key.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 20:03:54 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 20:08:01 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/15 12:45:43 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int			ft_flag_get_key(char *flag)
 		return (KEY_S);
 	else if (c == 'f')
 		return (KEY_F);
+	else if (c == 'r')
+		return (KEY_R);
 	else
 		return (0);
 }
