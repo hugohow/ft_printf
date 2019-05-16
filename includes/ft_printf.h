@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/15 12:28:55 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/16 12:19:20 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,4 +157,5 @@ char				*ft_convert_output(char *str, t_flag *flag);
 size_t				ft_nblen_ull(unsigned long long nb);
 char				*ft_ulltoa_offset(\
 	unsigned long long nb, size_t size_allocation);
+int					ft_str_precision_count(char *str, int offset);
 #endif
