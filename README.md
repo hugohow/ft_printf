@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/hugohow/ft_printf.svg?branch=master)](https://travis-ci.org/hugohow/ft_printf)
 
-ft_printf("test %-12x et %--2.4s %24s !\n", 42, NULL, "coco");
+ft_printf("test %-12f et % #.1x %24s !\n", 42.001, 20, "coco");
 
 # ft_printf
 
