@@ -6,7 +6,7 @@
 #    By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/12 12:21:31 by mboivin           #+#    #+#              #
-#    Updated: 2019/05/14 10:23:56 by mboivin          ###   ########.fr        #
+#    Updated: 2019/05/15 15:40:51 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ compile_test:
 	cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
 
 .PHONY: test
-test:
+test: re
 	cd tests/tests && $(MAKE) test
 
 .PHONY: valgrind
