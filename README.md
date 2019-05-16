@@ -30,7 +30,7 @@ A minimum number of characters to output.
 
 A maximum limit on the output.
 
-### Length
+#### Length
 
 |Length|Argument type|
 |:---|:---|
