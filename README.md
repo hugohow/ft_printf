@@ -42,8 +42,6 @@ A maximum limit on the output.
 
 #### Type
 
-`sSpdDioOuUxXcCbneEfFgGaA`
-
 |Character|Description|
 |:---|:---|
 |`%`|prints a `%` character|
