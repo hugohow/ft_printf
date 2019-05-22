@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_f.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/15 13:09:41 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/22 23:59:59 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 #define HALF_POWER_21 "0.000000476837158"
 #define HALF_POWER_22 "0.000000238418579"
 #define HALF_POWER_23 "0.00000011920929"
+#define HALF_POWER_24 "0.000000059604645"
 
 static const char	*g_half_powers[] =
 {
@@ -63,6 +64,7 @@ static const char	*g_half_powers[] =
 	HALF_POWER_21,
 	HALF_POWER_22,
 	HALF_POWER_23,
+	HALF_POWER_24,
 	0,
 };
 
@@ -72,7 +74,7 @@ typedef union
 	unsigned char	a[sizeof(float)];
 }					t_union;
 
-char				*get_binary(unsigned char c)
+static char				*get_binary(unsigned char c)
 {
 	char			*output;
 	char			base[2] = "01";
@@ -101,7 +103,7 @@ char				*get_binary(unsigned char c)
 	return (output);
 }
 
-char				*get_bin_floating_point(float nb)
+static char				*get_bin_floating_point(float nb)
 {
 	char			*output;
 	int				i;
@@ -119,12 +121,12 @@ char				*get_bin_floating_point(float nb)
 	return (output);
 }
 
-char				*get_mantissa(char *bin_floating_point)
+static char				*get_mantissa(char *bin_floating_point)
 {
 	return (bin_floating_point + 9);
 }
 
-int					get_exponent(char *bin_floating_point)
+static int					get_exponent(char *bin_floating_point)
 {
 	int				exponent;
 	int				i;
@@ -144,7 +146,7 @@ int					get_exponent(char *bin_floating_point)
 	return (exponent - 127);
 }
 
-char				*get_dec_mantissa(\
+static char				*get_dec_mantissa(\
 	char *str, char **p_output, size_t size_allocation)
 {
 	int				i;
@@ -153,8 +155,6 @@ char				*get_dec_mantissa(\
 	*p_output = ft_strcpy(*p_output, "1");
 	while (str[i])
 	{
-		if (i == 22)
-			break ;
 		if (str[i] == '1')
 			*p_output = ft_bigint_add(\
 				*p_output, g_half_powers[i + 1], size_allocation);
@@ -196,15 +196,13 @@ int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 		output = ft_bigint_round(output, 6, size_allocation);
 	else
 		output = ft_bigint_round(output, flag->precision, size_allocation);
-	if (flag)
-	{
-
-	}
 	// sign = tmp;
 	// size_allocation = ft_nblen_ull((unsigned long long)(tmp < 0 ? -tmp : tmp));
 	// output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), ft_get_size_to_allocate(size_allocation, flag));
 	// output = ft_apply_precision(output, flag, sign);
 	output = ft_apply_padding(output, flag, sign);
+	if (flag->hash && flag->precision == 0)
+		output = ft_strjoin(output, ".");
 	ft_putstr_fd(output, fd);
 	res = (ft_strlen(output));
 	ft_memdel((void **)&output);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/22 20:25:12 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/22 23:52:56 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,74 +144,15 @@ static char			*str_to_fill(char *str, t_flag *flag, int sign)
 	i = 0;
 	while (to_add_len + ft_strlen(str) + i < flag->width)
 	{
-		to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
+		if (flag->key & KEY_F)
+			to_add[i] = FILL_WITH_ZEROS_FLOAT(flag, sign) ? '0' : ' ';
+		else	
+			to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
 		i++;
 	}
 	to_add[i] = '\0';
 	return (to_add);
 }
-
-// int delete_useless_space(char **p_str, t_flag *flag)
-// {
-//     size_t len;
-
-//     len = ft_strlen(*p_str);
-//     if (len == 0)
-//         return (0);
-//     if (flag->minus == 1)
-//     {
-//         if ((*p_str)[len - 1] == ' ')
-//         {
-//             (*p_str)[len - 1] = 0;
-//             return (1);
-//         }
-//     }
-//     else
-//     {
-//         if ((*p_str)[0] == 0)
-//             return (0);
-
-//         if (flag->space == 1)
-//         {
-//             if ((*p_str)[1] == 0)
-//                 return (0);
-//             if ((*p_str)[1] == ' ')
-//             {
-//                 *p_str = ft_strcpy(*p_str, *p_str + 2);
-//                 return (1);
-//             }
-//             return (0);
-//         }
-//         if ((*p_str)[0] == ' ')
-//         {
-//             *p_str = ft_strcpy(*p_str, *p_str + 1);
-//             return (1);
-//         }
-//     }
-//     return (0);
-// }
-
-// static int ft_str_find_extra_zero(char *str)
-// {
-//     int i;
-
-//     i = 0;
-//     while (str[i])
-//     {
-//         if (str[i] == '0')
-//         {
-//             if (str[i + 1] && (str[i + 1] == 'x' || str[i + 1] == 'X'))
-//             {
-//                 return (i + 2);
-//             }
-//             return (i);
-//         }
-//         if (ft_isdigit(str[i]))
-//             break ;
-//         i++;
-//     }
-//     return (-1);
-// }
 
 char				*ft_apply_padding(char *str, t_flag *flag, int sign)
 {
@@ -229,7 +170,7 @@ char				*ft_apply_padding(char *str, t_flag *flag, int sign)
 		ft_memdel((void **)&to_add);
 		return (str);
 	}
-	if (FILL_WITH_ZEROS(flag, sign))
+	if (FILL_WITH_ZEROS(flag, sign) || (flag->key & KEY_F && FILL_WITH_ZEROS_FLOAT(flag, sign)))
 	{
 		str = ft_str_join(to_add, str, flag);
 		if (GOT_PREFIX(flag, sign))
