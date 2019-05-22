@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/15 12:28:30 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/22 23:57:43 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static const	t_ft_print g_fts_print[] =
 	{KEY_NB, LENGTH_L, &ft_print_nb_l},
 	{KEY_NB, LENGTH_LL, &ft_print_nb_ll},
 	{KEY_F, 0, &ft_print_f},
-	{KEY_F, LENGTH_L, &ft_print_f},
+	{KEY_F, LENGTH_L, &ft_print_f_l},
 	{KEY_F, LENGTH_L_MAJ, &ft_print_f_l_maj},
 	{0, 0, NULL},
 };

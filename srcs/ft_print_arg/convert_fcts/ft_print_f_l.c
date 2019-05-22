@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_f_l_maj.c                                 :+:      :+:    :+:   */
+/*   ft_print_f_l.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/22 23:58:52 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/22 23:59:13 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,17 +163,17 @@ static char				*get_dec_mantissa(\
 	return (*p_output);
 }
 
-int					ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd)
+int					ft_print_f_l(va_list *ap, t_flag *flag, int fd)
 {
 	char			*output;
-	long double			tmp;
+	double			tmp;
 	size_t			res;
 	size_t			size_allocation;
 	int				expo;
 	int				sign;
 
 	size_allocation = 4096;
-	tmp = va_arg(*ap, long double);
+	tmp = va_arg(*ap, double);
 	sign = get_bin_floating_point((float)tmp)[0] == '1' ? -1 : 1;
 	expo = get_exponent(get_bin_floating_point((float)tmp));
 	output = (char *)malloc(sizeof(*output) * size_allocation);

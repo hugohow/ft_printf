@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/16 12:19:20 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/22 23:57:53 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define FILL_TO_THE_LEFT(flag, sign) (flag->zero == 1 && flag->minus == 0)
 # define FILL_TO_THE_RIGHT(flag, sign) (!(FILL_TO_THE_LEFT(flag, sign)))
 # define FILL_WITH_ZEROS(flag, sign) (FILL_TO_THE_LEFT(flag, sign) && flag->precision == -1)
+# define FILL_WITH_ZEROS_FLOAT(flag, sign) (FILL_TO_THE_LEFT(flag, sign))
 
 # define BASE_O "01234567"
 # define BASE_X "0123456789abcdef"
@@ -146,6 +147,7 @@ int					ft_print_nb_hh(va_list *ap, t_flag *flag, int fd);
 int					ft_print_nb_h(va_list *ap, t_flag *flag, int fd);
 
 int					ft_print_f(va_list *ap, t_flag *flag, int fd);
+int					ft_print_f_l(va_list *ap, t_flag *flag, int fd);
 int					ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd);
 
 int					ft_print_s(va_list *ap, t_flag *flag, int fd);
