@@ -13,10 +13,10 @@ int main(void)
 
 
     int ret;
-    ret = ft_printf("%1c|%2c|%12c|%-12c|\n", 0, 0, 0, 0);
+    ret = ft_printf("|%12c|%-12c", 0, 0);
     printf("%d\n", ret);
 
-    ret = printf("%1c|%2c|%12c|%-12c|\n", 0, 0, 0, 0);
+    ret = printf("|%12c|%-12c", 0, 0);
     printf("%d\n", ret);
     printf("\n\n\n");
 
