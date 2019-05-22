@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:15:50 by jkettani          #+#    #+#              #
-#    Updated: 2019/04/26 12:45:18 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/05/22 19:22:20 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,6 +123,10 @@ test: all
 		if [ $$fail -gt 0 ]; \
 			then echo "$(ERR_COLOR)/!\ $$fail test(s) failed /!\\ $(NC)\\n"; \
 			else echo "$(OK_COLOR)All tests passed, good job!$(NC)\\n"; \
+			fi; \
+		if [ $$fail -gt 0 ]; \
+			then exit 1; \
+			else exit 0; \
 			fi
 
 .PHONY: clean
