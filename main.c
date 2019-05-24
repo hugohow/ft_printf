@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <wchar.h>      /* wint_t */
 #include <limits.h>
+#include <math.h>
+#include <float.h>
 int ft_printf(const char* format, ...);
 
 int main(void)
@@ -12,9 +14,9 @@ int main(void)
 	// a = malloc(sizeof(int));
 
 
-    ft_printf(" ft_printf :%lf|%-lf|%+lf|% lf|%#lf|%0lf\n", 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849);
-	printf("    printf :%lf|%-lf|%+lf|% lf|%#lf|%0lf", 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849);
-    printf("\n\n\n");
+    // ft_printf(" ft_printf :%lf|%-lf|%+lf|% lf|%#lf|%0lf\n", 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849);
+	// printf("    printf :%lf|%-lf|%+lf|% lf|%#lf|%0lf", 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849);
+    // printf("\n\n\n");
 
     // ft_printf(" ft_printf :|%.f|%-.f|%+.f|% .f|%#.f|%0.f", 42., 42., 42., 42., 42., 42.);
 	// printf("    printf :|%.f|%-.f|%+.f|% .f|%#.f|%0.f", 42., 42., 42., 42., 42., 42.);
@@ -33,13 +35,42 @@ int main(void)
     // printf("\n\n\n");
 
 
-    // ft_printf(" ft_printf :|%.1f|%10.1f|%-10.1f\n", 1345.100, 1345.100, 1345.100);
-	// printf("    printf :|%.1f|%10.1f|%-10.1f", 1345.100, 1345.100, 1345.100);
-    // printf("\n\n\n");
+    ft_printf(" ft_printf :|%Lf|%-Lf|%+Lf|% Lf|%#Lf|%0Lf\n", 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L);
+	printf("    printf :|%Lf|%-Lf|%+Lf|% Lf|%#Lf|%0Lf", 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L);
+    printf("\n\n\n");
 
-	// ft_printf(" ft_printf :|%.10f|%10.10f|%-10.10f\n", 1345.100, 1345.100, 1345.100);
-	// printf("    printf :|%.10f|%10.10f|%-10.10f", 1345.100, 1345.100, 1345.100);
-    // printf("\n\n\n");
+    ft_printf(" ft_printf :|%5f|%-5f|%+5f|% 5f|%#5f|%05f\n", DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX);
+	printf("    printf :|%5f|%-5f|%+5f|% 5f|%#5f|%05f", DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :|%f|%-f|%+f|% f|%#f|%0f\n", 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0.);
+	printf("    printf :|%f|%-f|%+f|% f|%#f|%0f", 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0.);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :|%5.8f|%-5.8f|%+5.8f|% 5.8f|%#5.8f|%05.8f\n", 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0.);
+	printf("    printf :|%5.8f|%-5.8f|%+5.8f|% 5.8f|%#5.8f|%05.8f", 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0.);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :|%5f|%-5f|%+5f|% 5f|%#5f|%05f\n", -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY);
+	printf("    printf :|%5f|%-5f|%+5f|% 5f|%#5f|%05f", -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY);
+    printf("\n\n\n");
+
+	ft_printf(" ft_printf %%.14f of INFINITY :|%f|%-f|%+f|% f|%#f|%0f\n", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
+	printf("    printf %%.14f of INFINITY :|%f|%-f|%+f|% f|%#f|%0f", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
+    printf("\n\n\n");
+
+	ft_printf(" ft_printf %%.14f of -INFINITY :|%f|%-f|%+f|% f|%#f|%0f\n", -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY);
+	printf("    printf %%.14f of -INFINITY :|%f|%-f|%+f|% f|%#f|%0f", -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY, -INFINITY);
+    printf("\n\n\n");
+
+
+	ft_printf(" ft_printf %%.14f of 0. / 0 :|%f|%-f|%+f|% f|%#f|%0f\n", 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0.);
+	printf("    printf %%.14f of 0. / 0 :|%f|%-f|%+f|% f|%#f|%0f", 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0., 0. / 0.);
+    printf("\n\n\n");
+
+	ft_printf(" ft_printf %%.14f of DBL_MIN :|%f|%-f|%+f|% f|%#f|%0f\n", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
+	printf("    printf %%.14f of DBL_MIN :|%f|%-f|%+f|% f|%#f|%0f", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
+    printf("\n\n\n");
 
 
 	// ft_printf(" ft_printf :|%.10f|%10.10f|%-10.10f\n", 9999.1222999, 9999.1222999, 9999.1222999);
