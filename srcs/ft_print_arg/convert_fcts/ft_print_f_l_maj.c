@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/24 12:38:01 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/24 13:01:34 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,8 +209,8 @@ int					ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd)
 	output = (char *)malloc(sizeof(*output) * size_allocation);
 	output = get_dec_mantissa(get_mantissa(\
 		get_bin_floating_point(tmp)), &output, size_allocation);
-	printf("\nexpo : %d\n", expo);
-	printf("output : %s\n", output);
+	// printf("\nexpo : %d\n", expo);
+	// printf("output : %s\n", output);
 	if (tmp == 0)
 	{
 		output = ft_strdup("0.");

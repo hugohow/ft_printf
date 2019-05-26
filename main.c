@@ -35,8 +35,9 @@ int main(void)
     // printf("\n\n\n");
 
 
-    ft_printf(" ft_printf :|%Lf|%-Lf|%+Lf|% Lf|%#Lf|%0Lf\n", 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L);
-	printf("    printf :|%Lf|%-Lf|%+Lf|% Lf|%#Lf|%0Lf", 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L, 12.847e451L);
+
+    ft_printf(" ft_printf :|%Lf\n", LDBL_MAX);
+	printf("    printf :|%Lf", LDBL_MAX);
     printf("\n\n\n");
 
     ft_printf(" ft_printf :|%5f|%-5f|%+5f|% 5f|%#5f|%05f\n", DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX);
