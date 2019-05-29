@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/24 13:01:34 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:04:29 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,16 @@ static char				*get_binary(unsigned char c)
 	return (output);
 }
 
-static char				*get_bin_floating_point(double nb)
+static char				*get_bin_floating_point(long double nb)
 {
 	char			*output;
 	int				i;
-	unsigned char	t[sizeof(double) + 1];
+	unsigned char	t[sizeof(long double) + 1];
 
 	if (!(output = (char *)malloc(sizeof(*output) * 100)))
 		return (NULL);
-	ft_memcpy(t, &nb, sizeof(double));
-	i = (sizeof(double)) - 1;
+	ft_memcpy(t, &nb, sizeof(long double));
+	i = (sizeof(long double)) - 1;
 
 	while (i != -1)
 	{
@@ -136,7 +136,7 @@ static char				*get_bin_floating_point(double nb)
 	// i = (int)sizeof(float) - 1;
 	// t_union	u = { (double)nb };
 	// while (i >= 0)
-	// {
+	// {p
 	// 	output = ft_strcat(output, get_binary(u.a[i]));
 	// 	i--;
 	// }
@@ -146,8 +146,10 @@ static char				*get_bin_floating_point(double nb)
 
 static char				*get_mantissa(char *bin_floating_point)
 {
-	// printf("bin_floating_point : %s\n", bin_floating_point);
-	return (bin_floating_point + 12);
+	printf("bin_floating_point : %s\n", bin_floating_point);
+	printf("mantissa : %s\n", bin_floating_point + 15);
+	printf("mantissa : %zu\n", ft_strlen(bin_floating_point + 15));
+	return (bin_floating_point + 15);
 }
 
 static int					get_exponent(char *bin_floating_point)
@@ -196,21 +198,20 @@ static char				*get_dec_mantissa(\
 int					ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd)
 {
 	char			*output;
-	double			tmp;
+	long double			tmp;
 	size_t			res;
 	size_t			size_allocation;
 	int				expo;
 	int				sign;
 
 	size_allocation = 4096;
-	tmp = va_arg(*ap, double);
+	tmp = va_arg(*ap, long double);
 	sign = get_bin_floating_point(tmp)[0] == '1' ? -1 : 1;
 	expo = get_exponent(get_bin_floating_point(tmp));
 	output = (char *)malloc(sizeof(*output) * size_allocation);
 	output = get_dec_mantissa(get_mantissa(\
 		get_bin_floating_point(tmp)), &output, size_allocation);
-	// printf("\nexpo : %d\n", expo);
-	// printf("output : %s\n", output);
+	printf("\nexpo : %d\n", expo);
 	if (tmp == 0)
 	{
 		output = ft_strdup("0.");
