@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 14:21:52 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:04:54 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,10 @@ int					ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd)
 	}
 	else
 	{
+		if (expo == 0)
+		{
+			output = ft_strdup("1.");
+		}
 		while (expo != 0)
 		{
 			if (expo < 0)

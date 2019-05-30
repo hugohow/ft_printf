@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 13:48:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:04:26 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,10 @@ int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 	}
 	else
 	{
+		if (expo == 0)
+		{
+			output = ft_strdup("1.");
+		}
 		while (expo != 0)
 		{
 			if (expo < 0)
@@ -272,7 +276,9 @@ int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 		output = ft_bigint_round(output, 6, size_allocation);
 	else
 		output = ft_bigint_round(output, flag->precision, size_allocation);
-	// printf("output rounded : %s\n", output);
+
+	if (ft_strlen(output) == 0)
+		output = ft_strdup("0");
 	// sign = tmp;
 	// size_allocation = ft_nblen_ull((unsigned long long)(tmp < 0 ? -tmp : tmp));
 	// output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), ft_get_size_to_allocate(size_allocation, flag));

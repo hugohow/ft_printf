@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:39:46 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 15:40:07 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 16:49:29 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ft_flag_get_width(char *str)
 {
-	int		width;
+	long long		width;
 	int		i;
 
 	i = 0;
@@ -30,7 +30,9 @@ int			ft_flag_get_width(char *str)
 				width = width * 10 + (str[i] - '0');
 				i++;
 			}
-			return (width);
+			if (width > 2147483647)
+				return (0);
+			return ((int)width);
 		}
 		i++;
 	}

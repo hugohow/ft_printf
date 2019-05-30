@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:30:05 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/29 15:03:57 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 16:46:40 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int					ft_flag_get_precision(char *flag)
 {
 	unsigned int	i;
-	int				precision;
+	long long		precision;
 
 	i = 0;
 	precision = 0;
@@ -29,7 +29,9 @@ int					ft_flag_get_precision(char *flag)
 				precision = precision * 10 + (flag[i] - '0');
 				i++;
 			}
-			return (precision);
+			if (precision > 2147483647)
+				return (-1);
+			return ((int)precision);
 		}
 		else if (flag[i] == '.')
 			return (0);
