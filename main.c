@@ -30,17 +30,40 @@ int main(void)
 	// printf("    printf :|%.f|%-.f|%+.f|% .f|%#.f|%0.f", 42., 42., 42., 42., 42., 42.);
     // printf("\n\n\n");
 
+    // ft_printf("sizeof(long double) %lu\n", sizeof(long double));
+	// printf("sizeof(double) %lu", sizeof(double));
+    // printf("\n\n\n");
+
+
+
+    ft_printf(" ft_printf :|%Lf\n", (long double)LDBL_MIN);
+	printf("    printf :|%Lf", (long double)LDBL_MIN);
+    printf("\n\n\n");
+
+    
+    ft_printf(" ft_printf :|%Lf\n", 1.5L);
+	printf("    printf :|%Lf", 1.5L);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :|%Lf\n", -1.5L);
+	printf("    printf :|%Lf", -1.5L);
+    printf("\n\n\n");
+
     ft_printf(" ft_printf :|%Lf\n", 1345.100L);
 	printf("    printf :|%Lf", 1345.100L);
+    printf("\n\n\n");
+
+    ft_printf(" ft_printf :|%Lf\n", -1345.100L);
+	printf("    printf :|%Lf", -1345.100L);
     printf("\n\n\n");
 // printf("double : %lu |long double: %lu|\n", sizeof(double), sizeof(long double));
 
 // 	ft_printf(" ft_printf %%.14f of INFINITY :|%f|%-f|%+f|% f|%#f|%0f\n", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
 // 	printf("    printf %%.14f of INFINITY :|%f|%-f|%+f|% f|%#f|%0f", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
 //     printf("\n\n\n");
-    ft_printf(" ft_printf :|%Lf\n", (long double)INFINITY);
-	printf("    printf :|%Lf",(long double)INFINITY);
-    printf("\n\n\n");
+    // ft_printf(" ft_printf :|%Lf\n", (long double)INFINITY);
+	// printf("    printf :|%Lf",(long double)INFINITY);
+    // printf("\n\n\n");
 
     ft_printf(" ft_printf :|%Lf\n", (long double)LDBL_MAX);
 	printf("    printf :|%Lf", (long double)LDBL_MAX);

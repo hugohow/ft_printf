@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/29 18:18:53 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 13:49:56 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static char				*get_bin_floating_point(double nb)
 	char			*output;
 	int				i;
 	unsigned char	t[sizeof(double) + 1];
-
+	// type double code sur 64 bits
 	if (!(output = (char *)malloc(sizeof(*output) * 100)))
 		return (NULL);
 	ft_memcpy(t, &nb, sizeof(double));
