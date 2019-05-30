@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 21:34:26 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/30 21:10:04 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/30 21:51:17 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ft_printf.h"
 
-int						ft_printf(const char *format, ...)
+int						ft_dprintf(int fd, const char *format, ...)
 {
 	va_list				ap;
 	size_t				n;
@@ -31,6 +32,7 @@ int						ft_printf(const char *format, ...)
 	i = 0;
 	len = 0;
 	ret = 0;
+
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -41,7 +43,7 @@ int						ft_printf(const char *format, ...)
 			flag_line = ft_strncpy(\
 				flag_line, format + i, (int)ft_flaglen(format + i) + 1);
 			output = ft_printf_arg(&ap, flag_line);
-			ft_putstr_fd(output, 1);
+			ft_putstr_fd(output, fd);
 			len += (ft_strlen(output));
 			ft_memdel((void **)&output);
 			i += (int)ft_flaglen(format + i);

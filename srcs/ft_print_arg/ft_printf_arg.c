@@ -6,17 +6,12 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/22 23:57:43 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:04:42 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char			*ft_flag_replace(char *str, char *to_replace)
-{
-	str[ft_strlen(str) - 1] = '\0';
-	return (ft_strcat(str, to_replace));
-}
 
 static const	t_ft_print g_fts_print[] =
 {
@@ -64,21 +59,22 @@ t_ft			*ft_find_print(t_flag *flag)
 	return (NULL);
 }
 
-void			ft_printf_arg(va_list *ap, char *str, size_t *len)
+char		*ft_printf_arg(va_list *ap, char *str)
 {
 	t_flag		*flag;
 	t_ft		*fct;
-	int			ret;
+	char		*ret;
 
 	if (!(flag = ft_create_flag(str)))
-		return ;
+		return (NULL);
 	fct = ft_find_print(flag);
 	ret = 0;
 	if (fct != NULL)
 	{
-		ret = fct(ap, flag, 1);
-		if (ret != -1)
-			*len += ret;
+		ret = fct(ap, flag);
+		if (ret == NULL)
+			return (NULL);
 	}
 	ft_memdel((void **)&flag);
+	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_apply_padding_p.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/08 17:38:56 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/30 22:23:51 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ static size_t		get_size_to_add(char *str, t_flag *flag, int sign)
 	{
 
 	}
-	// if (NUMERICAL_VALUE(flag) == 0)
-	//     return (str_len);
 	if (GOT_PLUS(flag, sign))
 		str_len++;
 	if (GOT_MINUS(flag, sign))

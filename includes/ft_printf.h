@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 14:03:30 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:22:08 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include "libft.h"
-# include "ht.h"
 
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"
@@ -145,7 +144,7 @@ typedef struct		s_flag
 	int				hash;
 }					t_flag;
 
-typedef int			(t_ft)(va_list *, t_flag *, int);
+typedef char *			(t_ft)(va_list *, t_flag *);
 
 typedef struct		s_ft_print
 {
@@ -160,15 +159,22 @@ typedef struct		s_color
 	char			str[10];
 }					t_color;
 
+
+int					ft_printf(const char *format, ...);
+int					ft_dprintf(int fd, const char *format, ...);
+
+int						ft_get_and_apply_color(const char *str);
 char				*ft_convert_base(char *decimal, char *base);
 char				*ft_itoa_ll(long long nb);
 size_t				ft_count_variable(const char *format);
 size_t				ft_flaglen(const char *str);
 
 char				*ft_apply_padding_p(char *str, t_flag *flag, int sign);
-char				*ft_apply_padding(char *str, t_flag *flag, int sign);
-char				*ft_apply_precision(char *str, t_flag *flag, int sign);
-char				*ft_apply_precision_s(char *str, t_flag *flag, int sign);
+char				*ft_apply_padding_nb(char *str, t_flag *flag, int sign);
+char				*ft_apply_padding_str(char *str, t_flag *flag, int sign);
+
+char				*ft_apply_precision_nb(char *str, t_flag *flag, int sign);
+char				*ft_apply_precision_str(char *str, t_flag *flag, int sign);
 char				*ft_apply_precision_p(char *str, int precision);
 
 size_t				ft_wcslen(const wchar_t *str);
@@ -177,7 +183,7 @@ wchar_t				*ft_wstrjoin(wchar_t const *str1, wchar_t const *str2);
 wchar_t				*ft_wstrsub(wchar_t const *str, \
 	unsigned int start, size_t len);
 int					get_length(char *flag);
-void				ft_printf_arg(va_list *ap, char *str, size_t *len);
+char		*ft_printf_arg(va_list *ap, char *str);
 t_flag				*ft_create_flag(char *str);
 
 int					ft_flag_get_space(char *flag);
@@ -189,37 +195,33 @@ int					ft_flag_get_precision(char *flag);
 int					ft_flag_get_width(char *flag);
 int					ft_flag_get_zero(char *flag);
 int					ft_flag_get_key(char *flag);
-void				ft_print_flag(t_flag *flag);
-int					ft_printf(const char *format, ...);
 int					ft_count_current_precision(\
 	char *str, t_flag *flag, int sign);
 
-char				*ft_add_char(char *str, t_flag *flag, int sign, char c);
-char				*ft_delete_zeros(char *str, t_flag *flag, int sign);
+char				*ft_add_char(char *str, t_flag *flag, char c);
 char				*ft_strcat(char *s1, const char *s2);
-int					ft_prefix_len(t_flag *flag, int sign);
 int					ft_get_size_to_allocate(\
 	size_t original_nblen, t_flag *flag);
 
-int					ft_print_d(va_list *ap, t_flag *flag, int fd);
-int					ft_print_d_l(va_list *ap, t_flag *flag, int fd);
-int					ft_print_d_ll(va_list *ap, t_flag *flag, int fd);
-int					ft_print_d_h(va_list *ap, t_flag *flag, int fd);
-int					ft_print_d_hh(va_list *ap, t_flag *flag, int fd);
-int					ft_print_percent(va_list *ap, t_flag *flag, int fd);
-int					ft_print_nb(va_list *ap, t_flag *flag, int fd);
-int					ft_print_nb_l(va_list *ap, t_flag *flag, int fd);
-int					ft_print_nb_ll(va_list *ap, t_flag *flag, int fd);
-int					ft_print_nb_hh(va_list *ap, t_flag *flag, int fd);
-int					ft_print_nb_h(va_list *ap, t_flag *flag, int fd);
+char				*ft_print_d(va_list *ap, t_flag *flag);
+char				*ft_print_d_l(va_list *ap, t_flag *flag);
+char				*ft_print_d_ll(va_list *ap, t_flag *flag);
+char				*ft_print_d_h(va_list *ap, t_flag *flag);
+char				*ft_print_d_hh(va_list *ap, t_flag *flag);
+char				*ft_print_percent(va_list *ap, t_flag *flag);
+char				*ft_print_nb(va_list *ap, t_flag *flag);
+char				*ft_print_nb_l(va_list *ap, t_flag *flag);
+char				*ft_print_nb_ll(va_list *ap, t_flag *flag);
+char				*ft_print_nb_hh(va_list *ap, t_flag *flag);
+char				*ft_print_nb_h(va_list *ap, t_flag *flag);
 
-int					ft_print_f(va_list *ap, t_flag *flag, int fd);
-int					ft_print_f_l(va_list *ap, t_flag *flag, int fd);
-int					ft_print_f_l_maj(va_list *ap, t_flag *flag, int fd);
+char				*ft_print_f(va_list *ap, t_flag *flag);
+char				*ft_print_f_l(va_list *ap, t_flag *flag);
+char				*ft_print_f_l_maj(va_list *ap, t_flag *flag);
 
-int					ft_print_s(va_list *ap, t_flag *flag, int fd);
-int					ft_print_c(va_list *ap, t_flag *flag, int fd);
-int					ft_print_p(va_list *ap, t_flag *flag, int fd);
+char				*ft_print_s(va_list *ap, t_flag *flag);
+char				*ft_print_c(va_list *ap, t_flag *flag);
+char				*ft_print_p(va_list *ap, t_flag *flag);
 
 char				*ft_convert_output(char *str, t_flag *flag);
 

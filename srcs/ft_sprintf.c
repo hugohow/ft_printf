@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_sprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 21:34:26 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/30 21:34:44 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int						ft_printf(const char *format, ...)
+int 	ft_sprintf(char *str, const char *format, ...)
 {
 	va_list				ap;
 	size_t				n;
@@ -22,6 +22,10 @@ int						ft_printf(const char *format, ...)
 	int					ret;
 	char				*flag_line;
 
+	if (str)
+	{
+		
+	}
 	format_len = ft_strlen(format);
 	flag_line = (char *)ft_memalloc((format_len + 1) * sizeof(char));
 	if (flag_line == NULL)

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 18:16:12 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:15:55 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,11 +196,11 @@ static char				*get_dec_mantissa(\
 	return (*p_output);
 }
 
-int					ft_print_f(va_list *ap, t_flag *flag, int fd)
+char				*ft_print_f(va_list *ap, t_flag *flag)
 {
 	char			*output;
 	double			tmp;
-	size_t			res;
+	// size_t			res;
 	size_t			size_allocation;
 	int				expo;
 	int				sign;
@@ -224,11 +224,8 @@ int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 		{
 			output = ft_strdup("inf");
 			flag->zero = 0;
-			output = ft_apply_padding(output, flag, sign);
-			ft_putstr_fd(output, fd);
-			res = (ft_strlen(output));
-			ft_memdel((void **)&output);
-			return ((int)res);
+			output = ft_apply_padding_nb(output, flag, sign);
+			return (output);
 		}
 		else
 		{
@@ -237,11 +234,8 @@ int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 			flag->plus = 0;
 			flag->plus = 0;
 			flag->space = 0;
-			output = ft_apply_padding(output, flag, sign);
-			ft_putstr_fd(output, fd);
-			res = (ft_strlen(output));
-			ft_memdel((void **)&output);
-			return ((int)res);
+			output = ft_apply_padding_nb(output, flag, sign);
+			return (output);
 		}
 	}
 	// printf("\nexpo : %d\n", expo);
@@ -282,12 +276,9 @@ int					ft_print_f(va_list *ap, t_flag *flag, int fd)
 	// sign = tmp;
 	// size_allocation = ft_nblen_ull((unsigned long long)(tmp < 0 ? -tmp : tmp));
 	// output = ft_ulltoa_offset((unsigned long long)(tmp < 0 ? -tmp : tmp), ft_get_size_to_allocate(size_allocation, flag));
-	// output = ft_apply_precision(output, flag, sign);
-	output = ft_apply_padding(output, flag, sign);
+	// output = ft_apply_precision_nb(output, flag, sign);
+	output = ft_apply_padding_nb(output, flag, sign);
 	if (flag->hash && flag->precision == 0)
 		output = ft_strjoin(output, ".");
-	ft_putstr_fd(output, fd);
-	res = (ft_strlen(output));
-	ft_memdel((void **)&output);
-	return ((int)res);
+	return (output);
 }

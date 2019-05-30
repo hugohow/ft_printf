@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_apply_precision_s.c                             :+:      :+:    :+:   */
+/*   ft_apply_precision_str.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 16:18:01 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/01 13:49:10 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/30 22:01:56 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/30 22:01:59 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char				*ft_apply_precision_s(char *str, t_flag *flag, int sign)
+char				*ft_apply_precision_str(char *str, t_flag *flag, int sign)
 {
 	unsigned int	str_len;
 

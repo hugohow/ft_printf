@@ -6,18 +6,18 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 18:53:57 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/05 13:39:32 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:15:42 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int						ft_print_d(va_list *ap, t_flag *flag, int fd)
+char			*ft_print_d(va_list *ap, t_flag *flag)
 {
 	char				*output;
 	unsigned long long	tmp_val;
 	size_t				size_allocation;
-	size_t				res;
+	// size_t				res;
 	int					tmp;
 	int					sign;
 
@@ -30,10 +30,7 @@ int						ft_print_d(va_list *ap, t_flag *flag, int fd)
 	size_allocation = ft_nblen_ull(tmp_val);
 	size_allocation = ft_get_size_to_allocate(size_allocation, flag);
 	output = ft_ulltoa_offset(tmp_val, size_allocation);
-	output = ft_apply_precision(output, flag, sign);
-	output = ft_apply_padding(output, flag, sign);
-	ft_putstr_fd(output, fd);
-	res = (ft_strlen(output));
-	ft_memdel((void **)&output);
-	return ((int)res);
+	output = ft_apply_precision_nb(output, flag, sign);
+	output = ft_apply_padding_nb(output, flag, sign);
+	return (output);
 }
