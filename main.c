@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <math.h>
 #include <float.h>
+#include "ft_printf.h"
 int ft_printf(const char* format, ...);
 
 int main(void)
@@ -22,9 +23,166 @@ int main(void)
 	// printf("    printf :|%.f|%-.f|%+.f|% .f|%#.f|%0.f", 42., 42., 42., 42., 42., 42.);
     // printf("\n\n\n");
 
+// char *output;
+
+
+// output = ft_strdup(HALF_POWER_64);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+// ft_printf("%s\n", output);
+// output = ft_bigint_multiply_by_two(output);
+
+
 // %.2147483649f|%2147483649f", 1.0, 1.0
-ft_printf(" ft_printf :|%f|%f", 1.0, 1.0);
-ft_printf(" ft_printf :|%f|%f", 0.0, 0.0);
+
+
+ft_printf(" ft_printf :\t%f|%-f|%+f|% f|%#f|%0f\n", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
+printf(" printf :\t%f|%-f|%+f|% f|%#f|%0f", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
+printf("\n\n\n");
+
+
+ft_printf(" ft_printf :\t%.1150f\n", 0x1p-1074);
+printf(" printf :\t%.1150f\n", 0x1p-1074);
+printf("\n\n\n");
+
+ft_printf(" ft_printf :\t%.1150f\n", 0x1.ffffffffffffep-1023);
+printf(" printf :\t%.1150f\n", 0x1.ffffffffffffep-1023);
+printf("\n\n\n");
+
+ft_printf(" ft_printf :\t%.1150f\n", 0x1.4e46p-1058);
+printf(" printf :\t%.1150f\n", 0x1.4e46p-1058);
+printf("\n\n\n");
+
+ft_printf(" ft_printf :\t%.1150f\n", 0x1.59a8b0c3dp-1037);
+printf(" printf :\t%.1150f\n", 0x1.59a8b0c3dp-1037);
+printf("\n\n\n");
+
+
+
 // ft_printf(" ft_printf :|%.2147483649f|%2147483649f", 1.0, 1.0);
 
 // printf("\n\n\n");

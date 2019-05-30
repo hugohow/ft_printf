@@ -6,12 +6,40 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 12:55:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 16:30:36 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:41:57 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
+
+static char	*ft_bigint_trim_left(char *str)
+{
+	size_t	nb;
+	size_t	i;
+	size_t	len;
+
+	nb = 0;
+	len = ft_strlen(str);
+	while (str[nb] && str[nb] == '0')
+		nb++;
+	if (str[nb] == '.')
+		nb--;
+	if (nb == 0)
+		return (str);
+	i = 0;
+	while (str[i] && i + nb <= len)
+	{
+		str[i] = str[i + nb];
+		i++;
+	}
+	while (i != len)
+	{
+		str[i] = ' ';
+		i++;
+	}
+	return (str);
+}
 
 static char *get_to_add(int n)
 {
@@ -74,7 +102,7 @@ char *ft_bigint_round(char *dst, int precision, size_t limit)
 		if (dst[i - 1] == '.')
 			i--;
 		dst[i] = '\0';
-		return (dst);
+		return (ft_bigint_trim_left(dst));
 	}
 	else if (dst[i] == '5' && dst[i + 1] == 0)
 	{
@@ -91,7 +119,7 @@ char *ft_bigint_round(char *dst, int precision, size_t limit)
 			if ((dst[j] - '0') % 2 == 0)
 			{
 				dst[i] = 0;
-				return (dst);	
+				return (ft_bigint_trim_left(dst));	
 			}
 			else
 			{
@@ -110,7 +138,7 @@ char *ft_bigint_round(char *dst, int precision, size_t limit)
 			if (dst[i - 1] == '.')
 				i--;
 			dst[i] = 0;
-			return (dst);
+			return (ft_bigint_trim_left(dst));
 		}
 		return (NULL);
 	}

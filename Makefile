@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+         #
+#    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/12 12:21:31 by mboivin           #+#    #+#              #
-#    Updated: 2019/05/15 15:40:51 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/05/30 17:27:34 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ $(NAME):
 	$(QUIET) $(AR) $(ARFLAGS) $@ *.o
 	$(QUIET)make clean
 	$(ECHO) "$(GREEN)⟹  $(NAME) is ready.$(EOC)"
-	$(QUIET) $(CC) -g $(NAME) main.c -o main
+	$(QUIET) $(CC) -Iincludes -g $(NAME) main.c -o main
 	$(ECHO) "$(GREEN)⟹  main executable has been succesfully created.$(EOC)"
 	./main
 
