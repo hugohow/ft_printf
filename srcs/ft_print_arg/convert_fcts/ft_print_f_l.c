@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 22:15:53 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 23:12:19 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,39 +71,31 @@ static const char	*g_half_powers[] =
 	0,
 };
 
-typedef union
-{
-	float			f;
-	unsigned char	a[sizeof(float)];
-}					t_union;
 
-static char				*get_binary(unsigned char c)
+static char				*get_binary(unsigned char c, char *tmp_str)
 {
-	char			*output;
 	char			base[2] = "01";
 	char			tmp;
 	int				k;
 
-	if (!(output = (char *)malloc(sizeof(*output) * (8 + 1))))
-		return (NULL);
 	k = 0;
 	while (c != 0)
 	{
-		output[k++] = base[c % 2];
+		tmp_str[k++] = base[c % 2];
 		c /= 2;
 	}
 	while (k != 8)
-		output[k++] = base[0];
-	output[k] = '\0';
+		tmp_str[k++] = base[0];
+	tmp_str[k] = '\0';
 	k = 0;
 	while (k != 4)
 	{
-		tmp = output[k];
-		output[k] = output[7 - k];
-		output[7 - k] = tmp;
+		tmp = tmp_str[k];
+		tmp_str[k] = tmp_str[7 - k];
+		tmp_str[7 - k] = tmp;
 		k++;
 	}
-	return (output);
+	return (tmp_str);
 }
 
 static char				*get_bin_floating_point(double nb)
@@ -111,38 +103,23 @@ static char				*get_bin_floating_point(double nb)
 	char			*output;
 	int				i;
 	unsigned char	t[sizeof(double) + 1];
+	char tmp[10];
+
 	// type double code sur 64 bits
-	if (!(output = (char *)malloc(sizeof(*output) * 100)))
+	if (!(output = (char *)ft_memalloc(sizeof(*output) * 100)))
 		return (NULL);
 	ft_memcpy(t, &nb, sizeof(double));
 	i = (sizeof(double)) - 1;
 
 	while (i != -1)
 	{
-		// tmp_str = ft_itoa((int)t[i]);
-		// tmp_str = ft_convert_base(tmp_str, "0123456789abcdef");
-		// if (ft_strlen(tmp_str) == 1)
-		// {
-		// 	tmp_str[1] = tmp_str[0];
-		// 	tmp_str[0] = '0';
-		// 	tmp_str[2] = 0;
-		// }
-		output = ft_strcat(output, get_binary(t[i]));
+		output = ft_strcat(output, get_binary(t[i], tmp));
 		i--;
 	}
-
-
-	// output[0] = '\0';
-	// i = (int)sizeof(float) - 1;
-	// t_union	u = { (double)nb };
-	// while (i >= 0)
-	// {
-	// 	output = ft_strcat(output, get_binary(u.a[i]));
-	// 	i--;
-	// }
-	// printf("%lu\n", ft_strlen(output));
 	return (output);
 }
+
+
 
 static char				*get_mantissa(char *bin_floating_point)
 {

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 22:16:11 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:41:00 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,8 @@ char					*ft_print_p(va_list *ap, t_flag *flag)
 		i--;
 	}
 	i = 0;
-	while (output[i])
-	{
-		if (output[i] != '0')
-			break ;
+	while (output[i] && output[i] == '0')
 		i++;
-	}
 	len = ft_strlen(output) - i;
 	output = ft_memmove(output, output + i, len);
 	output[len] = 0;

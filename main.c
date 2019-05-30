@@ -160,26 +160,26 @@ int main(void)
 // %.2147483649f|%2147483649f", 1.0, 1.0
 
 
-ft_printf(" ft_printf :\t%f|%-f|%+f|% f|%#f|%0f\n", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
-printf(" printf :\t%f|%-f|%+f|% f|%#f|%0f", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
-printf("\n\n\n");
+ft_printf(" ft_printf :\t%-+8.14f|%- 8.14f|%-#8.14f|%-08.14f|%-+#8.14f|%-+ #08.14f", 0., 0., 0., 0., 0., 0.);
+// printf(" printf :\t%f|%-f|%+f|% f|%#f|%0f", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
+// printf("\n\n\n");
 
 
-ft_printf(" ft_printf :\t%.1150f\n", 0x1p-1074);
-printf(" printf :\t%.1150f\n", 0x1p-1074);
-printf("\n\n\n");
+// ft_printf(" ft_printf :\t%.1150f\n", 0x1p-1074);
+// printf(" printf :\t%.1150f\n", 0x1p-1074);
+// printf("\n\n\n");
 
-ft_printf(" ft_printf :\t%.1150f\n", 0x1.ffffffffffffep-1023);
-printf(" printf :\t%.1150f\n", 0x1.ffffffffffffep-1023);
-printf("\n\n\n");
+// ft_printf(" ft_printf :\t%.1150f\n", 0x1.ffffffffffffep-1023);
+// printf(" printf :\t%.1150f\n", 0x1.ffffffffffffep-1023);
+// printf("\n\n\n");
 
-ft_printf(" ft_printf :\t%.1150f\n", 0x1.4e46p-1058);
-printf(" printf :\t%.1150f\n", 0x1.4e46p-1058);
-printf("\n\n\n");
+// ft_printf(" ft_printf :\t%.1150f\n", 0x1.4e46p-1058);
+// printf(" printf :\t%.1150f\n", 0x1.4e46p-1058);
+// printf("\n\n\n");
 
-ft_printf(" ft_printf :\t%.1150f\n", 0x1.59a8b0c3dp-1037);
-printf(" printf :\t%.1150f\n", 0x1.59a8b0c3dp-1037);
-printf("\n\n\n");
+// ft_printf(" ft_printf :\t%.1150f\n", 0x1.59a8b0c3dp-1037);
+// printf(" printf :\t%.1150f\n", 0x1.59a8b0c3dp-1037);
+// printf("\n\n\n");
 
 
 

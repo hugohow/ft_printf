@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 12:55:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 17:41:57 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:27:12 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char *get_to_add(int n)
 	int i;
 	char *to_add;
 
-	to_add = (char *)malloc((n + 3) * sizeof(char));
+	to_add = (char *)ft_memalloc((n + 3) * sizeof(char));
 	to_add = ft_strcpy(to_add, "0.1");
 	i = 2;
 	while (n != 0)

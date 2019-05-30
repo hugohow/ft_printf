@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 13:18:46 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/08 17:51:26 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/30 22:27:23 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char			*ft_convert_base(char *decimal, char *base)
 	while (decimal[++i])
 		result = result * 10 + (decimal[i] - '0');
 	len = size_to_malloc(result, base_len);
-	if (!(output = (char *)malloc((len + 1) * sizeof(*output))))
+	if (!(output = (char *)ft_memalloc((len + 1) * sizeof(*output))))
 		return (NULL);
 	output[len--] = '\0';
 	if (result == 0)

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 18:53:57 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 22:15:42 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 22:53:24 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ char			*ft_print_d(va_list *ap, t_flag *flag)
 	int					sign;
 
 	tmp = va_arg(*ap, int);
-	if (tmp == 0)
-		sign = 0;
-	else
-		sign = tmp < 0 ? -1 : 1;
+	sign = tmp;
 	tmp_val = tmp < 0 ? -1 * (unsigned long long)tmp : (unsigned long long)tmp;
 	size_allocation = ft_nblen_ull(tmp_val);
 	size_allocation = ft_get_size_to_allocate(size_allocation, flag);

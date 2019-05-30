@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bigint_add.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:03:15 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/08 17:56:59 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/30 22:27:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char		*ft_bigint_add(char *dst, const char *to_add, size_t limit)
 
 	len = ft_strlen(dst) < ft_strlen(to_add) ? \
 		ft_strlen(to_add) : ft_strlen(dst);
-	if (!(to_add_cpy = (char *)malloc(sizeof(*to_add_cpy) * (len * 2))))
+	if (!(to_add_cpy = (char *)ft_memalloc(sizeof(*to_add_cpy) * (len * 2))))
 		return (NULL);
 	to_add_cpy = ft_strcpy(to_add_cpy, to_add);
 	dst_index = get_index(dst, '.');

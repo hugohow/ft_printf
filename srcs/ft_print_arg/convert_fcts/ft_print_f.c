@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 22:15:55 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/30 23:55:06 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static char				*get_binary(unsigned char c)
 	char			tmp;
 	int				k;
 
-	if (!(output = (char *)malloc(sizeof(*output) * (8 + 1))))
+	if (!(output = (char *)ft_memalloc(sizeof(*output) * (8 + 1))))
 		return (NULL);
 	k = 0;
 	while (c != 0)
@@ -122,28 +122,9 @@ static char				*get_bin_floating_point(double nb)
 
 	while (i != -1)
 	{
-		// tmp_str = ft_itoa((int)t[i]);
-		// tmp_str = ft_convert_base(tmp_str, "0123456789abcdef");
-		// if (ft_strlen(tmp_str) == 1)
-		// {
-		// 	tmp_str[1] = tmp_str[0];
-		// 	tmp_str[0] = '0';
-		// 	tmp_str[2] = 0;
-		// }
 		output = ft_strcat(output, get_binary(t[i]));
 		i--;
 	}
-
-
-	// output[0] = '\0';
-	// i = (int)sizeof(float) - 1;
-	// t_union	u = { (double)nb };
-	// while (i >= 0)
-	// {
-	// 	output = ft_strcat(output, get_binary(u.a[i]));
-	// 	i--;
-	// }
-	// printf("%lu\n", ft_strlen(output));
 	return (output);
 }
 
@@ -200,7 +181,6 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 {
 	char			*output;
 	double			tmp;
-	// size_t			res;
 	size_t			size_allocation;
 	int				expo;
 	int				sign;
