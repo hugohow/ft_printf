@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:39:46 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 16:49:29 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:25:37 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			ft_flag_get_width(char *str)
 {
 	long long		width;
-	int		i;
+	int				i;
 
 	i = 0;
 	width = 0;

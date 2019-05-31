@@ -6,14 +6,11 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 18:06:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 22:18:10 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:14:23 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-// By default we push to the left, to optimize the space, but in a certains situations,
-// you have to push to the right
 
 static char		*ft_add_element(char *str, t_flag *flag, int index, char c)
 {

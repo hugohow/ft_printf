@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_output.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:12:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/14 16:05:23 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/31 12:20:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,14 @@ static char		*ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 	char		*output;
 	long long	result;
 	size_t		i;
-	size_t		base_len;
 	size_t		len;
 	int			mem;
 
 	i = -1;
 	result = 0;
-	base_len = ft_strlen(base);
 	while (decimal[++i])
 		result = result * 10 + (decimal[i] - '0');
-	len = get_len(result, base_len);
+	len = get_len(result, ft_strlen(base));
 	mem = ft_get_size_to_allocate(len, flag);
 	if (!(output = (char *)ft_memalloc(sizeof(*output) * (mem + 1))))
 		return (NULL);
@@ -50,8 +48,8 @@ static char		*ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 		output[0] = base[0];
 	while (result != 0)
 	{
-		output[len--] = base[result % base_len];
-		result /= base_len;
+		output[len--] = base[result % ft_strlen(base)];
+		result /= ft_strlen(base);
 	}
 	return (output);
 }

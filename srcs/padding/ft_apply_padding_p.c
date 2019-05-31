@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 00:10:37 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:17:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,11 @@ static char			*ft_add_sign(char *str, t_flag *flag, int sign)
 	return (str);
 }
 
-static size_t		get_size_to_add(char *str, t_flag *flag, int sign)
+static size_t		get_size_to_add(t_flag *flag, int sign)
 {
 	unsigned int	str_len;
 
 	str_len = 0;
-	if (str)
-	{
-
-	}
 	if (GOT_PLUS(flag, sign))
 		str_len++;
 	if (GOT_MINUS(flag, sign))
@@ -54,7 +50,7 @@ static char			*str_to_fill(char *str, t_flag *flag, int sign)
 	unsigned int	to_add_len;
 	unsigned int	i;
 
-	to_add_len = get_size_to_add(str, flag, sign);
+	to_add_len = get_size_to_add(flag, sign);
 	if (to_add_len + ft_strlen(str) >= flag->width)
 		return (ft_strdup(""));
 	if (!(to_add = (char *)ft_memalloc(sizeof(*to_add) * (flag->width + 2))))

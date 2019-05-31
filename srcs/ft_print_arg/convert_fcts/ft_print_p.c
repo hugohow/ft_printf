@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 11:46:33 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:29:49 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char					*ft_print_p(va_list *ap, t_flag *flag)
 	addr = va_arg(*ap, void *);
 	ft_memcpy(t, &addr, sizeof(void *));
 	i = (sizeof(void *));
-	output = ft_memalloc((sizeof(void *) * 2 + 1) * sizeof(*output));
+	if (!(output = (char *)ft_memalloc(sizeof(char) * (sizeof(void *) * 2 + 1))))
+		return (NULL);
 	while (i != -1)
 	{
 		tmp_str = ft_itoa((int)t[i]);
