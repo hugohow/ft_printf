@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 21:34:26 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:03:04 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,14 @@
 int						ft_printf(const char *format, ...)
 {
 	va_list				ap;
-	size_t				n;
 	size_t				i;
-	size_t				format_len;
 	size_t				len;
 	int					ret;
 	char				*flag_line;
-
-	format_len = ft_strlen(format);
-	flag_line = (char *)ft_memalloc((format_len + 1) * sizeof(char));
+	char *color;
+	flag_line = (char *)ft_memalloc((ft_strlen(format) + 1) * sizeof(char));
 	if (flag_line == NULL)
 		return (-1);
-	n = ft_count_variable(format);
 	va_start(ap, format);
 	i = 0;
 	len = 0;
@@ -37,7 +33,7 @@ int						ft_printf(const char *format, ...)
 		{
 			char *output;
 
-			ft_bzero((void *)flag_line, format_len + 1);
+			ft_bzero((void *)flag_line, ft_strlen(format) + 1);
 			flag_line = ft_strncpy(\
 				flag_line, format + i, (int)ft_flaglen(format + i) + 1);
 			output = ft_printf_arg(&ap, flag_line);
@@ -47,9 +43,12 @@ int						ft_printf(const char *format, ...)
 			i += (int)ft_flaglen(format + i);
 		}
 		else if (format[i] == '{' && (\
-			ret = ft_get_and_apply_color(format + i + 1)) != 0)
+			color = ft_get_color(format + i + 1)) != 0)
 		{
-			i += ret + 1;
+			ft_putstr_fd(color, 1);
+			i++;
+			while (format[i] && format[i] != '}')
+				i++;
 		}
 		else
 		{

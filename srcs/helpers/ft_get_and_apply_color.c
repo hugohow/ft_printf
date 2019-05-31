@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:08:46 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 21:09:14 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:02:09 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static const t_color	g_tab_colors[] =
 	{"", ""},
 };
 
-int						ft_get_and_apply_color(const char *str)
+char 			*ft_get_color(const char *str)
 {
 	int					len;
 	int					i;
@@ -34,15 +34,14 @@ int						ft_get_and_apply_color(const char *str)
 	while (str[len] && str[len] != '}')
 		len++;
 	if (len == 0)
-		return (0);
+		return (NULL);
 	while ((g_tab_colors[i].key)[0])
 	{
 		if (ft_strncmp(g_tab_colors[i].key, str, len) == 0)
 		{
-			ft_putstr_fd(g_tab_colors[i].str, 1);
-			return (len);
+			return ((char *)g_tab_colors[i].str);
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

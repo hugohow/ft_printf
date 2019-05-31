@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 22:41:00 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 11:46:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char					*ft_print_p(va_list *ap, t_flag *flag)
 	char			*tmp_str;
 	unsigned char	t[sizeof(void *) + 1];
 	void			*addr;
-	// size_t			res;
 	int				i;
 	int				len;
 

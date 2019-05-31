@@ -27,7 +27,7 @@ int main(void)
 
 
 // output = ft_strdup(HALF_POWER_64);
-// ft_printf("%s\n", output);
+ft_printf("ssss  {cyan}ft_printfft_printf   s{eoc}s\n");
 // output = ft_bigint_multiply_by_two(output);
 // ft_printf("%s\n", output);
 // output = ft_bigint_multiply_by_two(output);

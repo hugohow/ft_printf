@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 21:34:44 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:03:38 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int 	ft_sprintf(char *str, const char *format, ...)
 	size_t				len;
 	int					ret;
 	char				*flag_line;
-
+	char 				*color;
 	if (str)
 	{
 		
@@ -51,9 +51,12 @@ int 	ft_sprintf(char *str, const char *format, ...)
 			i += (int)ft_flaglen(format + i);
 		}
 		else if (format[i] == '{' && (\
-			ret = ft_get_and_apply_color(format + i + 1)) != 0)
+			color = ft_get_color(format + i + 1)) != 0)
 		{
-			i += ret + 1;
+			ft_putstr_fd(color, 1);
+			i++;
+			while (format[i] && format[i] != '}')
+				i++;
 		}
 		else
 		{
