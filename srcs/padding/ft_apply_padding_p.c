@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 13:23:45 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 18:16:53 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ char				*ft_apply_padding_p(char *str, t_flag *flag, int sign)
 		else
 			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
 	}
+	ft_memdel((void **)&to_add);
 	return (str);
 }

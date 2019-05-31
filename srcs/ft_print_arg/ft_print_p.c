@@ -6,25 +6,22 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:45:16 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 18:22:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char					*ft_print_p(va_list *ap, t_flag *flag)
+static char	*ft_itoa_p(void *addr, t_flag *flag)
 {
+	int				i;
 	char			*output;
 	char			*tmp_str;
 	unsigned char	t[sizeof(uintptr_t) + 1];
-	void			*addr;
-	int				i;
-	int				len;
 
-	addr = va_arg(*ap, void *);
-	ft_memcpy(t, &addr, sizeof(uintptr_t));
 	i = (sizeof(uintptr_t));
-	if (!(output = (char *)ft_memalloc(sizeof(char) * (sizeof(uintptr_t) * 2 + 1))))
+	ft_memcpy(t, &addr, sizeof(uintptr_t));
+	if (!(output = (char *)ft_memalloc(sizeof(char) * (sizeof(uintptr_t) * 3))))
 		return (NULL);
 	while (i != -1)
 	{
@@ -37,8 +34,21 @@ char					*ft_print_p(va_list *ap, t_flag *flag)
 			tmp_str[2] = 0;
 		}
 		output = ft_strcat(output, tmp_str);
+		ft_memdel((void **)&tmp_str);
 		i--;
 	}
+	return (output);
+}
+
+char		*ft_print_p(va_list *ap, t_flag *flag)
+{
+	char			*output;
+	void			*addr;
+	int				i;
+	int				len;
+
+	addr = va_arg(*ap, void *);
+	output = ft_itoa_p(addr, flag);
 	i = 0;
 	while (output[i] && output[i] == '0')
 		i++;
