@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:29:49 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:45:16 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ char					*ft_print_p(va_list *ap, t_flag *flag)
 {
 	char			*output;
 	char			*tmp_str;
-	unsigned char	t[sizeof(void *) + 1];
+	unsigned char	t[sizeof(uintptr_t) + 1];
 	void			*addr;
 	int				i;
 	int				len;
 
 	addr = va_arg(*ap, void *);
-	ft_memcpy(t, &addr, sizeof(void *));
-	i = (sizeof(void *));
-	if (!(output = (char *)ft_memalloc(sizeof(char) * (sizeof(void *) * 2 + 1))))
+	ft_memcpy(t, &addr, sizeof(uintptr_t));
+	i = (sizeof(uintptr_t));
+	if (!(output = (char *)ft_memalloc(sizeof(char) * (sizeof(uintptr_t) * 2 + 1))))
 		return (NULL);
 	while (i != -1)
 	{
 		tmp_str = ft_itoa((int)t[i]);
-		tmp_str = ft_convert_base(tmp_str, "0123456789abcdef");
+		tmp_str = ft_convert_output(tmp_str, flag);
 		if (ft_strlen(tmp_str) == 1)
 		{
 			tmp_str[1] = tmp_str[0];
