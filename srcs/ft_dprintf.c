@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:10:04 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:03:44 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:09:15 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int						ft_dprintf(int fd, const char *format, ...)
 {
 	va_list				ap;
-	size_t				n;
 	size_t				i;
 	size_t				format_len;
 	size_t				len;
@@ -27,7 +26,6 @@ int						ft_dprintf(int fd, const char *format, ...)
 	flag_line = (char *)ft_memalloc((format_len + 1) * sizeof(char));
 	if (flag_line == NULL)
 		return (-1);
-	n = ft_count_variable(format);
 	va_start(ap, format);
 	i = 0;
 	len = 0;

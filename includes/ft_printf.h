@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:04:23 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:09:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ char			*ft_str_join(const char *to_add, char *str1, t_flag *flag);
 char				*ft_get_color(const char *str);
 char				*ft_convert_base(char *decimal, char *base);
 char				*ft_itoa_ll(long long nb);
-size_t				ft_count_variable(const char *format);
 size_t				ft_flaglen(const char *str);
 
 char				*ft_apply_padding_p(char *str, t_flag *flag, int sign);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 18:53:57 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 22:53:24 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 12:06:25 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char			*ft_print_d(va_list *ap, t_flag *flag)
 	char				*output;
 	unsigned long long	tmp_val;
 	size_t				size_allocation;
-	// size_t				res;
 	int					tmp;
 	int					sign;
 
