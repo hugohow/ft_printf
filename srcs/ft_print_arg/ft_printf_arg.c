@@ -6,12 +6,11 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 13:33:17 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 18:26:59 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static const	t_ft_print g_fts_print[] =
 {
@@ -35,7 +34,7 @@ static const	t_ft_print g_fts_print[] =
 	{0, 0, NULL},
 };
 
-t_ft			*ft_find_print(t_flag *flag)
+t_ft	*ft_find_print(t_flag *flag)
 {
 	int			i;
 	int			j;
@@ -59,7 +58,7 @@ t_ft			*ft_find_print(t_flag *flag)
 	return (NULL);
 }
 
-char		*ft_printf_arg(va_list *ap, char *str)
+char	*ft_printf_arg(va_list *ap, char *str)
 {
 	t_flag		*flag;
 	t_ft		*fct;
