@@ -26,14 +26,8 @@ int main(void)
 // char *output;
 
 
-ft_printf("%p", NULL);
-ft_printf("%p", "Random string");
-ft_printf("%5p", "Random string");
-ft_printf("%30p", "Random string");
-ft_printf("%-30p", "Random string");
-ft_printf("%p", &printf);
-
-
+ft_printf("%f|%-f|%+f|% f|%#f|%0f\n", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
+printf("%f|%-f|%+f|% f|%#f|%0f", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
 // output = ft_strdup(HALF_POWER_64);
 // ft_printf("ssss  {cyan}ft_printfft_printf   s{eoc}s\n");
 // output = ft_bigint_multiply_by_two(output);

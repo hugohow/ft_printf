@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:45:36 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 23:13:41 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,4 +230,7 @@ size_t				ft_nblen_ull(unsigned long long nb);
 char				*ft_ulltoa_offset(\
 	unsigned long long nb, size_t size_allocation);
 int					ft_str_precision_count(char *str, int offset);
+char 				*ft_itoa_f_l(char *floating_str, t_flag *flag, int size_allocation);
+char 				*ft_itoa_f(char *floating_str, t_flag *flag, int size_allocation);
+char				*ft_get_binary(unsigned char c, char *tmp_str);
 #endif
