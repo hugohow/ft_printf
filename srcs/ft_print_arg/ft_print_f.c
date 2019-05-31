@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 23:29:13 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 23:39:45 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ static char				*get_bin_floating_point(double nb)
 	char			*output;
 	int				i;
 	unsigned char	t[sizeof(double) + 1];
-
 	// type double code sur 64 bits
-	if (!(output = (char *)malloc(sizeof(*output) * 100)))
+	if (!(output = (char *)ft_memalloc(sizeof(*output) * 100)))
 		return (NULL);
 	ft_memcpy(t, &nb, sizeof(double));
 	i = (sizeof(double)) - 1;
@@ -74,6 +73,7 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 		output = ft_strdup("0.");
 	else
 		output = ft_itoa_f(get_bin_floating_point(tmp), flag, size_allocation);
+	// si autre que infini ou nan
 	if  (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0 )
 	{
 		if (flag->precision == -1)

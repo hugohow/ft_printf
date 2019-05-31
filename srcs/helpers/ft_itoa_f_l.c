@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 22:54:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 23:05:59 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 23:32:30 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,6 @@ static const char	*g_half_powers[] =
 
 static char				*get_mantissa(char *bin_floating_point)
 {
-	// printf("bin_floating_point : %s\n", bin_floating_point);
-	// printf("mantissa : %s\n", bin_floating_point + 17);
-	// printf("mantissa : %zu\n", ft_strlen(bin_floating_point + 17));
 	return (bin_floating_point + 17);
 }
 
