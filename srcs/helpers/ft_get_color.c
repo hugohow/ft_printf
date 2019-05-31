@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_and_apply_color.c                           :+:      :+:    :+:   */
+/*   ft_get_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/30 21:08:46 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:02:09 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/05/31 12:10:40 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/05/31 12:10:54 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static const t_color	g_tab_colors[] =
 	{"", ""},
 };
 
-char 			*ft_get_color(const char *str)
+char					*ft_get_color(const char *str)
 {
 	int					len;
 	int					i;

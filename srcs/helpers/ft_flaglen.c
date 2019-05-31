@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flaglen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:39:58 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/08 17:39:09 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/31 12:12:25 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ size_t		ft_flaglen(const char *str)
 	size_t	i;
 
 	i = 1;
-	// à voir après pour les cas moins basiques type ll, ...
 	while (str[i] && is_valid_par(str[i]) == 1)
 	{
 		if (str[i] == '%')
