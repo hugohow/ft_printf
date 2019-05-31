@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 13:41:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 18:24:16 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@ static char			*get_prefix(t_flag *flag)
 	if (flag->conv == 'X')
 		return ("0X");
 	return ("");
-}
-
-static char			*ft_add_prefix(char *str, t_flag *flag)
-{
-	str = ft_str_join(get_prefix(flag), str, flag);
-	return (str);
 }
 
 static char			*ft_add_sign(char *str, t_flag *flag, int sign)
@@ -92,14 +86,14 @@ char				*ft_apply_padding_nb(char *str, t_flag *flag, int sign)
 	{
 		str = ft_str_join(to_add, str, flag);
 		if (GOT_PREFIX(flag, sign))
-			str = ft_add_prefix(str, flag);
+			str = ft_str_join(get_prefix(flag), str, flag);
 		str = ft_add_sign(str, flag, sign);
 	}
 	else
 	{
 		str = ft_add_sign(str, flag, sign);
 		if (GOT_PREFIX(flag, sign))
-			str = ft_add_prefix(str, flag);
+			str = ft_str_join(get_prefix(flag), str, flag);
 		if (flag->minus == 1)
 			str = ft_str_join_r(str, to_add, flag);
 		else
