@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:03:04 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 13:05:16 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int						ft_printf(const char *format, ...)
 	int					ret;
 	char				*flag_line;
 	char *color;
-	flag_line = (char *)ft_memalloc((ft_strlen(format) + 1) * sizeof(char));
-	if (flag_line == NULL)
+
+	if (!(flag_line = (char *)ft_memalloc((ft_strlen(format) + 1) * sizeof(char))))
 		return (-1);
 	va_start(ap, format);
 	i = 0;

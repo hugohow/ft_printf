@@ -6,11 +6,12 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 23:12:19 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 13:39:44 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 
 static const char	*g_half_powers[] =
 {
@@ -68,6 +69,17 @@ static const char	*g_half_powers[] =
 	HALF_POWER_51,
 	HALF_POWER_52,
 	HALF_POWER_53,
+	HALF_POWER_54,
+	HALF_POWER_55,
+	HALF_POWER_56,
+	HALF_POWER_57,
+	HALF_POWER_58,
+	HALF_POWER_59,
+	HALF_POWER_60,
+	HALF_POWER_61,
+	HALF_POWER_62,
+	HALF_POWER_63,
+	HALF_POWER_64,
 	0,
 };
 
@@ -98,33 +110,33 @@ static char				*get_binary(unsigned char c, char *tmp_str)
 	return (tmp_str);
 }
 
-static char				*get_bin_floating_point(double nb)
+static char				*get_bin_floating_point(long double nb)
 {
 	char			*output;
 	int				i;
-	unsigned char	t[sizeof(double) + 1];
+	unsigned char	t[10 + 1];
 	char tmp[10];
-
-	// type double code sur 64 bits
+	// type double code sur 80 bits
 	if (!(output = (char *)ft_memalloc(sizeof(*output) * 100)))
 		return (NULL);
-	ft_memcpy(t, &nb, sizeof(double));
-	i = (sizeof(double)) - 1;
+	ft_memcpy(t, &nb, 10);
+	i = (10) - 1;
 
 	while (i != -1)
 	{
 		output = ft_strcat(output, get_binary(t[i], tmp));
 		i--;
 	}
+
 	return (output);
 }
-
-
 
 static char				*get_mantissa(char *bin_floating_point)
 {
 	// printf("bin_floating_point : %s\n", bin_floating_point);
-	return (bin_floating_point + 12);
+	// printf("mantissa : %s\n", bin_floating_point + 17);
+	// printf("mantissa : %zu\n", ft_strlen(bin_floating_point + 17));
+	return (bin_floating_point + 17);
 }
 
 static int					get_exponent(char *bin_floating_point)
@@ -135,8 +147,8 @@ static int					get_exponent(char *bin_floating_point)
 
 	i = 1;
 	exponent = 0;
-	in = 1024;
-	while (i < 12)
+	in = 16384;
+	while (i < 16)
 	{
 		if (bin_floating_point[i] == '1')
 			exponent += in * 1;
@@ -144,7 +156,7 @@ static int					get_exponent(char *bin_floating_point)
 		i++;
 	}
 
-	return (exponent - 1023);
+	return (exponent - 16383);
 }
 
 static char				*get_dec_mantissa(\
@@ -156,7 +168,7 @@ static char				*get_dec_mantissa(\
 	*p_output = ft_strcpy(*p_output, "1");
 	while (str[i])
 	{
-		if (i == 53)
+		if (i == 64)
 			break;
 		if (str[i] == '1')
 			*p_output = ft_bigint_add(\
@@ -170,29 +182,29 @@ static char				*get_dec_mantissa(\
 	return (*p_output);
 }
 
-char					*ft_print_f_l(va_list *ap, t_flag *flag)
+char			*ft_print_f_l(va_list *ap, t_flag *flag)
 {
 	char			*output;
-	double			tmp;
-	// size_t			res;
+	long double			tmp;
 	size_t			size_allocation;
 	int				expo;
 	int				sign;
 
-	size_allocation = 4096;
-	tmp = va_arg(*ap, double);
+	size_allocation = 6000;
+	tmp = (long double)va_arg(*ap, double);
 	sign = get_bin_floating_point(tmp)[0] == '1' ? -1 : 1;
 	expo = get_exponent(get_bin_floating_point(tmp));
-	output = (char *)malloc(sizeof(*output) * size_allocation);
+	output = (char *)ft_memalloc(sizeof(*output) * size_allocation);
+	output = get_dec_mantissa(get_mantissa(\
+		get_bin_floating_point(tmp)), &output, size_allocation);
+	// printf("\nexpo : %d\n", expo);
 	if (tmp == 0)
 	{
 		output = ft_strdup("0.");
 	}
 	else
 	{
-	output = get_dec_mantissa(get_mantissa(\
-		get_bin_floating_point(tmp)), &output, size_allocation);
-	if (expo == 1024)
+	if (expo == 16384)
 	{
 		if (ft_strcmp(output, "0") == 0)
 		{
@@ -212,9 +224,7 @@ char					*ft_print_f_l(va_list *ap, t_flag *flag)
 			return (output);
 		}
 	}
-	// printf("\nexpo : %d\n", expo);
-	// printf("fraction : %s\n", output);
-	if (expo == -1022)
+	if (expo == -16382)
 	{
 
 	}

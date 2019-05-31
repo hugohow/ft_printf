@@ -19,15 +19,14 @@ int main(void)
 	// printf("    printf :%lf|%-lf|%+lf|% lf|%#lf|%0lf", 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849, 38546.5849);
     // printf("\n\n\n");
 
-    // ft_printf(" ft_printf :|%.f|%-.f|%+.f|% .f|%#.f|%0.f", 42., 42., 42., 42., 42., 42.);
-	// printf("    printf :|%.f|%-.f|%+.f|% .f|%#.f|%0.f", 42., 42., 42., 42., 42., 42.);
+    ft_printf(" ft_printf :%.f|%.1f|%.2f|%.5f|%.12f\n", 0.000099, 0.000099, 0.000099, 0.000099, 0.000099);
+	printf("    printf :%.f|%.1f|%.2f|%.5f|%.12f", 0.000099, 0.000099, 0.000099, 0.000099, 0.000099);
     // printf("\n\n\n");
 
 // char *output;
 
-
 // output = ft_strdup(HALF_POWER_64);
-ft_printf("ssss  {cyan}ft_printfft_printf   s{eoc}s\n");
+// ft_printf("ssss  {cyan}ft_printfft_printf   s{eoc}s\n");
 // output = ft_bigint_multiply_by_two(output);
 // ft_printf("%s\n", output);
 // output = ft_bigint_multiply_by_two(output);
@@ -160,7 +159,7 @@ ft_printf("ssss  {cyan}ft_printfft_printf   s{eoc}s\n");
 // %.2147483649f|%2147483649f", 1.0, 1.0
 
 
-ft_printf(" ft_printf :\t%-+8.14f|%- 8.14f|%-#8.14f|%-08.14f|%-+#8.14f|%-+ #08.14f", 0., 0., 0., 0., 0., 0.);
+// ft_printf(" ft_printf :\t%-+8.14f|%- 8.14f|%-#8.14f|%-08.14f|%-+#8.14f|%-+ #08.14f", 0., 0., 0., 0., 0., 0.);
 // printf(" printf :\t%f|%-f|%+f|% f|%#f|%0f", DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN, DBL_MIN);
 // printf("\n\n\n");
 
@@ -429,6 +428,8 @@ ft_printf(" ft_printf :\t%-+8.14f|%- 8.14f|%-#8.14f|%-08.14f|%-+#8.14f|%-+ #08.1
 	// printf("    printf :%.5hho|%-.5hho|%#.5hho|%0.5hho", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX);
     // printf("\n\n\n");
 
+
+    // ft_printf(" %%\n");
 
 	// %-#23llX|%-023llX|%#023llX|%-#023llX", ULLONG_MAX, ULLONG_MAX, ULLONG_MAX, ULLONG_MAX
     return 0;

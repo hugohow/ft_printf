@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bigint_trim.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:02:01 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/08 17:55:01 by mboivin          ###   ########.fr       */
+/*   Updated: 2019/05/31 16:22:42 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static char	*ft_bigint_trim_right(char *str)
 {
-	size_t	i;
-	size_t	len;
+	size_t i;
+	size_t len;
 
 	len = ft_strlen(str);
 	i = len - 1;
@@ -29,16 +29,14 @@ static char	*ft_bigint_trim_right(char *str)
 
 static char	*ft_bigint_trim_left(char *str)
 {
-	size_t	nb;
-	size_t	i;
-	size_t	len;
+	size_t nb;
+	size_t i;
+	size_t len;
 
 	nb = 0;
 	len = ft_strlen(str);
 	while (str[nb] && str[nb] == '0')
 		nb++;
-	if (str[nb] == '.')
-		nb--;
 	if (nb == 0)
 		return (str);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 23:55:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 17:42:09 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,7 +250,10 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 		output = ft_bigint_round(output, 6, size_allocation);
 	else
 		output = ft_bigint_round(output, flag->precision, size_allocation);
-
+	if (output[0] == '.')
+	{
+		output = ft_strjoin("0", output);
+	}
 	if (ft_strlen(output) == 0)
 		output = ft_strdup("0");
 	// sign = tmp;

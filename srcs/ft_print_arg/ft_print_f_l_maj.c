@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/30 23:10:44 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 13:39:50 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,6 @@ char			*ft_print_f_l_maj(va_list *ap, t_flag *flag)
 {
 	char			*output;
 	long double			tmp;
-	// size_t			res;
 	size_t			size_allocation;
 	int				expo;
 	int				sign;

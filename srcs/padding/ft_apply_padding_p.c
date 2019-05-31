@@ -6,17 +6,11 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:17:33 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 13:23:45 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static char			*ft_add_prefix(char *str)
-{
-	str = ft_strcat_r(PREFIX_0X, str);
-	return (str);
-}
 
 static char			*ft_add_sign(char *str, t_flag *flag, int sign)
 {
@@ -84,12 +78,12 @@ char				*ft_apply_padding_p(char *str, t_flag *flag, int sign)
 	if (FILL_WITH_ZEROS(flag, sign))
 	{
 		str = ft_strcat_r(to_add, str);
-		str = ft_add_prefix(str);
+		str = ft_strcat_r(PREFIX_0X, str);
 	}
 	else
 	{
 		str = ft_add_sign(str, flag, sign);
-		str = ft_add_prefix(str);
+		str = ft_strcat_r(PREFIX_0X, str);
 		if (flag->minus == 1)
 			str = ft_strcat(str, to_add);
 		else

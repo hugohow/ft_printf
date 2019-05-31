@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 00:13:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 13:41:06 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char			*str_to_fill(char *str, t_flag *flag, int sign)
 	{
 		if (flag->key & KEY_F)
 			to_add[i] = FILL_WITH_ZEROS_FLOAT(flag, sign) ? '0' : ' ';
-		else	
+		else
 			to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
 		i++;
 	}
@@ -87,7 +87,8 @@ char				*ft_apply_padding_nb(char *str, t_flag *flag, int sign)
 	if (str[0] && str[0] == '0' && flag->conv == 'o')
 		flag->hash = 0;
 	to_add = str_to_fill(str, flag, sign);
-	if (FILL_WITH_ZEROS(flag, sign) || (flag->key & KEY_F && FILL_WITH_ZEROS_FLOAT(flag, sign)))
+	if (FILL_WITH_ZEROS(flag, sign) || \
+		(flag->key & KEY_F && FILL_WITH_ZEROS_FLOAT(flag, sign)))
 	{
 		str = ft_str_join(to_add, str, flag);
 		if (GOT_PREFIX(flag, sign))
