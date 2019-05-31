@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/12 12:21:31 by mboivin           #+#    #+#              #
-#    Updated: 2019/05/30 17:27:34 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/05/31 12:52:55 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ all: $(NAME)
 
 $(NAME):
 	$(ECHO) "$(GREY)Compiling ...$(EOC)"
-	$(QUIET) $(CC) $(CFLAGS) $(INCLUDES) -g -c srcs/*.c libft/*.c srcs/*/*.c srcs/*/*/*.c
+	$(QUIET) $(CC) $(CFLAGS) $(INCLUDES) -g -c srcs/*.c libft/*.c srcs/*/*.c srcs/*/*.c
 	$(ECHO) "$(GREY)Archiving $(EOC)$(PURPLE)object files$(EOC) $(GREY)...$(EOC)"
 	$(QUIET) $(AR) $(ARFLAGS) $@ *.o
 	$(QUIET)make clean
