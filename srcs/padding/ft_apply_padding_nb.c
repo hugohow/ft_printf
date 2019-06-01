@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 17:39:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 18:24:16 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/01 23:03:12 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static char			*get_prefix(t_flag *flag)
 
 static char			*ft_add_sign(char *str, t_flag *flag, int sign)
 {
-	if (GOT_PLUS(flag, sign))
+	if (ft_can_apply_plus(flag, sign))
 		str = ft_str_join("+", str, flag);
-	if (GOT_MINUS(flag, sign))
+	if (ft_can_apply_minus(flag, sign))
 		str = ft_str_join("-", str, flag);
-	if (GOT_SPACE(flag, sign))
+	if (ft_can_apply_space(flag, sign))
 		str = ft_str_join(" ", str, flag);
 	return (str);
 }
@@ -39,13 +39,13 @@ static size_t		get_size_to_add(t_flag *flag, int sign)
 	unsigned int	str_len;
 
 	str_len = 0;
-	if (GOT_PLUS(flag, sign))
+	if (ft_can_apply_plus(flag, sign))
 		str_len++;
-	if (GOT_MINUS(flag, sign))
+	if (ft_can_apply_minus(flag, sign))
 		str_len++;
-	if (GOT_SPACE(flag, sign))
+	if (ft_can_apply_space(flag, sign))
 		str_len++;
-	if (GOT_PREFIX(flag, sign))
+	if (ft_can_apply_prefix(flag, sign))
 		str_len += ft_strlen(get_prefix(flag));
 	return (str_len);
 }
@@ -65,9 +65,9 @@ static char			*str_to_fill(char *str, t_flag *flag, int sign)
 	while (to_add_len + ft_strlen(str) + i < flag->width)
 	{
 		if (flag->key & KEY_F)
-			to_add[i] = FILL_WITH_ZEROS_FLOAT(flag, sign) ? '0' : ' ';
+			to_add[i] = ft_can_fill_with_zeros_float(flag, sign) ? '0' : ' ';
 		else
-			to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
+			to_add[i] = ft_can_fill_with_zeros(flag, sign) ? '0' : ' ';
 		i++;
 	}
 	to_add[i] = '\0';
@@ -81,18 +81,18 @@ char				*ft_apply_padding_nb(char *str, t_flag *flag, int sign)
 	if (str[0] && str[0] == '0' && flag->conv == 'o')
 		flag->hash = 0;
 	to_add = str_to_fill(str, flag, sign);
-	if (FILL_WITH_ZEROS(flag, sign) || \
-		(flag->key & KEY_F && FILL_WITH_ZEROS_FLOAT(flag, sign)))
+	if (ft_can_fill_with_zeros(flag, sign) || \
+		(flag->key & KEY_F && ft_can_fill_with_zeros_float(flag, sign)))
 	{
 		str = ft_str_join(to_add, str, flag);
-		if (GOT_PREFIX(flag, sign))
+		if (ft_can_apply_prefix(flag, sign))
 			str = ft_str_join(get_prefix(flag), str, flag);
 		str = ft_add_sign(str, flag, sign);
 	}
 	else
 	{
 		str = ft_add_sign(str, flag, sign);
-		if (GOT_PREFIX(flag, sign))
+		if (ft_can_apply_prefix(flag, sign))
 			str = ft_str_join(get_prefix(flag), str, flag);
 		if (flag->minus == 1)
 			str = ft_str_join_r(str, to_add, flag);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 23:13:41 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/01 23:03:30 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,11 @@
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"
 # define PREFIX_0 "0"
-# define GOT_PLUS(flag, sign) (flag->plus == 1 && sign >= 0)
-# define GOT_SPACE(flag, sign) (flag->plus == 0 && flag->space == 1 && sign >= 0)
-# define GOT_PREFIX(flag, sign) ((flag->hash && sign != 0) || (sign == 0 && flag->precision == 0 && flag->conv == 'o' && (flag->hash)) || (flag->key & KEY_P))
-# define GOT_MINUS(flag, sign) (sign < 0)
-# define FILL_TO_THE_LEFT(flag, sign) (flag->zero == 1 && flag->minus == 0)
-# define FILL_TO_THE_RIGHT(flag, sign) (!(FILL_TO_THE_LEFT(flag, sign)))
-# define FILL_WITH_ZEROS(flag, sign) (FILL_TO_THE_LEFT(flag, sign) && flag->precision == -1)
-# define FILL_WITH_ZEROS_FLOAT(flag, sign) (FILL_TO_THE_LEFT(flag, sign))
-
 # define BASE_O "01234567"
 # define BASE_X "0123456789abcdef"
 # define BASE_X_MAJ "0123456789ABCDEF"
 # define BASE_B "01"
 # define PERCENTAGE "%"
-
 # define ANSI_COLOR_CYAN    "\x1b[36m"
 # define ANSI_COLOR_RED     "\x1b[31m"
 # define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -61,7 +51,6 @@
 # define KEY_P (1 << 5)
 # define KEY_S (1 << 6)
 # define KEY_F (1 << 7)
-# define NUMERICAL_VALUE(flag) ((flag->key & KEY_NB) || (flag->key & KEY_D) || (flag->key & KEY_P) || (flag->key & KEY_F))
 
 
 #define HALF_POWER_0 "1"
@@ -233,4 +222,12 @@ int					ft_str_precision_count(char *str, int offset);
 char 				*ft_itoa_f_l(char *floating_str, t_flag *flag, int size_allocation);
 char 				*ft_itoa_f(char *floating_str, t_flag *flag, int size_allocation);
 char				*ft_get_binary(unsigned char c, char *tmp_str);
+int					ft_can_apply_plus(t_flag *flag, int sign);
+int					ft_can_apply_space(t_flag *flag, int sign);
+int					ft_can_apply_prefix(t_flag *flag, int sign);
+int				ft_can_apply_minus(t_flag *flag, int sign);
+int 				ft_can_fill_to_the_left(t_flag *flag, int sign);
+int 				ft_can_fill_to_the_right(t_flag *flag, int sign);
+int 				ft_can_fill_with_zeros(t_flag *flag, int sign);
+int 				ft_can_fill_with_zeros_float(t_flag *flag, int sign);
 #endif

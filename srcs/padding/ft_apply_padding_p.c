@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 18:16:53 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/01 22:54:58 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static char			*ft_add_sign(char *str, t_flag *flag, int sign)
 {
-	if (GOT_PLUS(flag, sign))
+	if (ft_can_apply_plus(flag, sign))
 		str = ft_strcat_r("+", str);
-	if (GOT_MINUS(flag, sign))
+	if (ft_can_apply_minus(flag, sign))
 		str = ft_strcat_r("-", str);
-	if (GOT_SPACE(flag, sign))
+	if (ft_can_apply_space(flag, sign))
 		str = ft_strcat_r(" ", str);
 	return (str);
 }
@@ -28,11 +28,11 @@ static size_t		get_size_to_add(t_flag *flag, int sign)
 	unsigned int	str_len;
 
 	str_len = 0;
-	if (GOT_PLUS(flag, sign))
+	if (ft_can_apply_plus(flag, sign))
 		str_len++;
-	if (GOT_MINUS(flag, sign))
+	if (ft_can_apply_minus(flag, sign))
 		str_len++;
-	if (GOT_SPACE(flag, sign))
+	if (ft_can_apply_space(flag, sign))
 		str_len++;
 	str_len += 2;
 	return (str_len);
@@ -52,7 +52,7 @@ static char			*str_to_fill(char *str, t_flag *flag, int sign)
 	i = 0;
 	while (to_add_len + ft_strlen(str) + i < flag->width)
 	{
-		to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
+		to_add[i] = ft_can_fill_with_zeros(flag, sign) ? '0' : ' ';
 		i++;
 	}
 	to_add[i] = '\0';
@@ -75,7 +75,7 @@ char				*ft_apply_padding_p(char *str, t_flag *flag, int sign)
 	char			*to_add;
 
 	to_add = str_to_fill(str, flag, sign);
-	if (FILL_WITH_ZEROS(flag, sign))
+	if (ft_can_fill_with_zeros(flag, sign))
 	{
 		str = ft_strcat_r(to_add, str);
 		str = ft_strcat_r(PREFIX_0X, str);

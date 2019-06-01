@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:55:03 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 13:14:05 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/01 22:59:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static char			*str_to_fill(char *str, t_flag *flag, int sign)
 	while (to_add_len + ft_strlen(str) + i < flag->width)
 	{
 		if (flag->key & KEY_F)
-			to_add[i] = FILL_WITH_ZEROS_FLOAT(flag, sign) ? '0' : ' ';
+			to_add[i] = ft_can_fill_with_zeros_float(flag, sign) ? '0' : ' ';
 		else
-			to_add[i] = FILL_WITH_ZEROS(flag, sign) ? '0' : ' ';
+			to_add[i] = ft_can_fill_with_zeros(flag, sign) ? '0' : ' ';
 		i++;
 	}
 	to_add[i] = '\0';
