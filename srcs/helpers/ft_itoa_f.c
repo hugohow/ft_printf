@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 23:32:34 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/01 21:54:28 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,12 +149,14 @@ char 	*ft_itoa_f(char *floating_str, t_flag *flag, int size_allocation)
 	{
 		if (ft_strcmp(output, "0") == 0)
 		{
+			ft_memdel((void **)&output);
 			output = ft_strdup("inf");
 			flag->zero = 0;
 			return (output);
 		}
 		else
 		{
+			ft_memdel((void **)&output);
 			output = ft_strdup("nan");
 			flag->zero = 0;
 			flag->plus = 0;
@@ -167,6 +169,7 @@ char 	*ft_itoa_f(char *floating_str, t_flag *flag, int size_allocation)
 	{
 		if (expo == 0)
 		{
+			ft_memdel((void **)&output);
 			output = ft_strdup("1.");
 		}
 		while (expo != 0)

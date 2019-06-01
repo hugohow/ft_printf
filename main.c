@@ -25,9 +25,62 @@ int main(void)
 
 // char *output;
 
+// ft_printf("%.1150f|\n", 0x1p-1074);
+// printf("%.1150f|\n", 0x1p-1074);
+// printf("\n\n\n");
 
-ft_printf("%f|%-f|%+f|% f|%#f|%0f\n", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
-printf("%f|%-f|%+f|% f|%#f|%0f", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
+
+// ft_printf("ft_printf LDBL_MIN : %.30Lf|\n", LDBL_MIN);
+// printf("ft_printf LDBL_MIN : %.30Lf|\n", LDBL_MIN);
+// printf("\n\n\n");
+
+
+
+// ft_printf("ft_printf LDBL_MAX : %.30Lf|\n", LDBL_MAX);
+// printf("ft_printf LDBL_MAX : %.30Lf|\n", LDBL_MAX);
+// printf("\n\n\n");
+
+ft_printf("ft_printf +99.1L: %.5Lf|\n", +99.1L);
+// ft_printf("ft_printf +0.1L: %.5Lf|\n", +0.1L);
+// ft_printf("ft_printf +15.0L: %.5Lf|\n", +15.0L);
+// ft_printf("ft_printf +30L: %.5Lf|\n", (long double)30L);
+// printf("printf +30L: %.5Lf|\n", (long double)30L);
+// ft_printf("ft_printf +0L: %.5Lf|\n", (long double)0L);
+// printf("printf +0L: %.5Lf|\n", (long double)0L);
+
+
+
+// ft_printf("ft_printf +99.1: %.5f|\n", +99.1);
+// ft_printf("ft_printf +0.1: %.5f|\n", +0.1);
+// ft_printf("ft_printf +15.0: %.5f|\n", +15.0);
+// ft_printf("ft_printf +30: %.5f|\n", (double)30);
+// printf("printf +30L: %.5f|\n", (double)30);
+// ft_printf("ft_printf +0L: %.5f|\n", (double)0);
+// printf("printf +0L: %.5f|\n", (double)0);
+// printf("ft_printf +0 : %.30Le|\n", +2123.111L);
+// printf("\n\n\n");
+
+// printf("%.1150f\n%e\n%e", 0x1p-1074, 0x1p-1074, LDBL_TRUE_MIN);
+
+// printf("%.1150f\n%.1150f\n%.1150f\n%.1150f", 0x1p-1074, 0x1.ffffffffffffep-1023, 0x1.4e46p-1058, 0x1.59a8b0c3dp-1037);
+// printf("\n%e\n%e\n%e\n%e", 0x1p-1074, 0x1.ffffffffffffep-1023, 0x1.4e46p-1058, 0x1.59a8b0c3dp-1037);
+// printf("ft_printf -0 : %.30Le|\n", -2.L);
+// printf("\n\n\n");
+
+// printf("ft_printf +0 : %.30Lg|\n", +2123.111L);
+// printf("\n\n\n");
+
+
+// ft_printf("ft_printf -0 : %.30Lg|\n", -2.L);
+// printf("ft_printf -0 : %.30Lg|\n", -2.L);
+// printf("\n\n\n");
+
+
+
+
+
+// ft_printf("%f|%-f|%+f|% f|%#f|%0f\n", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
+// printf("%f|%-f|%+f|% f|%#f|%0f", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
 // output = ft_strdup(HALF_POWER_64);
 // ft_printf("ssss  {cyan}ft_printfft_printf   s{eoc}s\n");
 // output = ft_bigint_multiply_by_two(output);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 20:35:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/23 20:38:56 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/05/31 23:41:24 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char		*ft_str_insert(char *str, char c, int index)
 	int		j;
 
 	j = 0;
-	tmp = malloc((index + 2) * sizeof(*tmp));
+	tmp = ft_memalloc((index + 2) * sizeof(*tmp));
 	if (tmp == NULL || str == NULL)
 		return (NULL);
 	ft_strncpy(tmp, str, index);

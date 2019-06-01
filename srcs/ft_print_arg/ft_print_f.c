@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 23:39:45 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/01 21:45:50 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,15 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 	double			tmp;
 	size_t			size_allocation;
 	int				sign;
-
+	char 			*to_free;
 	size_allocation = 4096;
 	tmp = (double)va_arg(*ap, double);
-	sign = get_bin_floating_point(tmp)[0] == '1' ? -1 : 1;
+	to_free = get_bin_floating_point(tmp);
+	sign = to_free[0] == '1' ? -1 : 1;
 	if (tmp == 0)
 		output = ft_strdup("0.");
 	else
-		output = ft_itoa_f(get_bin_floating_point(tmp), flag, size_allocation);
+		output = ft_itoa_f(to_free, flag, size_allocation);
 	// si autre que infini ou nan
 	if  (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0 )
 	{
@@ -81,12 +82,24 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 		else
 			output = ft_bigint_round(output, flag->precision, size_allocation);
 		if (output[0] == '.')
-			output = ft_strjoin("0", output);
+		{
+			char *to_free_tmp;
+			to_free_tmp = output;
+			output = ft_strjoin("0", to_free_tmp);
+			ft_memdel((void **)&to_free_tmp);
+		}
 		if (ft_strlen(output) == 0)
 			output = ft_strdup("0");
 		if (flag->hash && flag->precision == 0)
-			output = ft_strjoin(output, ".");
+		{
+			char *to_free_tmp;
+			to_free_tmp = output;
+			output = ft_strjoin(to_free_tmp, ".");
+			ft_memdel((void **)&to_free_tmp);
+		}
 	}
 	output = ft_apply_padding_nb(output, flag, sign);
+
+	ft_memdel((void **)&to_free);
 	return (output);
 }

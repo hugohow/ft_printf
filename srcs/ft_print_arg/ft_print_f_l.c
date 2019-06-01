@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 23:22:48 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/01 21:46:21 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,16 @@ char			*ft_print_f_l(va_list *ap, t_flag *flag)
 	long double			tmp;
 	size_t			size_allocation;
 	int				sign;
-
+	char 			*to_free;
+	
 	size_allocation = 6000;
 	tmp = (long double)va_arg(*ap, double);
-	sign = get_bin_floating_point(tmp)[0] == '1' ? -1 : 1;
+	to_free = get_bin_floating_point(tmp);
+	sign = to_free[0] == '1' ? -1 : 1;
 	if (tmp == 0)
 		output = ft_strdup("0.");
 	else
-		output = ft_itoa_f_l(get_bin_floating_point(tmp), flag, size_allocation);
+		output = ft_itoa_f_l(to_free, flag, size_allocation);
 		
 	if (flag->precision == -1)
 		output = ft_bigint_round(output, 6, size_allocation);
@@ -56,6 +58,12 @@ char			*ft_print_f_l(va_list *ap, t_flag *flag)
 		output = ft_bigint_round(output, flag->precision, size_allocation);
 	output = ft_apply_padding_nb(output, flag, sign);
 	if (flag->hash && flag->precision == 0)
-		output = ft_strjoin(output, ".");
+	{
+		char *tmp;
+		tmp = output;
+		output = ft_strjoin(tmp, ".");
+		free(tmp);
+	}
+	ft_memdel((void **)&to_free);
 	return (output);
 }
