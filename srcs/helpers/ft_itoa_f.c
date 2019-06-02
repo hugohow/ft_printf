@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/01 21:54:28 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 11:41:50 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ static char				*get_dec_mantissa(\
 
 
 
-char 	*ft_itoa_f(char *floating_str, t_flag *flag, int size_allocation)
+char 	*ft_itoa_f(double nb, char *floating_str, t_flag *flag, int size_allocation)
 {
 	char			*output;
 	int				expo;
@@ -145,6 +145,11 @@ char 	*ft_itoa_f(char *floating_str, t_flag *flag, int size_allocation)
 	output = get_dec_mantissa(get_mantissa(\
 		floating_str), &output, size_allocation);
 
+	if (nb == 0)
+	{
+		ft_memdel((void **)&output);
+		return (ft_strdup_alloc("0.", size_allocation));
+	}
 	if (expo == 1024)
 	{
 		if (ft_strcmp(output, "0") == 0)

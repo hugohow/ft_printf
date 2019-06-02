@@ -40,8 +40,8 @@ int main(void)
 // printf("ft_printf LDBL_MAX : %.30Lf|\n", LDBL_MAX);
 // printf("\n\n\n");
 
-ft_printf("%.f|%.1f|%.2f|%.5f|%.12f\n", 0.000099, 0.000099, 0.000099, 0.000099, 0.000099);
-printf("%.f|%.1f|%.2f|%.5f|%.12f", 0.000099, 0.000099, 0.000099, 0.000099, 0.000099);
+ft_printf("ft_printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
+printf("printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
 // ft_printf("ft_printf +0.1L: %.5Lf|\n", +0.1L);
 // ft_printf("ft_printf +15.0L: %.5Lf|\n", +15.0L);
 // ft_printf("ft_printf +30L: %.5Lf|\n", (long double)30L);

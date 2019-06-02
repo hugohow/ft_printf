@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/01 23:03:30 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 11:39:49 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,8 +219,8 @@ size_t				ft_nblen_ull(unsigned long long nb);
 char				*ft_ulltoa_offset(\
 	unsigned long long nb, size_t size_allocation);
 int					ft_str_precision_count(char *str, int offset);
-char 				*ft_itoa_f_l(char *floating_str, t_flag *flag, int size_allocation);
-char 				*ft_itoa_f(char *floating_str, t_flag *flag, int size_allocation);
+char 				*ft_itoa_f_l(long double nb, char *floating_str, t_flag *flag, int size_allocation);
+char 				*ft_itoa_f(double nb, char *floating_str, t_flag *flag, int size_allocation);
 char				*ft_get_binary(unsigned char c, char *tmp_str);
 int					ft_can_apply_plus(t_flag *flag, int sign);
 int					ft_can_apply_space(t_flag *flag, int sign);
@@ -230,4 +230,5 @@ int 				ft_can_fill_to_the_left(t_flag *flag, int sign);
 int 				ft_can_fill_to_the_right(t_flag *flag, int sign);
 int 				ft_can_fill_with_zeros(t_flag *flag, int sign);
 int 				ft_can_fill_with_zeros_float(t_flag *flag, int sign);
+char				*ft_strdup_alloc(const char *s1, size_t size_allocation);
 #endif

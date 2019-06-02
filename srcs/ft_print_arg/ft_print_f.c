@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/01 22:38:56 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 11:44:51 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,7 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 	tmp = (double)va_arg(*ap, double);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
-	if (tmp == 0)
-	{
-		output = (char *)ft_memalloc(sizeof(char) * size_allocation);
-		output = ft_strcpy(output, "0.");
-	}
-	else
-		output = ft_itoa_f(to_free, flag, size_allocation);
+	output = ft_itoa_f(tmp, to_free, flag, size_allocation);
 	// si autre que infini ou nan
 	if  (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0 )
 	{
@@ -65,10 +59,7 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 			ft_memdel((void **)&to_free_tmp);
 		}
 		if (ft_strlen(output) == 0)
-		{
-			output = (char *)ft_memalloc(sizeof(char) * size_allocation);
 			output = ft_strcpy(output, "0");
-		}
 		if (flag->hash && flag->precision == 0)
 		{
 			char *to_free_tmp;

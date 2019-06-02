@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 22:54:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/01 21:53:58 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 11:39:29 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ static char				*get_dec_mantissa(\
 }
 
 
-char 	*ft_itoa_f_l(char *floating_str, t_flag *flag, int size_allocation)
+char 	*ft_itoa_f_l(long double nb, char *floating_str, t_flag *flag, int size_allocation)
 {
 	char			*output;
 	int				expo;
@@ -143,19 +143,24 @@ char 	*ft_itoa_f_l(char *floating_str, t_flag *flag, int size_allocation)
 	output = get_dec_mantissa(get_mantissa(\
 		floating_str), &output, size_allocation);
 
+	if (nb == 0)
+	{
+		ft_memdel((void **)&output);
+		return (ft_strdup_alloc("0.", size_allocation));
+	}
 	if (expo == 16384)
 	{
 		if (ft_strcmp(output, "0") == 0)
 		{
 			ft_memdel((void **)&output);
-			output = ft_strdup("inf");
+			output = ft_strdup_alloc("inf", size_allocation);
 			flag->zero = 0;
 			return (output);
 		}
 		else
 		{
 			ft_memdel((void **)&output);
-			output = ft_strdup("nan");
+			output = ft_strdup_alloc("nan", size_allocation);
 			flag->zero = 0;
 			flag->plus = 0;
 			flag->plus = 0;
@@ -168,7 +173,7 @@ char 	*ft_itoa_f_l(char *floating_str, t_flag *flag, int size_allocation)
 		if (expo == 0)
 		{
 			ft_memdel((void **)&output);
-			output = ft_strdup("1.");
+			output = ft_strdup_alloc("1.", size_allocation);
 		}
 		while (expo != 0)
 		{
