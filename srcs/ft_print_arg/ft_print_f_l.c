@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_f_l.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 12:11:04 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 16:31:36 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-static char				*get_bin_floating_point(long double nb)
+static char			*get_bin_floating_point(long double nb)
 {
 	char			*output;
 	int				i;
 	unsigned char	t[10 + 1];
-	char tmp[10];
+	char			tmp[10];
+
 	if (!(output = (char *)ft_memalloc(sizeof(*output) * 100)))
 		return (NULL);
 	ft_memcpy(t, &nb, 10);
@@ -28,19 +28,17 @@ static char				*get_bin_floating_point(long double nb)
 		output = ft_strcat(output, ft_get_binary(t[i], tmp));
 		i--;
 	}
-
 	return (output);
 }
 
-
-char			*ft_print_f_l(va_list *ap, t_flag *flag)
+char				*ft_print_f_l(va_list *ap, t_flag *flag)
 {
 	char			*output;
-	long double			tmp;
+	long double		tmp;
 	size_t			size_allocation;
 	int				sign;
-	char 			*to_free;
-	
+	char			*to_free;
+
 	size_allocation = 6000;
 	tmp = (long double)va_arg(*ap, double);
 	to_free = get_bin_floating_point(tmp);
