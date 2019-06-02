@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 13:18:48 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 14:01:55 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ typedef struct		s_color
 
 int					ft_printf(const char *format, ...);
 int					ft_dprintf(int fd, const char *format, ...);
-
+int					ft_sprintf(char *str, const char *format, ...);
 char			*ft_str_join_r(char *str1, const char *to_add, t_flag *flag);
 char			*ft_str_join(const char *to_add, char *str1, t_flag *flag);
 
@@ -233,4 +233,5 @@ int 				ft_can_fill_with_zeros(t_flag *flag, int sign);
 int 				ft_can_fill_with_zeros_float(t_flag *flag, int sign);
 char				*ft_strdup_alloc(const char *s1, size_t size_allocation);
 int					ft_print_null(t_flag *flag, int fd);
+char				*ft_strcat_char(char *s1, const char c);
 #endif

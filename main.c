@@ -40,7 +40,13 @@ int main(void)
 // printf("ft_printf LDBL_MAX : %.30Lf|\n", LDBL_MAX);
 // printf("\n\n\n");
 
-ft_printf("ft_printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
+  char str[99999];
+
+  ft_sprintf(str, "Hello %c World\n", 'a');
+  printf("%s", str);
+
+
+// ft_printf("ft_printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
 // printf("printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
 // ft_printf("ft_printf +0.1L: %.5Lf|\n", +0.1L);
 // ft_printf("ft_printf +15.0L: %.5Lf|\n", +15.0L);
