@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 22:54:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 12:10:17 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 14:58:02 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,8 @@ char 	*ft_itoa_f_l(long double nb, char *floating_str, t_flag *flag, int size_al
 	int				expo;
 
 	expo = get_exponent(floating_str);
-	output = (char *)ft_memalloc(sizeof(*output) * size_allocation);
+	if (!(output = (char *)ft_memalloc(size_allocation * sizeof(char))))
+		return (NULL);
 	output = get_dec_mantissa(floating_str + 17, &output, size_allocation);
 	if (nb == 0)
 		output = ft_strcpy(output, "0.");
