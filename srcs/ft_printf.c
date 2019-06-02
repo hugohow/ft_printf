@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 13:53:02 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 16:27:10 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_parse_and_print(char *flag_line, va_list *p_ap, size_t *p_len)
+static int		ft_parse_and_print(char *flag_line, va_list *p_ap, \
+size_t *p_len)
 {
-	int len;
+	int			len;
 	t_flag		*flag;
-	char *output;
-	
+	char		*output;
+
 	len = 0;
 	if (!(flag = ft_create_flag(flag_line)))
 		return (-1);
@@ -34,9 +35,9 @@ static int ft_parse_and_print(char *flag_line, va_list *p_ap, size_t *p_len)
 	return (0);
 }
 
-static void ft_print_general(const char *format, int *p_i, size_t *p_len)
+static void		ft_print_general(const char *format, int *p_i, size_t *p_len)
 {
-	char *color;
+	char		*color;
 
 	if (format[*p_i] == '{' && (\
 		color = ft_get_color(format + *p_i + 1)) != 0)
@@ -53,13 +54,12 @@ static void ft_print_general(const char *format, int *p_i, size_t *p_len)
 	}
 }
 
-
-int						ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
-	va_list				ap;
-	int					i;
-	size_t				len;
-	char				*flag_line;
+	va_list		ap;
+	int			i;
+	size_t		len;
+	char		*flag_line;
 
 	va_start(ap, format);
 	i = -1;
@@ -70,8 +70,7 @@ int						ft_printf(const char *format, ...)
 		{
 			if (!(flag_line = (char *)ft_memalloc((ft_strlen(format) + 1) * sizeof(char))))
 				return (-1);
-			flag_line = ft_strncpy(\
-				flag_line, format + i, (int)ft_flaglen(format + i) + 1);
+			flag_line = ft_strncpy(flag_line, format + i, (int)ft_flaglen(format + i) + 1);
 			if (ft_parse_and_print(flag_line, &ap, &len) == -1)
 				return (-1);
 			i += (int)ft_flaglen(format + i);
