@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 18:26:59 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 12:44:44 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,11 @@ t_ft	*ft_find_print(t_flag *flag)
 	return (NULL);
 }
 
-char	*ft_printf_arg(va_list *ap, char *str)
+char	*ft_printf_arg(va_list *ap, t_flag *flag)
 {
-	t_flag		*flag;
 	t_ft		*fct;
 	char		*ret;
 
-	if (!(flag = ft_create_flag(str)))
-		return (NULL);
 	fct = ft_find_print(flag);
 	ret = 0;
 	if (fct != NULL)
@@ -74,6 +71,5 @@ char	*ft_printf_arg(va_list *ap, char *str)
 		if (ret == NULL)
 			return (NULL);
 	}
-	ft_memdel((void **)&flag);
 	return (ret);
 }

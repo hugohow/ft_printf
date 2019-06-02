@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 11:39:49 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 13:18:48 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct		s_flag
 	int				minus;
 	int				space;
 	int				hash;
+	char			character;
 }					t_flag;
 
 typedef char *			(t_ft)(va_list *, t_flag *);
@@ -173,7 +174,7 @@ wchar_t				*ft_wstrjoin(wchar_t const *str1, wchar_t const *str2);
 wchar_t				*ft_wstrsub(wchar_t const *str, \
 	unsigned int start, size_t len);
 int					get_length(char *flag);
-char		*ft_printf_arg(va_list *ap, char *str);
+char		*ft_printf_arg(va_list *ap, t_flag *flag);
 t_flag				*ft_create_flag(char *str);
 
 int					ft_flag_get_space(char *flag);
@@ -231,4 +232,5 @@ int 				ft_can_fill_to_the_right(t_flag *flag, int sign);
 int 				ft_can_fill_with_zeros(t_flag *flag, int sign);
 int 				ft_can_fill_with_zeros_float(t_flag *flag, int sign);
 char				*ft_strdup_alloc(const char *s1, size_t size_allocation);
+int					ft_print_null(t_flag *flag, int fd);
 #endif

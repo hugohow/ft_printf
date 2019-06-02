@@ -41,7 +41,7 @@ int main(void)
 // printf("\n\n\n");
 
 ft_printf("ft_printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
-printf("printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
+// printf("printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
 // ft_printf("ft_printf +0.1L: %.5Lf|\n", +0.1L);
 // ft_printf("ft_printf +15.0L: %.5Lf|\n", +15.0L);
 // ft_printf("ft_printf +30L: %.5Lf|\n", (long double)30L);

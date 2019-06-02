@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_c.c                                       :+:      :+:    :+:   */
+/*   ft_print_null.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/25 20:36:56 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 13:22:05 by hhow-cho         ###   ########.fr       */
+/*   Created: 2019/06/02 13:17:12 by hhow-cho          #+#    #+#             */
+/*   Updated: 2019/06/02 13:19:18 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char			*ft_print_c(va_list *ap, t_flag *flag)
+int		ft_print_null(t_flag *flag, int fd)
 {
-	char	*output;
-	size_t	size_allocation;
+	char		c;
+	int res;
 
-	size_allocation = ft_get_size_to_allocate(2, flag);
-	output = ft_memalloc(size_allocation * sizeof(*output));
-	output[0] = (char)va_arg(*ap, int);
-	output[1] = '\0';
-	if (output[0] == 0)
+	c = 0;
+	res = 0;
+	if (flag->width <= 0)
 	{
-		flag->character = 0;
-		return (output);
+		write(1, &c, fd);
+		return (1);
 	}
-	output = ft_apply_precision_str(output, flag, 1);
-	output = ft_apply_padding_str(output, flag, 1);
-	return (output);
+	if (!flag->minus)
+	{
+		while (--flag->width > 0 && ++(res))
+			ft_putchar_fd(' ', fd);
+		write(1, &c, fd);
+		(res)++;
+	}
+	else if (flag->minus)
+	{
+		write(1, &c, fd);
+		(res)++;
+		while (--flag->width > 0 && ++(res))
+			ft_putchar_fd(' ', fd);
+	}
+	return (res);
 }

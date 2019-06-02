@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 12:52:45 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 12:47:02 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int 	ft_sprintf(char *str, const char *format, ...)
 	size_t				i;
 	size_t				format_len;
 	size_t				len;
-	int					ret;
 	char				*flag_line;
 	char 				*color;
 	if (str)
@@ -32,7 +31,6 @@ int 	ft_sprintf(char *str, const char *format, ...)
 	va_start(ap, format);
 	i = 0;
 	len = 0;
-	ret = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -42,10 +40,16 @@ int 	ft_sprintf(char *str, const char *format, ...)
 			ft_bzero((void *)flag_line, format_len + 1);
 			flag_line = ft_strncpy(\
 				flag_line, format + i, (int)ft_flaglen(format + i) + 1);
-			output = ft_printf_arg(&ap, flag_line);
+			t_flag		*flag;
+
+			if (!(flag = ft_create_flag(flag_line)))
+				return (-1);
+
+			output = ft_printf_arg(&ap, flag);
 			ft_putstr_fd(output, 1);
 			len += (ft_strlen(output));
 			ft_memdel((void **)&output);
+			ft_memdel((void **)&flag);
 			i += (int)ft_flaglen(format + i);
 		}
 		else if (format[i] == '{' && (\
