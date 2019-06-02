@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 11:44:13 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 11:52:52 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,7 @@ char			*ft_print_f_l_maj(va_list *ap, t_flag *flag)
 		output = ft_bigint_round(output, flag->precision, size_allocation);
 	output = ft_apply_padding_nb(output, flag, sign);
 	if (flag->hash && flag->precision == 0)
-	{
-		char *tmp;
-		tmp = output;
-		output = ft_strjoin(tmp, ".");
-		free(tmp);
-	}
+		output = ft_str_join_r(output, ".", flag);
 	ft_memdel((void **)&to_free);
 	return (output);
 }
