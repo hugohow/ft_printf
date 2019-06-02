@@ -11,8 +11,41 @@ int ft_printf(const char* format, ...);
 int main(void)
 {
 
-ft_printf("ft_printf -0 : %.30  |\n", -2.L);
-printf("printf -0 : %.30   |\n", -2.L);
+	ft_printf("ft_printf\t|%5%|\n");
+	printf("printf\t\t|%5%|\n");
+
+
+	ft_printf("ft_printf\t|%-5%|\n");
+	printf("printf\t\t|%-5%|\n");
+
+	ft_printf("ft_printf\t|%%|\n");
+	printf("printf\t\t|%%|\n");
+
+	ft_printf("ft_printf\t%hd\n", (short)32768);
+	printf("printf\t%hd\n", (short)32768);
+
+	ft_printf("ft_printf\t%hhd\n", (char)128);
+	printf("printf\t%hhd\n", (char)128);
+
+
+	// ft_printf("ft_printf\t%hhd\n", 128);
+	// printf("printf\t%hhd\n", 128);
+
+
+	// ft_printf("ft_printf\t%hd\n", -129);
+	// printf("printf\t%hd\n", -129);
+
+
+	// ft_printf("ft_printf\t% u\n", 4294967295);
+	// printf("printf\t% u\n", 4294967295);
+
+
+	// ft_printf("ft_printf\t%+u\n", 4294967294);
+	// printf("printf\t%+u\n", 4294967294);
+
+
+// ft_printf("ft_printf -0 : %.30  |\n", -2.L);
+// printf("printf -0 : %.30   |\n", -2.L);
 
 
 // ft_printf(" ft_printf :\t%.1150f\n", 0x1.59a8b0c3dp-1037);
