@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 11:41:50 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 12:08:14 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,6 @@ static const char	*g_half_powers[] =
 	0,
 };
 
-
-static char				*get_mantissa(char *bin_floating_point)
-{
-	return (bin_floating_point + 12);
-}
-
 static int					get_exponent(char *bin_floating_point)
 {
 	int				exponent;
@@ -132,7 +126,41 @@ static char				*get_dec_mantissa(\
 	return (*p_output);
 }
 
+static char *ft_infnity_or_nan(char *output, t_flag *flag)
+{
+	if (ft_strcmp(output, "0") == 0)
+	{
+		output = ft_strcpy(output, "inf");
+		flag->zero = 0;
+	}
+	else
+	{
+		output = ft_strcpy(output, "nan");
+		flag->zero = 0;
+		flag->plus = 0;
+		flag->plus = 0;
+		flag->space = 0;
+	}
+	return (output);
+}
 
+static char *get_decimal_str(char *output, int size_allocation, int expo)
+{
+	while (expo != 0)
+	{
+		if (expo < 0)
+		{
+			output = ft_bigint_divide_by_two(output, size_allocation);
+			expo++;
+		}
+		else
+		{
+			output = ft_bigint_multiply_by_two(output);
+			expo--;
+		}
+	}
+	return (output);
+}
 
 
 char 	*ft_itoa_f(double nb, char *floating_str, t_flag *flag, int size_allocation)
@@ -142,54 +170,14 @@ char 	*ft_itoa_f(double nb, char *floating_str, t_flag *flag, int size_allocatio
 
 	expo = get_exponent(floating_str);
 	output = (char *)ft_memalloc(sizeof(*output) * size_allocation);
-	output = get_dec_mantissa(get_mantissa(\
-		floating_str), &output, size_allocation);
-
+	output = get_dec_mantissa(floating_str + 12, &output, size_allocation);
 	if (nb == 0)
-	{
-		ft_memdel((void **)&output);
-		return (ft_strdup_alloc("0.", size_allocation));
-	}
-	if (expo == 1024)
-	{
-		if (ft_strcmp(output, "0") == 0)
-		{
-			ft_memdel((void **)&output);
-			output = ft_strdup("inf");
-			flag->zero = 0;
-			return (output);
-		}
-		else
-		{
-			ft_memdel((void **)&output);
-			output = ft_strdup("nan");
-			flag->zero = 0;
-			flag->plus = 0;
-			flag->plus = 0;
-			flag->space = 0;
-			return (output);
-		}
-	}
-	if (expo != -1022)
-	{
-		if (expo == 0)
-		{
-			ft_memdel((void **)&output);
-			output = ft_strdup("1.");
-		}
-		while (expo != 0)
-		{
-			if (expo < 0)
-			{
-				output = ft_bigint_divide_by_two(output, size_allocation);
-				expo++;
-			}
-			else
-			{
-				output = ft_bigint_multiply_by_two(output);
-				expo--;
-			}
-		}
-	}
+		output = ft_strcpy(output, "0.");
+	else if (expo == 1024)
+		output = ft_infnity_or_nan(output, flag);
+	else if (expo == 0)
+		output = ft_strcpy(output, "1.");
+	else if (expo != -1022)
+		output = get_decimal_str(output, size_allocation, expo);
 	return (output);
 }
