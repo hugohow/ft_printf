@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_f.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mboivin <mboivin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 14:57:57 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 16:40:40 by mboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
@@ -83,7 +82,7 @@ static const char	*g_half_powers[] =
 	0,
 };
 
-static int					get_exponent(char *bin_floating_point)
+static int			get_exponent(char *bin_floating_point)
 {
 	int				exponent;
 	int				i;
@@ -99,12 +98,11 @@ static int					get_exponent(char *bin_floating_point)
 		in /= 2;
 		i++;
 	}
-
 	return (exponent - 1023);
 }
 
-static char				*get_dec_mantissa(\
-	char *str, char **p_output, size_t size_allocation)
+static char			*get_dec_mantissa(char *str, char **p_output, \
+size_t size_allocation)
 {
 	int				i;
 
@@ -113,20 +111,18 @@ static char				*get_dec_mantissa(\
 	while (str[i])
 	{
 		if (i == 64)
-			break;
+			break ;
 		if (str[i] == '1')
 			*p_output = ft_bigint_add(\
 				*p_output, g_half_powers[i + 1], size_allocation);
 		i++;
 	}
-
 	if (ft_strcmp(*p_output, "1") == 0)
 		*p_output = ft_strcpy(*p_output, "0");
-
 	return (*p_output);
 }
 
-static char *ft_infnity_or_nan(char *output, t_flag *flag)
+static char			*ft_infnity_or_nan(char *output, t_flag *flag)
 {
 	if (ft_strcmp(output, "0") == 0)
 	{
@@ -144,7 +140,8 @@ static char *ft_infnity_or_nan(char *output, t_flag *flag)
 	return (output);
 }
 
-static char *get_decimal_str(char *output, int size_allocation, int expo)
+static char			*get_decimal_str(char *output, int size_allocation, \
+int expo)
 {
 	while (expo != 0)
 	{
@@ -162,8 +159,8 @@ static char *get_decimal_str(char *output, int size_allocation, int expo)
 	return (output);
 }
 
-
-char 	*ft_itoa_f(double nb, char *floating_str, t_flag *flag, int size_allocation)
+char				*ft_itoa_f(double nb, char *floating_str, \
+t_flag *flag, int size_allocation)
 {
 	char			*output;
 	int				expo;
