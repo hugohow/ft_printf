@@ -42,9 +42,14 @@ int main(void)
 
   char str[99999];
 
-  ft_sprintf(str, "Hello %c World\n", 'a');
-  printf("%s", str);
+  printf("ret : %d|\n", ft_sprintf(str, "Hello %2c World\n", 0));
+  printf("%s|\n", str);
 
+
+  char tmp[99999];
+
+  printf("ret : %d|\n", sprintf(tmp, "Hello %2c World\n", 0));
+  printf("%s|", tmp);
 
 // ft_printf("ft_printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);
 // printf("printf\t%.f|%-.f|%+.f|% .f|%#.f|%0.f\n", 0., 0., 0., 0., 0., 0.);

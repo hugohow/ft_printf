@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:36:56 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 13:22:05 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 14:13:06 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ char			*ft_print_c(va_list *ap, t_flag *flag)
 	output[0] = (char)va_arg(*ap, int);
 	output[1] = '\0';
 	if (output[0] == 0)
-	{
 		flag->character = 0;
-		return (output);
-	}
 	output = ft_apply_precision_str(output, flag, 1);
 	output = ft_apply_padding_str(output, flag, 1);
 	return (output);
