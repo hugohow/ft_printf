@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 12:11:16 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 20:29:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char				*get_bin_floating_point(long double nb)
 	char			*output;
 	int				i;
 	unsigned char	t[10 + 1];
-	char tmp[10];
+	char			tmp[10];
 	
 	if (!(output = (char *)ft_memalloc(sizeof(*output) * 100)))
 		return (NULL);
@@ -28,15 +28,13 @@ static char				*get_bin_floating_point(long double nb)
 		output = ft_strcat(output, ft_get_binary(t[i], tmp));
 		i--;
 	}
-
 	return (output);
 }
-
 
 char			*ft_print_f_l_maj(va_list *ap, t_flag *flag)
 {
 	char			*output;
-	long double			tmp;
+	long double		tmp;
 	size_t			size_allocation;
 	int				sign;
 	char			*to_free;

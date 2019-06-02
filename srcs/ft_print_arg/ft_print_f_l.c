@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 19:46:29 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/02 20:29:03 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static char				*get_bin_floating_point(double nb)
 	char			*output;
 	int				i;
 	unsigned char	t[sizeof(double) + 1];
-	char tmp[10];
+	char			tmp[10];
+
 	if (!(output = (char *)ft_memalloc(sizeof(char) * 100)))
 		return (NULL);
 	ft_memcpy(t, &nb, sizeof(double));
@@ -30,6 +31,7 @@ static char				*get_bin_floating_point(double nb)
 	}
 	return (output);
 }
+
 char				*ft_print_f_l(va_list *ap, t_flag *flag)
 {
 	char			*output;
@@ -37,6 +39,7 @@ char				*ft_print_f_l(va_list *ap, t_flag *flag)
 	size_t			size_allocation;
 	int				sign;
 	char 			*to_free;
+
 	size_allocation = 4096;
 	tmp = (double)va_arg(*ap, double);
 	to_free = get_bin_floating_point(tmp);
