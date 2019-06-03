@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 20:29:12 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:22:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 	tmp = (double)va_arg(*ap, double);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
-	output = ft_itoa_f(tmp, to_free, flag, size_allocation);
+	output = ft_ftoa(tmp, to_free, flag, size_allocation);
 	if  (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0 )
 	{
 		if (flag->precision == -1)

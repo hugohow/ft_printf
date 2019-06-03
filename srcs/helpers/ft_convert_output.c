@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:12:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 18:36:56 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:18:39 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char		*ft_convert_base_offset(char *decimal, char *base, t_flag *flag)
 	while (decimal[++i])
 		result = result * 10 + (decimal[i] - '0');
 	len = get_len(result, ft_strlen(base));
-	mem = ft_get_size_to_allocate(len, flag);
+	mem = ft_len_to_alloc(len, flag);
 	if (!(output = (char *)ft_memalloc(sizeof(char) * (mem + 1))))
 		return (NULL);
 	output[len--] = '\0';

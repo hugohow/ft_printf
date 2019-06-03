@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 20:29:31 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:22:26 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char			*ft_print_f_l_maj(va_list *ap, t_flag *flag)
 	tmp = (long double)va_arg(*ap, long double);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
-	output = ft_itoa_f_l(tmp, to_free, flag, size_allocation);
+	output = ft_fltoa(tmp, to_free, flag, size_allocation);
 	if (flag->precision == -1)
 		output = ft_bigint_round(output, 6, size_allocation);
 	else

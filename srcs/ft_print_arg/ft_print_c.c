@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:36:56 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 14:13:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:18:08 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char			*ft_print_c(va_list *ap, t_flag *flag)
 	char	*output;
 	size_t	size_allocation;
 
-	size_allocation = ft_get_size_to_allocate(2, flag);
+	size_allocation = ft_len_to_alloc(2, flag);
 	output = ft_memalloc(size_allocation * sizeof(*output));
 	output[0] = (char)va_arg(*ap, int);
 	output[1] = '\0';

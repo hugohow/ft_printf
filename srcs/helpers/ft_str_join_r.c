@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 00:12:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/01 22:13:22 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:18:48 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char			*ft_str_join_r(char *str1, const char *to_add, t_flag *flag)
 	int				k;
 	int				i;
 
-	size_allocation = ft_get_size_to_allocate(\
+	size_allocation = ft_len_to_alloc(\
 		ft_strlen(str1) + ft_strlen(to_add), flag);
 	if (!(output = (char *)ft_memalloc(sizeof(char) * (size_allocation + 1))))
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 22:54:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 20:30:26 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:22:36 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ static char *get_decimal_str(char *output, int size_allocation, int expo)
 }
 
 
-char 	*ft_itoa_f_l(long double nb, char *floating_str, t_flag *flag, int size_allocation)
+char 	*ft_fltoa(long double nb, char *floating_str, t_flag *flag, int size_allocation)
 {
 	char			*output;
 	int				expo;

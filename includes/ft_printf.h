@@ -6,20 +6,18 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 20:16:30 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:27:13 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
 # include "libft.h"
-
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"
 # define PREFIX_0 "0"
@@ -130,8 +128,7 @@ typedef struct		s_flag
 	char			character;
 }					t_flag;
 
-typedef char *			(t_ft)(va_list *, t_flag *);
-
+typedef char		*(t_ft)(va_list *, t_flag *);
 typedef struct		s_ft_print
 {
 	int				key;
@@ -145,12 +142,11 @@ typedef struct		s_color
 	char			str[10];
 }					t_color;
 
-
 int					ft_printf(const char *format, ...);
 int					ft_dprintf(int fd, const char *format, ...);
 int					ft_sprintf(char *str, const char *format, ...);
-char				*ft_str_join_r(char *str1, const char *to_add, t_flag *flag);
-char				*ft_str_join(const char *to_add, char *str1, t_flag *flag);
+char				*ft_str_join_r(char *str1, const char *add, t_flag *flag);
+char				*ft_str_join(const char *add, char *str1, t_flag *flag);
 char				*ft_get_color(const char *str);
 char				*ft_itoa_ll(long long nb);
 size_t				ft_flaglen(const char *str);
@@ -160,11 +156,6 @@ char				*ft_apply_padding_str(char *str, t_flag *flag, int sign);
 char				*ft_apply_precision_nb(char *str, t_flag *flag, int sign);
 char				*ft_apply_precision_str(char *str, t_flag *flag, int sign);
 char				*ft_apply_precision_p(char *str, int precision);
-size_t				ft_wcslen(const wchar_t *str);
-void				ft_wputstr(wchar_t const *str);
-wchar_t				*ft_wstrjoin(wchar_t const *str1, wchar_t const *str2);
-wchar_t				*ft_wstrsub(wchar_t const *str, \
-	unsigned int start, size_t len);
 int					get_length(char *flag);
 char				*ft_printf_arg(va_list *ap, t_flag *flag);
 t_flag				*ft_create_flag(char *str);
@@ -177,12 +168,9 @@ int					ft_flag_get_precision(char *flag);
 int					ft_flag_get_width(char *flag);
 int					ft_flag_get_zero(char *flag);
 int					ft_flag_get_key(char *flag);
-int					ft_count_current_precision(\
-	char *str, t_flag *flag, int sign);
 char				*ft_add_char(char *str, t_flag *flag, char c);
 char				*ft_strcat(char *s1, const char *s2);
-int					ft_get_size_to_allocate(\
-	size_t original_nblen, t_flag *flag);
+int					ft_len_to_alloc(size_t original_nblen, t_flag *flag);
 char				*ft_print_d(va_list *ap, t_flag *flag);
 char				*ft_print_d_l(va_list *ap, t_flag *flag);
 char				*ft_print_d_ll(va_list *ap, t_flag *flag);
@@ -202,20 +190,19 @@ char				*ft_print_c(va_list *ap, t_flag *flag);
 char				*ft_print_p(va_list *ap, t_flag *flag);
 char				*ft_convert_output(char *str, t_flag *flag);
 size_t				ft_nblen_ull(unsigned long long nb);
-char				*ft_ulltoa_offset(\
-	unsigned long long nb, size_t size_allocation);
+char				*ft_ulltoa_offset(unsigned long long nb, size_t size);
 int					ft_str_precision_count(char *str, int offset);
-char 				*ft_itoa_f_l(long double nb, char *floating_str, t_flag *flag, int size_allocation);
-char 				*ft_itoa_f(double nb, char *floating_str, t_flag *flag, int size_allocation);
+char				*ft_fltoa(long double nb, char *str, t_flag *flag, int s);
+char				*ft_ftoa(double nb, char *str, t_flag *flag, int s);
 char				*ft_get_binary(unsigned char c, char *tmp_str);
 int					ft_can_apply_plus(t_flag *flag, int sign);
 int					ft_can_apply_space(t_flag *flag, int sign);
 int					ft_can_apply_prefix(t_flag *flag, int sign);
-int				ft_can_apply_minus(t_flag *flag, int sign);
-int 				ft_can_fill_to_the_left(t_flag *flag, int sign);
-int 				ft_can_fill_to_the_right(t_flag *flag, int sign);
+int					ft_can_apply_minus(t_flag *flag, int sign);
+int					ft_can_fill_to_the_left(t_flag *flag, int sign);
+int					ft_can_fill_to_the_right(t_flag *flag, int sign);
 int					ft_can_fill_with_zeros(t_flag *flag, int sign);
-int 				ft_can_fill_with_zeros_float(t_flag *flag, int sign);
+int					ft_can_fill_with_zeros_float(t_flag *flag, int sign);
 char				*ft_strdup_alloc(const char *s1, size_t size_allocation);
 int					ft_print_null(t_flag *flag, int fd);
 char				*ft_strcat_char(char *s1, const char c);
