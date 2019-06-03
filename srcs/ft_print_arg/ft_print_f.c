@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 12:09:40 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:18:54 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char				*get_bin_floating_point(double nb)
+static char			*get_bin_floating_point(double nb)
 {
 	char			*output;
 	int				i;

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 22:54:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 12:11:27 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:14:40 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ static char	*get_dec_mantissa(\
 	}
 	if (ft_strcmp(*p_output, "1") == 0)
 		*p_output = ft_strcpy(*p_output, "0");
-
 	return (*p_output);
 }
 

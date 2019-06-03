@@ -6,14 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 11:22:29 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:18:39 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-static char				*get_bin_floating_point(double nb)
+static char			*get_bin_floating_point(double nb)
 {
 	char			*output;
 	int				i;
@@ -38,19 +37,17 @@ char				*ft_print_f_l(va_list *ap, t_flag *flag)
 	double			tmp;
 	size_t			size_allocation;
 	int				sign;
-	char 			*to_free;
+	char			*to_free;
 
 	size_allocation = 4096;
 	tmp = (double)va_arg(*ap, double);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
 	output = ft_ftoa(tmp, to_free, flag, size_allocation);
-	if  (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0 )
+	if (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0)
 	{
-		if (flag->precision == -1)
-			output = ft_bigint_round(output, 6, size_allocation);
-		else
-			output = ft_bigint_round(output, flag->precision, size_allocation);
+		tmp = flag->precision == -1 ? 6 : flag->precision;
+		output = ft_bigint_round(output, tmp, size_allocation);
 		if (output[0] == '.')
 			output = ft_str_join("0", output, flag);
 		if (ft_strlen(output) == 0)

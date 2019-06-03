@@ -6,10 +6,9 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 12:12:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:14:27 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 
@@ -83,7 +82,7 @@ static const char	*g_half_powers[] =
 	0,
 };
 
-static int					get_exponent(char *bin_floating_point)
+static int	get_exponent(char *bin_floating_point)
 {
 	int				exponent;
 	int				i;
@@ -99,7 +98,6 @@ static int					get_exponent(char *bin_floating_point)
 		in /= 2;
 		i++;
 	}
-
 	return (exponent - 1023);
 }
 
@@ -120,7 +118,6 @@ static char	*get_dec_mantissa(char *str, char **p_output, size_t size)
 	}
 	if (ft_strcmp(*p_output, "1") == 0)
 		*p_output = ft_strcpy(*p_output, "0");
-
 	return (*p_output);
 }
 

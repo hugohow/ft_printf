@@ -6,16 +6,16 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 13:17:12 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 13:19:18 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:15:06 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_null(t_flag *flag, int fd)
+int	ft_print_null(t_flag *flag, int fd)
 {
-	char		c;
-	int res;
+	char	c;
+	int		res;
 
 	c = 0;
 	res = 0;

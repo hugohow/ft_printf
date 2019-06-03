@@ -6,18 +6,19 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 22:57:04 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/05/31 22:57:15 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:15:55 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char				*ft_get_binary(unsigned char c, char *tmp_str)
+char	*ft_get_binary(unsigned char c, char *tmp_str)
 {
-	char			base[2] = "01";
-	char			tmp;
-	int				k;
+	char	base[3];
+	char	tmp;
+	int		k;
 
+	ft_strcpy(base, "01");
 	k = 0;
 	while (c != 0)
 	{
