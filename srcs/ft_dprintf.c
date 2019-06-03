@@ -6,18 +6,19 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:10:04 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/02 13:54:27 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 11:59:48 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ft_printf.h"
-static int ft_parse_and_print(char *flag_line, va_list *p_ap, size_t *p_len, int fd)
+
+static int	ft_parseprint(char *flag_line, va_list *p_ap, size_t *p_len, int fd)
 {
-	int len;
-	t_flag		*flag;
-	char *output;
-	
+	int		len;
+	t_flag	*flag;
+	char	*output;
+
 	len = 0;
 	if (!(flag = ft_create_flag(flag_line)))
 		return (-1);
@@ -34,10 +35,11 @@ static int ft_parse_and_print(char *flag_line, va_list *p_ap, size_t *p_len, int
 	return (0);
 }
 
-static void ft_print_general(const char *format, int *p_i, size_t *p_len, int fd)
+static void	ft_print_gen(const char *format, int *p_i, size_t *p_len, int fd)
 {
 	char *color;
 
+	color = NULL;
 	if (format[*p_i] == '{' && (\
 		color = ft_get_color(format + *p_i + 1)) != 0)
 	{
@@ -53,13 +55,28 @@ static void ft_print_general(const char *format, int *p_i, size_t *p_len, int fd
 	}
 }
 
+static int	ft_print(const char *str, size_t *p_len, va_list *p_ap, int fd)
+{
+	char				*flag;
 
-int						ft_dprintf(int fd, const char *format, ...)
+	if (!(flag = (char *)ft_memalloc((ft_strlen(str) + 1) * sizeof(char))))
+		return (-1);
+	flag = ft_strncpy(flag, str, (int)ft_flaglen(str) + 1);
+	if (ft_parseprint(flag, p_ap, p_len, fd) == -1)
+	{
+		ft_memdel((void **)&flag);
+		return (-1);
+	}
+	ft_memdel((void **)&flag);
+	return ((int)ft_flaglen(str));
+}
+
+int			ft_dprintf(int fd, const char *format, ...)
 {
 	va_list				ap;
 	int					i;
 	size_t				len;
-	char				*flag_line;
+	int					ret;
 
 	va_start(ap, format);
 	i = -1;
@@ -68,17 +85,13 @@ int						ft_dprintf(int fd, const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (!(flag_line = (char *)ft_memalloc((ft_strlen(format) + 1) * sizeof(char))))
+			ret = ft_print(format + i, &len, &ap, fd);
+			if (ret == -1)
 				return (-1);
-			flag_line = ft_strncpy(\
-				flag_line, format + i, (int)ft_flaglen(format + i) + 1);
-			if (ft_parse_and_print(flag_line, &ap, &len, fd) == -1)
-				return (-1);
-			i += (int)ft_flaglen(format + i);
-			ft_memdel((void **)&flag_line);
+			i += ret;
 		}
 		else
-			ft_print_general(format, &i, &len, fd);
+			ft_print_gen(format, &i, &len, fd);
 	}
 	va_end(ap);
 	return (len);

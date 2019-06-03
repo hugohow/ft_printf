@@ -10,10 +10,17 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
+	char str[9999];
+
+	ft_sprintf(str, "ok %d sdasda", 9999);
+	printf("%s", str);
 
 	ft_printf("ft_printf\t|%5%|\n");
 	printf("printf\t\t|%5%|\n");
 
+
+	ft_dprintf(2, "ft_printf\t|%5%|\n");
+	printf("printf\t\t|%5%|\n");
 
 	ft_printf("ft_printf\t|%-5%|\n");
 	printf("printf\t\t|%-5%|\n");
