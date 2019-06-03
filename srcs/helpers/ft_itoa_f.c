@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 23:08:55 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 11:22:38 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/03 12:12:46 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,7 @@ static int					get_exponent(char *bin_floating_point)
 	return (exponent - 1023);
 }
 
-static char				*get_dec_mantissa(\
-	char *str, char **p_output, size_t size_allocation)
+static char	*get_dec_mantissa(char *str, char **p_output, size_t size)
 {
 	int				i;
 
@@ -113,20 +112,19 @@ static char				*get_dec_mantissa(\
 	while (str[i])
 	{
 		if (i == 64)
-			break;
+			break ;
 		if (str[i] == '1')
 			*p_output = ft_bigint_add(\
-				*p_output, g_half_powers[i + 1], size_allocation);
+				*p_output, g_half_powers[i + 1], size);
 		i++;
 	}
-
 	if (ft_strcmp(*p_output, "1") == 0)
 		*p_output = ft_strcpy(*p_output, "0");
 
 	return (*p_output);
 }
 
-static char *ft_infnity_or_nan(char *output, t_flag *flag)
+static char	*ft_infnity_or_nan(char *output, t_flag *flag)
 {
 	if (ft_strcmp(output, "0") == 0)
 	{
@@ -144,7 +142,7 @@ static char *ft_infnity_or_nan(char *output, t_flag *flag)
 	return (output);
 }
 
-static char *get_decimal_str(char *output, int size_allocation, int expo)
+static char	*get_decimal_str(char *output, int size_allocation, int expo)
 {
 	while (expo != 0)
 	{
@@ -162,16 +160,15 @@ static char *get_decimal_str(char *output, int size_allocation, int expo)
 	return (output);
 }
 
-
-char 	*ft_ftoa(double nb, char *floating_str, t_flag *flag, int size_allocation)
+char		*ft_ftoa(double nb, char *floating_str, t_flag *flag, int size)
 {
 	char			*output;
 	int				expo;
 
 	expo = get_exponent(floating_str);
-	if (!(output = (char *)ft_memalloc(size_allocation * sizeof(char))))
+	if (!(output = (char *)ft_memalloc(size * sizeof(char))))
 		return (NULL);
-	output = get_dec_mantissa(floating_str + 12, &output, size_allocation);
+	output = get_dec_mantissa(floating_str + 12, &output, size);
 	if (nb == 0)
 		output = ft_strcpy(output, "0.");
 	else if (expo == 1024)
@@ -179,6 +176,6 @@ char 	*ft_ftoa(double nb, char *floating_str, t_flag *flag, int size_allocation)
 	else if (expo == 0)
 		output = ft_strcpy(output, "1.");
 	else if (expo != -1022)
-		output = get_decimal_str(output, size_allocation, expo);
+		output = get_decimal_str(output, size, expo);
 	return (output);
 }
