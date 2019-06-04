@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 11:27:13 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 19:11:11 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <limits.h>
 # include "libft.h"
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"
@@ -47,6 +48,7 @@
 # define KEY_P (1 << 5)
 # define KEY_S (1 << 6)
 # define KEY_F (1 << 7)
+# define KEY_E (1 << 8)
 # define H0 "1"
 # define H1 "0.5"
 # define H2 "0.25"
@@ -153,6 +155,7 @@ size_t				ft_flaglen(const char *str);
 char				*ft_apply_padding_p(char *str, t_flag *flag, int sign);
 char				*ft_apply_padding_nb(char *str, t_flag *flag, int sign);
 char				*ft_apply_padding_str(char *str, t_flag *flag, int sign);
+char				*ft_apply_padding_e(char *str, t_flag *flag, int sign, int expo);
 char				*ft_apply_precision_nb(char *str, t_flag *flag, int sign);
 char				*ft_apply_precision_str(char *str, t_flag *flag, int sign);
 char				*ft_apply_precision_p(char *str, int precision);
@@ -185,6 +188,9 @@ char				*ft_print_nb_h(va_list *ap, t_flag *flag);
 char				*ft_print_f(va_list *ap, t_flag *flag);
 char				*ft_print_f_l(va_list *ap, t_flag *flag);
 char				*ft_print_f_l_maj(va_list *ap, t_flag *flag);
+char				*ft_print_e(va_list *ap, t_flag *flag);
+char				*ft_print_e_l(va_list *ap, t_flag *flag);
+char				*ft_print_e_l_maj(va_list *ap, t_flag *flag);
 char				*ft_print_s(va_list *ap, t_flag *flag);
 char				*ft_print_c(va_list *ap, t_flag *flag);
 char				*ft_print_p(va_list *ap, t_flag *flag);

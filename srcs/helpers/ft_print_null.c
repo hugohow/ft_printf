@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 13:17:12 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 12:15:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 01:23:22 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_print_null(t_flag *flag, int fd)
 	if (!flag->minus)
 	{
 		while (--flag->width > 0 && ++(res))
-			ft_putchar_fd(' ', fd);
+			ft_putchar_fd(flag->zero ? '0' : ' ', fd);
 		write(1, &c, fd);
 		(res)++;
 	}
@@ -36,7 +36,7 @@ int	ft_print_null(t_flag *flag, int fd)
 		write(1, &c, fd);
 		(res)++;
 		while (--flag->width > 0 && ++(res))
-			ft_putchar_fd(' ', fd);
+			ft_putchar_fd(flag->zero ? '0' : ' ', fd);
 	}
 	return (res);
 }
