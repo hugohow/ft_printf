@@ -10,6 +10,32 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
+
+	// printf("%d", ft_printf("test12345678tvn\n"));
+	// printf("%d", printf("test12345678tvn\n"));
+	// printf("\n\n");
+
+	ft_printf("%\n");
+	// printf("%5%\n");
+	// printf("\n\n");
+
+	ft_printf("%0%\n");
+	printf("%0%\n");
+	printf("\n\n");
+
+	ft_printf("%.0%\n");
+	printf("%.0%\n");
+	printf("\n\n");
+
+	ft_printf("%%0-3d %0-3d\n", 0);
+	printf("%%0-3d %0-3d\n", 0);
+	printf("\n\n");
+
+	ft_printf("%%05.s %05.s\n", 0);
+	printf("%%05.s %05.s\n", 0);
+	printf("\n\n");
+
+
 	ft_printf("%%p %p\n", 0);
 	printf("%%p %p\n", 0);
 	printf("\n\n");

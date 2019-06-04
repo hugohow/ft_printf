@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 19:49:00 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 20:43:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,4 +212,5 @@ int					ft_can_fill_with_zeros_float(t_flag *flag, int sign);
 char				*ft_strdup_alloc(const char *s1, size_t size_allocation);
 int					ft_print_null(t_flag *flag, int fd);
 char				*ft_strcat_char(char *s1, const char c);
+int					ft_format_is_valid(const char *format);
 #endif

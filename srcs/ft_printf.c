@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 11:59:47 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 20:43:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ static int	ft_parse_and_print(char *flag_line, va_list *p_ap, size_t *p_len)
 	if (!(flag = ft_create_flag(flag_line)))
 		return (-1);
 	output = ft_printf_arg(p_ap, flag);
+	if (output == NULL)
+	{
+		ft_memdel((void **)&flag);
+		return (-1);
+	}
 	if (flag->character == 0)
 		*p_len = *p_len + (size_t)ft_print_null(flag, 1);
 	else
@@ -77,6 +82,8 @@ int			ft_printf(const char *format, ...)
 	int					ret;
 	size_t				len;
 
+	if (ft_format_is_valid(format) == 0)
+		return (-1);
 	va_start(ap, format);
 	i = -1;
 	len = 0;
