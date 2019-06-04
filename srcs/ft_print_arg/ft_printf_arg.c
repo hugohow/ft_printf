@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:38 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 16:44:23 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 20:26:54 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_ft	*ft_find_print(t_flag *flag)
 		if (g_fts_print[i].key == flag->key)
 		{
 			j = i;
-			while (g_fts_print[j].key)
+			while (g_fts_print[j].key && g_fts_print[j].key == flag->key)
 			{
 				if (g_fts_print[j].length == flag->length)
 					return (g_fts_print[j].fct);

@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 19:34:41 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 20:23:25 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_itoa_p(void *addr, t_flag *flag)
+static char	*ft_itoa_p(void *addr, t_flag *flag, int size)
 {
 	int				i;
 	char			*output;
@@ -21,7 +21,7 @@ static char	*ft_itoa_p(void *addr, t_flag *flag)
 
 	i = (sizeof(uintptr_t));
 	ft_memcpy(t, &addr, sizeof(uintptr_t));
-	if (!(output = (char *)ft_memalloc(sizeof(char) * (sizeof(uintptr_t) * 4))))
+	if (!(output = (char *)ft_memalloc(size)))
 		return (NULL);
 	tmp_str = NULL;
 	while (i != -1)
@@ -47,21 +47,21 @@ char		*ft_print_p(va_list *ap, t_flag *flag)
 	void			*addr;
 	int				i;
 	int				len;
+	size_t			size_allocation;
 
 	addr = va_arg(*ap, void *);
-	output = ft_itoa_p(addr, flag);
+	size_allocation = 20;
+	size_allocation = ft_len_to_alloc(size_allocation, flag);
+	output = ft_itoa_p(addr, flag, size_allocation);
 	i = 0;
 	while (output[i] && output[i] == '0')
 		i++;
 	len = ft_strlen(output) - i;
 	output = ft_memmove(output, output + i, len);
 	output[len] = 0;
-	if (len == 0)
-		output = ft_strcpy(output, "");
-	if (flag->precision != 0)
-		output = ft_apply_precision_nb(output, flag, 1);
-	output = ft_apply_padding_p(output, flag, 1);
-	if (addr == 0)
-		output = ft_strcat(output, "0");
+	if (len == 0 && flag->precision != 0)
+		output = ft_strcpy(output, "0");
+	output = ft_apply_precision_nb(output, flag, 1);
+	output = ft_apply_padding_p(output, flag, 1, addr);
 	return (output);
 }

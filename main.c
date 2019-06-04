@@ -10,9 +10,43 @@ int ft_printf(const char* format, ...);
 
 int main(void)
 {
+	ft_printf("%%p %p\n", 0);
+	printf("%%p %p\n", 0);
+	printf("\n\n");
 
-	ft_printf("%p\n", NULL);
-	printf("%p", NULL);
+	ft_printf("%%10p %10p\n", 0);
+	printf("%%10p %10p\n", 0);
+	printf("\n\n");
+
+
+	ft_printf("%%10.2p %10.2p\n", 0);
+	printf("%%10.2p %10.2p\n", 0);
+	printf("\n\n");
+
+
+	ft_printf("%%10.4p %10.4p\n", 0);
+	printf("%%10.4p %10.4p\n", 0);
+	printf("\n\n");
+
+
+
+	ft_printf("%%10.0p %10.0p\n", 0);
+	printf("%%10.0p %10.0p\n", 0);
+	printf("\n\n");
+
+
+	ft_printf("%%0.0p %0.0p\n", 0);
+	printf("%%0.0p %0.0p\n", 0);
+	printf("\n\n");
+
+	ft_printf("%%lp %lp\n", 42);
+	printf("%%lp %lp\n", 42);
+	printf("\n\n");
+
+	// ft_printf("%p\n", NULL);
+	// printf("%p", NULL);
+// ft_printf("%.5p\n", 0);
+// printf("%.5p", 0);
 
 	// ft_printf("% -2.1e\n", 0.0);
 	// printf("% -2.1e", 0.0);
