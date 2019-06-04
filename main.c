@@ -11,63 +11,67 @@ int ft_printf(const char* format, ...);
 int main(void)
 {
 
-	// printf("%d", ft_printf("test12345678tvn\n"));
-	// printf("%d", printf("test12345678tvn\n"));
+	// printf("%d\n", ft_printf("% Zoooo"));
+	printf("Zoooo% ");
+	// ft_printf("Zoooo% ");
+	// printf("%d", printf("% Zoooo %d",1));
+	// printf("%d", printf("% "));
 	// printf("\n\n");
 
-	ft_printf("%\n");
+	// ft_printf("%");
+	// printf("%");
 	// printf("%5%\n");
 	// printf("\n\n");
 
-	ft_printf("%0%\n");
-	printf("%0%\n");
-	printf("\n\n");
+	// ft_printf("%0%\n");
+	// printf("%0%\n");
+	// printf("\n\n");
 
-	ft_printf("%.0%\n");
-	printf("%.0%\n");
-	printf("\n\n");
+	// ft_printf("%.0%\n");
+	// printf("%.0%\n");
+	// printf("\n\n");
 
-	ft_printf("%%0-3d %0-3d\n", 0);
-	printf("%%0-3d %0-3d\n", 0);
-	printf("\n\n");
+	// ft_printf("%%0-3d %0-3d\n", 0);
+	// printf("%%0-3d %0-3d\n", 0);
+	// printf("\n\n");
 
-	ft_printf("%%05.s %05.s\n", 0);
-	printf("%%05.s %05.s\n", 0);
-	printf("\n\n");
-
-
-	ft_printf("%%p %p\n", 0);
-	printf("%%p %p\n", 0);
-	printf("\n\n");
-
-	ft_printf("%%10p %10p\n", 0);
-	printf("%%10p %10p\n", 0);
-	printf("\n\n");
+	// ft_printf("%%05.s %05.s\n", 0);
+	// printf("%%05.s %05.s\n", 0);
+	// printf("\n\n");
 
 
-	ft_printf("%%10.2p %10.2p\n", 0);
-	printf("%%10.2p %10.2p\n", 0);
-	printf("\n\n");
+	// ft_printf("%%p %p\n", 0);
+	// printf("%%p %p\n", 0);
+	// printf("\n\n");
+
+	// ft_printf("%%10p %10p\n", 0);
+	// printf("%%10p %10p\n", 0);
+	// printf("\n\n");
 
 
-	ft_printf("%%10.4p %10.4p\n", 0);
-	printf("%%10.4p %10.4p\n", 0);
-	printf("\n\n");
+	// ft_printf("%%10.2p %10.2p\n", 0);
+	// printf("%%10.2p %10.2p\n", 0);
+	// printf("\n\n");
+
+
+	// ft_printf("%%10.4p %10.4p\n", 0);
+	// printf("%%10.4p %10.4p\n", 0);
+	// printf("\n\n");
 
 
 
-	ft_printf("%%10.0p %10.0p\n", 0);
-	printf("%%10.0p %10.0p\n", 0);
-	printf("\n\n");
+	// ft_printf("%%10.0p %10.0p\n", 0);
+	// printf("%%10.0p %10.0p\n", 0);
+	// printf("\n\n");
 
 
-	ft_printf("%%0.0p %0.0p\n", 0);
-	printf("%%0.0p %0.0p\n", 0);
-	printf("\n\n");
+	// ft_printf("%%0.0p %0.0p\n", 0);
+	// printf("%%0.0p %0.0p\n", 0);
+	// printf("\n\n");
 
-	ft_printf("%%lp %lp\n", 42);
-	printf("%%lp %lp\n", 42);
-	printf("\n\n");
+	// ft_printf("%%lp %lp\n", 42);
+	// printf("%%lp %lp\n", 42);
+	// printf("\n\n");
 
 	// ft_printf("%p\n", NULL);
 	// printf("%p", NULL);

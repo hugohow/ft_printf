@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 20:43:10 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 21:05:47 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int			ft_sprintf(char *str, const char *format, ...)
 	int					ret;
 
 	if (ft_format_is_valid(format) == 0)
-		return (-1);
+		return (0);
 	va_start(ap, format);
 	i = -1;
 	len = 0;

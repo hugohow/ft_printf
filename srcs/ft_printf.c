@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 20:43:07 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/04 21:05:36 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int			ft_printf(const char *format, ...)
 	size_t				len;
 
 	if (ft_format_is_valid(format) == 0)
-		return (-1);
+		return (0);
 	va_start(ap, format);
 	i = -1;
 	len = 0;
