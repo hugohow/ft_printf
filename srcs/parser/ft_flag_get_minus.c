@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:37:28 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/12 15:37:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 22:45:46 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int					ft_flag_get_minus(char *flag)
 	unsigned int	i;
 
 	i = 0;
-	while (flag[i] && ft_isdigit(flag[i]) == 0)
+	while (flag[i])
 	{
 		if (flag[i] == '-')
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 22:25:53 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 22:34:45 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ static char	*ft_itoa_p(void *addr, t_flag *flag, int size)
 		tmp_str = NULL;
 		if (t[i])
 		{
-		tmp_str = ft_itoa((int)t[i]);
-		if (tmp_str)
-			tmp_str = ft_convert_output(tmp_str, flag);
-		if (tmp_str && ft_strlen(tmp_str) == 1)
-		{
-			tmp_str[1] = tmp_str[0];
-			tmp_str[0] = '0';
-			tmp_str[2] = 0;
-		}
-		output = ft_strcat(output, tmp_str);
-		ft_memdel((void **)&tmp_str);
+			tmp_str = ft_itoa((int)t[i]);
+			if (tmp_str)
+				tmp_str = ft_convert_output(tmp_str, flag);
+			if (tmp_str && ft_strlen(tmp_str) == 1)
+			{
+				tmp_str[1] = tmp_str[0];
+				tmp_str[0] = '0';
+				tmp_str[2] = 0;
+			}
+			output = ft_strcat(output, tmp_str);
+			ft_memdel((void **)&tmp_str);
 		}
 		i--;
 	}
