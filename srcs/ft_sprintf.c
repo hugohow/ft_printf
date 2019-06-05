@@ -6,20 +6,20 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 21:05:47 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 19:21:30 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_parse_cat(char *flag_line, va_list *pap, size_t *plen, char *str)
+static int	ft_parse_cat(char *f, va_list *pap, size_t *plen, char *str)
 {
 	int		len;
 	t_flag	*flag;
 	char	*output;
 
 	len = 0;
-	if (!(flag = ft_create_flag(flag_line)))
+	if (!(flag = ft_create_flag(f)))
 		return (-1);
 	output = ft_printf_arg(pap, flag);
 	if (output == NULL)
@@ -30,9 +30,8 @@ static int	ft_parse_cat(char *flag_line, va_list *pap, size_t *plen, char *str)
 	if (flag->character == 0)
 	{
 		ft_memmove(str + *plen, output, ft_strlen(output));
-		*plen = *plen + ft_strlen(output);
+		*plen = *plen + ft_strlen(output) - 1;
 		str[*plen] = '\0';
-		*plen = *plen + 1;
 	}
 	else
 	{

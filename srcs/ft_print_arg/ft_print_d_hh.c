@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 19:19:24 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 01:11:43 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 19:20:41 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t		ft_nblen_dhh(char nb)
+static size_t	ft_nblen_dhh(char nb)
 {
 	size_t	nblen;
 
@@ -27,12 +27,11 @@ static size_t		ft_nblen_dhh(char nb)
 	return (nblen);
 }
 
-
 static char		*ft_dhhtoa_offset(char nb, size_t size_allocation)
 {
-	char		*output;
-	size_t		nb_len;
-	char		n;
+	char	*output;
+	size_t	nb_len;
+	char	n;
 
 	n = nb;
 	if (nb == 0)
@@ -40,7 +39,8 @@ static char		*ft_dhhtoa_offset(char nb, size_t size_allocation)
 	if (nb == CHAR_MIN)
 		return (ft_strdup_alloc("128", size_allocation));
 	nb_len = ft_nblen_dhh(n);
-	if (!(output = (char *)ft_memalloc((size_allocation + 1) * sizeof(*output))))
+	if (!(output = (char *)ft_memalloc((size_allocation\
+		+ 1) * sizeof(*output))))
 		return (NULL);
 	n = n < 0 ? -n : n;
 	output[nb_len] = '\0';
@@ -54,11 +54,11 @@ static char		*ft_dhhtoa_offset(char nb, size_t size_allocation)
 
 char			*ft_print_d_hh(va_list *ap, t_flag *flag)
 {
-	char				*output;
-	char				tmp_val;
-	size_t				size_allocation;
-	int					tmp;
-	int					sign;
+	char	*output;
+	char	tmp_val;
+	size_t	size_allocation;
+	int		tmp;
+	int		sign;
 
 	tmp = va_arg(*ap, int);
 	sign = (char)tmp;

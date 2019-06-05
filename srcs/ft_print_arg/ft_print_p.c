@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 20:23:25 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 18:30:05 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ char		*ft_print_p(va_list *ap, t_flag *flag)
 	if (len == 0 && flag->precision != 0)
 		output = ft_strcpy(output, "0");
 	output = ft_apply_precision_nb(output, flag, 1);
-	output = ft_apply_padding_p(output, flag, 1, addr);
+	output = ft_apply_padding_p(output, flag, 1);
 	return (output);
 }

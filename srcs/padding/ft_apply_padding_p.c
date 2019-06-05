@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:49:41 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 20:22:36 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 18:30:19 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,13 @@ static size_t		get_size_to_add(t_flag *flag, int sign)
 	return (str_len);
 }
 
-static char			*str_to_fill(char *str, t_flag *flag, int sign, void *addr)
+static char			*str_to_fill(char *str, t_flag *flag, int sign)
 {
 	char			*to_add;
 	unsigned int	to_add_len;
 	unsigned int	i;
 
-	if (addr == 0)
-	{
-		 	to_add_len = get_size_to_add(flag, sign);	
-	}
-	else	
-		to_add_len = get_size_to_add(flag, sign);
+	to_add_len = get_size_to_add(flag, sign);
 	if (to_add_len + ft_strlen(str) >= flag->width)
 		return (ft_strdup(""));
 	if (!(to_add = (char *)ft_memalloc(sizeof(*to_add) * (flag->width + 2))))
@@ -75,19 +70,13 @@ static char			*ft_strcat_r_char(char c, char *dst, size_t len)
 	return (dst);
 }
 
-char				*ft_apply_padding_p(char *str, t_flag *flag, int sign, void *addr)
+char				*ft_apply_padding_p(char *str, t_flag *flag, int sign)
 {
 	char			*to_add;
 
-	if (addr)
-	{
-		
-	}
-	to_add = str_to_fill(str, flag, sign, addr);
+	to_add = str_to_fill(str, flag, sign);
 	if (ft_can_fill_with_zeros(flag, sign))
 	{
-		// if (addr == 0)
-		// 	str = ft_strcat_r("0", str);
 		str = ft_strcat_r(to_add, str);
 		str = ft_strcat_r(PREFIX_0X, str);
 	}
@@ -96,17 +85,9 @@ char				*ft_apply_padding_p(char *str, t_flag *flag, int sign, void *addr)
 		str = ft_add_sign(str, flag, sign);
 		str = ft_strcat_r(PREFIX_0X, str);
 		if (flag->minus == 1)
-		{
-			// if (addr == 0)
-			// 	str = ft_strcat(str, "0");
-			str = ft_strcat(str, to_add);	
-		}
+			str = ft_strcat(str, to_add);
 		else
-		{
 			str = ft_strcat_r_char(to_add[0], str, ft_strlen(to_add));
-			// if (addr == 0)
-				// str = ft_strcat(str, "0");
-		}
 	}
 	ft_memdel((void **)&to_add);
 	return (str);
