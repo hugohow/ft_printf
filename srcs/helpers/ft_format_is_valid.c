@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 20:41:29 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 18:43:42 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 19:43:17 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int		ft_format_is_valid(const char *fo)
 	int					i;
 	char				*flag;
 
-	i = 0;
-	while (fo[i])
+	i = -1;
+	while (fo[++i])
 	{
 		if (fo[i] == '%')
 		{
@@ -33,10 +33,8 @@ int		ft_format_is_valid(const char *fo)
 				return (0);
 			}
 			ft_memdel((void **)&flag);
-			i += (int)ft_flaglen(fo + i) + 1;
+			i += (int)ft_flaglen(fo + i);
 		}
-		else
-			i++;
 	}
 	return (1);
 }

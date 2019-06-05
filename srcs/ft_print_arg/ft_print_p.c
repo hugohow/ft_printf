@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 18:30:05 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 19:57:05 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static char	*ft_itoa_p(void *addr, t_flag *flag, int size)
 
 	i = (sizeof(uintptr_t));
 	ft_memcpy(t, &addr, sizeof(uintptr_t));
-	if (!(output = (char *)ft_memalloc(size)))
+	if (!(output = (char *)ft_memalloc(size * sizeof(char))))
 		return (NULL);
-	tmp_str = NULL;
 	while (i != -1)
 	{
+		tmp_str = NULL;
 		tmp_str = ft_itoa((int)t[i]);
 		tmp_str = ft_convert_output(tmp_str, flag);
 		if (ft_strlen(tmp_str) == 1)
@@ -50,8 +50,9 @@ char		*ft_print_p(va_list *ap, t_flag *flag)
 	size_t			size_allocation;
 
 	addr = va_arg(*ap, void *);
-	size_allocation = 20;
+	size_allocation = 100;
 	size_allocation = ft_len_to_alloc(size_allocation, flag);
+	output = NULL;
 	output = ft_itoa_p(addr, flag, size_allocation);
 	i = 0;
 	while (output[i] && output[i] == '0')
