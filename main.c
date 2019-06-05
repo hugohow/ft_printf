@@ -12,8 +12,10 @@ int main(void)
 {
 
 	// printf("%d\n", ft_printf("% Zoooo"));
-	ft_printf("{%05.s}", 0);
-	printf("{%05.s}", 0);
+	ft_printf("{%0-3d}", 0);
+	printf("{%0-3d}", 0);
+
+
 	// ft_printf("Zoooo% ");
 	// printf("%d", printf("% Zoooo %d",1));
 	// printf("%d", printf("% "));
