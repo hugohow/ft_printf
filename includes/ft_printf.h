@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 19:10:56 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 23:18:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct		s_flag
 	int				space;
 	int				hash;
 	char			character;
+	int				character_i;
 }					t_flag;
 
 typedef char		*(t_ft)(va_list *, t_flag *);
@@ -211,7 +212,7 @@ int					ft_can_fill_to_the_right(t_flag *flag, int sign);
 int					ft_can_fill_with_zeros(t_flag *flag, int sign);
 int					ft_can_fill_with_zeros_float(t_flag *flag, int sign);
 char				*ft_strdup_alloc(const char *s1, size_t size_allocation);
-int					ft_print_null(t_flag *flag, int fd);
+int					ft_print_null(char *output, t_flag *flag, int fd);
 char				*ft_strcat_char(char *s1, const char c);
 int					ft_format_is_valid(const char *format);
 char				*ft_itoa_e(int nb);

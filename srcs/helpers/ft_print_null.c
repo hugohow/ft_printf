@@ -6,37 +6,30 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 13:17:12 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 01:23:22 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 23:19:49 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_null(t_flag *flag, int fd)
+int	ft_print_null(char *output, t_flag *flag, int fd)
 {
-	char	c;
-	int		res;
+	char c;
+	int i;
 
+	i = 0;
 	c = 0;
-	res = 0;
-	if (flag->width <= 0)
+	while (i < flag->character_i)
 	{
-		write(1, &c, fd);
-		return (1);
+		ft_putchar_fd(output[i], fd);
+		i++;
 	}
-	if (!flag->minus)
+	write(1, &c, fd);
+	i++;
+	while (output[i])
 	{
-		while (--flag->width > 0 && ++(res))
-			ft_putchar_fd(flag->zero ? '0' : ' ', fd);
-		write(1, &c, fd);
-		(res)++;
+		ft_putchar_fd(output[i], fd);
+		i++;
 	}
-	else if (flag->minus)
-	{
-		write(1, &c, fd);
-		(res)++;
-		while (--flag->width > 0 && ++(res))
-			ft_putchar_fd(flag->zero ? '0' : ' ', fd);
-	}
-	return (res);
+	return (i);
 }

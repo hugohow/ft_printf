@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/04 21:05:36 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 23:18:14 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_parse_and_print(char *flag_line, va_list *p_ap, size_t *p_len)
 		return (-1);
 	}
 	if (flag->character == 0)
-		*p_len = *p_len + (size_t)ft_print_null(flag, 1);
+		*p_len = *p_len + (size_t)ft_print_null(output, flag, 1);
 	else
 	{
 		ft_putstr_fd(output, 1);

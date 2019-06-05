@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:11:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 22:41:14 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 23:16:02 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ t_flag		*ft_create_flag(char *str)
 	flag->space = ft_flag_get_space(str);
 	flag->hash = ft_flag_get_hash(str);
 	flag->character = -1;
+	flag->character_i = -1;
 	return (flag);
 }

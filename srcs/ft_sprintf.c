@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 19:21:30 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/05 23:20:54 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_parse_cat(char *f, va_list *pap, size_t *plen, char *str)
 	if (flag->character == 0)
 	{
 		ft_memmove(str + *plen, output, ft_strlen(output));
-		*plen = *plen + ft_strlen(output) - 1;
+		*plen = *plen + ft_strlen(output);
 		str[*plen] = '\0';
 	}
 	else
