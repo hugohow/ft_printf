@@ -6,97 +6,113 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:36:22 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/02 19:36:23 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/06 00:25:06 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# ________________________________ Variables _________________________________ #
-
 NAME 		=		libftprintf.a
-SHELL 		=		/bin/sh
-CC 			=		gcc
-RM 			=		rm -rf
-AR 			=		ar
-ARFLAGS 	=		-rcs
-CFLAGS 		=		-Wall -Wextra -Werror
-CPPFLAGS 	=		-I$(INCDIR)
+CC = gcc
+CFLAGS = -I includes/ -Wall -Werror -Wextra
+OBJ = $(SRC:.c=.o)
+DEBUG = #-g3 -fsanitize=address
 
-QUIET 		=		@
-ECHO 		=		@echo
-ifneq ($(QUIET),@)
-ECHO 		=		@true
-endif
+SRC =	srcs/ft_dprintf.c		\
+		srcs/ft_printf.c		\
+		srcs/ft_sprintf.c		\
+		srcs/ft_print_arg/ft_print_c.c		\
+		srcs/ft_print_arg/ft_print_d.c		\
+		srcs/ft_print_arg/ft_print_d_h.c		\
+		srcs/ft_print_arg/ft_print_d_hh.c		\
+		srcs/ft_print_arg/ft_print_d_l.c		\
+		srcs/ft_print_arg/ft_print_d_ll.c		\
+		srcs/ft_print_arg/ft_print_e.c		\
+		srcs/ft_print_arg/ft_print_e_l.c		\
+		srcs/ft_print_arg/ft_print_e_l_maj.c		\
+		srcs/ft_print_arg/ft_print_f.c		\
+		srcs/ft_print_arg/ft_print_f_l.c		\
+		srcs/ft_print_arg/ft_print_f_l_maj.c		\
+		srcs/ft_print_arg/ft_print_nb.c		\
+		srcs/ft_print_arg/ft_print_nb_h.c		\
+		srcs/ft_print_arg/ft_print_nb_hh.c		\
+		srcs/ft_print_arg/ft_print_nb_l.c		\
+		srcs/ft_print_arg/ft_print_nb_ll.c		\
+		srcs/ft_print_arg/ft_print_p.c		\
+		srcs/ft_print_arg/ft_print_percent.c		\
+		srcs/ft_print_arg/ft_print_s.c		\
+		srcs/ft_print_arg/ft_printf_arg.c		\
+		srcs/helpers/ft_add_char.c		\
+		srcs/helpers/ft_apply_e.c		\
+		srcs/helpers/ft_condition_fill.c		\
+		srcs/helpers/ft_condition_flag.c		\
+		srcs/helpers/ft_convert_output.c		\
+		srcs/helpers/ft_flaglen.c		\
+		srcs/helpers/ft_format_is_valid.c		\
+		srcs/helpers/ft_get_binary.c		\
+		srcs/helpers/ft_get_color.c		\
+		srcs/helpers/ft_itoa_e.c		\
+		srcs/helpers/ft_itoa_f.c		\
+		srcs/helpers/ft_itoa_f_l.c		\
+		srcs/helpers/ft_nblen_ull.c		\
+		srcs/helpers/ft_print_null.c		\
+		srcs/helpers/ft_size_to_allocate.c		\
+		srcs/helpers/ft_str_join.c		\
+		srcs/helpers/ft_str_join_r.c		\
+		srcs/helpers/ft_str_precision_count.c		\
+		srcs/helpers/ft_strcat_char.c		\
+		srcs/helpers/ft_strdup_alloc.c		\
+		srcs/helpers/ft_ulltoa_offset.c		\
+		srcs/padding/ft_apply_padding_e.c		\
+		srcs/padding/ft_apply_padding_nb.c		\
+		srcs/padding/ft_apply_padding_p.c		\
+		srcs/padding/ft_apply_padding_str.c		\
+		srcs/parser/ft_create_flag.c		\
+		srcs/parser/ft_flag_create_space.c		\
+		srcs/parser/ft_flag_get_hash.c		\
+		srcs/parser/ft_flag_get_key.c		\
+		srcs/parser/ft_flag_get_length.c		\
+		srcs/parser/ft_flag_get_minus.c		\
+		srcs/parser/ft_flag_get_plus.c		\
+		srcs/parser/ft_flag_get_precision.c		\
+		srcs/parser/ft_flag_get_width.c		\
+		srcs/parser/ft_flag_get_zero.c		\
+		srcs/precision/ft_apply_precision_nb.c		\
+		srcs/precision/ft_apply_precision_str.c		
 
-TEST 		=		tests/tests/tests
-INCDIR 		=		includes
+C_OK	=	"\033[35m"
+C_GOOD	=	"\033[32m"
 
-INCLUDES 	=		$(addprefix -I, $(INCDIR))
+SUCCESS	=	$(C_GOOD)SUCCESS$(C_NO)
+OK		=	$(C_OK)OK$(C_NO)
 
-.SUFFIXES:
-.SUFFIXES: .c .o .h
 
-# __________________________________ Colors __________________________________ #
-
-ifdef TERM
-EOC 		=		\033[0m
-RED 		=		\033[38;5;88m
-YELLOW		=		\033[38;5;178m
-GREEN 		=		\x1b[32;01m
-PURPLE 		=		\033[38;5;98m
-BLUE		=		\x1b[34;01m
-GREY		=		\033[38;5;242m
-endif
-
-# __________________________________ Rules ___________________________________ #
-
-.PHONY: all
 all: $(NAME)
 
-$(NAME):
-	$(ECHO) "$(GREY)Compiling ...$(EOC)"
-	$(QUIET) $(CC) $(CFLAGS) $(INCLUDES) -ggdb3 -g -c srcs/*.c libft/*.c srcs/*/*.c
-	$(ECHO) "$(GREY)Archiving $(EOC)$(PURPLE)object files$(EOC) $(GREY)...$(EOC)"
-	$(QUIET) $(AR) $(ARFLAGS) $@ *.o
-	$(QUIET)make clean
-	$(ECHO) "$(GREEN)⟹  $(NAME) is ready.$(EOC)"
-	$(QUIET) $(CC) -Iincludes -g $(NAME) main.c -o main
-	$(ECHO) "$(GREEN)⟹  main executable has been succesfully created.$(EOC)"
-	./main
+%.o: %.c
+	@printf "[ft_printf] Compiling [.:]\r"
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "[ft_printf] Compiling [:.]\r"
 
+$(NAME): $(OBJ)
+	@printf "[ft_printf] Compiled successfuly! [OK]\n"
+	@make -C libft/
+	@cp libft/libft.a ./$(NAME)
+	@ar rc $@ $^
+	@ranlib $@
+	@echo "Compiling & indexing" [ $(NAME) ] $(SUCCESS)
 
-.PHONY: compile_test
-compile_test:
-	cd tests/tests && ./generator.sh create conv_cap_x conv_d conv_i conv_o conv_p conv_s conv_u conv_x
+clean:
+	@make clean -C libft/
+	@/bin/rm -f $(OBJ)
+	@printf "[ft_printf] Removed object files!\n"
+fclean: clean
+	@/bin/rm -f $(NAME)
+	@make fclean -C libft/
+	@printf "[ft_printf] Removed ft_printf.a !\n"
+	
+re: fclean all
 
 .PHONY: test
 test: re
 	cd tests/tests && $(MAKE) test
 
-.PHONY: valgrind
-valgrind: fclean
-	$(ECHO) "$(GREY)Compiling ...$(EOC)"
-	$(QUIET) $(CC) -Iincludes -g -std=c11 -ggdb3 main.c libft/*.c srcs/*.c srcs/*/*.c -o main
-	$(ECHO) "$(GREEN)⟹  main executable has been succesfully created.$(EOC)"
-	./main
-	$(QUIET) $(RM) leaks.txt
-	$(ECHO) "$(GREY)⟹  leaks.txt has been succesfully deleted.$(EOC)"
-	$(ECHO) "$(GREY)Checking leaks with Valgrind ...$(EOC)"
-	$(ECHO) "\n\n---------------------- main ----------------------\n\n" >> leaks.txt
-	$(QUIET) valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -v ./main >> leaks.txt 2>&1
-	$(ECHO) "$(GREEN)⟹  Valgrind results succesfully stored in leaks.txt.$(EOC)"
-	$(QUIET) $(RM) *.o
-
-.PHONY: clean
-clean:
-	$(ECHO) "$(GREY)Cleaning $(EOC)$(PURPLE)object files$(EOC) $(GREY)...$(EOC)"
-	$(QUIET) $(RM) *.o
-	$(ECHO) "$(GREEN)⟹  All object files succesfully cleaned.$(EOC)"
-
-.PHONY: fclean
-fclean: clean
-	$(ECHO) "$(GREY)Cleaning $(EOC)$(YELLOW)$(NAME)$(EOC) $(GREY)...$(EOC)"
-	$(QUIET) $(RM) $(NAME)
-	$(ECHO) "$(GREEN)⟹  $(NAME) has been succesfully deleted.$(EOC)"
-
-.PHONY: re
-re: fclean all
+.PHONY: all clean fclean re
