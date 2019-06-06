@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/31 22:54:43 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 12:14:40 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 15:43:29 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ static char	*get_decimal_str(char *output, int size_allocation, int expo)
 		}
 		else
 		{
-			output = ft_bigint_multiply_by_two(output);
+			output = ft_bigint_multiply_by_two(output, size_allocation);
 			expo--;
 		}
 	}

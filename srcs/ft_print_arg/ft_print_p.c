@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 20:38:37 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 22:34:45 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 16:34:14 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static char	*ft_itoa_p(void *addr, t_flag *flag, int size)
 			output = ft_strcat(output, tmp_str);
 			ft_memdel((void **)&tmp_str);
 		}
+		else
+			output = ft_strcat(output, "00");
 		i--;
 	}
 	ft_memdel((void **)&t);

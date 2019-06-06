@@ -11,6 +11,7 @@ int ft_printf(const char* format, ...);
 int main(void)
 {
 
+
 	// char str[99999];
 	// int ret;
 
@@ -23,8 +24,8 @@ int main(void)
 	// ret = ft_sprintf(tmp, "%23.5li|%-23.5li|%+23.5li|%c|%023.5li\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, 0, LLONG_MIN);
 	// printf("ret : %d, str : %s\n", ret, tmp);
 
-ft_printf("%.350f\n", 1.e-201);
-printf("%.350f", 1.e-201);
+ft_printf("%e|%-e|%+e|% e|%#e|%0e", DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX, DBL_MAX);
+// printf("%.350f", 1.e-201);
 
 	// printf("%d\n", ft_printf("% Zoooo"));
 // 	ft_printf("{%0-3d}", 0);
@@ -58,9 +59,23 @@ printf("%.350f", 1.e-201);
 // 	printf("\n\n");
 
 
-// 	ft_printf("%%p %p\n", 0);
-// 	printf("%%p %p\n", 0);
-// 	printf("\n\n");
+
+	ft_printf("%%p %p\n", NULL);
+	printf("%%p %p\n", NULL);
+	printf("\n\n");
+
+		ft_printf("%%p %p\n", "Random string");
+	printf("%%p %p\n", "Random string");
+	printf("\n\n");
+
+		ft_printf("%%p %30p\n", "Random string");
+	printf("%%p %30p\n", "Random string");
+	printf("\n\n");
+
+		ft_printf("%%p %p\n", &printf);
+	printf("%%p %p\n", &printf);
+	printf("\n\n");
+
 
 // 	ft_printf("%%10p %10p\n", 0);
 // 	printf("%%10p %10p\n", 0);
@@ -215,7 +230,7 @@ printf("%.350f", 1.e-201);
 
 
 
-// ft_printf("%f|%-f|%+f|% f|%#f|%0f\n", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
+// ft_printf("e|%-e|%+e|% e|%#e|%0e\n", INFINITY, INFINITY, INFINITY, INFINITY, INFINITY, INFINITY);
 
 
 // ft_printf(" ft_printf :\t%-+8.14f|%- 8.14f|%-#8.14f|%-08.14f|%-+#8.14f|%-+ #08.14f", 0., 0., 0., 0., 0., 0.);

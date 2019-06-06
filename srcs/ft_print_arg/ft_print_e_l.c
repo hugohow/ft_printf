@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 19:11:06 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 14:32:32 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char			*ft_round_e(char *out, double tmp, t_flag *flag, int sign)
 	if (tmp == 0)
 		expo = 0;
 	tmp = flag->precision == -1 ? 6 : flag->precision;
-	out = ft_bigint_round(out, tmp, MAX_ALLOCATION_LFLOAT);
+	out = ft_bigint_round(out, tmp, MAX_ALLOCATION_FLOAT);
 	out = ft_print_e_particular(out, flag);
 	out = ft_apply_padding_e(out, flag, sign, expo);
 	return (out);
@@ -66,7 +66,7 @@ char				*ft_print_e_l(va_list *ap, t_flag *flag)
 	tmp = (double)va_arg(*ap, double);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
-	output = ft_ftoa(tmp, to_free, flag, MAX_ALLOCATION_LFLOAT);
+	output = ft_ftoa(tmp, to_free, flag, MAX_ALLOCATION_FLOAT);
 	if (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0)
 		output = ft_round_e(output, tmp, flag, sign);
 	else

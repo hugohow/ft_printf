@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 13:29:57 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 16:18:46 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,28 @@ static char	*ft_round_e(char *out, double tmp, t_flag *flag, int sign)
 	return (out);
 }
 
+static size_t	ft_nblen(long double nb)
+{
+	size_t		nblen;
+
+	nblen = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+	{
+		nb = -nb;
+		nblen++;
+	}
+	while (nb != 0)
+	{
+		if (nblen == 4933)
+			break;
+		nb /= 10;
+		nblen++;
+	}
+	return (nblen);
+}
+
 char		*ft_print_e_l_maj(va_list *ap, t_flag *flag)
 {
 	char		*output;
@@ -64,8 +86,9 @@ char		*ft_print_e_l_maj(va_list *ap, t_flag *flag)
 	int			sign;
 	char		*to_free;
 
-	size_allocation = 6000;
 	tmp = (long double)va_arg(*ap, long double);
+	size_allocation = flag->precision < 40 ? 40 : flag->precision + 5;
+	size_allocation += ft_nblen(tmp);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
 	output = ft_fltoa(tmp, to_free, flag, size_allocation);

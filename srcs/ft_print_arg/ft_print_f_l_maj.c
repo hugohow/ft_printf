@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 14:13:23 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 16:05:25 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,29 @@ static char	*get_bin_floating_point(long double nb)
 	return (output);
 }
 
+static size_t	ft_nblen(long double nb)
+{
+	size_t		nblen;
+
+	nblen = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+	{
+		nb = -nb;
+		nblen++;
+	}
+	while (nb != 0)
+	{
+		if (nblen == 4933)
+			break;
+		nb /= 10;
+		nblen++;
+	}
+	return (nblen);
+}
+
+
 char		*ft_print_f_l_maj(va_list *ap, t_flag *flag)
 {
 	char			*output;
@@ -39,8 +62,9 @@ char		*ft_print_f_l_maj(va_list *ap, t_flag *flag)
 	int				sign;
 	char			*to_free;
 
-	size_allocation = flag->precision < MAX_ALLOCATION_LFLOAT ? MAX_ALLOCATION_LFLOAT : flag->precision + 10;
 	tmp = (long double)va_arg(*ap, long double);
+	size_allocation = flag->precision < 40 ? 40 : flag->precision + 5;
+	size_allocation += ft_nblen(tmp);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
 	output = ft_fltoa(tmp, to_free, flag, size_allocation);
