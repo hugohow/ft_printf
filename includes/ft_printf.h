@@ -6,18 +6,17 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/05 23:18:33 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 13:29:05 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <string.h>
-# include <stdlib.h>
 # include <limits.h>
+# include <stdlib.h>
 # include "libft.h"
 # define PREFIX_0X_MAJ "0X"
 # define PREFIX_0X "0x"

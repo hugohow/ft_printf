@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 17:12:49 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/04/11 10:45:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 13:19:37 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char		*get_word(const char *str, char c)
 	char		*word;
 	size_t		j;
 
-	if (!(word = malloc((ft_strlen(str) + 1) * sizeof(*word))))
+	if (!(word = (char *)malloc((ft_strlen(str) + 1) * sizeof(*word))))
 		return (NULL);
 	j = 0;
 	while (str[j] && str[j] != c)
