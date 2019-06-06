@@ -11,20 +11,20 @@ int ft_printf(const char* format, ...);
 int main(void)
 {
 
-	char str[99999];
-	int ret;
+	// char str[99999];
+	// int ret;
 
-	ret = ft_sprintf(str, "%23.5li|%-23.5li|%+23.5li|%c|%023.5li\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, 0, LLONG_MIN);
-	printf("ret : %d, str : %s\n", ret, str);
+	// ret = ft_sprintf(str, "%23.5li|%-23.5li|%+23.5li|%c|%023.5li\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, 0, LLONG_MIN);
+	// printf("ret : %d, str : %s\n", ret, str);
 
 
-	char tmp[99999];
+	// char tmp[99999];
 
-	ret = ft_sprintf(tmp, "%23.5li|%-23.5li|%+23.5li|%c|%023.5li\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, 0, LLONG_MIN);
-	printf("ret : %d, str : %s\n", ret, tmp);
+	// ret = ft_sprintf(tmp, "%23.5li|%-23.5li|%+23.5li|%c|%023.5li\n", LLONG_MIN, LLONG_MIN, LLONG_MIN, 0, LLONG_MIN);
+	// printf("ret : %d, str : %s\n", ret, tmp);
 
-// printf("ft_printf : %d", ft_printf("%c|%-c|%12c|%-12c\n", 0, 0, 0, 0));
-// printf("printf : %d", printf("%c|%-c|%12c|%-12c\n", 0, 0, 0, 0));
+ft_printf("%.350f\n", 1.e-201);
+printf("%.350f", 1.e-201);
 
 	// printf("%d\n", ft_printf("% Zoooo"));
 // 	ft_printf("{%0-3d}", 0);

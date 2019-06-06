@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/03 12:18:39 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 14:02:33 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char				*ft_print_f_l(va_list *ap, t_flag *flag)
 	int				sign;
 	char			*to_free;
 
-	size_allocation = 4096;
+	size_allocation = flag->precision < 1024 ? 1024 : flag->precision + 5;
 	tmp = (double)va_arg(*ap, double);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
