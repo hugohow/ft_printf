@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 13:29:05 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/06 14:14:51 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@
 # define KEY_S (1 << 6)
 # define KEY_F (1 << 7)
 # define KEY_E (1 << 8)
-# define MAX_ALLOCATION_LFLOAT 4096
+# define MAX_ALLOCATION_LFLOAT 5000
+# define MAX_ALLOCATION_FLOAT 1024
 # define H0 "1"
 # define H1 "0.5"
 # define H2 "0.25"
