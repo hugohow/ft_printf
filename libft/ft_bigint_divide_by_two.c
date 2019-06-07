@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:01:01 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 15:42:07 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:01:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ static int	is_over(char *output, size_t *p_i, size_t *p_j, size_t limit)
 
 char		*ft_bigint_divide_by_two(char *output, size_t limit)
 {
-	size_t i;
-	size_t j;
-	int finished;
-	int even;
+	size_t	i;
+	size_t	j;
+	int		finished;
+	int		even;
 
 	output = ft_bigint_shift_right(output, 1, limit);
 	output[0] = '0';

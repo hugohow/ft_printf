@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 17:01:30 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 15:42:35 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:01:22 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	is_valid_digit(char c)
 char		*ft_bigint_multiply_by_two(char *output, size_t limit)
 {
 	size_t	len;
-	int 	ret;
-	int 	dec;
+	int		ret;
+	int		dec;
 
 	len = 0;
 	while (output[len] && len < limit)
