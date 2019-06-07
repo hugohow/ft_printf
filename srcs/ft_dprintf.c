@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:10:04 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 12:04:20 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 14:59:39 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,9 @@ int			ft_dprintf(int fd, const char *format, ...)
 		{
 			ret = ft_print(format + i, &len, &ap, fd);
 			if (ret == -1)
-				return (-1);
-			i += ret;
+				i += (int)ft_flaglen(format + i) - 1;
+			else
+				i += ret;
 		}
 		else
 			ft_print_gen(format, &i, &len, fd);

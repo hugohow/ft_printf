@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 21:13:47 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 12:04:11 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 14:59:44 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,9 @@ int			ft_sprintf(char *str, const char *format, ...)
 		{
 			ret = ft_cat(format + i, &len, &ap, str);
 			if (ret == -1)
-				return (-1);
-			i += ret;
+				i += (int)ft_flaglen(format + i) - 1;
+			else
+				i += ret;
 		}
 		else
 			ft_cat_gen(format, &i, &len, str);

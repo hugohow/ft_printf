@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:36:22 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/06 00:33:02 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/07 13:06:37 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,12 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 	@make fclean -C libft/
 	@echo "Cleaning" [ $(NAME) ] "..." $(OK)
-	
+
+leaks:
+	@make -C libft/
+	@cp libft/libft.a ./$(NAME)
+	gcc -I  includes libft/libft.a -g srcs/*.c srcs/*/*.c main.c
+
 re: fclean all
 
 test: re

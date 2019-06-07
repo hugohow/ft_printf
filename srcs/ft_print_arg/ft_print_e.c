@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 12:48:25 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 16:15:23 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char			*get_bin_floating_point(double nb)
+static char		*get_bin_floating_point(double nb)
 {
 	char			*output;
 	int				i;
@@ -31,7 +31,7 @@ static char			*get_bin_floating_point(double nb)
 	return (output);
 }
 
-static char			*ft_print_e_particular(char *output, t_flag *flag)
+static char		*ft_print_e_particular(char *output, t_flag *flag)
 {
 	if (output[0] == '.')
 		output = ft_str_join("0", output, flag);
@@ -42,7 +42,7 @@ static char			*ft_print_e_particular(char *output, t_flag *flag)
 	return (output);
 }
 
-static char			*ft_round_e(char *out, double tmp, t_flag *flag, int sign, size_t size)
+static char		*ft_round_e(char *out, double tmp, t_flag *flag, size_t size)
 {
 	int	expo;
 
@@ -52,13 +52,12 @@ static char			*ft_round_e(char *out, double tmp, t_flag *flag, int sign, size_t 
 	tmp = flag->precision == -1 ? 6 : flag->precision;
 	out = ft_bigint_round(out, 6, size);
 	out = ft_print_e_particular(out, flag);
-	out = ft_apply_padding_e(out, flag, sign, expo);
 	return (out);
 }
 
 static size_t	ft_nblen(double nb)
 {
-	size_t		nblen;
+	size_t	nblen;
 
 	nblen = 0;
 	if (nb == 0)
@@ -71,14 +70,14 @@ static size_t	ft_nblen(double nb)
 	while (nb != 0)
 	{
 		if (nblen == 300)
-			break;
+			break ;
 		nb /= 10;
 		nblen++;
 	}
 	return (nblen);
 }
 
-char				*ft_print_e(va_list *ap, t_flag *flag)
+char			*ft_print_e(va_list *ap, t_flag *flag)
 {
 	char	*output;
 	double	tmp;
@@ -93,7 +92,10 @@ char				*ft_print_e(va_list *ap, t_flag *flag)
 	sign = to_free[0] == '1' ? -1 : 1;
 	output = ft_ftoa(tmp, to_free, flag, size_allocation);
 	if (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0)
-		output = ft_round_e(output, tmp, flag, sign, size_allocation);
+	{
+		output = ft_round_e(output, tmp, flag, size_allocation);
+		output = ft_apply_padding_e(output, flag, sign, expo);
+	}
 	else
 		output = ft_apply_padding_nb(output, flag, sign);
 	ft_memdel((void **)&to_free);

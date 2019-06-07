@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 19:39:58 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 12:04:55 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 15:00:02 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,6 @@ static int	is_valid_par(char c)
 	return (0);
 }
 
-static int	is_valid_conv(char c)
-{
-	if (c == '%')
-		return (1);
-	else if (c == 'c')
-		return (1);
-	else if (c == 'd' || c == 'i')
-		return (1);
-	else if (c == 'o' || c == 'x' || c == 'X' || c == 'u' || c == 'b')
-		return (1);
-	else if (c == 'p')
-		return (1);
-	else if (c == 's')
-		return (1);
-	else if (c == 'f')
-		return (1);
-	else if (c == 'e')
-		return (1);
-	return (0);
-}
-
 size_t		ft_flaglen(const char *str)
 {
 	size_t	i;
@@ -56,7 +35,5 @@ size_t		ft_flaglen(const char *str)
 			break ;
 		i++;
 	}
-	if (str[i] && is_valid_conv(str[i]))
-		return (i);
-	return (-1);
+	return (i);
 }
