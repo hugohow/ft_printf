@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 16:45:24 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 16:49:31 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char			*ft_print_e_l_maj(va_list *ap, t_flag *flag)
 	output = ft_fltoa(tmp, to_free, flag, size_allocation);
 	if (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0)
 	{
-	int	expo;
+		int	expo;
 
 		expo = ft_apply_e(output);
 		if (tmp == 0)
