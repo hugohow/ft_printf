@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/22 23:56:31 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 14:32:32 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:48:28 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char			*ft_print_e_particular(char *output, t_flag *flag)
 	return (output);
 }
 
-static char			*ft_round_e(char *out, double tmp, t_flag *flag, int sign)
+static char			*ft_round_e(char *out, double tmp, t_flag *flag, int sign, size_t size)
 {
 	int	expo;
 
@@ -50,25 +50,54 @@ static char			*ft_round_e(char *out, double tmp, t_flag *flag, int sign)
 	if (tmp == 0)
 		expo = 0;
 	tmp = flag->precision == -1 ? 6 : flag->precision;
-	out = ft_bigint_round(out, tmp, MAX_ALLOCATION_FLOAT);
+	out = ft_bigint_round(out, 6, size);
 	out = ft_print_e_particular(out, flag);
 	out = ft_apply_padding_e(out, flag, sign, expo);
 	return (out);
 }
 
+static size_t	ft_nblen(double nb)
+{
+	size_t		nblen;
+
+	nblen = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+	{
+		nb = -nb;
+		nblen++;
+	}
+	while (nb != 0)
+	{
+		if (nblen == 300)
+			break;
+		nb /= 10;
+		nblen++;
+	}
+	return (nblen);
+}
+
 char				*ft_print_e_l(va_list *ap, t_flag *flag)
 {
-	char			*output;
-	double			tmp;
-	int				sign;
-	char			*to_free;
+	char	*output;
+	double	tmp;
+	int		sign;
+	char	*to_free;
+	size_t	size_allocation;
 
 	tmp = (double)va_arg(*ap, double);
+	size_allocation = flag->precision < 40 ? 40 : flag->precision + 5;
+	size_allocation += ft_nblen(tmp);
 	to_free = get_bin_floating_point(tmp);
 	sign = to_free[0] == '1' ? -1 : 1;
-	output = ft_ftoa(tmp, to_free, flag, MAX_ALLOCATION_FLOAT);
+	output = ft_ftoa(tmp, to_free, flag, size_allocation);
+
+
 	if (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0)
-		output = ft_round_e(output, tmp, flag, sign);
+	{
+		output = ft_round_e(output, tmp, flag, sign, size_allocation);
+	}
 	else
 		output = ft_apply_padding_nb(output, flag, sign);
 	ft_memdel((void **)&to_free);

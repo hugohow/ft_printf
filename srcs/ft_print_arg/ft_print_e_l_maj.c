@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 16:18:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:48:30 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*ft_print_e_particular(char *output, t_flag *flag)
 	return (output);
 }
 
-static char	*ft_round_e(char *out, double tmp, t_flag *flag, int sign)
+static char			*ft_round_e(char *out, double tmp, t_flag *flag, int sign, size_t size)
 {
 	int	expo;
 
@@ -50,7 +50,7 @@ static char	*ft_round_e(char *out, double tmp, t_flag *flag, int sign)
 	if (tmp == 0)
 		expo = 0;
 	tmp = flag->precision == -1 ? 6 : flag->precision;
-	out = ft_bigint_round(out, tmp, MAX_ALLOCATION_LFLOAT);
+	out = ft_bigint_round(out, 6, size);
 	out = ft_print_e_particular(out, flag);
 	out = ft_apply_padding_e(out, flag, sign, expo);
 	return (out);
@@ -93,7 +93,7 @@ char		*ft_print_e_l_maj(va_list *ap, t_flag *flag)
 	sign = to_free[0] == '1' ? -1 : 1;
 	output = ft_fltoa(tmp, to_free, flag, size_allocation);
 	if (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0)
-		output = ft_round_e(output, tmp, flag, sign);
+		output = ft_round_e(output, tmp, flag, sign, size_allocation);
 	else
 		output = ft_apply_padding_nb(output, flag, sign);
 	ft_memdel((void **)&to_free);

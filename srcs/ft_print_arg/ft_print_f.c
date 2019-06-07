@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:10 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 15:59:58 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:18:51 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char			*get_bin_floating_point(double nb)
+static char		*get_bin_floating_point(double nb)
 {
 	char			*output;
 	int				i;
@@ -46,20 +46,31 @@ static size_t	ft_nblen(double nb)
 	while (nb != 0)
 	{
 		if (nblen == 300)
-			break;
+			break ;
 		nb /= 10;
 		nblen++;
 	}
 	return (nblen);
 }
 
-char				*ft_print_f(va_list *ap, t_flag *flag)
+static char		*deal_with_particular_cases(char *output, t_flag *flag)
 {
-	char			*output;
-	double			tmp;
-	size_t			size_allocation;
-	int				sign;
-	char			*to_free;
+	if (output[0] == '.')
+		output = ft_str_join("0", output, flag);
+	if (ft_strlen(output) == 0)
+		output = ft_strcpy(output, "0");
+	if (flag->hash && flag->precision == 0)
+		output = ft_str_join_r(output, ".", flag);
+	return (output);
+}
+
+char			*ft_print_f(va_list *ap, t_flag *flag)
+{
+	char	*output;
+	double	tmp;
+	size_t	size_allocation;
+	int		sign;
+	char	*to_free;
 
 	tmp = (double)va_arg(*ap, double);
 	size_allocation = flag->precision < 40 ? 40 : flag->precision + 5;
@@ -71,12 +82,7 @@ char				*ft_print_f(va_list *ap, t_flag *flag)
 	{
 		tmp = flag->precision == -1 ? 6 : flag->precision;
 		output = ft_bigint_round(output, tmp, size_allocation);
-		if (output[0] == '.')
-			output = ft_str_join("0", output, flag);
-		if (ft_strlen(output) == 0)
-			output = ft_strcpy(output, "0");
-		if (flag->hash && flag->precision == 0)
-			output = ft_str_join_r(output, ".", flag);
+		output = deal_with_particular_cases(output, flag);
 	}
 	output = ft_apply_padding_nb(output, flag, sign);
 	ft_memdel((void **)&to_free);

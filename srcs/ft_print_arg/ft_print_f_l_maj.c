@@ -6,13 +6,13 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 16:05:25 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/07 12:20:07 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*get_bin_floating_point(long double nb)
+static char		*get_bin_floating_point(long double nb)
 {
 	char			*output;
 	int				i;
@@ -46,21 +46,20 @@ static size_t	ft_nblen(long double nb)
 	while (nb != 0)
 	{
 		if (nblen == 4933)
-			break;
+			break ;
 		nb /= 10;
 		nblen++;
 	}
 	return (nblen);
 }
 
-
-char		*ft_print_f_l_maj(va_list *ap, t_flag *flag)
+char			*ft_print_f_l_maj(va_list *ap, t_flag *flag)
 {
-	char			*output;
-	long double		tmp;
-	size_t			size_allocation;
-	int				sign;
-	char			*to_free;
+	char		*output;
+	long double	tmp;
+	size_t		size_allocation;
+	int			sign;
+	char		*to_free;
 
 	tmp = (long double)va_arg(*ap, long double);
 	size_allocation = flag->precision < 40 ? 40 : flag->precision + 5;
