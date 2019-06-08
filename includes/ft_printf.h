@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 22:50:40 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/06 14:14:51 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/08 14:38:00 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct		s_flag
 	int				hash;
 	char			character;
 	int				character_i;
+	size_t			size_allocation;
 }					t_flag;
 
 typedef char		*(t_ft)(va_list *, t_flag *);

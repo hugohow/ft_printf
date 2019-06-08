@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 12:34:26 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/07 16:49:31 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/08 14:42:28 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,20 @@ static size_t	ft_nblen(long double nb)
 	return (nblen);
 }
 
+static char		*ft_round_e(char *output, t_flag *flag, int sign, double tmp)
+{
+	int	expo;
+
+	expo = ft_apply_e(output);
+	if (tmp == 0)
+		expo = 0;
+	tmp = flag->precision == -1 ? 6 : flag->precision;
+	output = ft_bigint_round(output, tmp, flag->size_allocation);
+	output = ft_print_e_particular(output, flag);
+	output = ft_apply_padding_e(output, flag, sign, expo);
+	return (output);
+}
+
 char			*ft_print_e_l_maj(va_list *ap, t_flag *flag)
 {
 	char		*output;
@@ -79,17 +93,7 @@ char			*ft_print_e_l_maj(va_list *ap, t_flag *flag)
 	sign = to_free[0] == '1' ? -1 : 1;
 	output = ft_fltoa(tmp, to_free, flag, size_allocation);
 	if (ft_strchr(output, 'i') == 0 && ft_strchr(output, 'n') == 0)
-	{
-		int	expo;
-
-		expo = ft_apply_e(output);
-		if (tmp == 0)
-			expo = 0;
-		tmp = flag->precision == -1 ? 6 : flag->precision;
-		output = ft_bigint_round(output, 6, size_allocation);
-		output = ft_print_e_particular(output, flag);
-		output = ft_apply_padding_e(output, flag, sign, expo);
-	}
+		output = ft_round_e(output, flag, sign, tmp);
 	else
 		output = ft_apply_padding_nb(output, flag, sign);
 	ft_memdel((void **)&to_free);
