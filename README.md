@@ -2,7 +2,10 @@
 
 ft_printf("test %-12f et % #.1x %24s !\n", 42.001, 20, "coco");
 
+Implementation from scratch of some big int operations.
 
+Implementation from scratch of the double-precision floating-point format to get the precised representation of 
+`ft_printf("%+8.14Lf", 12.847e451L);`
 
 # ft_printf
 
