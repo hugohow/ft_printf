@@ -39,10 +39,10 @@ int main(void)
 // 	printf("%d", printf("% "));
 // 	printf("\n\n");
 
-// 	ft_printf("%");
-// 	printf("%");
+	ft_printf("%");
+	printf("%");
 // 	printf("%5%\n");
-// 	printf("\n\n");
+	// printf("\n\n");
 
 // 	ft_printf("%0%\n");
 // 	printf("%0%\n");
