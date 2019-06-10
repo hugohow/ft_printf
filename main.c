@@ -34,7 +34,13 @@ int main(void)
 // 	printf("{%0-3d}", 0);
 
 
-// 	ft_printf("Zoooo% ");
+	// ft_printf("{%*d}", -5, 42);;
+	// printf("{%*d}", -5, 42);
+
+	ft_printf("{%*3d}", 5, 0);
+	printf("{%*3d}", 5, 0);
+
+
 // 	printf("%d", printf("% Zoooo %d",1));
 // 	printf("%d", printf("% "));
 // 	printf("\n\n");
