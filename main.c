@@ -12,6 +12,51 @@ int ft_printf(const char* format, ...);
 int main(void)
 {
 
+// ft_printf("{%05.c}\n", 0);
+// printf("{%05.c}", 0);
+
+
+// ft_printf("{%3*p}\n", 10, 0);
+// printf("{%3*p}", 10, 0);
+
+
+// ft_printf("% u|%+u\n", 42, 42);
+// printf("% u|%+u", 42, 42);
+
+// ft_printf("{%f}{%lf}\n", 1.42, 1.42l);
+// printf("{%f}{%lf}", 1.42, 1.42l);
+
+
+ft_printf("{%f}{%lf}\n", 1., 1.l);
+printf("{%f}{%lf}", 1., 1.l);
+
+
+// ft_printf("\nft_printf +99.1: %.5e|\n", +99.1);
+// printf("   printf +99.1: %.5e|\n", +99.1);
+// ft_printf("ft_printf +0.1: %.5e|\n", +0.1);
+// printf("   printf +0.1: %.5e|\n", +0.1);
+// ft_printf("ft_printf +15.0: %.5e|\n", +15.0);
+// printf("   printf +15.0: %.5e|\n", +15.0);
+// ft_printf("ft_printf +30: %.5e|\n", (double)30);
+// printf("   printf +30: %.5e|\n", (double)30);
+// ft_printf("ft_printf +0L: %.5e|\n", (double)0);
+// printf("   printf +0L: %.5e|\n", (double)0);
+// ft_printf("ft_printf +0L: %.e|\n", (double)0);
+// printf("   printf +0L: %.e|\n", (double)0);
+// ft_printf("ft_printf +0L: %.e|\n", INFINITY);
+// printf("   printf +0L: %.e|\n", INFINITY);
+
+
+// ft_printf("\nft_printf +99.1: %.5Le|\n", (long double)+99.1);
+// printf("   printf +99.1: %.5Le|\n", (long double)+99.1);
+// ft_printf("ft_printf +0.1: %.5Le|\n", (long double)+0.1);
+// printf("   printf +0.1: %.5Le|\n", (long double)+0.1);
+// ft_printf("ft_printf +15.0: %.5Le|\n", (long double)+15.0);
+// printf("   printf +15.0: %.5Le|\n", (long double)+15.0);
+// ft_printf("ft_printf +30: %.5Le|\n", (long double)30);
+// printf("   printf +30: %.5Le|\n", (long double)30);
+// ft_printf("ft_printf +0L: %.5Le|\n", (long double)0);
+// printf("   printf +0L: %.5Le|\n", (long double)0);
 
 // 	char str1[99999];
 // 	int ret;
@@ -34,21 +79,21 @@ int main(void)
 // 	printf("{%0-3d}", 0);
 
 
-	// ft_printf("{%*d}", -5, 42);;
-	// printf("{%*d}", -5, 42);
+// 	ft_printf("{%*d}", -5, 42);;
+// 	printf("{%*d}", -5, 42);
 
-	ft_printf("%.1f|%1f\n", 1.0, 1.0);
-	printf("%.1f|%1f", 1.0, 1.0);
+// 	ft_printf("%.1f|%1f\n", 1.0, 1.0);
+// 	printf("%.1f|%1f", 1.0, 1.0);
 
 
 // 	printf("%d", printf("% Zoooo %d",1));
 // 	printf("%d", printf("% "));
 // 	printf("\n\n");
 
-	ft_printf("%");
-	printf("%");
+// 	ft_printf("%");
+// 	printf("%");
 // 	printf("%5%\n");
-	// printf("\n\n");
+// 	printf("\n\n");
 
 // 	ft_printf("%0%\n");
 // 	printf("%0%\n");
@@ -207,33 +252,6 @@ int main(void)
 // ft_printf("ft_printf +0L: %.5Lf|\n", (long double)0L);
 
 
-
-// ft_printf("\nft_printf +99.1: %.5e|\n", +99.1);
-// printf("   printf +99.1: %.5e|\n", +99.1);
-// ft_printf("ft_printf +0.1: %.5e|\n", +0.1);
-// printf("   printf +0.1: %.5e|\n", +0.1);
-// ft_printf("ft_printf +15.0: %.5e|\n", +15.0);
-// printf("   printf +15.0: %.5e|\n", +15.0);
-// ft_printf("ft_printf +30: %.5e|\n", (double)30);
-// printf("   printf +30: %.5e|\n", (double)30);
-// ft_printf("ft_printf +0L: %.5e|\n", (double)0);
-// printf("   printf +0L: %.5e|\n", (double)0);
-// ft_printf("ft_printf +0L: %.e|\n", (double)0);
-// printf("   printf +0L: %.e|\n", (double)0);
-// ft_printf("ft_printf +0L: %.e|\n", INFINITY);
-// printf("   printf +0L: %.e|\n", INFINITY);
-
-
-// ft_printf("\nft_printf +99.1: %.5Le|\n", (long double)+99.1);
-// printf("   printf +99.1: %.5Le|\n", (long double)+99.1);
-// ft_printf("ft_printf +0.1: %.5Le|\n", (long double)+0.1);
-// printf("   printf +0.1: %.5Le|\n", (long double)+0.1);
-// ft_printf("ft_printf +15.0: %.5Le|\n", (long double)+15.0);
-// printf("   printf +15.0: %.5Le|\n", (long double)+15.0);
-// ft_printf("ft_printf +30: %.5Le|\n", (long double)30);
-// printf("   printf +30: %.5Le|\n", (long double)30);
-// ft_printf("ft_printf +0L: %.5Le|\n", (long double)0);
-// printf("   printf +0L: %.5Le|\n", (long double)0);
 
 
 
@@ -1733,8 +1751,8 @@ int main(void)
 // printf("\033[1;32mTest 2 => \033[0m|% x|", (unsigned int)42);
 // ft_printf("\033[1;32mTest 2 => \033[0m|% x|", (unsigned int)42);
 
-ft_printf("%\n");
-printf("%\n");
+// ft_printf("%\n");
+// printf("%\n");
 
     return 0;
 }

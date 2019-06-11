@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:36:22 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/10 17:53:55 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/11 13:46:38 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ C_NO		=		"\033[00m"
 
 SUCCESS		=		$(C_GOOD)SUCCESS$(C_NO)
 OK			=		$(C_OK)OK$(C_NO)
-
-DEBUG = #-g3 -fsanitize=address
 
 SRC =	srcs/ft_dprintf.c						\
 		srcs/ft_printf.c						\
@@ -92,7 +90,7 @@ all: $(NAME)
 
 %.o: %.c
 	@printf "[ft_printf] Compiling [.:]\r"
-	@$(CC) $(CFLAGS) -c -g $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "[ft_printf] Compiling [:.]\r"
 
 $(NAME): $(OBJ)
@@ -111,11 +109,6 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 	@make fclean -C libft/
 	@echo "Cleaning" [ $(NAME) ] "..." $(OK)
-
-leaks:
-	@make -C libft/
-	@cp libft/libft.a ./$(NAME)
-	gcc -I  includes libft/libft.a -g srcs/*.c srcs/*/*.c main.c
 
 re: fclean all
 
