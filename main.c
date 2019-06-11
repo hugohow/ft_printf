@@ -37,8 +37,8 @@ int main(void)
 	// ft_printf("{%*d}", -5, 42);;
 	// printf("{%*d}", -5, 42);
 
-	ft_printf("{%*3d}", 5, 0);
-	printf("{%*3d}", 5, 0);
+	ft_printf("%.1f|%1f\n", 1.0, 1.0);
+	printf("%.1f|%1f", 1.0, 1.0);
 
 
 // 	printf("%d", printf("% Zoooo %d",1));

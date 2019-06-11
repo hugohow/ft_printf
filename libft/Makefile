@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 23:41:00 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/06 00:23:48 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/11 13:15:19 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,18 +66,6 @@ SRCS	=	ft_memset.c					\
 			ft_putendl_fd.c				\
 			ft_putnbr.c					\
 			ft_putnbr_fd.c				\
-			ft_lstnew.c					\
-			ft_lstdelone.c				\
-			ft_lstdel.c					\
-			ft_lstadd.c					\
-			ft_lstiter.c				\
-			ft_lstmap.c					\
-			ft_lstpush.c				\
-			ft_lstfree.c				\
-			ft_lstpop.c					\
-			ft_lstpeek.c				\
-			ft_lstpush.c				\
-			ft_lstlen.c					\
 			ft_bigint_add.c				\
 			ft_bigint_divide_by_two.c	\
 			ft_bigint_get_index.c		\
