@@ -11,7 +11,25 @@ Implementation from scratch of the double-precision floating-point format to get
 
 - Adapt `make test` for linux
 
-# ft_printf
+# Usage
+
+``` C
+#include "ft_printf.h"
+
+int ft_printf(const char* format, ...);
+
+int main(void)
+{
+  ft_printf("test %-12f et % #.1x %24s !\n", 42.001, 20, "coco");
+  return (0);
+}
+```
+
+```
+make re
+gcc main.c libftprintf.a -o main
+./main
+```
 
 ### Format placeholder syntax
 
