@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:36:22 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/13 13:21:52 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/13 14:10:04 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,6 +117,7 @@ test: re
 	cd tests/tests && $(MAKE) test
 else
 test: re
+	@echo "\n\n\033[45mBuild ok, launch tests on OSX\033[0m\n\n"
 	exit 0
 endif
 
