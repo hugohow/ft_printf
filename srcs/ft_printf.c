@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:20:34 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/10 20:03:46 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/13 13:05:40 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 static int	ft_parse_and_print(char *flag_line, va_list *p_ap, size_t *p_len)
 {
-	int		len;
 	t_flag	*flag;
 	char	*output;
 
-	len = 0;
 	if (!(flag = ft_create_flag(flag_line, p_ap)))
 		return (-1);
 	output = ft_printf_arg(p_ap, flag);

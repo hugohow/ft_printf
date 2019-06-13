@@ -6,7 +6,7 @@
 /*   By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:39:46 by hhow-cho          #+#    #+#             */
-/*   Updated: 2019/06/11 13:34:22 by hhow-cho         ###   ########.fr       */
+/*   Updated: 2019/06/13 13:06:26 by hhow-cho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ static int			ft_get_width(char *str, int i, int wild, long long width_w)
 
 int					ft_flag_get_width(char *str, va_list *ap, t_flag *flag)
 {
-	long long		width;
 	long long		width_wildcard;
 	int				i;
 	int				wild;
 
 	i = 0;
-	width = 0;
 	width_wildcard = 0;
 	wild = 0;
 	while (str[i])
