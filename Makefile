@@ -6,7 +6,7 @@
 #    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/02 19:36:22 by hhow-cho          #+#    #+#              #
-#    Updated: 2019/06/13 13:09:21 by hhow-cho         ###   ########.fr        #
+#    Updated: 2019/06/13 13:21:52 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,12 +112,12 @@ fclean: clean
 
 re: fclean all
 
-
-test: re
 ifeq ($(shell uname),Darwin)
-    cd tests/tests && $(MAKE) test
+test: re
+	cd tests/tests && $(MAKE) test
 else
-    
+test: re
+	exit 0
 endif
 
 .PHONY: all clean fclean re test
