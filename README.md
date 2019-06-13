@@ -27,7 +27,7 @@ int main(void)
 
 ```
 make re
-gcc main.c libftprintf.a -o main
+gcc -Iincludes main.c libftprintf.a -o main
 ./main
 ```
 
