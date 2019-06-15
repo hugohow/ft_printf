@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jkettani <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: hhow-cho <hhow-cho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 13:30:57 by jkettani          #+#    #+#              #
-#    Updated: 2019/03/22 16:43:15 by jkettani         ###   ########.fr        #
+#    Updated: 2019/06/16 00:14:07 by hhow-cho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,6 @@ $(OBJ_PATH)/%.d: ;
 .SECONDEXPANSION:
 
 $(OBJ): $(OBJ_PATH)/%.o: %.c $(OBJ_PATH)/%.d | $$(@D)/.
-	$(ECHO) "Compiling $(WARN_COLOR)$<$(NC)..."
 	$(QUIET) $(COMPILE.c) $< -o $@
 	$(QUIET) $(POSTCOMPILE)
 
